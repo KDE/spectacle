@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-24 00:46+0000\n"
-"PO-Revision-Date: 2026-04-05 17:17+0200\n"
+"PO-Revision-Date: 2026-05-03 11:54+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -33,7 +33,7 @@ msgstr "Copies d'écran"
 #, kde-format
 msgctxt "part of default image filename template"
 msgid "Screenshot"
-msgstr "Copie d'écran"
+msgstr "Capture d'écran"
 
 #, kde-format
 msgctxt "translatable folder name"
@@ -155,7 +155,7 @@ msgstr ""
 #: src/CommandLineOptions.h:58
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
-msgstr "Lancer Spectacle sans réaliser de copie d'écran"
+msgstr "Lancer Spectacle sans réaliser de capture d'écran"
 
 #: src/CommandLineOptions.h:62
 #, kde-format
@@ -165,7 +165,7 @@ msgstr "Démarrer en mode interface graphique (par défaut)"
 #: src/CommandLineOptions.h:66
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
-msgstr "Effectuer une copie d'écran et quitter sans afficher l'interface"
+msgstr "Effectuer une capture d'écran et quitter sans afficher l'interface"
 
 #: src/CommandLineOptions.h:70
 #, kde-format
@@ -177,7 +177,7 @@ msgstr "Démarrer en mode d'activation D-Bus"
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
 msgstr ""
-"En mode arrière-plan, ne pas afficher de notification lorsqu'une copie "
+"En mode arrière-plan, ne pas afficher de notification lorsqu'une capture "
 "d'écran est effectuée"
 
 #: src/CommandLineOptions.h:78
@@ -197,20 +197,20 @@ msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
 "used."
 msgstr ""
-"En mode arrière-plan, copier la copie d'écran dans le presse-papier, sauf si "
-"le paramètre « -o » est aussi utilisé."
+"En mode arrière-plan, copier la capture d'écran dans le presse-papier, sauf "
+"si le paramètre « -o » est aussi utilisé."
 
 #: src/CommandLineOptions.h:92
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
-msgstr "En mode arrière-plan, copier la copie d'écran dans le presse-papier"
+msgstr "En mode arrière-plan, copier la capture d'écran dans le presse-papier"
 
 #: src/CommandLineOptions.h:96
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr ""
-"Attendre un clic avant de prendre la copie d'écran. Ne pas tenir compte du "
-"délai."
+"Attendre un clic avant d'effectuer la capture d'écran. Ne pas tenir compte "
+"du délai."
 
 #: src/CommandLineOptions.h:100
 #, kde-format
@@ -223,25 +223,26 @@ msgstr ""
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr ""
-"En mode d'arrière-plan, inclure le pointeur de souris dans la copie d'écran"
+"En mode d'arrière-plan, inclure le pointeur de souris dans la capture d'écran"
 
 #: src/CommandLineOptions.h:108
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr ""
-"En mode d'arrière-plan, exclure les décorations de fenêtres dans la copie "
+"En mode d'arrière-plan, exclure les décorations de fenêtres dans la capture "
 "d'écran"
 
 #: src/CommandLineOptions.h:110
 #, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
 msgstr ""
-"En mode d'arrière-plan, exclure les ombrages de fenêtres de la copie d'écran"
+"En mode d'arrière-plan, exclure les ombrages de fenêtres de la capture "
+"d'écran"
 
 #: src/CommandLineOptions.h:113
 #, kde-format
 msgid "Open and edit existing screenshot file"
-msgstr "Ouvrir ou modifier un fichier existant de copie d'écran"
+msgstr "Ouvrir ou modifier un fichier existant de capture d'écran"
 
 #: src/CommandLineOptions.h:116
 #, kde-format
@@ -261,15 +262,15 @@ msgid ""
 "Cannot save screenshot because creating the directory failed:<nl/><filename>"
 "%1</filename>"
 msgstr ""
-"Impossible de créer le dossier et donc d'enregistrer la copie d'écran :<nl/> "
-"<filename>%1</filename>"
+"Impossible de créer le dossier et donc d'enregistrer la capture d'écran :<nl/"
+"> <filename>%1</filename>"
 
 #: src/ExportManager.cpp:486
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr ""
-"Impossible d'enregistrer la copie d'écran. Erreur lors de l'écriture dans le "
-"fichier."
+"Impossible d'enregistrer la capture d'écran. Erreur lors de l'écriture dans "
+"le fichier."
 
 #: src/ExportManager.cpp:506
 #, kde-kuit-format
@@ -278,15 +279,15 @@ msgid ""
 "Cannot save screenshot because creating the remote directory failed:<nl/"
 "><filename>%1</filename>"
 msgstr ""
-"Impossible de créer le dossier à distance et donc d'enregistrer la copie "
+"Impossible de créer le dossier à distance et donc d'enregistrer la capture "
 "d'écran :<nl/> <filename>%1</filename>"
 
 #: src/ExportManager.cpp:517 src/ExportManager.cpp:566
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
-"Impossible d'enregistrer la copie d'écran. Erreur lors de l'écriture dans le "
-"fichier local temporaire."
+"Impossible d'enregistrer la capture d'écran. Erreur lors de l'écriture dans "
+"le fichier local temporaire."
 
 #: src/ExportManager.cpp:525
 #, kde-format
@@ -299,13 +300,13 @@ msgstr ""
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
-"Impossible d'enregistrer la copie d'écran. Le nom de fichier n'est pas "
+"Impossible d'enregistrer la capture d'écran. Le nom de fichier n'est pas "
 "valable."
 
 #: src/ExportManager.cpp:617
 #, kde-format
 msgid "Cannot save an empty screenshot image."
-msgstr "Impossible d'enregistrer une copie d'écran vide."
+msgstr "Impossible d'enregistrer une capture d'écran vide."
 
 #: src/ExportManager.cpp:780
 #, kde-format
@@ -732,7 +733,7 @@ msgstr[1] "Annuler (%1 secondes)"
 #: src/Gui/CaptureOptions.qml:17
 #, kde-format
 msgid "Take a new screenshot"
-msgstr "Prendre une nouvelle copie d'écran"
+msgstr "Prendre une nouvelle capture d'écran"
 
 #: src/Gui/CaptureOptions.qml:39
 #, kde-format
@@ -754,7 +755,7 @@ msgstr "Inclure le pointeur de souris"
 #: src/Gui/CaptureSettingsColumn.qml:17
 #, kde-format
 msgid "Show the mouse cursor in the screenshot image."
-msgstr "Afficher le pointeur de la souris sur la copie d'écran."
+msgstr "Afficher le pointeur de la souris sur la capture d'écran."
 
 #: src/Gui/CaptureSettingsColumn.qml:25
 #, kde-format
@@ -766,7 +767,7 @@ msgstr "Inclure la barre de titre et les bordures de la fenêtre"
 msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
 msgstr ""
-"Afficher la barre de titre et la bordure de la fenêtre lors de la copie "
+"Afficher la barre de titre et la bordure de la fenêtre lors de la capture "
 "d'écran d'une fenêtre."
 
 #: src/Gui/CaptureSettingsColumn.qml:34
@@ -778,7 +779,7 @@ msgstr "Inclure l'ombrage de la fenêtre"
 #, kde-format
 msgid "Show the window shadow when taking a screenshot of a window."
 msgstr ""
-"Afficher l'ombrage de la fenêtre lors de la copie d'écran d'une fenêtre."
+"Afficher l'ombrage de la fenêtre lors de la capture d'écran d'une fenêtre."
 
 #: src/Gui/CaptureSettingsColumn.qml:44
 #, kde-format
@@ -793,7 +794,7 @@ msgid ""
 "with the parent window."
 msgstr ""
 "Ne copier que le menu contextuel actuel (comme un menu, une infobulle, etc.) "
-"lors de la réalisation d'une copie d'écran d'une fenêtre. Si cette option "
+"lors de la réalisation d'une capture d'écran d'une fenêtre. Si cette option "
 "n'est pas activée, le menu contextuel est capturé avec sa fenêtre parente."
 
 #: src/Gui/CaptureSettingsColumn.qml:54
@@ -815,7 +816,7 @@ msgstr "Copie sur un clic"
 #: src/Gui/CaptureSettingsColumn.qml:66
 #, kde-format
 msgid "Wait for a mouse click before capturing the screenshot image."
-msgstr "Attendre un clic de souris avant de réaliser la copie d'écran."
+msgstr "Attendre un clic de souris avant de réaliser la capture d'écran."
 
 #: src/Gui/CaptureSettingsColumn.qml:76
 #, kde-format
@@ -868,7 +869,7 @@ msgstr "Aide"
 #, kde-format
 msgctxt "@title:group"
 msgid "Take a Screenshot:"
-msgstr "Effectuer une copie d'écran :"
+msgstr "Effectuer une capture d'écran :"
 
 #: src/Gui/DialogPage.qml:95 src/Gui/DialogPage.qml:136
 #, kde-format
@@ -886,7 +887,7 @@ msgstr "Réaliser un enregistrement :"
 #, kde-format
 msgctxt "@title:tab"
 msgid "Screenshot"
-msgstr "Copie d'écran"
+msgstr "Capture d'écran"
 
 #: src/Gui/DialogPage.qml:168
 #, kde-format
@@ -909,7 +910,7 @@ msgstr "Exporter"
 #: src/Gui/ExportMenu.cpp:48
 #, kde-format
 msgid "Open Default Screenshots Folder"
-msgstr "Ouvrir le dossier de copies d'écran par défaut"
+msgstr "Ouvrir le dossier de captures d'écran par défaut"
 
 #: src/Gui/ExportMenu.cpp:134
 #, kde-format
@@ -987,7 +988,7 @@ msgstr "Fermer"
 #: src/Gui/NewScreenshotToolButton.qml:27
 #, kde-format
 msgid "New Screenshot"
-msgstr "Nouvelle copie d'écran"
+msgstr "Nouvelle capture d'écran"
 
 #: src/Gui/OcrAction.qml:15
 #, kde-format
@@ -999,7 +1000,7 @@ msgstr "Extraire du texte"
 #, kde-format
 msgctxt "@title:menu"
 msgid "Screenshot Settings"
-msgstr "Configuration de copie d'écran"
+msgstr "Configuration de capture d'écran"
 
 #: src/Gui/OptionsMenu.cpp:40
 #, kde-format
@@ -1011,7 +1012,7 @@ msgstr "Inclure le pointeur de souris"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the screenshot image"
-msgstr "Afficher le pointeur de la souris dans la copie d'écran"
+msgstr "Afficher le pointeur de la souris dans la capture d'écran"
 
 #: src/Gui/OptionsMenu.cpp:49
 #, kde-format
@@ -1045,7 +1046,7 @@ msgstr "Affichage l'ombrage de la fenêtre"
 #, kde-format
 msgctxt "@option:check"
 msgid "Capture the current pop-up only"
-msgstr "Ne copier que le menu contextuel courant"
+msgstr "Ne capturer que le menu contextuel courant"
 
 #: src/Gui/OptionsMenu.cpp:71
 #, kde-format
@@ -1054,16 +1055,16 @@ msgid ""
 "Capture only the current pop-up window (like a menu, tooltip etc).\n"
 "If disabled, the pop-up is captured along with the parent window"
 msgstr ""
-"Ne copier que le menu contextuel courant (Comme un menu, une infobulle, "
+"Ne capturer que le menu contextuel courant (Comme un menu, une infobulle, "
 "etc.).\n"
-"Si cette option est désactivée, le menu contextuel est copié avec sa fenêtre "
-"parente."
+"Si cette option est désactivée, le menu contextuel est capturé avec sa "
+"fenêtre parente."
 
 #: src/Gui/OptionsMenu.cpp:81
 #, kde-format
 msgctxt "@option:check"
 msgid "Quit after manual Save or Copy"
-msgstr "Quitter après l'enregistrement ou la copie manuelle"
+msgstr "Quitter après l'enregistrement ou la capture manuelle"
 
 #: src/Gui/OptionsMenu.cpp:82
 #, kde-format
@@ -1071,13 +1072,13 @@ msgctxt "@info:tooltip"
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr ""
 "Quitter Spectacle après avoir effectué manuellement l'enregistrement ou la "
-"copie de l'image"
+"capture de l'image"
 
 #: src/Gui/OptionsMenu.cpp:94
 #, kde-format
 msgctxt "@option:check"
 msgid "Capture On Click"
-msgstr "Copie sur un clic"
+msgstr "Capture sur un clic"
 
 #: src/Gui/OptionsMenu.cpp:109
 #, kde-format
@@ -1184,13 +1185,13 @@ msgstr "Enregistrer sous..."
 #, kde-format
 msgctxt "@title:menu"
 msgid "Screenshot Modes"
-msgstr "Modes de copie d'écran"
+msgstr "Modes de capture d'écran"
 
 #: src/Gui/ScreenshotModeMenuButton.qml:11
 #, kde-format
 msgctxt "@action select new screenshot mode"
 msgid "New Screenshot"
-msgstr "Nouvelle copie d'écran"
+msgstr "Nouvelle capture d'écran"
 
 #: src/Gui/ScreenshotView.qml:196
 #, kde-format
@@ -1214,31 +1215,31 @@ msgstr "Lors du lancement de Spectacle"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:25
 #, kde-format
 msgid "Take rectangular screenshot"
-msgstr "Prendre une copie d'écran rectangulaire"
+msgstr "Prendre une capture d'écran rectangulaire"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:30
 #, kde-format
 msgid "Take full screen screenshot"
-msgstr "Réaliser une copie d'écran en plein écran"
+msgstr "Réaliser une capture d'écran en plein écran"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:35
 #, kde-format
 msgid "Use last-used capture mode"
-msgstr "Utiliser le dernier mode de copie utilisé"
+msgstr "Utiliser le dernier mode de capture utilisé"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:40
 #, kde-format
 msgid "Do not take a screenshot automatically"
-msgstr "Ne pas réaliser automatiquement une copie d'écran"
+msgstr "Ne pas réaliser automatiquement une capture d'écran"
 
 #. i18n: ectx: property (text), widget (QLabel, afterScreenshotLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:64
 #, kde-format
 msgid "After taking a screenshot:"
-msgstr "Après avoir pris une copie d'écran :"
+msgstr "Après avoir pris une capture d'écran :"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_autoSaveImage)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:71
@@ -1275,13 +1276,13 @@ msgstr "Lorsque Spectacle est en cours d'exécution"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:123
 #, kde-format
 msgid "Press screenshot key to:"
-msgstr "Appuyer sur la touche « Copie d'écran » pour :"
+msgstr "Appuyer sur la touche « Capture d'écran » pour :"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_printKeyRunningAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:131
 #, kde-format
 msgid "Take a new Screenshot"
-msgstr "Prendre une nouvelle copie d'écran"
+msgstr "Prendre une nouvelle capture d'écran"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_printKeyRunningAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:136
@@ -1537,7 +1538,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/spectacle.kcfg:34
 #, kde-format
 msgid "Save screenshot automatically after it is taken"
-msgstr "Enregistrer la copie d'écran automatiquement après son lancement"
+msgstr "Enregistrer la capture d'écran automatiquement après son lancement"
 
 #. i18n: ectx: label, entry (clipboardGroup), group (General)
 #. i18n: ectx: label, entry (showMagnifier), group (General)
@@ -1547,7 +1548,7 @@ msgstr "Enregistrer la copie d'écran automatiquement après son lancement"
 msgid "Clipboard action which should be executed after the screenshot is taken"
 msgstr ""
 "L'action du presse-papier qui devrait être exécuté après la réalisation de "
-"la copie d'écran"
+"la capture d'écran"
 
 #. i18n: ectx: label, entry (useLightMaskColor), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:51
@@ -1564,8 +1565,8 @@ msgid ""
 "Whether the screenshot should be captured after selecting the region and "
 "releasing the mouse"
 msgstr ""
-"Soit la copie d'écran pourrait être capturée après sélection de la région et "
-"le relâchement de la souris."
+"Soit la capture d'écran pourrait être réalisée après sélection de la région "
+"et le relâchement de la souris."
 
 #. i18n: ectx: label, entry (rememberSelectionRect), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:68
@@ -1590,13 +1591,13 @@ msgstr "La dernière zone sélectionnée par l'utilisateur"
 #: src/Gui/SettingsDialog/spectacle.kcfg:87
 #, kde-format
 msgid "Take screenshot on click"
-msgstr "Prendre une copie d'écran sur un clic"
+msgstr "Prendre une capture d'écran sur un clic"
 
 #. i18n: ectx: label, entry (includePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:91
 #, kde-format
 msgid "Whether the mouse cursor is included in the screenshot"
-msgstr "Choisir d'inclure ou non le pointeur de souris dans la copie d'écran"
+msgstr "Choisir d'inclure ou non le pointeur de souris dans la capture d'écran"
 
 #. i18n: ectx: label, entry (videoIncludePointer), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:95
@@ -1609,19 +1610,20 @@ msgstr "Choisir d'inclure ou non le pointeur de souris dans la vidéo"
 #, kde-format
 msgid "Whether the window decorations are included in the screenshot"
 msgstr ""
-"Choisir d'inclure ou non les décorations de fenêtres dans la copie d'écran"
+"Choisir d'inclure ou non les décorations de fenêtres dans la capture d'écran"
 
 #. i18n: ectx: label, entry (includeShadow), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:103
 #, kde-format
 msgid "Whether the window shadow is included in the screenshot"
-msgstr "Choisir d'inclure ou non l'ombrage des fenêtres dans la copie d'écran"
+msgstr ""
+"Choisir d'inclure ou non l'ombrage des fenêtres dans la capture d'écran"
 
 #. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:107
 #, kde-format
 msgid "Only capture the current pop up menu"
-msgstr "Ne copier que le menu contextuel actuel"
+msgstr "Ne capturer que le menu contextuel actuel"
 
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:111
@@ -1660,7 +1662,7 @@ msgstr "Format d'enregistrement d'image par défaut"
 #, kde-format
 msgid "The filename template used when saving screenshots"
 msgstr ""
-"Le modèle de nom de fichier à utiliser pour l'enregistrement des copies "
+"Le modèle de nom de fichier à utiliser pour l'enregistrement des captures "
 "d'écran"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
@@ -1702,7 +1704,7 @@ msgstr "Enregistrer l'emplacement :"
 #: src/Gui/ShortcutsTextBox.qml:13
 #, kde-format
 msgid "Take Screenshot:"
-msgstr "Effectuer une copie d'écran :"
+msgstr "Effectuer une capture d'écran :"
 
 #: src/Gui/ShortcutsTextBox.qml:15
 #, kde-format
@@ -1885,7 +1887,7 @@ msgstr "Spectacle"
 #: src/Main.cpp:46
 #, kde-format
 msgid "KDE Screenshot Utility"
-msgstr "Utilitaire de copies d'écran de KDE"
+msgstr "Utilitaire de capture d'écran de KDE"
 
 #: src/Main.cpp:48
 #, kde-format
@@ -1915,7 +1917,7 @@ msgid ""
 msgstr ""
 "Sous Wayland, Spectacle nécessite le compositeur KWin de KDE Plasma, qui ne "
 "semble pas être disponible. Veuillez utiliser Spectacle sous KDE Plasma ou "
-"utiliser un autre outil de copie d'écran."
+"utiliser un autre outil de capture d'écran."
 
 #: src/OcrManager.cpp:578
 #, kde-format
@@ -1937,33 +1939,33 @@ msgstr "Orientation et détection de scripts"
 #, kde-format
 msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
-msgstr "Largeur incorrecte pour la copie d'écran de KWin : %1"
+msgstr "Largeur incorrecte pour la capture d'écran de KWin : %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:148
 #, kde-format
 msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
-msgstr "Hauteur incorrecte pour la copie d'écran de KWin : %1"
+msgstr "Hauteur incorrecte pour la capture d'écran de KWin : %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:159
 #, kde-format
 msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
-msgstr "Format incorrect pour la copie d'écran de KWin : %1"
+msgstr "Format incorrect pour la capture d'écran de KWin : %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:177
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr ""
-"Impossible d'ouvrir le descripteur de fichier pour lire la copie d'écran de "
-"KWin."
+"Impossible d'ouvrir le descripteur de fichier pour lire la capture d'écran "
+"de KWin."
 
 #: src/Platforms/ImagePlatformKWin.cpp:245
 #, kde-format
 msgctxt "@info, %1 is an error code"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr "Échec de la fonction « pipe2() » pour la copie d'écran de KWin : %1"
+msgstr "Échec de la fonction « pipe2() » pour la capture d'écran de KWin : %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:301
 #, kde-format
@@ -1972,7 +1974,7 @@ msgid ""
 "KWin screenshot request failed:\n"
 "%1"
 msgstr ""
-"Échec de la demande de copie d'écran de KWin :\n"
+"Échec de la demande de capture d'écran de KWin :\n"
 "%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:303
@@ -1989,7 +1991,8 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
-msgstr "Métadonnées de type de copie d'écran de KWin non prises en charge : %1"
+msgstr ""
+"Métadonnées de type de capture d'écran de KWin non prises en charge : %1"
 
 #: src/Platforms/PlatformLoader.cpp:97
 #, kde-format
@@ -2128,37 +2131,37 @@ msgstr "Lancer Spectacle"
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Entire Desktop"
-msgstr "Copier la totalité du bureau"
+msgstr "Capturer la totalité du bureau"
 
 #: src/ShortcutActions.cpp:50
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Current Monitor"
-msgstr "Copier l'écran courant"
+msgstr "Capturer l'écran courant"
 
 #: src/ShortcutActions.cpp:56
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Active Window"
-msgstr "Copier la fenêtre active"
+msgstr "Capturer la fenêtre active"
 
 #: src/ShortcutActions.cpp:62
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Rectangular Region"
-msgstr "Copier une région rectangulaire"
+msgstr "Capturer une région rectangulaire"
 
 #: src/ShortcutActions.cpp:69
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Selected Window"
-msgstr "Copier la fenêtre sélectionnée"
+msgstr "Capturer la fenêtre sélectionnée"
 
 #: src/ShortcutActions.cpp:69
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Window Under Cursor"
-msgstr "Copier la fenêtre sous le curseur"
+msgstr "Capturer la fenêtre sous le curseur"
 
 # unreviewed-context
 #: src/ShortcutActions.cpp:76
@@ -2185,13 +2188,13 @@ msgstr "Démarrer / Arrêter l'enregistrement d'une zone"
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
-msgstr "Lancer Spectacle sans faire de copie d'écran"
+msgstr "Lancer Spectacle sans faire de capture d'écran"
 
 #: src/SpectacleCore.cpp:265
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
-msgstr "Une erreur est survenue durant la réalisation d'une copie d'écran."
+msgstr "Une erreur est survenue durant la réalisation d'une capture d'écran."
 
 # unreviewed-context
 #: src/SpectacleCore.cpp:294
@@ -2299,8 +2302,8 @@ msgid ""
 "The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</"
 "link>"
 msgstr ""
-"Une copie d'écran a été copiée dans le presse-papier et enregistrée sous <a "
-"href=\"%1\">%2</a>."
+"Une capture d'écran a été copiée dans le presse-papier et enregistrée sous "
+"<a href=\"%1\">%2</a>."
 
 #: src/SpectacleCore.cpp:485
 #, kde-kuit-format
@@ -2309,20 +2312,20 @@ msgid ""
 "The screenshot has been saved as <link url=\"%1\">%2</link> and its location "
 "has been copied to clipboard"
 msgstr ""
-"La copie d'écran a été enregistrée comme <link url=\"%1\">%2</link> et son "
+"La capture d'écran a été enregistrée comme <link url=\"%1\">%2</link> et son "
 "emplacement a été copié dans le presse-papier."
 
 #: src/SpectacleCore.cpp:490
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
-msgstr "Une copie d'écran a été enregistrée comme <a href=\"%1\">%2</a>."
+msgstr "Une capture d'écran a été enregistrée comme <a href=\"%1\">%2</a>."
 
 #: src/SpectacleCore.cpp:494
 #, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
-msgstr "La copie d'écran a été copiée dans le presse-papier."
+msgstr "La capture d'écran a été copiée dans le presse-papier."
 
 #: src/SpectacleCore.cpp:526
 #, kde-kuit-format
@@ -2420,7 +2423,7 @@ msgstr "La reconnaissance optique de caractères est indisponible."
 #, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
-msgstr "Aucune copie d'écran disponible."
+msgstr "Aucune capture d'écran disponible."
 
 #: src/SpectacleCore.cpp:786
 #, kde-format
@@ -2450,7 +2453,7 @@ msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr ""
-"La copie d'écran a été enregistrée comme « %1 » vers « %2 » et son "
+"La capture d'écran a été enregistrée comme « %1 » vers « %2 » et son "
 "emplacement a été enregistré dans votre presse-papier."
 
 #: src/SpectacleCore.cpp:1296
@@ -2458,18 +2461,19 @@ msgstr ""
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr ""
-"Une copie d'écran a été enregistrée sous « %1 » dans votre dossier d'images."
+"Une capture d'écran a été enregistrée sous « %1 » dans votre dossier "
+"d'images."
 
 #: src/SpectacleCore.cpp:1299
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
-msgstr "Une copie d'écran a été enregistrée comme « %1 » dans « %2 »."
+msgstr "Une capture d'écran a été enregistrée comme « %1 » dans « %2 »."
 
 #: src/SpectacleCore.cpp:1303
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
-msgstr "Une copie d'écran a été enregistrée dans votre presse-papiers."
+msgstr "Une capture d'écran a été enregistrée dans votre presse-papiers."
 
 #: src/SpectacleCore.cpp:1308
 #, kde-format
@@ -2478,7 +2482,7 @@ msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr ""
-"Une copie a été enregistrée comme « %1 » dans « %2 » et son emplacement a "
+"Une capture a été enregistrée comme « %1 » dans « %2 » et son emplacement a "
 "été enregistré dans votre presse-papier."
 
 #: src/SpectacleCore.cpp:1310
