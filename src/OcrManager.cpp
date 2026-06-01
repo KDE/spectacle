@@ -677,7 +677,7 @@ void OcrWorker::processImage(const QImage &image, TessBaseAPI *tesseract)
                     if (!line.isEmpty()) {
                         lines.append(line);
                     }
-                    delete lineText;
+                    delete [] lineText;
                 }
             } while (iterator->Next(tesseract::RIL_TEXTLINE) != 0);
             delete iterator;
