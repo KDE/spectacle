@@ -174,6 +174,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
                     exportActions.setFlag(ExportManager::Action::CopyPath, false);
                     m_quitAfterOcr = true;
                 }
+                exportActions.setFlag(ExportManager::Action::CopyImage, false);
                 m_ocrExportInProgress = false;
             }
             const bool willQuit = exportActions.testAnyFlags(ExportManager::AnyAction) //
