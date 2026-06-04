@@ -2,13 +2,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Kiszel Kristóf <kiszel.kristof@gmail.com>, 2017, 2021.
-# SPDX-FileCopyrightText: 2021, 2022, 2024, 2025 Kristof Kiszel <ulysses@fsf.hu>
+# SPDX-FileCopyrightText: 2021-2022, 2024-2026 Kristof Kiszel <ulysses@fsf.hu>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-03 03:23+0000\n"
-"PO-Revision-Date: 2025-11-07 21:04+0100\n"
+"PO-Revision-Date: 2026-06-03 22:14+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.08.2\n"
+"X-Generator: Lokalize 26.04.1\n"
 
 #, kde-format
 msgctxt "translatable folder name"
@@ -96,6 +96,8 @@ msgstr "Teljes asztal rögzítése (alapértelmezés)"
 msgid ""
 "When used with -f/--fullscreen, capture all screens scaled to the same size"
 msgstr ""
+"A -f/--fullscreen opcióval együtt használva az összes képernyőt azonos "
+"méretre skálázza"
 
 #: src/CommandLineOptions.h:30
 #, kde-format
@@ -221,14 +223,12 @@ msgid "Open and edit existing screenshot file"
 msgstr "Meglévő képernyőképfájl megnyitása és szerkesztése"
 
 #: src/CommandLineOptions.h:116
-#, fuzzy, kde-format
-#| msgid "Accept on click-and-release"
+#, kde-format
 msgid "Accept region selection on click-and-release"
-msgstr "„Kattintás és felengedés” elfogadása"
+msgstr "Területkijelölés elfogadása kattintás és felengedéssel"
 
 #: src/ExportManager.cpp:460
-#, fuzzy, kde-format
-#| msgid "QImageWriter cannot write image: %1"
+#, kde-format
 msgctxt "%1 is an error message"
 msgid "QImageWriter cannot write image: %1"
 msgstr "A QImageWriter nem tudta írni a képet: %1"
@@ -298,9 +298,7 @@ msgstr ""
 "nek kell lennie egy fájlnévvel"
 
 #: src/ExportManager.cpp:873
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Unable to save recording. Could not move file to location: %1"
+#, kde-format
 msgctxt "@info, %1 is a file path"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
@@ -688,11 +686,10 @@ msgid "Number"
 msgstr "Szám"
 
 #: src/Gui/CancelAction.qml:9
-#, fuzzy, kde-format
-#| msgid "Cancel"
+#, kde-format
 msgctxt "@action cancel selection"
 msgid "Cancel"
-msgstr "Mégsem"
+msgstr "Mégse"
 
 #: src/Gui/CaptureModeButtonsColumn.qml:31
 #: src/Gui/NewScreenshotToolButton.qml:15
@@ -897,30 +894,27 @@ msgstr "Megosztás"
 #, kde-format
 msgctxt "@action:menu"
 msgid "Extract Text by Language"
-msgstr ""
+msgstr "Szöveg kinyerése nyelv szerint"
 
 #: src/Gui/ExportMenu.cpp:295
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR engine is not available."
-msgstr "A KWin képernyőátjátszás nem érhető el."
+msgstr "Az OCR alrendszer nem érhető el."
 
 #: src/Gui/ExportMenu.cpp:303
 #, kde-format
 msgid "OCR is not available. Please install Tesseract OCR."
-msgstr ""
+msgstr "Az OCR nem érhető el. Telepítse a Tesseract OCR-t."
 
 #: src/Gui/ExportMenu.cpp:304
 #, kde-format
 msgid "OCR engine is initializing…"
-msgstr ""
+msgstr "Az OCR alrendszer előkészít…"
 
 #: src/Gui/ExportMenu.cpp:314
-#, fuzzy, kde-format
-#| msgid "No KIPI plugins available"
+#, kde-format
 msgid "No OCR language data available."
-msgstr "Nem érhetők el KIPI bővítmények"
+msgstr "Nincsenek elérhető OCR nyelvi adatok."
 
 #: src/Gui/ExportMenuButton.qml:13
 #, kde-format
@@ -967,7 +961,7 @@ msgstr "Új képernyőkép"
 #, kde-format
 msgctxt "@action"
 msgid "Extract Text"
-msgstr ""
+msgstr "Szöveg kinyerése"
 
 #: src/Gui/OptionsMenu.cpp:38
 #, kde-format
@@ -1109,10 +1103,7 @@ msgid "Show the mouse cursor in the screen recording."
 msgstr "Az egérmutató jelenjen meg a képernyőfelvételen."
 
 #: src/Gui/RecordingView.qml:85
-#, fuzzy, kde-format
-#| msgid ""
-#| "Recording:\n"
-#| "%1"
+#, kde-format
 msgctxt "Recording in progress, %1 is the length of the recording so far"
 msgid ""
 "Recording:\n"
@@ -1335,20 +1326,19 @@ msgstr "A Spectacle bezárásáig"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:261
 #, kde-format
 msgid "Text Recognition (OCR)"
-msgstr ""
+msgstr "Szövegfelismerés (OCR)"
 
 #. i18n: ectx: property (text), widget (QLabel, ocrLanguageLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:268
 #, kde-format
 msgid "Languages for OCR:"
-msgstr ""
+msgstr "OCR nyelvei:"
 
 #. i18n: ectx: property (text), widget (QLabel, closeAfterOcrLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:306
-#, fuzzy, kde-format
-#| msgid "Reset selection:"
+#, kde-format
 msgid "Text extraction:"
-msgstr "Kijelölés törlése:"
+msgstr "Szövegkinyerés:"
 
 #. i18n: ectx: label, entry (closeAfterOcr), group (General)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_closeAfterOcr)
@@ -1356,7 +1346,7 @@ msgstr "Kijelölés törlése:"
 #: src/Gui/SettingsDialog/spectacle.kcfg:38
 #, kde-format
 msgid "Close after extraction (skips auto-save)"
-msgstr ""
+msgstr "Bezárás kinyerés után (automatikus mentés kihagyása)"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, closeAfterOcrInfo)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:334
@@ -1365,14 +1355,14 @@ msgid ""
 "Spectacle will close after text extraction and automatic saving will be "
 "skipped."
 msgstr ""
+"A Spectacle bezárul a szövegkinyerés után, és kihagyja az automatikus "
+"mentést."
 
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:395
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgid "OCR functionality is not available"
-msgstr "A KWin képernyőátjátszás nem érhető el."
+msgstr "Az OCR funkció nem érhető el."
 
 #. i18n: ectx: property (toolTip), widget (QLabel, ocrInfoIcon)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:413
@@ -1382,6 +1372,9 @@ msgid ""
 "• tesseract\n"
 "• tesseract language data (e.g., tesseract-ocr-eng for English)"
 msgstr ""
+"Telepítse a szükséges csomagokat:\n"
+"• tesseract\n"
+"• tesseract nyelvi adatok (például tesseract-langpack-hun a magyarhoz)"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:9
@@ -1536,7 +1529,7 @@ msgstr "Legutóbbi téglalap alakú terület megjegyzése"
 #: src/Gui/SettingsDialog/spectacle.kcfg:77
 #, kde-format
 msgid "Default languages for OCR text recognition"
-msgstr ""
+msgstr "OCR szövegfelismerés alapértelmezett nyelvei"
 
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:83
@@ -1761,8 +1754,7 @@ msgid "Escape"
 msgstr "Escape"
 
 #: src/Gui/SizeLabel.qml:13
-#, fuzzy, kde-format
-#| msgid "%1×%2"
+#, kde-format
 msgctxt "Size, width×height"
 msgid "%1×%2"
 msgstr "%1×%2"
@@ -1816,9 +1808,7 @@ msgid "Image Zoom"
 msgstr "Képnagyítás"
 
 #: src/Gui/ViewerWindow.cpp:53
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "There was a problem sharing the image: %1"
+#, kde-format
 msgctxt "@info, %1 is the error message"
 msgid "There was a problem sharing the image: %1"
 msgstr "Hiba történt a kép megosztásakor: %1"
@@ -1874,38 +1864,32 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "Tájolás és írásrendszer-felismerés"
 
 #: src/OcrManager.cpp:619
 #, kde-format
 msgid "Math/Equation Detection"
-msgstr ""
+msgstr "Matematika/egyenletfelismerés"
 
 #: src/OcrManager.cpp:622
 #, kde-format
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "Tájolás és írásrendszer-felismerés"
 
 #: src/Platforms/ImagePlatformKWin.cpp:143
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad width for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
 msgstr "Rossz szélesség a KWin képernyőképhez: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:148
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad height for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
 msgstr "Rossz magasság a KWin képernyőképhez: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:159
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Bad format for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "Rossz formátum a KWin képernyőképhez: %1"
@@ -1917,19 +1901,13 @@ msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr "Nem sikerült megnyitni a fájlleírót a KWin képernyőkép olvasásához."
 
 #: src/Platforms/ImagePlatformKWin.cpp:245
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "pipe2() failed for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is an error code"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "Sikertelen pipe2() a KWin képernyőképhez: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:301
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid ""
-#| "KWin screenshot request failed:\n"
-#| "%1"
+#, kde-format
 msgctxt "@info, %1 is an error message"
 msgid ""
 "KWin screenshot request failed:\n"
@@ -2003,28 +1981,22 @@ msgstr ""
 "módon változott, hogy megzavarta a felvétel."
 
 #: src/Platforms/VideoPlatformWayland.cpp:298
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: Temporary file URL is not a local file (%1)"
+#, kde-format
 msgctxt "@info:shell, %1 is the temporary URL"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
-msgstr "Nem sikerült felvenni: az átmeneti fájl URL-re nem helyi fájl (%1)"
+msgstr "Nem lehet felvenni: az átmeneti fájl URL-je nem helyi fájl (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:309
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: Output file URL is not a local file (%1)"
+#, kde-format
 msgctxt "@info:shell, %1 is the output file URL"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr "Nem lehet felvenni: a kimeneti fájl URL-je nem helyi fájl (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:370
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to record: Unable to create folder (%1)"
+#, kde-format
 msgctxt "@info:shell, %1 is a directory path"
 msgid "Failed to record: Unable to create folder (%1)"
-msgstr "Nem sikerült felvenni: nem lehet létrehozni a mappát (%1)"
+msgstr "Nem lehet felvenni: nem lehet létrehozni a mappát (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:398
 #, kde-format
@@ -2039,20 +2011,16 @@ msgid "Window recording canceled"
 msgstr "Ablakfelvétel megszakítva"
 
 #: src/Platforms/VideoPlatformWayland.cpp:406
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to select screen: %1"
+#, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select screen: %1"
-msgstr "Nem sikerült kiválasztani a képernyőt: %1"
+msgstr "Nem lehet kiválasztani a képernyőt: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:408
-#, fuzzy, kde-format
-#| msgctxt "@info:shell"
-#| msgid "Failed to select window: %1"
+#, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select window: %1"
-msgstr "Nem sikerült kiválasztani az ablakot: %1"
+msgstr "Nem lehet kiválasztani az ablakot: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:436
 #, kde-format
@@ -2305,12 +2273,10 @@ msgstr "A videó helye a vágólapra került."
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
 #: src/SpectacleCore.cpp:556
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "QR Code found: %1"
+#, kde-format
 msgctxt "@info"
 msgid "Code found: %1"
-msgstr "QR-kód található: %1"
+msgstr "Kód található: %1"
 
 #: src/SpectacleCore.cpp:560
 #, kde-format
@@ -2322,72 +2288,67 @@ msgstr "Bináris tartalmú QR-kód találva."
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
-msgstr ""
+msgstr "A szövegkinyerés meghiúsult"
 
 #: src/SpectacleCore.cpp:573
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
-msgstr ""
+msgstr "Nem található szöveg a képen"
 
 #: src/SpectacleCore.cpp:577
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
-msgstr ""
+msgstr "Szövegkinyerés befejezve"
 
 #: src/SpectacleCore.cpp:585
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
-msgstr ""
+msgstr "Szöveg kinyerve"
 
 #: src/SpectacleCore.cpp:604
 #, kde-format
 msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
-msgstr ""
+msgstr "%1 és %2"
 
 #: src/SpectacleCore.cpp:609
-#, fuzzy, kde-kuit-format
-#| msgid "Copy image to clipboard"
+#, kde-kuit-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages used: %1"
-msgstr "Kép másolása a vágólapra"
+msgstr "Szöveg a vágólapra másolva.<nl/>Használt nyelvek: %1"
 
 #: src/SpectacleCore.cpp:614
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
-msgstr ""
+msgstr "Megnyitás szövegszerkesztőben"
 
 #: src/SpectacleCore.cpp:755
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
-msgstr ""
+msgstr "Válasszon egy területet szöveg kinyerése előtt"
 
 #: src/SpectacleCore.cpp:777
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
-msgstr "A KWin képernyőátjátszás nem érhető el."
+msgstr "Az OCR nem érhető el."
 
 #: src/SpectacleCore.cpp:783
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "KWin Screencasting is not available."
+#, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
-msgstr "A KWin képernyőátjátszás nem érhető el."
+msgstr "Nem érhető el képernyőkép."
 
 #: src/SpectacleCore.cpp:787
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
-msgstr ""
+msgstr "Szöveg kinyerése képből…"
 
 #: src/SpectacleCore.cpp:1040
 #, kde-format
@@ -2395,6 +2356,8 @@ msgctxt "@info:shell"
 msgid ""
 "--scaled is only allowed together with -f/--fullscreen and will be ignored"
 msgstr ""
+"A --scaled opció csak a -f/--fullscreen opcióval együtt használható, "
+"egyébként mellőzésre kerül"
 
 #: src/SpectacleCore.cpp:1055
 #, kde-format
@@ -2403,10 +2366,7 @@ msgid "%1 is not a valid mode for --record"
 msgstr "A(z) %1 nem érvényes mód a --record kapcsolóhoz"
 
 #: src/SpectacleCore.cpp:1293
-#, fuzzy, kde-format
-#| msgid ""
-#| "A screenshot was saved as '%1' to '%2' and the file path of the "
-#| "screenshot has been saved to your clipboard."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
@@ -2416,16 +2376,13 @@ msgstr ""
 "került."
 
 #: src/SpectacleCore.cpp:1297
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A screenshot was saved as '%1' to your Pictures folder."
+#, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Képernyőkép mentve mint „%1” a Képek mappába."
 
 #: src/SpectacleCore.cpp:1300
-#, fuzzy, kde-format
-#| msgid "A screenshot was saved as '%1' to '%2'."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Képernyőkép mentve mint „%1” ide: „%2”."
@@ -2436,10 +2393,7 @@ msgid "A screenshot was saved to your clipboard."
 msgstr "Képernyőkép mentve a vágólapra."
 
 #: src/SpectacleCore.cpp:1309
-#, fuzzy, kde-format
-#| msgid ""
-#| "A recording was saved as '%1' to '%2' and the file path of the recording "
-#| "has been saved to your clipboard."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
@@ -2449,16 +2403,13 @@ msgstr ""
 "került."
 
 #: src/SpectacleCore.cpp:1311
-#, fuzzy, kde-format
-#| msgctxt "Placeholder is filename"
-#| msgid "A recording was saved as '%1' to your Videos folder."
+#, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Felvétel mentve mint „%1” a Videók mappába."
 
 #: src/SpectacleCore.cpp:1313
-#, fuzzy, kde-format
-#| msgid "A recording was saved as '%1' to '%2'."
+#, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Felvétel mentve mint „%1” ide: „%2”."
