@@ -36,6 +36,8 @@ include(KDEGitCommitHooks)
 include(ECMDeprecationSettings)
 include(ECMFindQmlModule)
 
+option(WITH_X11 "Enable X11 support" ON)
+
 # find dependencies
 
 find_package(
@@ -113,29 +115,8 @@ if (KF6Purpose_FOUND)
     set(PURPOSE_FOUND 1)
 endif()
 
-find_package(XCB COMPONENTS XFIXES IMAGE UTIL CURSOR RANDR)
-set(XCB_COMPONENTS_ERRORS FALSE)
-set(XCB_COMPONENTS_FOUND TRUE)
-if(NOT XCB_XFIXES_FOUND)
-	set(XCB_COMPONENTS_ERRORS "${XCB_COMPONENTS_ERRORS} XCB-XFIXES ")
-	set(XCB_COMPONENTS_FOUND FALSE)
-endif()
-if(NOT XCB_IMAGE_FOUND)
-	set(XCB_COMPONENTS_ERRORS "${XCB_COMPONENTS_ERRORS} XCB-IMAGE ")
-	set(XCB_COMPONENTS_FOUND FALSE)
-endif()
-if(NOT XCB_UTIL_FOUND)
-	set(XCB_COMPONENTS_ERRORS "${XCB_COMPONENTS_ERRORS} XCB-UTIL ")
-	set(XCB_COMPONENTS_FOUND FALSE)
-endif()
-if(NOT XCB_CURSOR_FOUND)
-	set(XCB_COMPONENTS_ERRORS "${XCB_COMPONENTS_ERRORS} XCB-CURSOR ")
-	set(XCB_COMPONENTS_FOUND FALSE)
-endif()
-
-# fail build if none of the platform backends can be found
-if (NOT XCB_FOUND OR NOT XCB_COMPONENTS_FOUND)
-    message(FATAL_ERROR "No suitable backend platform was found. Currently supported platforms are: XCB Components Required: ${XCB_COMPONENTS_ERRORS}")
+if(WITH_X11)
+    find_package(XCB REQUIRED COMPONENTS XFIXES IMAGE UTIL CURSOR RANDR)
 endif()
 
 # setup handling of deprecated Qt & KF API

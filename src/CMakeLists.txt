@@ -64,7 +64,7 @@ target_sources(spectacle PRIVATE
     VideoFormatModel.cpp
 )
 
-if(XCB_FOUND)
+if(WITH_X11)
     target_sources(spectacle PRIVATE Platforms/ImagePlatformXcb.cpp Platforms/ImagePlatformXcb.h)
 
     target_link_libraries(spectacle PRIVATE
