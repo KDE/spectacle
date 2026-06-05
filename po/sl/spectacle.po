@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-03 01:08+0000\n"
+"POT-Creation-Date: 2026-06-05 00:47+0000\n"
 "PO-Revision-Date: 2026-03-17 06:35+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -1905,38 +1905,38 @@ msgstr "Zaznavanje enačb matematike"
 msgid "Orientation and Script Detection"
 msgstr "Orientacija in zaznavanje pisave"
 
-#: src/Platforms/ImagePlatformKWin.cpp:143
+#: src/Platforms/ImagePlatformKWin.cpp:144
 #, kde-format
 msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
 msgstr "Slaba širina za posnetek zaslona KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:148
+#: src/Platforms/ImagePlatformKWin.cpp:149
 #, kde-format
 msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
 msgstr "Slaba višina za posnetek zaslona KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:159
+#: src/Platforms/ImagePlatformKWin.cpp:160
 #, kde-format
 msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "Slab format za posnetek zaslona KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:177
+#: src/Platforms/ImagePlatformKWin.cpp:178
 #, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr ""
 "Ni bilo mogoče odpreti deskriptorja datoteke za branje posnetka zaslona KWin."
 
-#: src/Platforms/ImagePlatformKWin.cpp:245
+#: src/Platforms/ImagePlatformKWin.cpp:248
 #, kde-format
 msgctxt "@info, %1 is an error code"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "pipe2() ni uspela za posnetek zaslona KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:301
+#: src/Platforms/ImagePlatformKWin.cpp:304
 #, kde-format
 msgctxt "@info, %1 is an error message"
 msgid ""
@@ -1946,7 +1946,7 @@ msgstr ""
 "Zahtevek za posnetek zaslona KWin ni uspel:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:303
+#: src/Platforms/ImagePlatformKWin.cpp:306
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1956,13 +1956,13 @@ msgstr ""
 "Potencialno pomembne informacije:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:311
+#: src/Platforms/ImagePlatformKWin.cpp:314
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
 msgstr "Nepodprti metapodatki vrste posnetka zaslona KWin: %1"
 
-#: src/Platforms/PlatformLoader.cpp:97
+#: src/Platforms/PlatformLoader.cpp:103
 #, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
@@ -2152,32 +2152,32 @@ msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
 msgstr "Zaženi Spectacle brez zajemanja"
 
-#: src/SpectacleCore.cpp:266
+#: src/SpectacleCore.cpp:271
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
 msgstr "Pri snemanju posnetka zaslona je prišlo do napake."
 
-#: src/SpectacleCore.cpp:295
+#: src/SpectacleCore.cpp:300
 #, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
 msgstr "Spectacle snema"
 
-#: src/SpectacleCore.cpp:300
+#: src/SpectacleCore.cpp:305
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
 msgstr "Spectacle snema"
 
-#: src/SpectacleCore.cpp:326
+#: src/SpectacleCore.cpp:331
 #, kde-format
 msgctxt "recording notification message without shortcut"
 msgid "To finish the recording, click the pulsing red System Tray icon."
 msgstr ""
 "Za dokončanje snemanja kliknite utripajočo rdečo ikono na sistemskem pladnju."
 
-#: src/SpectacleCore.cpp:327
+#: src/SpectacleCore.cpp:332
 #, kde-kuit-format
 msgctxt "recording notification message with shortcut"
 msgid ""
@@ -2187,13 +2187,13 @@ msgstr ""
 "Za dokončanje snemanja kliknite utripajočo rdečo ikono na sistemskem pladnju "
 "ali pritisnite <shortcut>%1</shortcut>."
 
-#: src/SpectacleCore.cpp:344
+#: src/SpectacleCore.cpp:349
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
 msgstr "Podpora za WebP manjka."
 
-#: src/SpectacleCore.cpp:345
+#: src/SpectacleCore.cpp:350
 #, kde-format
 msgctxt "missing webp support notification message"
 msgid ""
@@ -2204,25 +2204,25 @@ msgstr ""
 "vrstici za Spectacle, nato pa to težavo s pakiranjem programja prijavite "
 "svojemu distributerju."
 
-#: src/SpectacleCore.cpp:381
+#: src/SpectacleCore.cpp:386
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle končuje snemanje"
 
-#: src/SpectacleCore.cpp:382
+#: src/SpectacleCore.cpp:387
 #, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
 msgstr "Prosim, počakajte"
 
-#: src/SpectacleCore.cpp:384
+#: src/SpectacleCore.cpp:389
 #, kde-format
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle končuje snemanje"
 
-#: src/SpectacleCore.cpp:386
+#: src/SpectacleCore.cpp:391
 #, kde-format
 msgctxt "@info:tooltip subtitle for rendering tray icon"
 msgid ""
@@ -2233,7 +2233,7 @@ msgstr ""
 "Kliknite, za predčasno zaustavitvijo upodabljanja (s tem boste izgubili "
 "podatke)"
 
-#: src/SpectacleCore.cpp:412
+#: src/SpectacleCore.cpp:417
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2243,13 +2243,13 @@ msgstr ""
 "Čas snemanja: %1\n"
 "Kliknite za zaključek snemanja"
 
-#: src/SpectacleCore.cpp:437
+#: src/SpectacleCore.cpp:442
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Med poskusom snemanja zaslona je prišlo do napake."
 
-#: src/SpectacleCore.cpp:482
+#: src/SpectacleCore.cpp:487
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2259,7 +2259,7 @@ msgstr ""
 "Zaslonska slika je bila skopirana na odložišče in shranjena kot <link url="
 "\"%1\">%2</link>"
 
-#: src/SpectacleCore.cpp:486
+#: src/SpectacleCore.cpp:491
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2269,19 +2269,19 @@ msgstr ""
 "Zaslonska slika je bila shranjena kot <link url=\"%1\">%2</link> in njeno "
 "mesto je bilo skopirano na odložišče"
 
-#: src/SpectacleCore.cpp:491
+#: src/SpectacleCore.cpp:496
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
 msgstr "Zaslonska slika je bila shranjena kot <link url=\"%1\">%2</link>"
 
-#: src/SpectacleCore.cpp:495
+#: src/SpectacleCore.cpp:500
 #, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "Zaslonska slika je bila skopirana na odložišče."
 
-#: src/SpectacleCore.cpp:527
+#: src/SpectacleCore.cpp:532
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2291,13 +2291,13 @@ msgstr ""
 "Video je bil shranjen kot <link url=\"%1\">%2</link> in njegovo mesto je "
 "bilo skopirano na odložišče"
 
-#: src/SpectacleCore.cpp:532
+#: src/SpectacleCore.cpp:537
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
 msgstr "Video je bil shranjen kot <link url=\"%1\">%2</link>"
 
-#: src/SpectacleCore.cpp:536
+#: src/SpectacleCore.cpp:541
 #, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
@@ -2306,98 +2306,98 @@ msgstr "Mesto videa je bilo prekopirano na odložišče."
 #. i18nc because it doesn't work with the link replacement logic.
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
-#: src/SpectacleCore.cpp:556
+#: src/SpectacleCore.cpp:561
 #, kde-format
 msgctxt "@info"
 msgid "Code found: %1"
 msgstr "Najdena koda: %1"
 
-#: src/SpectacleCore.cpp:560
+#: src/SpectacleCore.cpp:565
 #, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "Najdena koda QR z binarno vsebino."
 
-#: src/SpectacleCore.cpp:568
+#: src/SpectacleCore.cpp:573
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
 msgstr "Izvlečenje besedila ni uspelo"
 
-#: src/SpectacleCore.cpp:573
+#: src/SpectacleCore.cpp:578
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
 msgstr "Ni najdenega besedila na sliki"
 
-#: src/SpectacleCore.cpp:577
+#: src/SpectacleCore.cpp:582
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
 msgstr "Izvlečenje besedila končano"
 
-#: src/SpectacleCore.cpp:585
+#: src/SpectacleCore.cpp:590
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
 msgstr "Besedilo izvlečeno"
 
-#: src/SpectacleCore.cpp:604
+#: src/SpectacleCore.cpp:609
 #, kde-format
 msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
 msgstr "%1 in %2"
 
-#: src/SpectacleCore.cpp:609
+#: src/SpectacleCore.cpp:614
 #, kde-kuit-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages used: %1"
 msgstr "Besedilo prekopirano na odložišče.<nl/>Uporabljeni jeziki: %1"
 
-#: src/SpectacleCore.cpp:614
+#: src/SpectacleCore.cpp:619
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
 msgstr "Odpri v urejevalniku besedila"
 
-#: src/SpectacleCore.cpp:755
+#: src/SpectacleCore.cpp:760
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
 msgstr "Izberite področje pred izvlečenjem besedila"
 
-#: src/SpectacleCore.cpp:777
+#: src/SpectacleCore.cpp:782
 #, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
 msgstr "Optično prepoznavanje besedila (OCR) ni na voljo."
 
-#: src/SpectacleCore.cpp:783
+#: src/SpectacleCore.cpp:788
 #, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
 msgstr "Posnetka zaslona ni na voljo."
 
-#: src/SpectacleCore.cpp:787
+#: src/SpectacleCore.cpp:792
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr "Izvleka besedila iz slike..."
 
-#: src/SpectacleCore.cpp:1040
+#: src/SpectacleCore.cpp:1045
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "--scaled is only allowed together with -f/--fullscreen and will be ignored"
 msgstr "--scaled je dovoljen samo skupaj z -f/--fullscreen in bo prezrt"
 
-#: src/SpectacleCore.cpp:1055
+#: src/SpectacleCore.cpp:1060
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 ni veljaven način za --record"
 
-#: src/SpectacleCore.cpp:1293
+#: src/SpectacleCore.cpp:1299
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2407,24 +2407,24 @@ msgstr ""
 "Zaslonska slika je bila shranjena kot '%1' na '%2' in pot te datoteke je "
 "bila shranjena na vaše odložišče."
 
-#: src/SpectacleCore.cpp:1297
+#: src/SpectacleCore.cpp:1303
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Zaslonska slika je bila kot '%1' shranjena v vašo mapo Slike."
 
-#: src/SpectacleCore.cpp:1300
+#: src/SpectacleCore.cpp:1306
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Zaslonska slika je bila shranjena kot '%1' na '%2'."
 
-#: src/SpectacleCore.cpp:1304
+#: src/SpectacleCore.cpp:1310
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Zaslonska slika je bila shranjena na vaše odložišče."
 
-#: src/SpectacleCore.cpp:1309
+#: src/SpectacleCore.cpp:1315
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2434,25 +2434,25 @@ msgstr ""
 "Video posnetek je bil shranjen kot '%1' na '%2' in pot te datoteke je bila "
 "shranjena na vaše odložišče."
 
-#: src/SpectacleCore.cpp:1311
+#: src/SpectacleCore.cpp:1317
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Video posnetek je bil kot '%1' shranjen v vašo mapo z videi."
 
-#: src/SpectacleCore.cpp:1313
+#: src/SpectacleCore.cpp:1319
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Video posnetek je bil shranjen kot '%1' na '%2'."
 
-#: src/SpectacleCore.cpp:1324
+#: src/SpectacleCore.cpp:1330
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Odpri"
 
-#: src/SpectacleCore.cpp:1338
+#: src/SpectacleCore.cpp:1344
 #, kde-format
 msgid "Annotate"
 msgstr "Pripiši"
