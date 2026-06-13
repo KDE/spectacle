@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-05 00:47+0000\n"
+"POT-Creation-Date: 2026-06-13 00:46+0000\n"
 "PO-Revision-Date: 2026-03-17 12:04+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -1106,11 +1106,17 @@ msgctxt "@title:menu"
 msgid "Recording Modes"
 msgstr "Modi voor schermopnamen"
 
-#: src/Gui/RecordingModeMenuButton.qml:11
+#: src/Gui/RecordingModeMenuButton.qml:12
 #, kde-format
 msgctxt "@action select new recording mode"
 msgid "New Recording"
 msgstr "Nieuwe opname"
+
+#: src/Gui/RecordingModeMenuButton.qml:18
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "This feature is not supported on the current platform"
+msgstr ""
 
 #: src/Gui/RecordingSettingsColumn.qml:17
 #, kde-format

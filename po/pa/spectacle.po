@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-05 00:47+0000\n"
+"POT-Creation-Date: 2026-06-13 00:46+0000\n"
 "PO-Revision-Date: 2024-07-21 21:34-0500\n"
 "Last-Translator: aalam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -1160,12 +1160,18 @@ msgctxt "@title:menu"
 msgid "Recording Modes"
 msgstr "ਰਿਕਾਰਡ ਕਰਨ ਦੇ ਢੰਗ"
 
-#: src/Gui/RecordingModeMenuButton.qml:11
+#: src/Gui/RecordingModeMenuButton.qml:12
 #, fuzzy, kde-format
 #| msgid "Recording"
 msgctxt "@action select new recording mode"
 msgid "New Recording"
 msgstr "ਰਿਕਾਰਡ ਕਰੋ"
+
+#: src/Gui/RecordingModeMenuButton.qml:18
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "This feature is not supported on the current platform"
+msgstr ""
 
 #: src/Gui/RecordingSettingsColumn.qml:17
 #, kde-format

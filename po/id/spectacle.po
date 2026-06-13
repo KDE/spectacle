@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-05 00:47+0000\n"
+"POT-Creation-Date: 2026-06-13 00:46+0000\n"
 "PO-Revision-Date: 2024-10-17 01:51+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
@@ -1182,12 +1182,18 @@ msgctxt "@title:menu"
 msgid "Recording Modes"
 msgstr "Merekam"
 
-#: src/Gui/RecordingModeMenuButton.qml:11
+#: src/Gui/RecordingModeMenuButton.qml:12
 #, fuzzy, kde-format
 #| msgid "Recording"
 msgctxt "@action select new recording mode"
 msgid "New Recording"
 msgstr "Merekam"
+
+#: src/Gui/RecordingModeMenuButton.qml:18
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "This feature is not supported on the current platform"
+msgstr ""
 
 #: src/Gui/RecordingSettingsColumn.qml:17
 #, kde-format

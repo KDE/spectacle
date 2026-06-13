@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-05 00:47+0000\n"
+"POT-Creation-Date: 2026-06-13 00:46+0000\n"
 "PO-Revision-Date: 2024-09-19 16:16+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -1196,12 +1196,18 @@ msgctxt "@title:menu"
 msgid "Recording Modes"
 msgstr "Εγγραφή οθόνης"
 
-#: src/Gui/RecordingModeMenuButton.qml:11
+#: src/Gui/RecordingModeMenuButton.qml:12
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgctxt "@action select new recording mode"
 msgid "New Recording"
 msgstr "Εγγραφή οθόνης"
+
+#: src/Gui/RecordingModeMenuButton.qml:18
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "This feature is not supported on the current platform"
+msgstr ""
 
 #: src/Gui/RecordingSettingsColumn.qml:17
 #, fuzzy, kde-format

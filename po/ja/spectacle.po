@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-05 00:47+0000\n"
+"POT-Creation-Date: 2026-06-13 00:46+0000\n"
 "PO-Revision-Date: 2026-01-26 21:19+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -1089,11 +1089,17 @@ msgctxt "@title:menu"
 msgid "Recording Modes"
 msgstr "録画モード"
 
-#: src/Gui/RecordingModeMenuButton.qml:11
+#: src/Gui/RecordingModeMenuButton.qml:12
 #, kde-format
 msgctxt "@action select new recording mode"
 msgid "New Recording"
 msgstr "新しい画面録画"
+
+#: src/Gui/RecordingModeMenuButton.qml:18
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "This feature is not supported on the current platform"
+msgstr ""
 
 #: src/Gui/RecordingSettingsColumn.qml:17
 #, kde-format
