@@ -130,10 +130,14 @@ void InlineMessageModel::clear()
 void InlineMessageModel::copyToClipboard(const QVariant &content)
 {
     auto data = new QMimeData();
-    if (content.typeId() == QMetaType::QString) {
+    if (content.typeId() == QMetaType::QUrl) {
+        data->setUrls({content.toUrl()});
+    } else if (content.typeId() == QMetaType::QString) {
         data->setText(content.toString());
     } else if (content.typeId() == QMetaType::QByteArray) {
         data->setData(QStringLiteral("application/octet-stream"), content.toByteArray());
+    } else {
+        qWarning() << "copyToClipboard: Unhandled content type" << content.typeId() << content.typeName();
     }
     KSystemClipboard::instance()->setMimeData(data, QClipboard::Clipboard);
 }
