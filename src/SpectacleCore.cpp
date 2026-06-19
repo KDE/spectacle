@@ -636,6 +636,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
                     tempFile.close();
 
                     auto job = new KIO::OpenUrlJob(QUrl::fromLocalFile(tempFile.fileName()));
+                    job->setStartupId(notification->xdgActivationToken().toUtf8());
                     job->start();
                 }
 
@@ -1323,8 +1324,9 @@ void SpectacleCore::doNotify(ScreenCapture type, const ExportManager::Actions &a
     if (!saveUrl.isEmpty()) {
         notification->setUrls({saveUrl});
 
-        auto open = [saveUrl]() {
+        auto open = [notification, saveUrl]() {
             auto job = new KIO::OpenUrlJob(saveUrl);
+            job->setStartupId(notification->xdgActivationToken().toUtf8());
             job->start();
         };
         auto defaultAction = notification->addDefaultAction(i18nc("Open the screenshot we just saved", "Open"));
