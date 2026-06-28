@@ -168,7 +168,11 @@ EmptyPage {
                     text: i18nc("@title:tab", "Recording")
                     icon.name: "camera-video"
                     checked: tabBar.currentIndex === 1
-                    tooltip: if (!enabled) i18nc("@info:tooltip", "This feature is not supported on the current platform")
+                    tooltip: if (!enabled) {
+                        i18nc("@info:tooltip", "This feature is not supported on the current platform")
+                    } else {
+                        ""
+                    }
                 }
             ]
         }
