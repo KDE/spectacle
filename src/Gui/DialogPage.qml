@@ -155,7 +155,6 @@ EmptyPage {
             id: tabBar
 
             width: Math.max(parent.width, implicitWidth)
-            visible: SpectacleCore.videoPlatform.supportedRecordingModes
             currentIndex: 0
 
             actions: [
@@ -165,9 +164,11 @@ EmptyPage {
                     checked: tabBar.currentIndex === 0
                 },
                 Kirigami.Action {
+                    enabled: SpectacleCore.videoPlatform.supportedRecordingModes !== VideoPlatform.NoRecordingModes
                     text: i18nc("@title:tab", "Recording")
                     icon.name: "camera-video"
                     checked: tabBar.currentIndex === 1
+                    tooltip: if (!enabled) i18nc("@info:tooltip", "This feature is not supported on the current platform")
                 }
             ]
         }
