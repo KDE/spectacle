@@ -20,7 +20,6 @@
 #include <KNotificationJobUiDelegate>
 #include <KStandardActions>
 #include <KStandardShortcut>
-#include <kio_version.h>
 
 #include <QJsonArray>
 #include <QMimeDatabase>

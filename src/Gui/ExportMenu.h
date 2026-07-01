@@ -17,7 +17,6 @@
 
 #ifdef PURPOSE_FOUND
 #include <Purpose/AlternativesModel>
-#include <purpose_version.h>
 #include <Purpose/Menu>
 #endif
 

@@ -5,10 +5,9 @@
  */
 
 #include "ExportManager.h"
+#include "DebugUtils.h"
 #include "ImageMetaData.h"
 #include "settings.h"
-#include "DebugUtils.h"
-#include <kio_version.h>
 
 #include <QApplication>
 #include <QBuffer>
