@@ -163,6 +163,20 @@ void CaptureWindow::copyLocation()
 void CaptureWindow::exposeEvent(QExposeEvent *event)
 {
     SpectacleWindow::exposeEvent(event);
+    // Work around release events being ignored when setting WindowTransparentForInput.
+    // With WindowTransparentForInput, input device events are filtered by the
+    // QPlatformWindow. You can still send synthetic input events.
+    if (flags().testFlags(Qt::WindowTransparentForInput) && m_pressedButtons != Qt::NoButton) {
+        QMouseEvent me(QEvent::MouseButtonRelease,
+                       QPointF{0, 0},
+                       QPointF{0, 0},
+                       position(),
+                       Qt::MouseButton(m_pressedButtons.toInt()),
+                       m_pressedButtons,
+                       m_pressedKeys[0].keyboardModifiers(),
+                       Qt::MouseEventSynthesizedByApplication);
+        QApplication::sendEvent(this, &me);
+    }
     if (!isExposed()) {
         return;
     }

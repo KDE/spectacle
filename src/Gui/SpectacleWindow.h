@@ -111,6 +111,7 @@ protected:
     void setSource(const QUrl &source, const QVariantMap &initialProperties);
 
     void mousePressEvent(QMouseEvent *event) override;
+    void mouseReleaseEvent(QMouseEvent *event) override;
     void keyPressEvent(QKeyEvent *event) override;
     void keyReleaseEvent(QKeyEvent *event) override;
     bool event(QEvent *) override;
@@ -126,5 +127,6 @@ protected:
     const std::unique_ptr<QQmlContext> m_context;
     std::unique_ptr<QQmlComponent> m_component;
 
+    Qt::MouseButtons m_pressedButtons;
     QKeySequence m_pressedKeys;
 };
