@@ -62,6 +62,31 @@ static QVariantMap screenShotFlagsToVardict(ImagePlatformKWin::ScreenShotFlags f
     return options;
 }
 
+// Returns whether format is optimal for QPainter
+// See note  https://doc.qt.io/qt-6/qimage.html#Format-enum
+constexpr bool isQPainterFormat(QImage::Format format)
+{
+    using enum QImage::Format;
+    switch (format) {
+    // Best formats
+    case Format_RGB32:
+    case Format_ARGB32_Premultiplied:
+    // Second best formats
+    case Format_RGBX8888:
+    case Format_RGBA8888_Premultiplied:
+    case Format_RGBX64:
+    case Format_RGBA64_Premultiplied:
+        return true;
+    // We intentionally skip Format_RGB16 even though it's a format that is
+    // optimal for QPainter. Having channel sizes that aren't all equal in a
+    // format is annoying because then we can't iterate over an image as one
+    // big array of channels. KWin probably won't serve Format_RGB16 anyway.
+    case Format_RGB16:
+    default:
+        return false;
+    }
+}
+
 QImage combinedImage(const QList<QImage> &images)
 {
     if (images.empty()) {
@@ -72,18 +97,48 @@ QImage combinedImage(const QList<QImage> &images)
     }
     QRectF imageRect;
     qreal maxDpr = 0;
+    decltype(std::declval<QPixelFormat>().redSize()) maxChannelBits = 0;
+    const auto firstFormat = images.front().format();
+    const auto firstDpr = images.front().devicePixelRatio();
+    const auto firstPixelFormat = images.front().pixelFormat();
+    bool allSameFormat = true;
+    bool allSameDpr = true;
+    bool allSameByteOrder = true;
+    bool allAlphaAtBeginning = true;
+    bool anyHaveAlpha = false;
     ImageMetaData::SubGeometryList geometryList;
     for (auto &i : images) {
         const auto dpr = i.devicePixelRatio();
         const auto rect = QRectF{ImageMetaData::logicalXY(i), i.deviceIndependentSize()};
         maxDpr = std::max(maxDpr, dpr);
+        const auto pf = i.pixelFormat();
+        // redSize/greenSize/blueSize are reused fields for non-RGB formats.
+        const auto imageMaxChannelBits = std::max({pf.redSize(), pf.greenSize(), pf.blueSize(), pf.blackSize(), pf.alphaSize()});
+        maxChannelBits = std::max(maxChannelBits, imageMaxChannelBits);
+        allSameFormat &= i.format() == firstFormat;
+        allSameDpr &= dpr == firstDpr;
+        allSameByteOrder &= firstPixelFormat.byteOrder() == pf.byteOrder();
+        allAlphaAtBeginning &= pf.alphaPosition() == QPixelFormat::AtBeginning;
+        anyHaveAlpha |= i.hasAlphaChannel();
         imageRect |= rect;
         geometryList << ImageMetaData::subGeometryPropertyMap(rect, dpr);
     }
-    static const auto finalFormat = QImage::Format_RGBA8888_Premultiplied;
-    const bool allSameDpr = std::all_of(images.cbegin(), images.cend(), [maxDpr](const QImage &i){
-        return i.devicePixelRatio() == maxDpr;
-    });
+    const auto finalFormat = [&] {
+        if (allSameFormat && isQPainterFormat(firstFormat)) {
+            return firstFormat;
+        }
+        // Assume all formats should have 4 channels or space for 4 channels.
+        // RGB32 and RGBX8888 reserve the alpha channel even if they don't use it.
+        if (maxChannelBits <= 8) {
+            if (allSameByteOrder && allAlphaAtBeginning) {
+                return anyHaveAlpha ? QImage::Format_ARGB32_Premultiplied : QImage::Format_RGB32;
+            } else {
+                return anyHaveAlpha ? QImage::Format_RGBA8888_Premultiplied : QImage::Format_RGBX8888;
+            }
+        }
+        // Assume no more than 16-bits per channel
+        return anyHaveAlpha ? QImage::Format_RGBA64_Premultiplied : QImage::Format_RGBX64;
+    }();
     if (allSameDpr) {
         QImage finalImage{imageRect.size().toSize() * maxDpr, finalFormat};
         QPainter painter(&finalImage);
