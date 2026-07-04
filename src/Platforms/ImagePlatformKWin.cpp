@@ -72,18 +72,49 @@ QImage combinedImage(const QList<QImage> &images)
     }
     QRectF imageRect;
     qreal maxDpr = 0;
+    decltype(std::declval<QPixelFormat>().redSize()) maxChannelBits = 0;
+    const auto firstFormat = images.front().format();
+    const auto firstDpr = images.front().devicePixelRatio();
+    bool allSameFormat = true;
+    bool allSameDpr = true;
+    bool anyHaveAlpha = false;
     ImageMetaData::SubGeometryList geometryList;
     for (auto &i : images) {
         const auto dpr = i.devicePixelRatio();
         const auto rect = QRectF{ImageMetaData::logicalXY(i), i.deviceIndependentSize()};
         maxDpr = std::max(maxDpr, dpr);
+        const auto pf = i.pixelFormat();
+        // redSize/greenSize/blueSize are reused fields for non-RGB formats.
+        const auto imageMaxChannelBits = std::max({pf.redSize(), pf.greenSize(), pf.blueSize(), pf.blackSize(), pf.alphaSize()});
+        maxChannelBits = std::max(maxChannelBits, imageMaxChannelBits);
+        allSameFormat &= i.format() == firstFormat;
+        allSameDpr &= dpr == firstDpr;
+        anyHaveAlpha |= i.hasAlphaChannel();
         imageRect |= rect;
         geometryList << ImageMetaData::subGeometryPropertyMap(rect, dpr);
     }
-    static const auto finalFormat = QImage::Format_RGBA8888_Premultiplied;
-    const bool allSameDpr = std::all_of(images.cbegin(), images.cend(), [maxDpr](const QImage &i){
-        return i.devicePixelRatio() == maxDpr;
-    });
+    const auto finalFormat = [&] {
+        if (allSameFormat // all are any of these formats optimal for QPainter
+            && (firstFormat == QImage::Format_RGB32 //
+                || firstFormat == QImage::Format_ARGB32_Premultiplied //
+                || firstFormat == QImage::Format_RGBX8888 //
+                || firstFormat == QImage::Format_RGBA8888_Premultiplied //
+                || firstFormat == QImage::Format_RGBX64 //
+                || firstFormat == QImage::Format_RGBA64_Premultiplied)) {
+            // We intentionally skip RGB16 even though it's supposed to be one
+            // of the formats that are optimal for QPainter. Having multiple
+            // channel sizes in a format is annoying. It's not like KWin will
+            // serve that format anyway.
+            return firstFormat;
+        }
+        // Assume all formats should have 4 channels or space for 4 channels.
+        // RGB32 reserves the alpha channel even if it doesn't use it.
+        if (maxChannelBits <= 8) {
+            return anyHaveAlpha ? QImage::Format_ARGB32_Premultiplied : QImage::Format_RGB32;
+        }
+        // Assume no more than 16-bits per channel
+        return anyHaveAlpha ? QImage::Format_RGBA64_Premultiplied : QImage::Format_RGBX64;
+    }();
     if (allSameDpr) {
         QImage finalImage{imageRect.size().toSize() * maxDpr, finalFormat};
         QPainter painter(&finalImage);
