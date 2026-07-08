@@ -13,6 +13,7 @@
 
 #include <KWindowSystem>
 
+#include <QColorSpace>
 #include <QDBusConnection>
 #include <QDBusConnectionInterface>
 #include <QDBusPendingCall>
@@ -249,6 +250,10 @@ static ResultVariant readImage(int fileDescriptor, const QVariantMap &metadata)
                 }
             }
         }
+    }
+
+    if (!resultImage.colorSpace().isValid()) {
+        resultImage.setColorSpace(QColorSpace::SRgb);
     }
 
     QDataStream stream(&file);
