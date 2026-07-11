@@ -80,7 +80,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
     : QObject(parent)
 {
     // Timer to prevent lots of extra rendering to images
-    m_annotationSyncTimer = std::make_unique<QTimer>(new QTimer(this));
+    m_annotationSyncTimer = std::make_unique<QTimer>();
     m_annotationSyncTimer->setInterval(400);
     m_annotationSyncTimer->setSingleShot(true);
 
