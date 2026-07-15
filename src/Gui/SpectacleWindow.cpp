@@ -19,7 +19,6 @@
 #include <QApplication>
 #include <QColorDialog>
 #include <QFontDialog>
-#include <QtQml>
 #include <utility>
 
 using namespace Qt::StringLiterals;
