@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: trunk-kf 5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-10 00:47+0000\n"
-"PO-Revision-Date: 2026-06-16 18:10+0300\n"
+"POT-Creation-Date: 2026-07-21 00:46+0000\n"
+"PO-Revision-Date: 2026-07-20 17:38+0300\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -1108,28 +1108,26 @@ msgstr "Rodyti ekrano įraše pelės žymeklį"
 #, kde-format
 msgctxt "@option:check for recordings"
 msgid "Record system audio"
-msgstr ""
+msgstr "Įrašinėti sistemos garsą"
 
 #: src/Gui/OptionsMenu.cpp:145
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Include the audio that is currently playing on the system in the recording"
-msgstr ""
+msgstr "Įtraukti į ekrano įrašą garsą, kuris šiuo metu atkuriamas sistemoje"
 
 #: src/Gui/OptionsMenu.cpp:153
-#, fuzzy, kde-format
-#| msgctxt "@action global shortcut"
-#| msgid "Record Screen"
+#, kde-format
 msgctxt "@option:check for recordings"
 msgid "Record microphone"
-msgstr "Filmuoti ekraną"
+msgstr "Įrašinėti mikrofoną"
 
 #: src/Gui/OptionsMenu.cpp:154
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include audio from the default microphone in the recording"
-msgstr ""
+msgstr "Įtraukti į ekrano įrašą garsą iš numatytojo mikrofono"
 
 #: src/Gui/OptionsMenuButton.qml:10
 #, kde-format
@@ -1156,15 +1154,13 @@ msgid "New Recording"
 msgstr "Naujas ekrano įrašas"
 
 #: src/Gui/RecordingSettingsColumn.qml:22
-#, fuzzy, kde-format
-#| msgid "Include mouse pointer"
+#, kde-format
 msgctxt "@option:check"
 msgid "Include mouse pointer"
 msgstr "Įtraukti pelės rodyklę"
 
 #: src/Gui/RecordingSettingsColumn.qml:23
-#, fuzzy, kde-format
-#| msgid "Show the mouse cursor in the screen recording."
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Rodyti ekrano įraše pelės žymeklį."
@@ -1173,34 +1169,32 @@ msgstr "Rodyti ekrano įraše pelės žymeklį."
 #, kde-format
 msgctxt "@option:check"
 msgid "Record system audio"
-msgstr ""
+msgstr "Įrašinėti sistemos garsą"
 
 #: src/Gui/RecordingSettingsColumn.qml:33
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Include the audio that is currently playing on the system in the recording."
-msgstr ""
+msgstr "Įtraukti į ekrano įrašą garsą, kuris šiuo metu atkuriamas sistemoje."
 
 #: src/Gui/RecordingSettingsColumn.qml:45
-#, fuzzy, kde-format
-#| msgctxt "@action global shortcut"
-#| msgid "Record Screen"
+#, kde-format
 msgctxt "@option:check"
 msgid "Record microphone"
-msgstr "Filmuoti ekraną"
+msgstr "Įrašinėti mikrofoną"
 
 #: src/Gui/RecordingSettingsColumn.qml:46
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include audio from the default microphone in the recording."
-msgstr ""
+msgstr "Įtraukti į ekrano įrašą garsą iš numatytojo mikrofono."
 
 #: src/Gui/RecordingSettingsColumn.qml:57
 #, kde-format
 msgctxt "@info"
 msgid "The selected video format does not support audio."
-msgstr ""
+msgstr "Pasirinktas vaizdo įrašo formatas nepalaiko garso."
 
 #: src/Gui/RecordingView.qml:90
 #, kde-format
@@ -1661,17 +1655,15 @@ msgstr "Ar pelės žymeklis bus įtrauktas į vaizdo įrašą"
 
 #. i18n: ectx: label, entry (videoRecordSystemAudio), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:99
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the video"
+#, kde-format
 msgid "Whether system audio is included in the recording"
-msgstr "Ar pelės žymeklis bus įtrauktas į vaizdo įrašą"
+msgstr "Ar sistemos garsas bus įtrauktas į ekrano įrašą"
 
 #. i18n: ectx: label, entry (videoRecordMicrophone), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:103
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the video"
+#, kde-format
 msgid "Whether microphone audio is included in the recording"
-msgstr "Ar pelės žymeklis bus įtrauktas į vaizdo įrašą"
+msgstr "Ar mikrofono garsas bus įtrauktas į ekrano įrašą"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:107
@@ -1893,7 +1885,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " sek."
 
-#: src/Gui/SpectacleWindow.cpp:173
+#: src/Gui/SpectacleWindow.cpp:172
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1903,7 +1895,7 @@ msgstr[1] "%1 sekundės"
 msgstr[2] "%1 sekundžių"
 msgstr[3] "%1 sekundė"
 
-#: src/Gui/SpectacleWindow.cpp:176
+#: src/Gui/SpectacleWindow.cpp:175
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
