@@ -191,3 +191,4 @@ qt_target_qml_sources(spectacle
 )
 
 install(TARGETS spectacle ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+install(FILES Gui/SettingsDialog/spectacle.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
