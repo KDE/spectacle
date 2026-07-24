@@ -439,13 +439,19 @@ QImage scaledImageFromSubGeometry(const QImage &image)
                              fastScale ? Qt::FastTransformation : Qt::SmoothTransformation);
 }
 
-bool ExportManager::writeImage(QIODevice *device, const QByteArray &suffix)
+bool ExportManager::writeImage(QIODevice *device, const QByteArray &suffix, QByteArrayView encodedImage)
 {
+    if (!encodedImage.isNull()) {
+        return device->write(encodedImage.data(), encodedImage.size()) == encodedImage.size();
+    }
+
     // In the documentation for QImageWriter, it is a bit ambiguous what "format" means.
     // From looking at how QImageWriter handles the built-in supported formats internally,
     // "format" basically means the file extension, not the mimetype.
     QImageWriter imageWriter(device, suffix);
-    imageWriter.setQuality(Settings::imageCompressionQuality());
+    if (imageWriter.supportsOption(QImageIOHandler::Quality)) {
+        imageWriter.setQuality(Settings::imageCompressionQuality());
+    }
     /** Set compression 50 if the format is png. Otherwise if no compression value is specified
      *  it will fallback to using quality (QTBUG-43618) and produce huge files.
      *  See also qpnghandler.cpp#n1075. The other formats that do compression seem to have it
@@ -464,7 +470,7 @@ bool ExportManager::writeImage(QIODevice *device, const QByteArray &suffix)
     return imageWriter.write(scaledImageFromSubGeometry(m_saveImage));
 }
 
-bool ExportManager::localSave(const QUrl &url, const QString &suffix)
+bool ExportManager::localSave(const QUrl &url, const QString &suffix, QByteArrayView encodedImage)
 {
     // Create save directory if it doesn't exist
     const QUrl dirPath(url.adjusted(QUrl::RemoveFilename));
@@ -481,14 +487,14 @@ bool ExportManager::localSave(const QUrl &url, const QString &suffix)
     QFile outputFile(url.toLocalFile());
 
     outputFile.open(QFile::WriteOnly);
-    if (!writeImage(&outputFile, suffix.toLatin1())) {
+    if (!writeImage(&outputFile, suffix.toLatin1(), encodedImage)) {
         Q_EMIT errorMessage(i18n("Cannot save screenshot. Error while writing file."));
         return false;
     }
     return true;
 }
 
-bool ExportManager::remoteSave(const QUrl &url, const QString &suffix)
+bool ExportManager::remoteSave(const QUrl &url, const QString &suffix, QByteArrayView encodedImage)
 {
     // Check if remote save directory exists
     const QUrl dirPath(url.adjusted(QUrl::RemoveFilename));
@@ -512,7 +518,7 @@ bool ExportManager::remoteSave(const QUrl &url, const QString &suffix)
     QTemporaryFile tmpFile;
 
     if (tmpFile.open()) {
-        if (!writeImage(&tmpFile, suffix.toLatin1())) {
+        if (!writeImage(&tmpFile, suffix.toLatin1(), encodedImage)) {
             Q_EMIT errorMessage(i18n("Cannot save screenshot. Error while writing temporary local file."));
             return false;
         }
@@ -566,7 +572,7 @@ QUrl ExportManager::tempSave()
     return QUrl();
 }
 
-bool ExportManager::save(const QUrl &url)
+bool ExportManager::save(const QUrl &url, QByteArrayView encodedImage)
 {
     if (!(url.isValid())) {
         Q_EMIT errorMessage(i18n("Cannot save screenshot. The save filename is invalid."));
@@ -576,9 +582,9 @@ bool ExportManager::save(const QUrl &url)
     const QString suffix = imageFileSuffix(url);
     bool saveSucceded = false;
     if (url.isLocalFile()) {
-        saveSucceded = localSave(url, suffix);
+        saveSucceded = localSave(url, suffix, encodedImage);
     } else {
-        saveSucceded = remoteSave(url, suffix);
+        saveSucceded = remoteSave(url, suffix, encodedImage);
     }
     if (saveSucceded) {
         m_imageSavedNotInTemp = true;
@@ -665,12 +671,27 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
         return;
     }
 
+    const auto preferredFormat = Settings::preferredImageFormat().toLower();
+    QByteArray sharedImageData;
+    bool hasSharedImageData = false;
     bool saved = actions & AnySave;
     if (saved) {
         if (!url.isValid()) {
             url = getAutosaveFilename();
         }
-        saved = success = save(url);
+
+        const QString saveFormat = imageFileSuffix(url);
+        const QString canonicalPreferredFormat =
+            QMimeDatabase().mimeTypeForFile(u"image."_s + preferredFormat, QMimeDatabase::MatchExtension).preferredSuffix();
+        if (actions & CopyImage && (saveFormat == preferredFormat || saveFormat == canonicalPreferredFormat)) {
+            QBuffer buffer(&sharedImageData);
+            if (buffer.open(QIODevice::WriteOnly)) {
+                hasSharedImageData = writeImage(&buffer, saveFormat.toLatin1());
+            }
+        }
+
+        const QByteArrayView encodedImage = hasSharedImageData ? QByteArrayView(sharedImageData) : QByteArrayView();
+        saved = success = save(url, encodedImage);
         if (!success) {
             actions.setFlag(Save, false);
             actions.setFlag(SaveAs, false);
@@ -682,24 +703,25 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
             url = Settings::self()->lastImageSaveLocation();
         }
         auto data = new QMimeData();
-        auto preferredFormat = Settings::preferredImageFormat().toLower();
         // TODO: Maybe copy a temp file URL instead? That way we could reliably
         // paste as the preferred format without decompression. The issue with
         // that is that some apps like Discord won't copy temp files when in a
         // Flatpak even if you use KUrlMimeData::exportUrlsToPortal().
-        QBuffer buffer;
-        buffer.open(QIODevice::ReadWrite);
-        QImageWriter writer(&buffer, preferredFormat.toLatin1());
-        if (preferredFormat != u"png") {
-            writer.setQuality(Settings::imageCompressionQuality());
-        }
-        // We want to reuse this image to waste less CPU.
         auto image = scaledImageFromSubGeometry(m_saveImage);
-        writer.write(image);
-        buffer.reset();
+        QByteArray encodedImage;
+        if (hasSharedImageData) {
+            encodedImage = sharedImageData;
+        } else {
+            QBuffer buffer(&encodedImage);
+            buffer.open(QIODevice::WriteOnly);
+            QImageWriter writer(&buffer, preferredFormat.toLatin1());
+            if (preferredFormat != u"png" && writer.supportsOption(QImageIOHandler::Quality)) {
+                writer.setQuality(Settings::imageCompressionQuality());
+            }
+            writer.write(image);
+        }
         // Set first so that it gets chosen first.
-        data->setData(u"image/" + preferredFormat, buffer.readAll());
-        buffer.close();
+        data->setData(u"image/" + preferredFormat, encodedImage);
         // Use the standard way to set images to expose all the other formats.
         // We use the uncompressed image because lossy compressed formats will
         // decompress when turned into QImages and become 2-8x larger than their

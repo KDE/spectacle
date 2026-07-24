@@ -7,6 +7,7 @@
 
 #include "settings.h"
 #include <KLocalizedString>
+#include <QByteArrayView>
 #include <QDateTime>
 class QLockFile;
 class QIODevice;
@@ -149,10 +150,10 @@ private:
     using FileNameAlreadyUsedCheck = bool (ExportManager::*)(const QUrl &) const;
     QString autoIncrementFilename(const QString &baseName, const QString &extension, FileNameAlreadyUsedCheck isFileNameUsed) const;
     QString imageFileSuffix(const QUrl &url) const;
-    bool writeImage(QIODevice *device, const QByteArray &suffix);
-    bool save(const QUrl &url);
-    bool localSave(const QUrl &url, const QString &suffix);
-    bool remoteSave(const QUrl &url, const QString &suffix);
+    bool writeImage(QIODevice *device, const QByteArray &suffix, QByteArrayView encodedImage = {});
+    bool save(const QUrl &url, QByteArrayView encodedImage = {});
+    bool localSave(const QUrl &url, const QString &suffix, QByteArrayView encodedImage);
+    bool remoteSave(const QUrl &url, const QString &suffix, QByteArrayView encodedImage);
     bool isTempFileAlreadyUsed(const QUrl &url) const;
 
     bool m_imageSavedNotInTemp;
