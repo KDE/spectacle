@@ -24,6 +24,7 @@
 #include <QRandomGenerator>
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
+#include <QSaveFile>
 #include <QString>
 #include <QTemporaryDir>
 #include <QTemporaryFile>
@@ -484,10 +485,13 @@ bool ExportManager::localSave(const QUrl &url, const QString &suffix, QByteArray
         return false;
     }
 
-    QFile outputFile(url.toLocalFile());
+    QSaveFile outputFile(url.toLocalFile());
 
-    outputFile.open(QFile::WriteOnly);
-    if (!writeImage(&outputFile, suffix.toLatin1(), encodedImage)) {
+    if (!outputFile.open(QFile::WriteOnly)) {
+        Q_EMIT errorMessage(i18n("Cannot save screenshot. Error while opening file."));
+        return false;
+    }
+    if (!writeImage(&outputFile, suffix.toLatin1(), encodedImage) || !outputFile.commit()) {
         Q_EMIT errorMessage(i18n("Cannot save screenshot. Error while writing file."));
         return false;
     }
@@ -518,10 +522,11 @@ bool ExportManager::remoteSave(const QUrl &url, const QString &suffix, QByteArra
     QTemporaryFile tmpFile;
 
     if (tmpFile.open()) {
-        if (!writeImage(&tmpFile, suffix.toLatin1(), encodedImage)) {
+        if (!writeImage(&tmpFile, suffix.toLatin1(), encodedImage) || !tmpFile.flush()) {
             Q_EMIT errorMessage(i18n("Cannot save screenshot. Error while writing temporary local file."));
             return false;
         }
+        tmpFile.close();
 
         KIO::FileCopyJob *uploadJob = KIO::file_copy(QUrl::fromLocalFile(tmpFile.fileName()), url);
         uploadJob->exec();
@@ -556,9 +561,9 @@ QUrl ExportManager::tempSave()
 
         QString suffix = imageFileSuffix(QUrl(baseFileName));
         const QString fileName = autoIncrementFilename(baseFileName, suffix, &ExportManager::isTempFileAlreadyUsed);
-        QFile tmpFile(fileName);
+        QSaveFile tmpFile(fileName);
         if (tmpFile.open(QFile::WriteOnly)) {
-            if (writeImage(&tmpFile, suffix.toLatin1())) {
+            if (writeImage(&tmpFile, suffix.toLatin1()) && tmpFile.commit()) {
                 m_tempFile = QUrl::fromLocalFile(tmpFile.fileName());
                 // try to make sure 3rd-party which gets the url of the temporary file e.g. on export
                 // properly treats this as readonly, also hide from other users
