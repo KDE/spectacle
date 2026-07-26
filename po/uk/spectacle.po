@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-25 00:47+0000\n"
+"POT-Creation-Date: 2026-07-26 00:46+0000\n"
 "PO-Revision-Date: 2026-07-10 10:46+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -234,13 +234,13 @@ msgstr "Відкрити і редагувати наявний файл зні�
 msgid "Accept region selection on click-and-release"
 msgstr "Знімати позначену область клацанням і відпусканням"
 
-#: src/ExportManager.cpp:465
+#: src/ExportManager.cpp:466
 #, kde-format
 msgctxt "%1 is an error message"
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter не вдалося записати зображення: %1"
 
-#: src/ExportManager.cpp:481
+#: src/ExportManager.cpp:482
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -251,11 +251,17 @@ msgstr ""
 "><filename>%1</filename>"
 
 #: src/ExportManager.cpp:491
+#, fuzzy, kde-format
+#| msgid "Cannot save screenshot. Error while writing file."
+msgid "Cannot save screenshot. Error while opening file."
+msgstr "Не вдалося зберегти знімок. Помилка під час спроби записати файл."
+
+#: src/ExportManager.cpp:495
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Не вдалося зберегти знімок. Помилка під час спроби записати файл."
 
-#: src/ExportManager.cpp:511
+#: src/ExportManager.cpp:515
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -265,31 +271,31 @@ msgstr ""
 "Не вдалося зберегти знімок вікна, оскільки не вдалося створити віддалений "
 "каталог:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:522 src/ExportManager.cpp:571
+#: src/ExportManager.cpp:526 src/ExportManager.cpp:576
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Не вдалося зберегти знімок. Помилка під час спроби записати тимчасовий "
 "локальний файл."
 
-#: src/ExportManager.cpp:530
+#: src/ExportManager.cpp:535
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Не вдалося зберегти зображення. Не вдалося вивантажити файл на віддалений "
 "сервер."
 
-#: src/ExportManager.cpp:578
+#: src/ExportManager.cpp:583
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "Не вдалося зберегти знімок. Назва файла є некоректною."
 
-#: src/ExportManager.cpp:622
+#: src/ExportManager.cpp:627
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Неможливо зберегти порожнє зображення знімка."
 
-#: src/ExportManager.cpp:801
+#: src/ExportManager.cpp:806
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -298,7 +304,7 @@ msgstr ""
 "Не вдалося експортувати відео: має бути вказано адресу наявного локального "
 "файла для тимчасового файла"
 
-#: src/ExportManager.cpp:808
+#: src/ExportManager.cpp:813
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -307,193 +313,193 @@ msgstr ""
 "Не вдалося експортувати відео: адреса файла виведення даних має бути "
 "коректною адресою з назвою файла"
 
-#: src/ExportManager.cpp:894
+#: src/ExportManager.cpp:899
 #, kde-format
 msgctxt "@info, %1 is a file path"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
 "Не вдалося зберегти запис. Не вдалося пересунути файл до вказаного місця: %1"
 
-#: src/ExportManager.cpp:922
+#: src/ExportManager.cpp:927
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Не вдалося надрукувати. Спроба ініціалізувати принтер зазнала невдачі."
 
-#: src/ExportManager.cpp:939
+#: src/ExportManager.cpp:944
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (1–31)"
 msgstr "День (1–31)"
 
-#: src/ExportManager.cpp:940
+#: src/ExportManager.cpp:945
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (01–31)"
 msgstr "День (01–31)"
 
-#: src/ExportManager.cpp:941
+#: src/ExportManager.cpp:946
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (short name)"
 msgstr "День (скорочена назва)"
 
-#: src/ExportManager.cpp:942
+#: src/ExportManager.cpp:947
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (long name)"
 msgstr "День (назва повністю)"
 
-#: src/ExportManager.cpp:943
+#: src/ExportManager.cpp:948
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (1–12)"
 msgstr "Місяць (1–12)"
 
-#: src/ExportManager.cpp:944
+#: src/ExportManager.cpp:949
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (01–12)"
 msgstr "Місяць (01–12)"
 
-#: src/ExportManager.cpp:945
+#: src/ExportManager.cpp:950
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (short name)"
 msgstr "Місяць (скорочена назва)"
 
-#: src/ExportManager.cpp:946
+#: src/ExportManager.cpp:951
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (long name)"
 msgstr "Місяць (назва повністю)"
 
-#: src/ExportManager.cpp:947
+#: src/ExportManager.cpp:952
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Year (2 digit)"
 msgstr "Рік (2 цифри)"
 
-#: src/ExportManager.cpp:948
+#: src/ExportManager.cpp:953
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Year (4 digit)"
 msgstr "Рік (4 цифри)"
 
-#: src/ExportManager.cpp:949
+#: src/ExportManager.cpp:954
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (0–23)"
 msgstr "Година (0–23)"
 
-#: src/ExportManager.cpp:950
+#: src/ExportManager.cpp:955
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (00–23)"
 msgstr "Година (00–23)"
 
-#: src/ExportManager.cpp:951
+#: src/ExportManager.cpp:956
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (1–12)"
 msgstr "Година (1–12)"
 
-#: src/ExportManager.cpp:952
+#: src/ExportManager.cpp:957
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (01–12)"
 msgstr "Година (01–12)"
 
-#: src/ExportManager.cpp:953
+#: src/ExportManager.cpp:958
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Minute (0–59)"
 msgstr "Хвилина (0–59)"
 
-#: src/ExportManager.cpp:954
+#: src/ExportManager.cpp:959
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Minute (00–59)"
 msgstr "Хвилина (00–59)"
 
-#: src/ExportManager.cpp:955
+#: src/ExportManager.cpp:960
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Second (0–59)"
 msgstr "Секунда (0–59)"
 
-#: src/ExportManager.cpp:956
+#: src/ExportManager.cpp:961
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Second (00–59)"
 msgstr "Секунда (00–59)"
 
-#: src/ExportManager.cpp:957
+#: src/ExportManager.cpp:962
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Millisecond (0–999)"
 msgstr "Мілісекунда (0–999)"
 
-#: src/ExportManager.cpp:959
+#: src/ExportManager.cpp:964
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Millisecond (000–999)"
 msgstr "Мілісекунда (000–999)"
 
-#: src/ExportManager.cpp:960
+#: src/ExportManager.cpp:965
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "AM/PM"
 msgstr "AM/PM"
 
-#: src/ExportManager.cpp:962
+#: src/ExportManager.cpp:967
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "am/pm"
 msgstr "am/pm"
 
-#: src/ExportManager.cpp:964
+#: src/ExportManager.cpp:969
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "AM/PM or am/pm (localized)"
 msgstr "AM/PM або am/pm (локалізовані)"
 
-#: src/ExportManager.cpp:966
+#: src/ExportManager.cpp:971
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone (short name)"
 msgstr "Часовий пояс (скорочена назва)"
 
-#: src/ExportManager.cpp:967
+#: src/ExportManager.cpp:972
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone offset (±0000)"
 msgstr "Часовий зсув (±00:00)"
 
-#: src/ExportManager.cpp:968
+#: src/ExportManager.cpp:973
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone offset (±00:00)"
 msgstr "Часовий зсув (±00:00)"
 
-#: src/ExportManager.cpp:969
+#: src/ExportManager.cpp:974
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone (long name)"
 msgstr "Часовий пояс (назва повністю)"
 
-#: src/ExportManager.cpp:970
+#: src/ExportManager.cpp:975
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Seconds since the Unix epoch"
 msgstr "Секунди з початку епохи Unix"
 
-#: src/ExportManager.cpp:971
+#: src/ExportManager.cpp:976
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Window Title"
 msgstr "Заголовок вікна"
 
-#: src/ExportManager.cpp:972
+#: src/ExportManager.cpp:977
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Sequential numbering, padded by inserting additional '#' characters"

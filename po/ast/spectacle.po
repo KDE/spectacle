@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-25 00:47+0000\n"
+"POT-Creation-Date: 2026-07-26 00:46+0000\n"
 "PO-Revision-Date: 2024-03-14 23:18+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: Asturian <alministradores@softastur.org>\n"
@@ -220,13 +220,13 @@ msgstr ""
 msgid "Accept region selection on click-and-release"
 msgstr ""
 
-#: src/ExportManager.cpp:465
+#: src/ExportManager.cpp:466
 #, kde-format
 msgctxt "%1 is an error message"
 msgid "QImageWriter cannot write image: %1"
 msgstr ""
 
-#: src/ExportManager.cpp:481
+#: src/ExportManager.cpp:482
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -236,10 +236,15 @@ msgstr ""
 
 #: src/ExportManager.cpp:491
 #, kde-format
+msgid "Cannot save screenshot. Error while opening file."
+msgstr ""
+
+#: src/ExportManager.cpp:495
+#, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr ""
 
-#: src/ExportManager.cpp:511
+#: src/ExportManager.cpp:515
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -247,226 +252,226 @@ msgid ""
 "><filename>%1</filename>"
 msgstr ""
 
-#: src/ExportManager.cpp:522 src/ExportManager.cpp:571
+#: src/ExportManager.cpp:526 src/ExportManager.cpp:576
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 
-#: src/ExportManager.cpp:530
+#: src/ExportManager.cpp:535
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 
-#: src/ExportManager.cpp:578
+#: src/ExportManager.cpp:583
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 
-#: src/ExportManager.cpp:622
+#: src/ExportManager.cpp:627
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr ""
 
-#: src/ExportManager.cpp:801
+#: src/ExportManager.cpp:806
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
 
-#: src/ExportManager.cpp:808
+#: src/ExportManager.cpp:813
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
 
-#: src/ExportManager.cpp:894
+#: src/ExportManager.cpp:899
 #, kde-format
 msgctxt "@info, %1 is a file path"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
 
-#: src/ExportManager.cpp:922
+#: src/ExportManager.cpp:927
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
-msgstr ""
-
-#: src/ExportManager.cpp:939
-#, kde-format
-msgctxt "filename placeholder description"
-msgid "Day (1–31)"
-msgstr ""
-
-#: src/ExportManager.cpp:940
-#, kde-format
-msgctxt "filename placeholder description"
-msgid "Day (01–31)"
-msgstr ""
-
-#: src/ExportManager.cpp:941
-#, kde-format
-msgctxt "filename placeholder description"
-msgid "Day (short name)"
-msgstr ""
-
-#: src/ExportManager.cpp:942
-#, kde-format
-msgctxt "filename placeholder description"
-msgid "Day (long name)"
-msgstr ""
-
-#: src/ExportManager.cpp:943
-#, kde-format
-msgctxt "filename placeholder description"
-msgid "Month (1–12)"
 msgstr ""
 
 #: src/ExportManager.cpp:944
 #, kde-format
 msgctxt "filename placeholder description"
-msgid "Month (01–12)"
+msgid "Day (1–31)"
 msgstr ""
 
 #: src/ExportManager.cpp:945
 #, kde-format
 msgctxt "filename placeholder description"
-msgid "Month (short name)"
+msgid "Day (01–31)"
 msgstr ""
 
 #: src/ExportManager.cpp:946
 #, kde-format
 msgctxt "filename placeholder description"
-msgid "Month (long name)"
+msgid "Day (short name)"
 msgstr ""
 
 #: src/ExportManager.cpp:947
 #, kde-format
 msgctxt "filename placeholder description"
-msgid "Year (2 digit)"
+msgid "Day (long name)"
 msgstr ""
 
 #: src/ExportManager.cpp:948
 #, kde-format
 msgctxt "filename placeholder description"
-msgid "Year (4 digit)"
+msgid "Month (1–12)"
 msgstr ""
 
 #: src/ExportManager.cpp:949
 #, kde-format
 msgctxt "filename placeholder description"
-msgid "Hour (0–23)"
+msgid "Month (01–12)"
 msgstr ""
 
 #: src/ExportManager.cpp:950
 #, kde-format
 msgctxt "filename placeholder description"
-msgid "Hour (00–23)"
+msgid "Month (short name)"
 msgstr ""
 
 #: src/ExportManager.cpp:951
 #, kde-format
 msgctxt "filename placeholder description"
-msgid "Hour (1–12)"
+msgid "Month (long name)"
 msgstr ""
 
 #: src/ExportManager.cpp:952
 #, kde-format
 msgctxt "filename placeholder description"
-msgid "Hour (01–12)"
+msgid "Year (2 digit)"
 msgstr ""
 
 #: src/ExportManager.cpp:953
 #, kde-format
 msgctxt "filename placeholder description"
-msgid "Minute (0–59)"
+msgid "Year (4 digit)"
 msgstr ""
 
 #: src/ExportManager.cpp:954
 #, kde-format
 msgctxt "filename placeholder description"
-msgid "Minute (00–59)"
+msgid "Hour (0–23)"
 msgstr ""
 
 #: src/ExportManager.cpp:955
 #, kde-format
 msgctxt "filename placeholder description"
-msgid "Second (0–59)"
+msgid "Hour (00–23)"
 msgstr ""
 
 #: src/ExportManager.cpp:956
 #, kde-format
 msgctxt "filename placeholder description"
-msgid "Second (00–59)"
+msgid "Hour (1–12)"
 msgstr ""
 
 #: src/ExportManager.cpp:957
 #, kde-format
 msgctxt "filename placeholder description"
-msgid "Millisecond (0–999)"
+msgid "Hour (01–12)"
+msgstr ""
+
+#: src/ExportManager.cpp:958
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "Minute (0–59)"
 msgstr ""
 
 #: src/ExportManager.cpp:959
 #, kde-format
 msgctxt "filename placeholder description"
-msgid "Millisecond (000–999)"
+msgid "Minute (00–59)"
 msgstr ""
 
 #: src/ExportManager.cpp:960
 #, kde-format
 msgctxt "filename placeholder description"
-msgid "AM/PM"
+msgid "Second (0–59)"
+msgstr ""
+
+#: src/ExportManager.cpp:961
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "Second (00–59)"
 msgstr ""
 
 #: src/ExportManager.cpp:962
 #, kde-format
 msgctxt "filename placeholder description"
-msgid "am/pm"
+msgid "Millisecond (0–999)"
 msgstr ""
 
 #: src/ExportManager.cpp:964
 #, kde-format
 msgctxt "filename placeholder description"
-msgid "AM/PM or am/pm (localized)"
+msgid "Millisecond (000–999)"
 msgstr ""
 
-#: src/ExportManager.cpp:966
+#: src/ExportManager.cpp:965
 #, kde-format
 msgctxt "filename placeholder description"
-msgid "Timezone (short name)"
+msgid "AM/PM"
 msgstr ""
 
 #: src/ExportManager.cpp:967
 #, kde-format
 msgctxt "filename placeholder description"
-msgid "Timezone offset (±0000)"
-msgstr ""
-
-#: src/ExportManager.cpp:968
-#, kde-format
-msgctxt "filename placeholder description"
-msgid "Timezone offset (±00:00)"
+msgid "am/pm"
 msgstr ""
 
 #: src/ExportManager.cpp:969
 #, kde-format
 msgctxt "filename placeholder description"
-msgid "Timezone (long name)"
-msgstr ""
-
-#: src/ExportManager.cpp:970
-#, kde-format
-msgctxt "filename placeholder description"
-msgid "Seconds since the Unix epoch"
+msgid "AM/PM or am/pm (localized)"
 msgstr ""
 
 #: src/ExportManager.cpp:971
 #, kde-format
 msgctxt "filename placeholder description"
-msgid "Window Title"
+msgid "Timezone (short name)"
 msgstr ""
 
 #: src/ExportManager.cpp:972
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "Timezone offset (±0000)"
+msgstr ""
+
+#: src/ExportManager.cpp:973
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "Timezone offset (±00:00)"
+msgstr ""
+
+#: src/ExportManager.cpp:974
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "Timezone (long name)"
+msgstr ""
+
+#: src/ExportManager.cpp:975
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "Seconds since the Unix epoch"
+msgstr ""
+
+#: src/ExportManager.cpp:976
+#, kde-format
+msgctxt "filename placeholder description"
+msgid "Window Title"
+msgstr ""
+
+#: src/ExportManager.cpp:977
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Sequential numbering, padded by inserting additional '#' characters"

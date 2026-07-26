@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-25 00:47+0000\n"
+"POT-Creation-Date: 2026-07-26 00:46+0000\n"
 "PO-Revision-Date: 2026-06-18 21:39+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -227,13 +227,13 @@ msgstr "Meglévő képernyőképfájl megnyitása és szerkesztése"
 msgid "Accept region selection on click-and-release"
 msgstr "Területkijelölés elfogadása kattintás és felengedéssel"
 
-#: src/ExportManager.cpp:465
+#: src/ExportManager.cpp:466
 #, kde-format
 msgctxt "%1 is an error message"
 msgid "QImageWriter cannot write image: %1"
 msgstr "A QImageWriter nem tudta írni a képet: %1"
 
-#: src/ExportManager.cpp:481
+#: src/ExportManager.cpp:482
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -244,11 +244,17 @@ msgstr ""
 "><filename>%1</filename>"
 
 #: src/ExportManager.cpp:491
+#, fuzzy, kde-format
+#| msgid "Cannot save screenshot. Error while writing file."
+msgid "Cannot save screenshot. Error while opening file."
+msgstr "A képernyőkép nem menthető. Hiba a fájl írásakor."
+
+#: src/ExportManager.cpp:495
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "A képernyőkép nem menthető. Hiba a fájl írásakor."
 
-#: src/ExportManager.cpp:511
+#: src/ExportManager.cpp:515
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -258,28 +264,28 @@ msgstr ""
 "A képernyőkép nem menthető, mert a távoli mappa létrehozása sikertelen:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:522 src/ExportManager.cpp:571
+#: src/ExportManager.cpp:526 src/ExportManager.cpp:576
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr "A képernyőkép nem menthető. Hiba az átmeneti helyi fájl írásakor."
 
-#: src/ExportManager.cpp:530
+#: src/ExportManager.cpp:535
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "A képernyőkép nem menthető. Nem sikerült feltölteni a fájlt a távoli helyre."
 
-#: src/ExportManager.cpp:578
+#: src/ExportManager.cpp:583
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr "A képernyőkép nem menthető. A fájlnév érvénytelen."
 
-#: src/ExportManager.cpp:622
+#: src/ExportManager.cpp:627
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Üres képernyőkép nem menthető."
 
-#: src/ExportManager.cpp:801
+#: src/ExportManager.cpp:806
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -288,7 +294,7 @@ msgstr ""
 "Nem sikerült exportálni a videót: az átmeneti fájlnak meglévő helyi fájlnak "
 "kell lennie"
 
-#: src/ExportManager.cpp:808
+#: src/ExportManager.cpp:813
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -297,7 +303,7 @@ msgstr ""
 "Nem sikerült exportálni a videót: az átmeneti fájl URL-jének érvényes URL-"
 "nek kell lennie egy fájlnévvel"
 
-#: src/ExportManager.cpp:894
+#: src/ExportManager.cpp:899
 #, kde-format
 msgctxt "@info, %1 is a file path"
 msgid "Unable to save recording. Could not move file to location: %1"
@@ -305,186 +311,186 @@ msgstr ""
 "A felvétel nem menthető. Nem sikerült áthelyezni a fájlt a következő helyre: "
 "%1."
 
-#: src/ExportManager.cpp:922
+#: src/ExportManager.cpp:927
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "A nyomtatás meghiúsult. Nem sikerült inicializálni a nyomtatót."
 
-#: src/ExportManager.cpp:939
+#: src/ExportManager.cpp:944
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (1–31)"
 msgstr "Nap (1-31)"
 
-#: src/ExportManager.cpp:940
+#: src/ExportManager.cpp:945
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (01–31)"
 msgstr "Nap (01-31)"
 
-#: src/ExportManager.cpp:941
+#: src/ExportManager.cpp:946
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (short name)"
 msgstr "Nap (rövid név)"
 
-#: src/ExportManager.cpp:942
+#: src/ExportManager.cpp:947
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (long name)"
 msgstr "Nap (hosszú név)"
 
-#: src/ExportManager.cpp:943
+#: src/ExportManager.cpp:948
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (1–12)"
 msgstr "Hónap (1-12)"
 
-#: src/ExportManager.cpp:944
+#: src/ExportManager.cpp:949
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (01–12)"
 msgstr "Hónap (01-12)"
 
-#: src/ExportManager.cpp:945
+#: src/ExportManager.cpp:950
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (short name)"
 msgstr "Hónap (rövid név)"
 
-#: src/ExportManager.cpp:946
+#: src/ExportManager.cpp:951
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (long name)"
 msgstr "Hónap (hosszú név)"
 
-#: src/ExportManager.cpp:947
+#: src/ExportManager.cpp:952
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Year (2 digit)"
 msgstr "Évszám (két jegy)"
 
-#: src/ExportManager.cpp:948
+#: src/ExportManager.cpp:953
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Year (4 digit)"
 msgstr "Évszám (négy jegy)"
 
-#: src/ExportManager.cpp:949
+#: src/ExportManager.cpp:954
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (0–23)"
 msgstr "Óra (0-23)"
 
-#: src/ExportManager.cpp:950
+#: src/ExportManager.cpp:955
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (00–23)"
 msgstr "Óra (00-23)"
 
-#: src/ExportManager.cpp:951
+#: src/ExportManager.cpp:956
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (1–12)"
 msgstr "Óra (1-12)"
 
-#: src/ExportManager.cpp:952
+#: src/ExportManager.cpp:957
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (01–12)"
 msgstr "Óra (01-12)"
 
-#: src/ExportManager.cpp:953
+#: src/ExportManager.cpp:958
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Minute (0–59)"
 msgstr "Perc (0–59)"
 
-#: src/ExportManager.cpp:954
+#: src/ExportManager.cpp:959
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Minute (00–59)"
 msgstr "Perc (00-59)"
 
-#: src/ExportManager.cpp:955
+#: src/ExportManager.cpp:960
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Second (0–59)"
 msgstr "Másodperc (0-59)"
 
-#: src/ExportManager.cpp:956
+#: src/ExportManager.cpp:961
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Second (00–59)"
 msgstr "Másodperc (00–59)"
 
-#: src/ExportManager.cpp:957
+#: src/ExportManager.cpp:962
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Millisecond (0–999)"
 msgstr "Ezredmásodperc (0–999)"
 
-#: src/ExportManager.cpp:959
+#: src/ExportManager.cpp:964
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Millisecond (000–999)"
 msgstr "Ezredmásodperc (000–999)"
 
-#: src/ExportManager.cpp:960
+#: src/ExportManager.cpp:965
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "AM/PM"
 msgstr "DE/DU"
 
-#: src/ExportManager.cpp:962
+#: src/ExportManager.cpp:967
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "am/pm"
 msgstr "de/du"
 
-#: src/ExportManager.cpp:964
+#: src/ExportManager.cpp:969
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "AM/PM or am/pm (localized)"
 msgstr "DE/DU vagy de/du (honosított)"
 
-#: src/ExportManager.cpp:966
+#: src/ExportManager.cpp:971
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone (short name)"
 msgstr "Időzóna (rövid név)"
 
-#: src/ExportManager.cpp:967
+#: src/ExportManager.cpp:972
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone offset (±0000)"
 msgstr "Időzóna eltolása (±0000)"
 
-#: src/ExportManager.cpp:968
+#: src/ExportManager.cpp:973
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone offset (±00:00)"
 msgstr "Időzóna eltolása (±00:00)"
 
-#: src/ExportManager.cpp:969
+#: src/ExportManager.cpp:974
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone (long name)"
 msgstr "Időzóna (hosszú név)"
 
-#: src/ExportManager.cpp:970
+#: src/ExportManager.cpp:975
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Seconds since the Unix epoch"
 msgstr "Unix epocha óta eltelt másodpercek"
 
-#: src/ExportManager.cpp:971
+#: src/ExportManager.cpp:976
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Window Title"
 msgstr "Ablakcím"
 
-#: src/ExportManager.cpp:972
+#: src/ExportManager.cpp:977
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Sequential numbering, padded by inserting additional '#' characters"
