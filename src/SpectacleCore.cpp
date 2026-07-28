@@ -986,6 +986,10 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
             m_returnToViewer = true;
             showViewerIfGuiMode();
             SpectacleWindow::setTitleForAll(SpectacleWindow::Saved, m_editExistingUrl.fileName());
+            if (!existingImage.isNull()) {
+                setExportImage(existingImage);
+                ExportManager::instance()->scanQRCode();
+            }
             return;
         } else {
             m_cliOptions[Option::EditExisting] = false;
