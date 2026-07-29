@@ -13,14 +13,41 @@
 
 #include <KLocalizedString>
 
+#include <QBuffer>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QFontDatabase>
+#include <QImageIOHandler>
 #include <QImageWriter>
 #include <QLabel>
 #include <QLineEdit>
 
 using namespace Qt::StringLiterals;
+
+static QStringList getFormatsWithoutQuality()
+{
+    static QStringList formatsWithoutQuality;
+    if (!formatsWithoutQuality.empty()) {
+        return formatsWithoutQuality;
+    }
+
+    formatsWithoutQuality.push_back(u"PNG"_s);
+    formatsWithoutQuality.push_back(u"EXR"_s);
+
+    const auto formats = QImageWriter::supportedImageFormats();
+    QBuffer buffer;
+    buffer.open(QBuffer::ReadWrite);
+    QImageWriter writer(&buffer, "");
+    for (const auto &format : formats) {
+        writer.setDevice(&buffer);
+        writer.setFormat(format);
+        if (!writer.supportsOption(QImageIOHandler::Quality)) {
+            formatsWithoutQuality.push_back(QString::fromLatin1(format));
+        }
+    }
+
+    return formatsWithoutQuality;
+}
 
 ImageSaveOptionsPage::ImageSaveOptionsPage(QWidget *parent)
     : QWidget(parent)
@@ -66,6 +93,8 @@ ImageSaveOptionsPage::ImageSaveOptionsPage(QWidget *parent)
         return items;
     }());
     connect(m_ui->kcfg_preferredImageFormat, &QComboBox::currentTextChanged, this, &ImageSaveOptionsPage::updateFilenamePreview);
+    connect(m_ui->kcfg_preferredImageFormat, &QComboBox::currentTextChanged, this, &ImageSaveOptionsPage::updateImageCompressionQualityEnabled);
+    updateImageCompressionQualityEnabled();
 
     m_ui->captureInstructionLabel->setText(CaptureInstructions::text(false));
     connect(m_ui->captureInstructionLabel, &QLabel::linkActivated, this, [this](const QString &link) {
@@ -86,6 +115,17 @@ void ImageSaveOptionsPage::updateFilenamePreview()
     const auto extension = m_ui->kcfg_preferredImageFormat->currentText().toLower();
     const auto templateBasename = m_ui->kcfg_imageFilenameTemplate->text();
     ::updateFilenamePreview(m_ui->preview, templateBasename + u'.' + extension, Settings::imageSaveLocation());
+}
+
+void ImageSaveOptionsPage::updateImageCompressionQualityEnabled()
+{
+    const auto formatsWithoutQuality = getFormatsWithoutQuality();
+    const bool enabled = !formatsWithoutQuality.contains(m_ui->kcfg_preferredImageFormat->currentText(), Qt::CaseInsensitive);
+
+    m_ui->qualityLabel->setEnabled(enabled);
+    m_ui->kcfg_imageCompressionQuality->setEnabled(enabled);
+    m_ui->qualitySpinner->setEnabled(enabled);
+    m_ui->imageCompressionQualityHelpLable->setEnabled(enabled);
 }
 
 #include "moc_ImageSaveOptionsPage.cpp"

@@ -24,6 +24,7 @@ private:
     QScopedPointer<Ui_ImageSaveOptions> m_ui;
 
     void updateFilenamePreview();
+    void updateImageCompressionQualityEnabled();
 };
 
 #endif // SAVEOPTIONSPAGE_H
