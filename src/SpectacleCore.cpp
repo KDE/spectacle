@@ -288,7 +288,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
     });
 
     auto videoPlatform = m_videoPlatform.get();
-    connect(videoPlatform, &VideoPlatform::recordingStateChanged, this, [this](VideoPlatform::RecordingState state) {
+    connect(videoPlatform, &VideoPlatform::recordingStateChanged, this, [this, videoPlatform](VideoPlatform::RecordingState state) {
         if (state == VideoPlatform::RecordingState::Recording) {
             static const auto recordingIcon = u":/icons/256-status-media-recording.webp"_s;
             static const auto recordingStartedIcon = u":/icons/256-status-media-recording-started.webp"_s;
@@ -296,13 +296,15 @@ SpectacleCore::SpectacleCore(QObject *parent)
             s_systemTrayIcon = std::make_unique<KStatusNotifierItem>();
             s_systemTrayIcon->setStatus(KStatusNotifierItem::Active);
             s_systemTrayIcon->setCategory(KStatusNotifierItem::SystemServices);
-            s_systemTrayIcon->setToolTipTitle(i18nc("@info:tooltip title for recording tray icon", //
-                                                    "Spectacle is Recording"));
+            s_systemTrayIcon->setToolTipTitle(videoPlatform->isRecordingAudio()
+                                                  ? i18nc("@info:tooltip title for recording tray icon", "Spectacle is Recording with Sound")
+                                                  : i18nc("@info:tooltip title for recording tray icon", "Spectacle is Recording"));
             s_systemTrayIcon->setStandardActionsEnabled(false);
             connect(s_systemTrayIcon.get(), &KStatusNotifierItem::activateRequested, this, [] {
                 SpectacleCore::instance()->finishRecording();
             });
-            const auto messageTitle = i18nc("recording notification title", "Spectacle is Recording");
+            const auto messageTitle = videoPlatform->isRecordingAudio() ? i18nc("recording notification title", "Spectacle is Recording with Sound")
+                                                                        : i18nc("recording notification title", "Spectacle is Recording");
             auto getSimpleDefaultShortcut = [] {
                 const auto shortcuts = KGlobalAccel::self()->shortcut(ShortcutActions::self()->recordRegionAction());
                 if (shortcuts.contains(QKeySequence{Qt::META | Qt::Key_R})) {

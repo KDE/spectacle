@@ -53,6 +53,11 @@ VideoPlatform::Formats VideoPlatformNull::supportedFormats() const
     return {};
 }
 
+bool VideoPlatformNull::isRecordingAudio() const
+{
+    return false;
+}
+
 void VideoPlatformNull::startRecording(const QUrl &fileUrl, RecordingMode mode, const QVariantMap &options, bool withPointer)
 {
     Q_UNUSED(fileUrl)

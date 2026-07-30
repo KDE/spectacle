@@ -26,6 +26,8 @@ public:
 
     RecordingModes supportedRecordingModes() const override;
     Formats supportedFormats() const override;
+    bool isRecordingAudio() const override;
+
     void startRecording(const QUrl &fileUrl, RecordingMode recordingMode, const QVariantMap &options, bool includePointer) override;
     void finishRecording() override;
 

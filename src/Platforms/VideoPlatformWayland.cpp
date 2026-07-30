@@ -148,6 +148,11 @@ VideoPlatform::Formats VideoPlatformWayland::supportedFormats() const
     return formats;
 }
 
+bool VideoPlatformWayland::isRecordingAudio() const
+{
+    return m_recorder && (m_recorder->recordMicrophone() || m_recorder->recordSystemAudio());
+}
+
 void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode recordingMode, const QVariantMap &options, bool includePointer)
 {
     if (recordingMode == NoRecordingModes) {

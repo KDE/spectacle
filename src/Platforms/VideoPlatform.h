@@ -128,6 +128,7 @@ public:
     Q_INVOKABLE static bool formatSupportsAudio(VideoPlatform::Format format);
 
     bool isRecording() const;
+    virtual bool isRecordingAudio() const = 0;
     qint64 recordedTime() const;
 
     RecordingState recordingState() const;
