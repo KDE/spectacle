@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: trunk-kf 5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-29 00:48+0000\n"
+"POT-Creation-Date: 2026-08-01 00:50+0000\n"
 "PO-Revision-Date: 2026-07-20 17:38+0300\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -2059,19 +2059,19 @@ msgctxt "@info"
 msgid "Screen recording is not available on X11."
 msgstr "Ekrano filmavimas neprieinamas naudojant X11."
 
-#: src/Platforms/VideoPlatformWayland.cpp:160
+#: src/Platforms/VideoPlatformWayland.cpp:165
 #, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
 msgstr "KWin ekrano įrašymas yra neprieinamas."
 
-#: src/Platforms/VideoPlatformWayland.cpp:174
+#: src/Platforms/VideoPlatformWayland.cpp:179
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr "Nepavyko filmuoti: Failo URL nėra vietinis failas"
 
-#: src/Platforms/VideoPlatformWayland.cpp:274
+#: src/Platforms/VideoPlatformWayland.cpp:277
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2081,7 +2081,7 @@ msgstr ""
 "Srautas užsivėrė, nes paskirties ekranas pasikeitė taip, kad sutrikdė "
 "filmavimą."
 
-#: src/Platforms/VideoPlatformWayland.cpp:278
+#: src/Platforms/VideoPlatformWayland.cpp:281
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2091,7 +2091,7 @@ msgstr ""
 "Srautas užsivėrė, nes paskirties langas pasikeitė taip, kad sutrikdė "
 "filmavimą."
 
-#: src/Platforms/VideoPlatformWayland.cpp:282
+#: src/Platforms/VideoPlatformWayland.cpp:285
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2101,51 +2101,51 @@ msgstr ""
 "Srautas užsivėrė, nes ekranas, kuriame yra paskirties sritis, pasikeitė "
 "taip, kad sutrikdė filmavimą."
 
-#: src/Platforms/VideoPlatformWayland.cpp:298
+#: src/Platforms/VideoPlatformWayland.cpp:301
 #, kde-format
 msgctxt "@info:shell, %1 is the temporary URL"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr ""
 "Nepavyko filmuoti: Laikinojo failo URL adresas nėra vietinis failas (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:309
+#: src/Platforms/VideoPlatformWayland.cpp:312
 #, kde-format
 msgctxt "@info:shell, %1 is the output file URL"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr ""
 "Nepavyko filmuoti: Išvesties failo URL adresas nėra vietinis failas (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:376
+#: src/Platforms/VideoPlatformWayland.cpp:379
 #, kde-format
 msgctxt "@info:shell, %1 is a directory path"
 msgid "Failed to record: Unable to create folder (%1)"
 msgstr "Nepavyko filmuoti: Nepavyko sukurti aplanko (%1)"
 
-#: src/Platforms/VideoPlatformWayland.cpp:404
+#: src/Platforms/VideoPlatformWayland.cpp:407
 #, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
 msgstr "Ekrano filmavimo atsisakyta"
 
-#: src/Platforms/VideoPlatformWayland.cpp:406
+#: src/Platforms/VideoPlatformWayland.cpp:409
 #, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
 msgstr "Lango filmavimo atsisakyta"
 
-#: src/Platforms/VideoPlatformWayland.cpp:412
+#: src/Platforms/VideoPlatformWayland.cpp:415
 #, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select screen: %1"
 msgstr "Nepavyko pasirinkti ekrano: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:414
+#: src/Platforms/VideoPlatformWayland.cpp:417
 #, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select window: %1"
 msgstr "Nepavyko pasirinkti lango: %1"
 
-#: src/Platforms/VideoPlatformWayland.cpp:442
+#: src/Platforms/VideoPlatformWayland.cpp:445
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
@@ -2153,7 +2153,7 @@ msgstr ""
 "Nepavyko pasirinkti ekrano: Jokiame ekrane nenurodyta nėra pelės žymeklio "
 "vieta"
 
-#: src/Platforms/VideoPlatformWayland.cpp:449
+#: src/Platforms/VideoPlatformWayland.cpp:452
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
@@ -2250,18 +2250,34 @@ msgid "An error occurred while taking a screenshot."
 msgstr "Įvyko klaida darant ekrano kopiją."
 
 #: src/SpectacleCore.cpp:300
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip title for recording tray icon"
+#| msgid "Spectacle is Recording"
+msgctxt "@info:tooltip title for recording tray icon"
+msgid "Spectacle is Recording with Sound"
+msgstr "Spectacle filmuoja"
+
+#: src/SpectacleCore.cpp:301
 #, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
 msgstr "Spectacle filmuoja"
 
-#: src/SpectacleCore.cpp:305
+#: src/SpectacleCore.cpp:306
+#, fuzzy, kde-format
+#| msgctxt "recording notification title"
+#| msgid "Spectacle is Recording"
+msgctxt "recording notification title"
+msgid "Spectacle is Recording with Sound"
+msgstr "Spectacle filmuoja"
+
+#: src/SpectacleCore.cpp:307
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
 msgstr "Spectacle filmuoja"
 
-#: src/SpectacleCore.cpp:331
+#: src/SpectacleCore.cpp:333
 #, kde-format
 msgctxt "recording notification message without shortcut"
 msgid "To finish the recording, click the pulsing red System Tray icon."
@@ -2269,7 +2285,7 @@ msgstr ""
 "Norėdami užbaigti filmavimą spustelėkite sistemos dėkle raudoną pulsuojančią "
 "piktogramą."
 
-#: src/SpectacleCore.cpp:332
+#: src/SpectacleCore.cpp:334
 #, kde-kuit-format
 msgctxt "recording notification message with shortcut"
 msgid ""
@@ -2279,13 +2295,13 @@ msgstr ""
 "Norėdami užbaigti filmavimą spustelėkite sistemos dėkle raudoną pulsuojančią "
 "piktogramą arba paspauskite <shortcut>%1</shortcut>."
 
-#: src/SpectacleCore.cpp:349
+#: src/SpectacleCore.cpp:351
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
 msgstr "Trūksta WebP palaikymo."
 
-#: src/SpectacleCore.cpp:350
+#: src/SpectacleCore.cpp:352
 #, kde-format
 msgctxt "missing webp support notification message"
 msgid ""
@@ -2296,25 +2312,25 @@ msgstr ""
 "sistemos dėklo piktogramas, o tuomet praneškite apie šią pakavimo problemą "
 "savo platinamojo paketo platintojui."
 
-#: src/SpectacleCore.cpp:386
+#: src/SpectacleCore.cpp:388
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle užbaigia ekrano įrašą"
 
-#: src/SpectacleCore.cpp:387
+#: src/SpectacleCore.cpp:389
 #, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
 msgstr "Palaukite"
 
-#: src/SpectacleCore.cpp:389
+#: src/SpectacleCore.cpp:391
 #, kde-format
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle užbaigia ekrano įrašą"
 
-#: src/SpectacleCore.cpp:391
+#: src/SpectacleCore.cpp:393
 #, kde-format
 msgctxt "@info:tooltip subtitle for rendering tray icon"
 msgid ""
@@ -2324,7 +2340,7 @@ msgstr ""
 "Kiek laiko filmuojama: %1\n"
 "Spustelėkite norėdami pirma laiko stabdyti perteikimą (bus prarasti duomenys)"
 
-#: src/SpectacleCore.cpp:417
+#: src/SpectacleCore.cpp:419
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2334,13 +2350,13 @@ msgstr ""
 "Kiek laiko filmuojama: %1\n"
 "Spustelėkite norėdami užbagti filmavimą"
 
-#: src/SpectacleCore.cpp:442
+#: src/SpectacleCore.cpp:444
 #, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Įvyko klaida bandant filmuoti ekraną."
 
-#: src/SpectacleCore.cpp:487
+#: src/SpectacleCore.cpp:489
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2350,7 +2366,7 @@ msgstr ""
 "Ekrano kopija buvo nukopijuota į iškarpinę ir įrašyta kaip <link url=\"%1\">"
 "%2</link>"
 
-#: src/SpectacleCore.cpp:491
+#: src/SpectacleCore.cpp:493
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2360,19 +2376,19 @@ msgstr ""
 "Ekrano kopija įrašyta kaip <link url=\"%1\">%2</link>, o jos vieta "
 "nukopijuota į iškarpinę"
 
-#: src/SpectacleCore.cpp:496
+#: src/SpectacleCore.cpp:498
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
 msgstr "Ekrano kopija buvo įrašyta kaip <link url=\"%1\">%2</link>"
 
-#: src/SpectacleCore.cpp:500
+#: src/SpectacleCore.cpp:502
 #, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "Ekrano kopija nukopijuota į iškarpinę."
 
-#: src/SpectacleCore.cpp:532
+#: src/SpectacleCore.cpp:534
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2382,13 +2398,13 @@ msgstr ""
 "Vaizdo įrašas įrašytas kaip <link url=\"%1\">%2</link>, o jo vieta "
 "nukopijuota į iškarpinę"
 
-#: src/SpectacleCore.cpp:537
+#: src/SpectacleCore.cpp:539
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
 msgstr "Vaizdo įrašas buvo įrašytas kaip <link url=\"%1\">%2</link>"
 
-#: src/SpectacleCore.cpp:541
+#: src/SpectacleCore.cpp:543
 #, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
@@ -2397,85 +2413,85 @@ msgstr "Vaizdo įrašo vieta nukopijuota į iškarpinę."
 #. i18nc because it doesn't work with the link replacement logic.
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
-#: src/SpectacleCore.cpp:561
+#: src/SpectacleCore.cpp:563
 #, kde-format
 msgctxt "@info"
 msgid "Code found: %1"
 msgstr "Rastas kodas: %1"
 
-#: src/SpectacleCore.cpp:565
+#: src/SpectacleCore.cpp:567
 #, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "Rastas QR kodas su dvejetainiu turiniu."
 
-#: src/SpectacleCore.cpp:573
+#: src/SpectacleCore.cpp:575
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
 msgstr "Nepavyko ištraukti teksto"
 
-#: src/SpectacleCore.cpp:578
+#: src/SpectacleCore.cpp:580
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
 msgstr "Paveiksle nerasta jokio teksto"
 
-#: src/SpectacleCore.cpp:582
+#: src/SpectacleCore.cpp:584
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
 msgstr "Teksto ištraukimas užbaigtas"
 
-#: src/SpectacleCore.cpp:590
+#: src/SpectacleCore.cpp:592
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
 msgstr "Tekstas ištrauktas"
 
-#: src/SpectacleCore.cpp:609
+#: src/SpectacleCore.cpp:611
 #, kde-format
 msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
 msgstr "%1 ir %2"
 
-#: src/SpectacleCore.cpp:614
+#: src/SpectacleCore.cpp:616
 #, kde-kuit-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages used: %1"
 msgstr "Tekstas nukopijuotas į iškarpinę.<nl/>Naudotos kalbos: %1"
 
-#: src/SpectacleCore.cpp:619
+#: src/SpectacleCore.cpp:621
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
 msgstr "Atverti tekstų redaktoriuje"
 
-#: src/SpectacleCore.cpp:761
+#: src/SpectacleCore.cpp:763
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
 msgstr "Prieš ištraukdami tekstą, pasirinkite sritį"
 
-#: src/SpectacleCore.cpp:783
+#: src/SpectacleCore.cpp:785
 #, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
 msgstr "Optinis ženklų atpažinimas yra neprieinamas."
 
-#: src/SpectacleCore.cpp:789
+#: src/SpectacleCore.cpp:791
 #, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
 msgstr "Neprieinama jokia ekrano kopija."
 
-#: src/SpectacleCore.cpp:793
+#: src/SpectacleCore.cpp:795
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr "Ištraukiamas tekstas iš paveikslo..."
 
-#: src/SpectacleCore.cpp:1050
+#: src/SpectacleCore.cpp:1052
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -2483,13 +2499,13 @@ msgid ""
 msgstr ""
 "--scaled yra leidžiamas tik kartu su -f/--fullscreen ir jo bus nepaisoma"
 
-#: src/SpectacleCore.cpp:1065
+#: src/SpectacleCore.cpp:1067
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 nėra tinkama --record veiksena"
 
-#: src/SpectacleCore.cpp:1304
+#: src/SpectacleCore.cpp:1306
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2499,24 +2515,24 @@ msgstr ""
 "Ekrano kopijai buvo suteiktas pavadinimas „%1“ ir ji įrašyta į „%2“, o "
 "ekrano kopijos failo kelias įrašytas į iškarpinę."
 
-#: src/SpectacleCore.cpp:1308
+#: src/SpectacleCore.cpp:1310
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Ekrano kopija buvo įrašyta į jūsų Paveikslų aplanką kaip „%1“."
 
-#: src/SpectacleCore.cpp:1311
+#: src/SpectacleCore.cpp:1313
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Ekrano kopija buvo įrašyta į „%2“ kaip „%1“."
 
-#: src/SpectacleCore.cpp:1315
+#: src/SpectacleCore.cpp:1317
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Ekrano kopija buvo įrašyta į jūsų iškarpinę."
 
-#: src/SpectacleCore.cpp:1320
+#: src/SpectacleCore.cpp:1322
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2526,25 +2542,25 @@ msgstr ""
 "Ekrano įrašui buvo suteiktas pavadinimas „%1“ ir jis įrašytas į „%2“, o "
 "ekrano įrašo failo kelias įrašytas į iškarpinę."
 
-#: src/SpectacleCore.cpp:1322
+#: src/SpectacleCore.cpp:1324
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Ekrano įrašas buvo įrašytas į jūsų Vaizdo įrašų aplanką kaip „%1“."
 
-#: src/SpectacleCore.cpp:1324
+#: src/SpectacleCore.cpp:1326
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Ekrano įrašas buvo įrašytas į „%2“ kaip „%1“."
 
-#: src/SpectacleCore.cpp:1336
+#: src/SpectacleCore.cpp:1338
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Atverti"
 
-#: src/SpectacleCore.cpp:1350
+#: src/SpectacleCore.cpp:1352
 #, kde-format
 msgid "Annotate"
 msgstr "Kurti anotacijas"
