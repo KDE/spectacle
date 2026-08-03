@@ -34,6 +34,7 @@
 #include <KWindowInfo>
 #include <KWindowSystem>
 #include <KX11Extras>
+#include <xcb/xproto.h>
 
 using namespace Qt::StringLiterals;
 
@@ -221,7 +222,7 @@ xcb_window_t ImagePlatformXcb::getWindowUnderCursor()
     XcbReplyPtr<xcb_intern_atom_reply_t> atomReply(xcb_intern_atom_reply(xcbConn, atomCookie, nullptr));
     XcbReplyPtr<xcb_query_pointer_reply_t> pointerReply(xcb_query_pointer_reply(xcbConn, pointerCookie, nullptr));
 
-    if (atomReply->atom == XCB_ATOM_NONE) {
+    if (!atomReply || !pointerReply || atomReply->atom == XCB_ATOM_NONE) {
         return QX11Info::appRootWindow();
     }
 
@@ -237,7 +238,7 @@ xcb_window_t ImagePlatformXcb::getWindowUnderCursor()
         auto propCookie = xcb_get_property_unchecked(xcbConn, 0, appWin, atomReply->atom, XCB_ATOM_ANY, 0, 0);
         XcbReplyPtr<xcb_get_property_reply_t> propReply(xcb_get_property_reply(xcbConn, propCookie, nullptr));
 
-        if (propReply->type != XCB_ATOM_NONE) {
+        if (propReply && propReply->type != XCB_ATOM_NONE) {
             return appWin;
         }
 
@@ -245,6 +246,9 @@ xcb_window_t ImagePlatformXcb::getWindowUnderCursor()
         // we should start looking at its children
         auto treeCookie = xcb_query_tree_unchecked(xcbConn, appWin);
         XcbReplyPtr<xcb_query_tree_reply_t> treeReply(xcb_query_tree_reply(xcbConn, treeCookie, nullptr));
+        if (!treeReply) {
+            continue;
+        }
         auto windowChildren = xcb_query_tree_children(treeReply.get());
         auto windowChildrenLength = xcb_query_tree_children_length(treeReply.get());
 
