@@ -264,6 +264,8 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
             if (!m_recorder->output().isEmpty()) {
                 m_recorder->start();
             }
+            setRecordingMode(recordingMode);
+            setRecordingState(VideoPlatform::RecordingState::Recording);
         });
         connect(stream, &ScreencastingStream::failed, this, [this](const QString &error) {
             setRecordingState(VideoPlatform::RecordingState::NotRecording);
