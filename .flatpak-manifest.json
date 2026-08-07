@@ -20,6 +20,9 @@
         {
             "name": "kpipewire",
             "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DBUILD_TESTING=OFF"
+            ],
             "sources": [
                 {
                     "type": "git",
@@ -31,6 +34,9 @@
         {
             "name": "spectacle",
             "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DBUILD_TESTING=OFF"
+            ],
             "sources": [
                 {
                     "type": "dir",
