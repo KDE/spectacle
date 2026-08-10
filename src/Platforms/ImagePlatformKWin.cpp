@@ -37,6 +37,9 @@
 
 using namespace Qt::StringLiterals;
 
+using steady_clock = std::chrono::steady_clock;
+using output_duration = std::chrono::duration<double, std::chrono::milliseconds::period>;
+
 static const QString s_screenShotService = u"org.kde.KWin.ScreenShot2"_s;
 static const QString s_screenShotObjectPath = u"/org/kde/KWin/ScreenShot2"_s;
 static const QString s_screenShotInterface = u"org.kde.KWin.ScreenShot2"_s;
@@ -229,6 +232,25 @@ static ResultVariant readImage(int fileDescriptor, const QVariantMap &metadata)
 template<typename... ArgType>
 ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... arguments)
 {
+    struct RelevantInfo {
+        QString methodName{};
+        QString specificArguments{};
+        steady_clock::time_point startTime{};
+    };
+    RelevantInfo info{methodName};
+    // For arguments that aren't common to other methods.
+    // These can help differentiate between different method calls.
+    if constexpr (sizeof...(ArgType) > 0) {
+        int argIndex = 0;
+        auto joinArgs = [&info, &argIndex](const auto &arg) {
+            info.specificArguments = info.specificArguments % QString{(argIndex == 0 ? u"%"_s : u", %"_s) % QString::number(argIndex + 1)}.arg(QDebug::toString(arg));
+            return ++argIndex;
+        };
+        (joinArgs(arguments) || ...);
+    }
+    if (SPECTACLE_LOG().isDebugEnabled()) {
+        info.startTime = std::chrono::steady_clock::now();
+    }
     // Do not set the O_NONBLOCK flag. Code that reads data from the pipe assumes
     // that read() will block if there is no any data yet.
     int pipeFds[2]{-1, -1};
@@ -245,16 +267,6 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
     QVariantList dbusArguments{arguments...};
     dbusArguments.append(QVariant::fromValue(QDBusUnixFileDescriptor(pipeFds[1])));
     message.setArguments(dbusArguments);
-    // For arguments that aren't common to other methods.
-    // These can help differentiate between different method calls.
-    QString specificArguments;
-    int argIndex = 0;
-    auto joinArgs = [&specificArguments, &argIndex](const auto &arg) {
-        specificArguments = specificArguments % QString{(argIndex == 0 ? u"%"_s : u", %"_s) % QString::number(argIndex + 1)}.arg(QDebug::toString(arg));
-        return ++argIndex;
-    };
-    (joinArgs(arguments) || ...);
-    const auto relevantInfo = u"- Method: %1\n- Method specific arguments: %2"_s.arg(methodName, specificArguments);
 
     // We don't know how long the user will take with CaptureInteractive.
     // -1 generally gives a 25s timeout. Let's pick 60s for CaptureInteractive
@@ -278,12 +290,16 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
     }
 
     auto watcher = new QDBusPendingCallWatcher(pendingCall, this);
-    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, watcher, relevantInfo, timeoutTimer]() {
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, watcher, info, timeoutTimer]() {
         watcher->deleteLater();
         const QDBusPendingReply<QVariantMap> reply = *watcher;
-        if (timeoutTimer) {
-            timeoutTimer->stop();
-            timeoutTimer->deleteLater();
+        if (SPECTACLE_LOG().isDebugEnabled()) {
+            const output_duration duration = steady_clock::now() - info.startTime;
+            if (timeoutTimer) {
+                timeoutTimer->stop();
+                timeoutTimer->deleteLater();
+            }
+            Log::debug().noquote() << "Time to receive %1 reply:"_L1.arg(info.methodName) << duration;
         }
 
         if (reply.isError()) {
@@ -291,10 +307,15 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
                 // don't show error on user cancellation
                 Q_EMIT finished(ResultVariant::canceled());
             } else {
-                auto error = i18nc("@info, %1 is an error message", "KWin screenshot request failed:\n%1", reply.error().message());
-                if (!relevantInfo.isEmpty()) {
-                    error = error % u"\n"_s % i18nc("@info", "Potentially relevant information:\n%1", relevantInfo);
-                }
+                auto error = i18nc("@info %1 is a DBus error message, %2 is a DBus method name, %3 is a comma separated sequence of DBus method arguments", //
+                                   "KWin screenshot request failed:\n" //
+                                   "%1\n" //
+                                   "Potentially relevant information:\n" //
+                                   "- Method: %2\n" //
+                                   "- Method specific arguments: %3",
+                                   reply.error().message(),
+                                   info.methodName,
+                                   info.specificArguments);
                 Q_EMIT finished({error});
             }
         } else {
@@ -354,13 +375,21 @@ ScreenShotSourceWorkspace2::ScreenShotSourceWorkspace2(ImagePlatformKWin::Screen
 
 ScreenShotSourceMeta2::ScreenShotSourceMeta2(const QVector<ScreenShotSource2 *> &sources)
 {
+    steady_clock::time_point startTime;
+    if (SPECTACLE_LOG().isDebugEnabled()) {
+        startTime = std::chrono::steady_clock::now();
+    }
     const auto size = sources.size();
     m_results.reserve(size); // reserves memory but does not change size
     for (ScreenShotSource2 *source : sources) {
         source->setParent(this);
-        connect(source, &ScreenShotSource2::finished, this, [this, size](const ResultVariant &result) {
+        connect(source, &ScreenShotSource2::finished, this, [this, size, startTime](const ResultVariant &result) {
             m_results.emplaceBack(result);
             if (m_results.size() == size) {
+                if (SPECTACLE_LOG().isDebugEnabled()) {
+                    const output_duration duration = steady_clock::now() - startTime;
+                    Log::debug() << "Time to receive all replies and read image data:" << duration;
+                }
                 Q_EMIT finished(m_results);
             }
         });
