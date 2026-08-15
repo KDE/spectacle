@@ -247,10 +247,9 @@ msgstr ""
 "><filename>%1</filename>"
 
 #: src/ExportManager.cpp:491
-#, fuzzy, kde-format
-#| msgid "Cannot save screenshot. Error while writing file."
+#, kde-format
 msgid "Cannot save screenshot. Error while opening file."
-msgstr "Nedá sa uložiť snímka obrazovky. Vyskytla sa chyba pri zápise súboru."
+msgstr "Nedá sa uložiť snímka obrazovky. Chyba pri otváraní súboru."
 
 #: src/ExportManager.cpp:495
 #, kde-format
@@ -881,7 +880,7 @@ msgstr "Nahrávanie"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "This feature is not supported on the current platform"
-msgstr ""
+msgstr "Táto funkcia nie je na aktuálnej platforme podporovaná"
 
 #: src/Gui/EditAction.qml:11
 #, kde-format
@@ -1100,26 +1099,26 @@ msgstr "Zobraziť kurzor myši v zázname"
 #, kde-format
 msgctxt "@option:check for recordings"
 msgid "Record system audio"
-msgstr ""
+msgstr "Nahrávať systémový zvuk"
 
 #: src/Gui/OptionsMenu.cpp:145
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Include the audio that is currently playing on the system in the recording"
-msgstr ""
+msgstr "Zahrnúť do nahrávky zvuk, ktorý sa práve prehráva v systéme"
 
 #: src/Gui/OptionsMenu.cpp:153
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@option:check for recordings"
 msgid "Record microphone"
-msgstr "Nahrať obrazovku"
+msgstr "Nahrávať mikrofón"
 
 #: src/Gui/OptionsMenu.cpp:154
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include audio from the default microphone in the recording"
-msgstr ""
+msgstr "Zahrnúť do nahrávky zvuk z predvoleného mikrofónu"
 
 #: src/Gui/OptionsMenuButton.qml:10
 #, kde-format
@@ -1146,15 +1145,13 @@ msgid "New Recording"
 msgstr "Nové nahrávanie"
 
 #: src/Gui/RecordingSettingsColumn.qml:22
-#, fuzzy, kde-format
-#| msgid "Include mouse pointer"
+#, kde-format
 msgctxt "@option:check"
 msgid "Include mouse pointer"
 msgstr "Zahrnúť ukazovateľ myši"
 
 #: src/Gui/RecordingSettingsColumn.qml:23
-#, fuzzy, kde-format
-#| msgid "Show the mouse cursor in the screen recording."
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Zobraziť kurzor myši v zázname obrazovky."
@@ -1163,32 +1160,32 @@ msgstr "Zobraziť kurzor myši v zázname obrazovky."
 #, kde-format
 msgctxt "@option:check"
 msgid "Record system audio"
-msgstr ""
+msgstr "Nahrávať systémový zvuk"
 
 #: src/Gui/RecordingSettingsColumn.qml:33
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Include the audio that is currently playing on the system in the recording."
-msgstr ""
+msgstr "Zahrnúť do nahrávky zvuk, ktorý sa práve prehráva v systéme."
 
 #: src/Gui/RecordingSettingsColumn.qml:45
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@option:check"
 msgid "Record microphone"
-msgstr "Nahrať obrazovku"
+msgstr "Nahrávať mikrofón"
 
 #: src/Gui/RecordingSettingsColumn.qml:46
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include audio from the default microphone in the recording."
-msgstr ""
+msgstr "Zahrnúť do nahrávky zvuk z predvoleného mikrofónu."
 
 #: src/Gui/RecordingSettingsColumn.qml:57
 #, kde-format
 msgctxt "@info"
 msgid "The selected video format does not support audio."
-msgstr ""
+msgstr "Vybraný formát videa nepodporuje zvuk."
 
 #: src/Gui/RecordingView.qml:90
 #, kde-format
@@ -1646,17 +1643,15 @@ msgstr "Či je kurzor myši zahrnutý vo videu"
 
 #. i18n: ectx: label, entry (videoRecordSystemAudio), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:99
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the video"
+#, kde-format
 msgid "Whether system audio is included in the recording"
-msgstr "Či je kurzor myši zahrnutý vo videu"
+msgstr "Či je systémový zvuk zahrnutý v nahrávke"
 
 #. i18n: ectx: label, entry (videoRecordMicrophone), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:103
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the video"
+#, kde-format
 msgid "Whether microphone audio is included in the recording"
-msgstr "Či je kurzor myši zahrnutý vo videu"
+msgstr "Či je zvuk z mikrofónu zahrnutý v nahrávke"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:107
@@ -2236,12 +2231,10 @@ msgid "An error occurred while taking a screenshot."
 msgstr "Pri vytváraní snímky obrazovky sa vyskytla chyba."
 
 #: src/SpectacleCore.cpp:300
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording with Sound"
-msgstr "Spectacle nahráva"
+msgstr "Spectacle nahráva so zvukom"
 
 #: src/SpectacleCore.cpp:301
 #, kde-format
@@ -2250,12 +2243,10 @@ msgid "Spectacle is Recording"
 msgstr "Spectacle nahráva"
 
 #: src/SpectacleCore.cpp:306
-#, fuzzy, kde-format
-#| msgctxt "recording notification title"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording with Sound"
-msgstr "Spectacle nahráva"
+msgstr "Spectacle nahráva so zvukom"
 
 #: src/SpectacleCore.cpp:307
 #, kde-format
