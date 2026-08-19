@@ -1,14 +1,14 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the spectacle package.
 #
-# SPDX-FileCopyrightText: 2023, 2024, 2025 Toms Trasuns <toms.trasuns@posteo.net>
+# SPDX-FileCopyrightText: 2023-2026 Toms Trasuns <toms.trasuns@posteo.net>
 # Māris Nartišs <maris.kde@gmail.com>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-06 00:47+0000\n"
-"PO-Revision-Date: 2025-11-18 19:30+0200\n"
+"PO-Revision-Date: 2026-08-17 19:42+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 25.08.3\n"
+"X-Generator: Lokalize 26.04.3\n"
 
 #, kde-format
 msgctxt "translatable folder name"
@@ -97,6 +97,8 @@ msgstr "Uzņemt visu darbvirsmu (noklusējums)"
 msgid ""
 "When used with -f/--fullscreen, capture all screens scaled to the same size"
 msgstr ""
+"Kas lietots ar „-f“ vai „--fullscreen“, tvert visus ekrānus, kas mērogoti uz "
+"vienu izmēru"
 
 #: src/CommandLineOptions.h:30
 #, kde-format
@@ -226,10 +228,9 @@ msgid "Open and edit existing screenshot file"
 msgstr "Atvērt un rediģēt esošo ekrānattēla datni"
 
 #: src/CommandLineOptions.h:116
-#, fuzzy, kde-format
-#| msgid "Accept on click-and-release"
+#, kde-format
 msgid "Accept region selection on click-and-release"
-msgstr "Apstiprināt pēc klikšķa un atlaišanas"
+msgstr "Noklikšķinot un atlaižot klikšķi, pieņemt atlasīto reģionu"
 
 #: src/ExportManager.cpp:466
 #, kde-format
@@ -248,10 +249,9 @@ msgstr ""
 "><filename>%1</filename>"
 
 #: src/ExportManager.cpp:491
-#, fuzzy, kde-format
-#| msgid "Cannot save screenshot. Error while writing file."
+#, kde-format
 msgid "Cannot save screenshot. Error while opening file."
-msgstr "Neizdodas saglabāt ekrānattēlu. Kļūda, saglabājot datni."
+msgstr "Neizdodas saglabāt ekrānattēlu. Kļūda, atverot datni."
 
 #: src/ExportManager.cpp:495
 #, kde-format
@@ -697,11 +697,10 @@ msgid "Number"
 msgstr "Skaitļi"
 
 #: src/Gui/CancelAction.qml:9
-#, fuzzy, kde-format
-#| msgid "Cancel:"
+#, kde-format
 msgctxt "@action cancel selection"
 msgid "Cancel"
-msgstr "Atcelt:"
+msgstr "Atcelt"
 
 #: src/Gui/CaptureModeButtonsColumn.qml:31
 #: src/Gui/NewScreenshotToolButton.qml:15
@@ -877,7 +876,7 @@ msgstr "Ekrāna ieraksts"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "This feature is not supported on the current platform"
-msgstr ""
+msgstr "Šī platforma neatbalsta šo iespēju"
 
 #: src/Gui/EditAction.qml:11
 #, kde-format
@@ -1094,28 +1093,26 @@ msgstr "Ekrāna ierakstā parādīt peles rādītāju"
 #, kde-format
 msgctxt "@option:check for recordings"
 msgid "Record system audio"
-msgstr ""
+msgstr "Ierakstīt sistēmas skaņu"
 
 #: src/Gui/OptionsMenu.cpp:145
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Include the audio that is currently playing on the system in the recording"
-msgstr ""
+msgstr "Ierakstā iekļaut skaņu, kas tiek atskaņota sistēmā"
 
 #: src/Gui/OptionsMenu.cpp:153
-#, fuzzy, kde-format
-#| msgctxt "@action global shortcut"
-#| msgid "Record Screen"
+#, kde-format
 msgctxt "@option:check for recordings"
 msgid "Record microphone"
-msgstr "Ierakstīt ekrānu"
+msgstr "Ierakstīt mikrofonu"
 
 #: src/Gui/OptionsMenu.cpp:154
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include audio from the default microphone in the recording"
-msgstr ""
+msgstr "Ierakstā iekļaut skaņu, kas ir dzirdama noklusējuma mikrofona ierīcē"
 
 #: src/Gui/OptionsMenuButton.qml:10
 #, kde-format
@@ -1142,51 +1139,47 @@ msgid "New Recording"
 msgstr "Jauns ieraksts"
 
 #: src/Gui/RecordingSettingsColumn.qml:22
-#, fuzzy, kde-format
-#| msgid "Include mouse pointer"
+#, kde-format
 msgctxt "@option:check"
 msgid "Include mouse pointer"
 msgstr "Iekļaut peles rādītāju"
 
 #: src/Gui/RecordingSettingsColumn.qml:23
-#, fuzzy, kde-format
-#| msgid "Show the mouse cursor in the screen recording."
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the screen recording."
-msgstr "Ekrāna ierakstā parādīt peles rādītāju."
+msgstr "Ekrāna ierakstā iekļaut peles rādītāju."
 
 #: src/Gui/RecordingSettingsColumn.qml:32
 #, kde-format
 msgctxt "@option:check"
 msgid "Record system audio"
-msgstr ""
+msgstr "Ierakstīt sistēmas skaņu"
 
 #: src/Gui/RecordingSettingsColumn.qml:33
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Include the audio that is currently playing on the system in the recording."
-msgstr ""
+msgstr "Ierakstā iekļaut skaņu, kas šobrīd tiek atskaņota sistēmā."
 
 #: src/Gui/RecordingSettingsColumn.qml:45
-#, fuzzy, kde-format
-#| msgctxt "@action global shortcut"
-#| msgid "Record Screen"
+#, kde-format
 msgctxt "@option:check"
 msgid "Record microphone"
-msgstr "Ierakstīt ekrānu"
+msgstr "Ierakstīt mikrofonā dzirdamo"
 
 #: src/Gui/RecordingSettingsColumn.qml:46
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include audio from the default microphone in the recording."
-msgstr ""
+msgstr "Ierakstā iekļaut skaņu, kas ir dzirdama noklusējuma mikrofonā."
 
 #: src/Gui/RecordingSettingsColumn.qml:57
 #, kde-format
 msgctxt "@info"
 msgid "The selected video format does not support audio."
-msgstr ""
+msgstr "Atlasītais video formāts neatbalsta skaņu."
 
 #: src/Gui/RecordingView.qml:90
 #, kde-format
@@ -1422,11 +1415,9 @@ msgstr "OCR valodas:"
 
 #. i18n: ectx: property (text), widget (QLabel, closeAfterOcrLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:306
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Text extraction failed"
+#, kde-format
 msgid "Text extraction:"
-msgstr "Teksta atpazīšana neizdevās"
+msgstr "Teksta atpazīšana:"
 
 #. i18n: ectx: label, entry (closeAfterOcr), group (General)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_closeAfterOcr)
@@ -1434,7 +1425,7 @@ msgstr "Teksta atpazīšana neizdevās"
 #: src/Gui/SettingsDialog/spectacle.kcfg:38
 #, kde-format
 msgid "Close after extraction (skips auto-save)"
-msgstr ""
+msgstr "Aizvērt pēc atpazīšanas (izlaiž automātisko saglabāšanu)"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, closeAfterOcrInfo)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:334
@@ -1443,6 +1434,8 @@ msgid ""
 "Spectacle will close after text extraction and automatic saving will be "
 "skipped."
 msgstr ""
+"„Spectacle“ aizvērsies pēc teksta atpazīšanas, izlaižot automātisko "
+"saglabāšanu."
 
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:395
@@ -1647,17 +1640,15 @@ msgstr "Vai video ir jāparāda peles rādītājs"
 
 #. i18n: ectx: label, entry (videoRecordSystemAudio), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:99
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the video"
+#, kde-format
 msgid "Whether system audio is included in the recording"
-msgstr "Vai video ir jāparāda peles rādītājs"
+msgstr "Vai ierakstā iekļaut sistēmā dzirdamo skaņu"
 
 #. i18n: ectx: label, entry (videoRecordMicrophone), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:103
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the video"
+#, kde-format
 msgid "Whether microphone audio is included in the recording"
-msgstr "Vai video ir jāparāda peles rādītājs"
+msgstr "Vai ierakstā iekļaut mikrofonā dzirdamo skaņu"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:107
@@ -2230,12 +2221,10 @@ msgid "An error occurred while taking a screenshot."
 msgstr "Kļūda, uzņemot ekrānattēlu."
 
 #: src/SpectacleCore.cpp:300
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording with Sound"
-msgstr "„Spectacle“ ieraksta"
+msgstr "„Spectacle“ ieraksta ar skaņu"
 
 #: src/SpectacleCore.cpp:301
 #, kde-format
@@ -2244,12 +2233,10 @@ msgid "Spectacle is Recording"
 msgstr "„Spectacle“ ieraksta"
 
 #: src/SpectacleCore.cpp:306
-#, fuzzy, kde-format
-#| msgctxt "recording notification title"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording with Sound"
-msgstr "„Spectacle“ ieraksta"
+msgstr "„Spectacle“ ieraksta ar skaņu"
 
 #: src/SpectacleCore.cpp:307
 #, kde-format
@@ -2394,9 +2381,7 @@ msgstr "Video atrašanās vieta ir nokopēta."
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
 #: src/SpectacleCore.cpp:563
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "QR Code found: %1"
+#, kde-format
 msgctxt "@info"
 msgid "Code found: %1"
 msgstr "Atrasts kvadrātkods: %1"
@@ -2438,12 +2423,10 @@ msgid "%1 and %2"
 msgstr "%1 un %2"
 
 #: src/SpectacleCore.cpp:616
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:notification"
-#| msgid "Text copied to clipboard.<nl/>Languages detected: %1"
+#, kde-kuit-format
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages used: %1"
-msgstr "Teksts ir nokopēts starpliktuvē.<nl/>Atpazītās valodas: %1"
+msgstr "Teksts ir nokopēts starpliktuvē.<nl/>Lietotās valodas: %1"
 
 #: src/SpectacleCore.cpp:621
 #, kde-format
@@ -2481,6 +2464,7 @@ msgctxt "@info:shell"
 msgid ""
 "--scaled is only allowed together with -f/--fullscreen and will be ignored"
 msgstr ""
+"„--scaled“ ir atļauts tikai ar „-f“ vai „--fullscreen“ un tiks ignorēts"
 
 #: src/SpectacleCore.cpp:1067
 #, kde-format
