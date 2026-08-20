@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-06 00:47+0000\n"
-"PO-Revision-Date: 2026-07-01 20:16+0200\n"
+"PO-Revision-Date: 2026-08-19 22:13+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 26.04.2\n"
+"X-Generator: Lokalize 26.04.3\n"
 
 #, kde-format
 msgctxt "translatable folder name"
@@ -254,10 +254,9 @@ msgstr ""
 "><filename>%1</filename>"
 
 #: src/ExportManager.cpp:491
-#, fuzzy, kde-format
-#| msgid "Cannot save screenshot. Error while writing file."
+#, kde-format
 msgid "Cannot save screenshot. Error while opening file."
-msgstr "Ezin da gorde pantaila-argazkia. Errorea fitxategia idaztean."
+msgstr "Ezin da pantaila-argazkia gorde. Errorea fitxategia irekitzean."
 
 #: src/ExportManager.cpp:495
 #, kde-format
@@ -1100,28 +1099,26 @@ msgstr "Erakutsi saguaren kurtsorea grabazioan"
 #, kde-format
 msgctxt "@option:check for recordings"
 msgid "Record system audio"
-msgstr ""
+msgstr "Sistemaren audioa grabatu"
 
 #: src/Gui/OptionsMenu.cpp:145
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Include the audio that is currently playing on the system in the recording"
-msgstr ""
+msgstr "Grabazioan sisteman une honetan jotzen ari den audioa jaso"
 
 #: src/Gui/OptionsMenu.cpp:153
-#, fuzzy, kde-format
-#| msgctxt "@action global shortcut"
-#| msgid "Record Screen"
+#, kde-format
 msgctxt "@option:check for recordings"
 msgid "Record microphone"
-msgstr "Grabatu pantaila"
+msgstr "Mikrofonoaren audioa grabatu"
 
 #: src/Gui/OptionsMenu.cpp:154
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include audio from the default microphone in the recording"
-msgstr ""
+msgstr "Sisteman une honetan jotzen ari den audioa grabazioan jaso"
 
 #: src/Gui/OptionsMenuButton.qml:10
 #, kde-format
@@ -1148,51 +1145,47 @@ msgid "New Recording"
 msgstr "Grabazio berria"
 
 #: src/Gui/RecordingSettingsColumn.qml:22
-#, fuzzy, kde-format
-#| msgid "Include mouse pointer"
+#, kde-format
 msgctxt "@option:check"
 msgid "Include mouse pointer"
-msgstr "Jaso saguaren erakuslea"
+msgstr "Saguaren erakuslea jaso"
 
 #: src/Gui/RecordingSettingsColumn.qml:23
-#, fuzzy, kde-format
-#| msgid "Show the mouse cursor in the screen recording."
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the screen recording."
-msgstr "Erakutsi saguaren kurtsorea pantaila-grabazioan."
+msgstr "Pantaila-grabazioan saguaren erakuslea erakutsi."
 
 #: src/Gui/RecordingSettingsColumn.qml:32
 #, kde-format
 msgctxt "@option:check"
 msgid "Record system audio"
-msgstr ""
+msgstr "Sistemaren audioa grabatu"
 
 #: src/Gui/RecordingSettingsColumn.qml:33
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Include the audio that is currently playing on the system in the recording."
-msgstr ""
+msgstr "Sisteman une honetan jotzen ari den audioa grabazioan jaso."
 
 #: src/Gui/RecordingSettingsColumn.qml:45
-#, fuzzy, kde-format
-#| msgctxt "@action global shortcut"
-#| msgid "Record Screen"
+#, kde-format
 msgctxt "@option:check"
 msgid "Record microphone"
-msgstr "Grabatu pantaila"
+msgstr "Mikrofonoaren audioa grabatu"
 
 #: src/Gui/RecordingSettingsColumn.qml:46
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include audio from the default microphone in the recording."
-msgstr ""
+msgstr "Lehenetsitako mikrofonoaren audioa grabazioan jaso."
 
 #: src/Gui/RecordingSettingsColumn.qml:57
 #, kde-format
 msgctxt "@info"
 msgid "The selected video format does not support audio."
-msgstr ""
+msgstr "Hautatutako bideo-formatuak ez du audiorik onartzen."
 
 #: src/Gui/RecordingView.qml:90
 #, kde-format
@@ -1653,17 +1646,15 @@ msgstr "Saguaren kurtsorea bideoan jasoko den edo ez"
 
 #. i18n: ectx: label, entry (videoRecordSystemAudio), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:99
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the video"
+#, kde-format
 msgid "Whether system audio is included in the recording"
-msgstr "Saguaren kurtsorea bideoan jasoko den edo ez"
+msgstr "Sistemaren audioa grabazioan jasoko den edo ez"
 
 #. i18n: ectx: label, entry (videoRecordMicrophone), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:103
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the video"
+#, kde-format
 msgid "Whether microphone audio is included in the recording"
-msgstr "Saguaren kurtsorea bideoan jasoko den edo ez"
+msgstr "Mikrofonoaren audioa grabazioan jasoko den edo ez"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:107
@@ -2242,12 +2233,10 @@ msgid "An error occurred while taking a screenshot."
 msgstr "Errore bat gertatu da pantaila-argazki bat hartu bitartean."
 
 #: src/SpectacleCore.cpp:300
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording with Sound"
-msgstr "Spectacle grabatzen ari da"
+msgstr "Spectacle soinuarekin grabatzen ari da"
 
 #: src/SpectacleCore.cpp:301
 #, kde-format
@@ -2256,12 +2245,10 @@ msgid "Spectacle is Recording"
 msgstr "Spectacle grabatzen ari da"
 
 #: src/SpectacleCore.cpp:306
-#, fuzzy, kde-format
-#| msgctxt "recording notification title"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording with Sound"
-msgstr "Spectacle grabatzen ari da"
+msgstr "Spectacle soinuarekin grabatzen ari da"
 
 #: src/SpectacleCore.cpp:307
 #, kde-format
