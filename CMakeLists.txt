@@ -93,7 +93,7 @@ set_package_properties(KPipeWire PROPERTIES DESCRIPTION
 )
 
 ecm_find_qmlmodule(org.kde.kquickimageeditor)
-find_package(KQuickImageEditor COMPONENTS)
+find_package(KQuickImageEditor 0.7 REQUIRED COMPONENTS)
 set_package_properties(KQuickImageEditor PROPERTIES
     TYPE REQUIRED
     DESCRIPTION "Simple image editor for QtQuick applications"
