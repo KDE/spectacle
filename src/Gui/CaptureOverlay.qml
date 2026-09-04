@@ -702,19 +702,19 @@ MouseArea {
 
                 topLeftRadius: otbLoader.visible
                     && otbLoader.x === 0
-                    && (annotationsToolBar.valignment & Qt.AlignTop)
+                    && (otbLoader.valignment & Qt.AlignTop)
                     && !SelectionEditor.selection.empty ? 0 : radius
                 topRightRadius: otbLoader.visible
                     && otbLoader.x === width - otbLoader.width
-                    && (annotationsToolBar.valignment & Qt.AlignTop)
+                    && (otbLoader.valignment & Qt.AlignTop)
                     && !SelectionEditor.selection.empty? 0 : radius
                 bottomLeftRadius: otbLoader.visible
                     && otbLoader.x === 0
-                    && ((annotationsToolBar.valignment & Qt.AlignBottom)
+                    && ((otbLoader.valignment & Qt.AlignBottom)
                     || SelectionEditor.selection.empty) ? 0 : radius
                 bottomRightRadius: otbLoader.visible
                     && otbLoader.x === width - otbLoader.width
-                    && ((annotationsToolBar.valignment & Qt.AlignBottom)
+                    && ((otbLoader.valignment & Qt.AlignBottom)
                     || SelectionEditor.selection.empty) ? 0 : radius
 
                 Binding {
@@ -767,7 +767,7 @@ MouseArea {
                     opacity: otbLoader.opacity
                     parent: annotationsToolBar
                     x: otbLoader.x + annotationsToolBar.background.border.width
-                    y: (annotationsToolBar.valignment & Qt.AlignTop)
+                    y: (otbLoader.valignment & Qt.AlignTop)
                         && !SelectionEditor.selection.empty
                         ? otbLoader.y + otbLoader.height : otbLoader.y
                     width: otbLoader.width - annotationsToolBar.background.border.width * 2
@@ -822,6 +822,14 @@ MouseArea {
                 AnimatedLoader {
                     id: otbLoader
                     parent: annotationsToolBar
+                    readonly property int valignment: {
+                        if ((annotationsToolBar.valignment & Qt.AlignBottom) || SelectionEditor.selection.empty) {
+                            return Qt.AlignBottom
+                        }
+                        const spaceAbove = atbLoader.y - annotationsToolBar.bounds.top
+                        const neededSpace = height + annotationsToolBar.bottomPadding
+                        return spaceAbove >= neededSpace ? Qt.AlignTop : Qt.AlignBottom
+                    }
                     x: {
                         let targetX = annotationsContents.x
                         const checkedButton = annotationsContents.checkedButton
@@ -832,7 +840,7 @@ MouseArea {
                                 Math.min(contextWindow.dprRound(targetX),
                                         parent.width - width)) // max value
                     }
-                    y: (annotationsToolBar.valignment & Qt.AlignTop)
+                    y: (otbLoader.valignment & Qt.AlignTop)
                         && !SelectionEditor.selection.empty
                         ? -otbLoader.height + borderBg.height
                         : otbLoader.height - borderBg.height
@@ -851,10 +859,10 @@ MouseArea {
                             displayMode: QQC.AbstractButton.IconOnly
                             focusPolicy: Qt.NoFocus
                         }
-                        topLeftRadius: ((annotationsToolBar.valignment & Qt.AlignBottom) || SelectionEditor.selection.empty) && otbLoader.x >= 0 ? 0 : radius
-                        topRightRadius: ((annotationsToolBar.valignment & Qt.AlignBottom) || SelectionEditor.selection.empty) && otbLoader.x + width <= annotationsToolBar.width ? 0 : radius
-                        bottomLeftRadius: (annotationsToolBar.valignment & Qt.AlignTop) && !SelectionEditor.selection.empty && otbLoader.x >= 0 ? 0 : radius
-                        bottomRightRadius: (annotationsToolBar.valignment & Qt.AlignTop) && !SelectionEditor.selection.empty && otbLoader.x + width <= annotationsToolBar.width ? 0 : radius
+                        topLeftRadius: ((otbLoader.valignment & Qt.AlignBottom) || SelectionEditor.selection.empty) && otbLoader.x >= 0 ? 0 : radius
+                        topRightRadius: ((otbLoader.valignment & Qt.AlignBottom) || SelectionEditor.selection.empty) && otbLoader.x + width <= annotationsToolBar.width ? 0 : radius
+                        bottomLeftRadius: (otbLoader.valignment & Qt.AlignTop) && !SelectionEditor.selection.empty && otbLoader.x >= 0 ? 0 : radius
+                        bottomRightRadius: (otbLoader.valignment & Qt.AlignTop) && !SelectionEditor.selection.empty && otbLoader.x + width <= annotationsToolBar.width ? 0 : radius
                     }
                 }
             }
