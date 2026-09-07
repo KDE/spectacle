@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+# SPDX-FileCopyrightText: 2015-2026 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-06 00:47+0000\n"
-"PO-Revision-Date: 2026-04-11 09:55+0200\n"
+"PO-Revision-Date: 2026-09-06 10:35+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
 "Language: pl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 25.08.2\n"
+"X-Generator: Lokalize 26.08.0\n"
 
 #, kde-format
 msgctxt "translatable folder name"
@@ -249,15 +249,14 @@ msgstr ""
 "><filename>%1</filename>"
 
 #: src/ExportManager.cpp:491
-#, fuzzy, kde-format
-#| msgid "Cannot save screenshot. Error while writing file."
+#, kde-format
 msgid "Cannot save screenshot. Error while opening file."
-msgstr "Nie można zapisać zrzutu ekranu. Błąd przy zapisie pliku."
+msgstr "Nie można zapisać zrzutu ekranu. Błąd przy otwieraniu pliku."
 
 #: src/ExportManager.cpp:495
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
-msgstr "Nie można zapisać zrzutu ekranu. Błąd przy zapisie pliku."
+msgstr "Nie można zapisać zrzutu ekranu. Błąd przy zapisywaniu pliku."
 
 #: src/ExportManager.cpp:515
 #, kde-kuit-format
@@ -880,7 +879,7 @@ msgstr "Nagrywanie"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "This feature is not supported on the current platform"
-msgstr ""
+msgstr "Ta rzecz nie jest obsługiwana na tej platformie"
 
 #: src/Gui/EditAction.qml:11
 #, kde-format
@@ -1098,28 +1097,26 @@ msgstr "Pokaż wskaźnik myszy na nagraniach"
 #, kde-format
 msgctxt "@option:check for recordings"
 msgid "Record system audio"
-msgstr ""
+msgstr "Nagraj dźwięk systemowy"
 
 #: src/Gui/OptionsMenu.cpp:145
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Include the audio that is currently playing on the system in the recording"
-msgstr ""
+msgstr "Z dźwiękiem, który obecnie jest odtwarzany na systemie na nagraniu"
 
 #: src/Gui/OptionsMenu.cpp:153
-#, fuzzy, kde-format
-#| msgctxt "@action global shortcut"
-#| msgid "Record Screen"
+#, kde-format
 msgctxt "@option:check for recordings"
 msgid "Record microphone"
-msgstr "Nagraj ekran"
+msgstr "Nagraj mikrofon"
 
 #: src/Gui/OptionsMenu.cpp:154
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include audio from the default microphone in the recording"
-msgstr ""
+msgstr "Z dźwiękiem z domyślnego mikrofonu na nagraniu"
 
 #: src/Gui/OptionsMenuButton.qml:10
 #, kde-format
@@ -1146,15 +1143,13 @@ msgid "New Recording"
 msgstr "Nowe nagranie"
 
 #: src/Gui/RecordingSettingsColumn.qml:22
-#, fuzzy, kde-format
-#| msgid "Include mouse pointer"
+#, kde-format
 msgctxt "@option:check"
 msgid "Include mouse pointer"
 msgstr "Ze wskaźnikiem myszy"
 
 #: src/Gui/RecordingSettingsColumn.qml:23
-#, fuzzy, kde-format
-#| msgid "Show the mouse cursor in the screen recording."
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Pokaż wskaźnik myszy na nagraniach ekranu."
@@ -1163,34 +1158,32 @@ msgstr "Pokaż wskaźnik myszy na nagraniach ekranu."
 #, kde-format
 msgctxt "@option:check"
 msgid "Record system audio"
-msgstr ""
+msgstr "Nagraj dźwięk systemowy"
 
 #: src/Gui/RecordingSettingsColumn.qml:33
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Include the audio that is currently playing on the system in the recording."
-msgstr ""
+msgstr "Z dźwiękiem, który obecnie jest odtwarzany na systemie na nagraniu."
 
 #: src/Gui/RecordingSettingsColumn.qml:45
-#, fuzzy, kde-format
-#| msgctxt "@action global shortcut"
-#| msgid "Record Screen"
+#, kde-format
 msgctxt "@option:check"
 msgid "Record microphone"
-msgstr "Nagraj ekran"
+msgstr "Nagraj mikrofon"
 
 #: src/Gui/RecordingSettingsColumn.qml:46
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include audio from the default microphone in the recording."
-msgstr ""
+msgstr "Z dźwiękiem z domyślnego mikrofonu na nagraniu."
 
 #: src/Gui/RecordingSettingsColumn.qml:57
 #, kde-format
 msgctxt "@info"
 msgid "The selected video format does not support audio."
-msgstr ""
+msgstr "Wybrany format nagrania nie obsługuje dźwięku."
 
 #: src/Gui/RecordingView.qml:90
 #, kde-format
@@ -1650,17 +1643,15 @@ msgstr "Określa, czy wskaźnik myszy ma znaleźć się na nagraniu"
 
 #. i18n: ectx: label, entry (videoRecordSystemAudio), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:99
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the video"
+#, kde-format
 msgid "Whether system audio is included in the recording"
-msgstr "Określa, czy wskaźnik myszy ma znaleźć się na nagraniu"
+msgstr "Określa, czy dźwięk ma znaleźć się na nagraniu"
 
 #. i18n: ectx: label, entry (videoRecordMicrophone), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:103
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the video"
+#, kde-format
 msgid "Whether microphone audio is included in the recording"
-msgstr "Określa, czy wskaźnik myszy ma znaleźć się na nagraniu"
+msgstr "Określa, czy dźwięk z mikrofonu ma znaleźć się na nagraniu"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:107
@@ -2241,12 +2232,10 @@ msgid "An error occurred while taking a screenshot."
 msgstr "Wystąpił błąd w trakcie zrzucania ekranu."
 
 #: src/SpectacleCore.cpp:300
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording with Sound"
-msgstr "Spectacle nagrywa"
+msgstr "Spectacle nagrywa z dźwiękiem"
 
 #: src/SpectacleCore.cpp:301
 #, kde-format
@@ -2255,12 +2244,10 @@ msgid "Spectacle is Recording"
 msgstr "Spectacle nagrywa"
 
 #: src/SpectacleCore.cpp:306
-#, fuzzy, kde-format
-#| msgctxt "recording notification title"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording with Sound"
-msgstr "Spectacle nagrywa"
+msgstr "Spectacle nagrywa z dźwiękiem"
 
 #: src/SpectacleCore.cpp:307
 #, kde-format
