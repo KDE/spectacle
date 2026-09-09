@@ -52,12 +52,6 @@ ViewerWindow::ViewerWindow(Mode mode, QQmlEngine *engine, QWindow *parent)
         if (error) {
             auto text = i18nc("@info, %1 is the error message", "There was a problem sharing the image: %1", message);
             InlineMessageModel::instance()->push(InlineMessageModel::Error, text);
-        } else {
-            auto text = i18nc("@info", "The shared image link (<a href=\"%1\">%1</a>) has been copied to the clipboard.", message);
-            InlineMessageModel::instance()->push(InlineMessageModel::Shared, text);
-            if (!message.isEmpty()) {
-                QApplication::clipboard()->setText(message);
-            }
         }
     });
 
