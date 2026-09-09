@@ -134,8 +134,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
     m_annotationDocument = std::make_unique<AnnotationDocument>();
 
     // essential connections
-    connect(SelectionEditor::instance(), &SelectionEditor::accepted,
-            this, [this](const QRectF &rect, const ExportManager::Actions &actions){
+    connect(SelectionEditor::instance(), &SelectionEditor::accepted, this, [this](const QRectF &rect, const ExportManager::Actions &actions) {
         m_returnToViewer = m_startMode == StartMode::Gui;
         if (m_videoMode) {
             const auto captureWindows = CaptureWindow::instances();
@@ -191,7 +190,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
             ExportManager::instance()->scanQRCode();
             ExportManager::instance()->exportImage(exportActions, outputUrl());
         }
-    }, Qt::QueuedConnection);
+    });
 
     connect(imagePlatform, &ImagePlatform::newScreenshotTaken, this, [this](const QImage &image){
         InlineMessageModel::instance()->clear();
