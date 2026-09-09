@@ -134,6 +134,12 @@ SpectacleCore::SpectacleCore(QObject *parent)
     m_annotationDocument = std::make_unique<AnnotationDocument>();
 
     // essential connections
+    connect(SelectionEditor::instance(), &SelectionEditor::accepted, this, [this](const auto &rect, const auto &) {
+        if (!m_videoMode) {
+            m_annotationDocument->cropCanvas(rect);
+            syncExportImage();
+        }
+    });
     connect(SelectionEditor::instance(), &SelectionEditor::accepted,
             this, [this](const QRectF &rect, const ExportManager::Actions &actions){
         m_returnToViewer = m_startMode == StartMode::Gui;
@@ -170,8 +176,6 @@ SpectacleCore::SpectacleCore(QObject *parent)
         } else {
             SpectacleWindow::setVisibilityForAll(QWindow::Hidden);
             deleteWindows();
-            m_annotationDocument->cropCanvas(rect);
-            syncExportImage();
             auto exportActions = actions & ExportManager::AnyAction ? actions : autoExportActions();
             if (m_ocrExportInProgress) {
                 if (Settings::closeAfterOcr()) {
