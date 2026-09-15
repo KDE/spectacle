@@ -733,8 +733,9 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
         // compressed size.
         data->setImageData(image);
         // "x-kde-force-image-copy" is handled by Klipper.
-        // It ensures that the image is copied to Klipper even with the
-        // "Non-text selection: Never save in history" setting selected in Klipper.
+        // It ensures that the image is copied to Klipper even when
+        // "Include in history: Image data copied explicitly" setting
+        // is not checked in Klipper.
         data->setData(u"x-kde-force-image-copy"_s, QByteArray());
         QString fileName = url.fileName();
         if (fileName.isEmpty()) {
