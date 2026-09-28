@@ -21,11 +21,13 @@ qt_add_qml_module(spectacle URI ${SPECTACLE_QML_URI} DEPENDENCIES QtCore QtQuick
 
 target_sources(spectacle PRIVATE
     ${SPECTACLE_SRCS}
+    AudioDeviceModel.cpp
     CaptureModeModel.cpp
     CommandLineOptions.cpp
     ExportManager.cpp
     Geometry.cpp
     OcrManager.cpp
+    Gui/AudioDeviceMenu.cpp
     Gui/CaptureWindow.cpp
     Gui/ExportMenu.cpp
     Gui/HelpMenu.cpp
@@ -49,6 +51,7 @@ target_sources(spectacle PRIVATE
     Gui/ViewerWindow.cpp
     Main.cpp
     PlasmaVersion.cpp
+    Platforms/AudioDeviceMonitor.cpp
     Platforms/ImagePlatform.cpp
     Platforms/ImagePlatformKWin.cpp
     Platforms/PlatformLoader.cpp
@@ -127,6 +130,7 @@ target_link_libraries(spectacle PRIVATE
     LayerShellQt::Interface
     KQuickImageEditor
     PkgConfig::TESSERACT
+    PkgConfig::PipeWire
 )
 
 # qt_add_qml_module doesn't know how to deal with headers in subdirectories so

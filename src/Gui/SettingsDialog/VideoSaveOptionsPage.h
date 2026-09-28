@@ -10,6 +10,7 @@
 #include <QWidget>
 
 class Ui_VideoSaveOptions;
+class AudioDeviceModel;
 class VideoFormatComboBox;
 class VideoFormatModel;
 
@@ -21,10 +22,15 @@ public:
     explicit VideoSaveOptionsPage(QWidget *parent = nullptr);
     ~VideoSaveOptionsPage() override;
 
+    /// The audio devices chosen in the dialog, which are only saved when the settings are applied
+    AudioDeviceModel *audioDeviceModel() const;
+
 private:
     QScopedPointer<Ui_VideoSaveOptions> m_ui;
     std::unique_ptr<VideoFormatComboBox> m_videoFormatComboBox;
     std::unique_ptr<VideoFormatModel> m_videoFormatModel;
+    AudioDeviceModel *const m_audioDeviceModel;
 
     void updateFilenamePreview();
+    void updateAudioDevicesEnabled();
 };

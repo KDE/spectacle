@@ -24,3 +24,25 @@ ecm_add_test(
     LINK_LIBRARIES  Qt::Test
         Qt::PrintSupport Qt::Qml KF6::I18n KF6::ConfigCore KF6::GlobalAccel KF6::KIOCore KF6::WindowSystem KF6::XmlGui KF6::GuiAddons KF6::PrisonScanner
 )
+
+set(AUDIO_DEVICE_MODEL_TEST_SRCS
+    AudioDeviceModelTest.cpp
+    ../src/AudioDeviceModel.cpp
+    ../src/Platforms/AudioDeviceMonitor.cpp
+)
+
+ecm_qt_declare_logging_category(AUDIO_DEVICE_MODEL_TEST_SRCS
+    HEADER spectacle_debug.h
+    IDENTIFIER SPECTACLE_LOG
+    CATEGORY_NAME spectacle
+    DESCRIPTION "spectacle (general)"
+    EXPORT SPECTACLE
+)
+
+kconfig_add_kcfg_files(AUDIO_DEVICE_MODEL_TEST_SRCS GENERATE_MOC ${PROJECT_SOURCE_DIR}/src/Gui/SettingsDialog/settings.kcfgc)
+
+ecm_add_test(
+    ${AUDIO_DEVICE_MODEL_TEST_SRCS}
+    TEST_NAME "audiodevicemodel_test"
+    LINK_LIBRARIES Qt::Test Qt::Qml KF6::I18n KF6::ConfigGui PkgConfig::PipeWire
+)

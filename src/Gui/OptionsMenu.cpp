@@ -4,12 +4,14 @@
 
 #include "OptionsMenu.h"
 
+#include "AudioDeviceMenu.h"
 #include "CaptureModeModel.h"
 #include "Gui/SmartSpinBox.h"
 #include "Gui/SettingsDialog/SettingsDialog.h"
 #include "SpectacleCore.h"
 #include "WidgetWindowUtils.h"
 #include "HelpMenu.h"
+#include "Platforms/VideoPlatform.h"
 #include "settings.h"
 
 #include <KLocalizedString>
@@ -142,23 +144,17 @@ OptionsMenu::OptionsMenu(QWidget *parent)
         videoIncludeMousePointerAction->setChecked(Settings::videoIncludePointer());
     });
 
-    auto videoRecordSystemAudioAction = addAction(i18nc("@option:check for recordings", "Record system audio"));
-    videoRecordSystemAudioAction->setToolTip(i18nc("@info:tooltip", "Include the audio that is currently playing on the system in the recording"));
-    videoRecordSystemAudioAction->setCheckable(true);
-    videoRecordSystemAudioAction->setChecked(Settings::videoRecordSystemAudio());
-    QObject::connect(videoRecordSystemAudioAction, &QAction::toggled, Settings::self(), &Settings::setVideoRecordSystemAudio);
-    QObject::connect(Settings::self(), &Settings::videoRecordSystemAudioChanged, videoRecordSystemAudioAction, [videoRecordSystemAudioAction]() {
-        videoRecordSystemAudioAction->setChecked(Settings::videoRecordSystemAudio());
-    });
-
-    auto videoRecordMicrophoneAction = addAction(i18nc("@option:check for recordings", "Record microphone"));
-    videoRecordMicrophoneAction->setToolTip(i18nc("@info:tooltip", "Include audio from the default microphone in the recording"));
-    videoRecordMicrophoneAction->setCheckable(true);
-    videoRecordMicrophoneAction->setChecked(Settings::videoRecordMicrophone());
-    QObject::connect(videoRecordMicrophoneAction, &QAction::toggled, Settings::self(), &Settings::setVideoRecordMicrophone);
-    QObject::connect(Settings::self(), &Settings::videoRecordMicrophoneChanged, videoRecordMicrophoneAction, [videoRecordMicrophoneAction]() {
-        videoRecordMicrophoneAction->setChecked(Settings::videoRecordMicrophone());
-    });
+    auto audioDeviceMenuAction = addMenu(AudioDeviceMenu::instance());
+    // GIF and WebP can't carry an audio track
+    const auto updateAudioDeviceMenuAction = [audioDeviceMenuAction] {
+        const auto format = static_cast<VideoPlatform::Format>(Settings::preferredVideoFormat());
+        const bool audioSupported = VideoPlatform::formatSupportsAudio(format);
+        audioDeviceMenuAction->setEnabled(audioSupported);
+        audioDeviceMenuAction->setToolTip(audioSupported ? i18nc("@info:tooltip", "Choose the audio devices to include in the recording")
+                                                         : i18nc("@info:tooltip", "The selected video format does not support audio"));
+    };
+    updateAudioDeviceMenuAction();
+    QObject::connect(Settings::self(), &Settings::preferredVideoFormatChanged, audioDeviceMenuAction, updateAudioDeviceMenuAction);
 
     addSeparator();
 
@@ -167,6 +163,7 @@ OptionsMenu::OptionsMenu(QWidget *parent)
     addMenu(HelpMenu::instance());
     connect(this, &OptionsMenu::aboutToShow,
             this, [this] {
+                setWidgetTransientParentToWidget(AudioDeviceMenu::instance(), this);
                 setWidgetTransientParentToWidget(HelpMenu::instance(), this);
             });
 }

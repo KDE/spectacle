@@ -150,7 +150,9 @@ VideoPlatform::Formats VideoPlatformWayland::supportedFormats() const
 
 bool VideoPlatformWayland::isRecordingAudio() const
 {
-    return m_recorder && (m_recorder->recordMicrophone() || m_recorder->recordSystemAudio());
+    return m_recorder
+        && (m_recorder->recordMicrophone() || m_recorder->recordSystemAudio() || !m_recorder->recordedAudioSinks().isEmpty()
+            || !m_recorder->recordedAudioSources().isEmpty());
 }
 
 void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode recordingMode, const QVariantMap &options, bool includePointer)
@@ -322,11 +324,13 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
             m_recorder->setEncoder(encoderForFormat(format));
             m_recorder->setOutput(localFile);
         }
-        // The stored settings stay enabled when the checkboxes are disabled
+        // The stored settings stay enabled when the audio options are disabled
         // for a format without audio support, don't forward them in that case.
         const bool audioSupported = formatSupportsAudio(format);
         m_recorder->setRecordSystemAudio(Settings::videoRecordSystemAudio() && audioSupported);
         m_recorder->setRecordMicrophone(Settings::videoRecordMicrophone() && audioSupported);
+        m_recorder->setRecordedAudioSinks(audioSupported ? Settings::videoRecordedAudioSinks() : QStringList{});
+        m_recorder->setRecordedAudioSources(audioSupported ? Settings::videoRecordedAudioSources() : QStringList{});
         if (m_recorder->nodeId() != 0) {
             m_recorder->start();
         }

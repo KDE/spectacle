@@ -96,12 +96,18 @@
         <default>true</default>
     </entry>
     <entry name="videoRecordSystemAudio" type="Bool">
-        <label>Whether system audio is included in the recording</label>
+        <label>Whether the audio played on the default output device is included in the recording</label>
         <default>false</default>
     </entry>
     <entry name="videoRecordMicrophone" type="Bool">
-        <label>Whether microphone audio is included in the recording</label>
+        <label>Whether the audio from the default input device is included in the recording</label>
         <default>false</default>
+    </entry>
+    <entry name="videoRecordedAudioSinks" type="StringList">
+        <label>PipeWire node names of the output devices whose audio is included in the recording</label>
+    </entry>
+    <entry name="videoRecordedAudioSources" type="StringList">
+        <label>PipeWire node names of the input devices whose audio is included in the recording</label>
     </entry>
     <entry name="includeDecorations" type="Bool">
         <label>Whether the window decorations are included in the screenshot</label>

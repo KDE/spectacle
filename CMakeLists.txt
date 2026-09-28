@@ -102,6 +102,7 @@ set_package_properties(KQuickImageEditor PROPERTIES
 )
 
 pkg_check_modules(TESSERACT REQUIRED IMPORTED_TARGET tesseract)
+pkg_check_modules(PipeWire REQUIRED IMPORTED_TARGET libpipewire-0.3)
 
 # optional components
 find_package(KF6DocTools ${KF6_MIN_VERSION})

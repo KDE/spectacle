@@ -8,6 +8,7 @@
 
 #include "SettingsDialog.h"
 
+#include "AudioDeviceModel.h"
 #include "GeneralOptionsPage.h"
 #include "ImageSaveOptionsPage.h"
 #include "OcrLanguageSelector.h"
@@ -42,6 +43,9 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         updateButtons();
     });
     connect(m_generalPage, &GeneralOptionsPage::ocrLanguageChanged, this, [this] {
+        updateButtons();
+    });
+    connect(m_videosPage->audioDeviceModel(), &AudioDeviceModel::selectionChanged, this, [this] {
         updateButtons();
     });
     connect(this, &KConfigDialog::currentPageChanged, this, &SettingsDialog::updateButtons);
@@ -92,7 +96,8 @@ bool SettingsDialog::hasChanged()
     if (OcrManager::instance()->isAvailable()) {
         ocrHasChanges = m_generalPage->ocrLanguageSelector()->hasChanges();
     }
-    return m_shortcutsPage->isModified() || ocrHasChanges || KConfigDialog::hasChanged();
+    const bool audioDevicesChanged = m_videosPage->audioDeviceModel()->selection() != AudioDeviceModel::Selection::fromSettings();
+    return m_shortcutsPage->isModified() || ocrHasChanges || audioDevicesChanged || KConfigDialog::hasChanged();
 }
 
 bool SettingsDialog::isDefault()
@@ -101,13 +106,22 @@ bool SettingsDialog::isDefault()
     if (OcrManager::instance()->isAvailable()) {
         ocrIsDefault = m_generalPage->ocrLanguageSelector()->isDefault();
     }
-    return currentPage()->name() != i18n("Shortcuts") && ocrIsDefault && KConfigDialog::isDefault();
+    const bool audioDevicesDefault = m_videosPage->audioDeviceModel()->selection() == AudioDeviceModel::Selection::defaults();
+    return currentPage()->name() != i18n("Shortcuts") && ocrIsDefault && audioDevicesDefault && KConfigDialog::isDefault();
 }
 
 void SettingsDialog::updateSettings()
 {
     KConfigDialog::updateSettings();
     m_shortcutsPage->saveChanges();
+
+    // The config manager only writes the config when one of its own widgets
+    // changed, so write it here in case only the audio devices did.
+    const auto audioDevices = m_videosPage->audioDeviceModel()->selection();
+    if (audioDevices != AudioDeviceModel::Selection::fromSettings()) {
+        audioDevices.saveToSettings();
+        Settings::self()->save();
+    }
 
     if (OcrManager::instance()->isAvailable()) {
         m_generalPage->ocrLanguageSelector()->saveSettings();
@@ -122,6 +136,7 @@ void SettingsDialog::updateWidgets()
 {
     KConfigDialog::updateWidgets();
     m_shortcutsPage->resetChanges();
+    m_videosPage->audioDeviceModel()->setSelection(AudioDeviceModel::Selection::fromSettings());
 
     if (OcrManager::instance()->isAvailable()) {
         m_generalPage->ocrLanguageSelector()->updateWidgets();
@@ -141,6 +156,7 @@ void SettingsDialog::updateWidgetsDefault()
 
     KConfigDialog::updateWidgetsDefault();
     m_shortcutsPage->defaults();
+    m_videosPage->audioDeviceModel()->setSelection(AudioDeviceModel::Selection::defaults());
 
     if (OcrManager::instance()->isAvailable()) {
         m_generalPage->ocrLanguageSelector()->applyDefaults();

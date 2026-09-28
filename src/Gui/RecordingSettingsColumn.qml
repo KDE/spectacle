@@ -26,29 +26,28 @@ ColumnLayout {
         checked: Settings.videoIncludePointer
         onToggled: Settings.videoIncludePointer = checked
     }
-    QQC.CheckBox {
-        Layout.fillWidth: true
-        enabled: root.audioSupported
-        text: i18nc("@option:check", "Record system audio")
-        QQC.ToolTip.text: i18nc("@info:tooltip", "Include the audio that is currently playing on the system in the recording.")
-        QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
-        QQC.ToolTip.visible: hovered
-        // Explain why this is disabled, since a disabled control doesn't get
-        // hover events and can't show its tooltip.
-        Accessible.description: root.audioSupported ? "" : audioUnsupportedMessage.text
-        checked: Settings.videoRecordSystemAudio
-        onToggled: Settings.videoRecordSystemAudio = checked
-    }
-    QQC.CheckBox {
-        Layout.fillWidth: true
-        enabled: root.audioSupported
-        text: i18nc("@option:check", "Record microphone")
-        QQC.ToolTip.text: i18nc("@info:tooltip", "Include audio from the default microphone in the recording.")
-        QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
-        QQC.ToolTip.visible: hovered
-        Accessible.description: root.audioSupported ? "" : audioUnsupportedMessage.text
-        checked: Settings.videoRecordMicrophone
-        onToggled: Settings.videoRecordMicrophone = checked
+    RowLayout {
+        spacing: root.spacing
+        QQC.Label {
+            enabled: root.audioSupported
+            text: i18nc("@label:listbox", "Audio:")
+        }
+        QQC.Button {
+            Layout.fillWidth: true
+            enabled: root.audioSupported
+            icon.name: AudioDeviceModel.iconName
+            // Device names like "B&O" would otherwise get a mnemonic
+            text: AudioDeviceModel.summary.replace(/&/g, "&&")
+            down: pressed || AudioDeviceMenu.visible
+            Accessible.role: Accessible.ButtonMenu
+            // Explain why this is disabled, since a disabled control doesn't get
+            // hover events and can't show its tooltip.
+            Accessible.description: root.audioSupported ? "" : audioUnsupportedMessage.text
+            QQC.ToolTip.text: i18nc("@info:tooltip", "Choose the audio devices to include in the recording. Nothing selected means the recording has no sound.")
+            QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
+            QQC.ToolTip.visible: hovered && !AudioDeviceMenu.visible
+            onPressed: AudioDeviceMenu.popup(this)
+        }
     }
     Kirigami.InlineMessage {
         id: audioUnsupportedMessage
