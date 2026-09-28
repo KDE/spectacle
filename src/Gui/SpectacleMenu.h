@@ -29,10 +29,21 @@ public:
      */
     Q_INVOKABLE virtual void popup(QQuickItem *item);
 
+    /**
+     * Keep the menu open when a checkable action is triggered, so that several
+     * options can be toggled in one go.
+     */
+    void setKeepOpenOnCheckableActions(bool keepOpen);
+
 Q_SIGNALS:
     void visibleChanged();
 
 protected:
     void showEvent(QShowEvent *event) override;
     void hideEvent(QHideEvent *) override;
+    void keyPressEvent(QKeyEvent *event) override;
+    void mouseReleaseEvent(QMouseEvent *event) override;
+
+private:
+    bool m_keepOpenOnCheckableActions = false;
 };

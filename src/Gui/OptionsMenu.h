@@ -38,8 +38,6 @@ public:
 
 protected:
     void changeEvent(QEvent *event) override;
-    void keyPressEvent(QKeyEvent *event) override;
-    void mouseReleaseEvent(QMouseEvent *event) override;
 
     explicit OptionsMenu(QWidget *parent = nullptr);
     ~OptionsMenu();

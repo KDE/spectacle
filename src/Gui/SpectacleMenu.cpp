@@ -4,9 +4,12 @@
 
 #include "SpectacleMenu.h"
 #include "WidgetWindowUtils.h"
+#include <QKeyEvent>
+#include <QMouseEvent>
 #include <QQuickItem>
 #include <QQuickWindow>
 #include <QScreen>
+#include <QStyle>
 #include <QTimer>
 
 SpectacleMenu::SpectacleMenu(const QString &title, QWidget *parent)
@@ -72,6 +75,37 @@ void SpectacleMenu::hideEvent(QHideEvent *event)
 {
     QMenu::hideEvent(event);
     Q_EMIT visibleChanged();
+}
+
+void SpectacleMenu::setKeepOpenOnCheckableActions(bool keepOpen)
+{
+    m_keepOpenOnCheckableActions = keepOpen;
+}
+
+void SpectacleMenu::keyPressEvent(QKeyEvent *event)
+{
+    // Try to keep menu open when triggering checkable actions
+    const auto key = event->key();
+    const auto action = activeAction();
+    if (m_keepOpenOnCheckableActions && action && action->isEnabled() && action->isCheckable() //
+        && (key == Qt::Key_Return || key == Qt::Key_Enter //
+            || (key == Qt::Key_Space && style()->styleHint(QStyle::SH_Menu_SpaceActivatesItem, nullptr, this)))) {
+        action->trigger();
+        event->accept();
+        return;
+    }
+    QMenu::keyPressEvent(event);
+}
+
+void SpectacleMenu::mouseReleaseEvent(QMouseEvent *event)
+{
+    // Try to keep menu open when triggering checkable actions
+    const auto action = activeAction() == actionAt(event->position().toPoint()) ? activeAction() : nullptr;
+    if (m_keepOpenOnCheckableActions && action && action->isEnabled() && action->isCheckable()) {
+        action->trigger();
+        return;
+    }
+    QMenu::mouseReleaseEvent(event);
 }
 
 #include "moc_SpectacleMenu.cpp"
