@@ -1,0 +1,398 @@
+<?xml version="1.0" ?>
+<!DOCTYPE refentry PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Russian "INCLUDE">
+]>
+
+<refentry lang="&language;">
+<refentryinfo>
+<title
+>Руководство пользователя Spectacle</title>
+<author
+><firstname
+>Yuri</firstname
+><surname
+>Chornoivan</surname
+> <contrib
+>Man-страница Spectacle.</contrib
+> <email
+>yurchor@ukr.net</email
+></author>
+<date
+>2023-11-26</date>
+<releaseinfo
+>Spectacle 23.08</releaseinfo>
+<productname
+>Приложения KDE</productname>
+</refentryinfo>
+
+<refmeta>
+<refentrytitle
+><command
+>spectacle</command
+></refentrytitle>
+<manvolnum
+>1</manvolnum>
+</refmeta>
+
+<refnamediv>
+<refname
+>spectacle</refname>
+<refpurpose
+>Утилита для создания снимков экрана</refpurpose>
+</refnamediv>
+<!-- body begins here -->
+<refsynopsisdiv id='synopsis'>
+<cmdsynopsis
+><command
+>spectacle</command
+> <arg choice="opt"
+><replaceable
+>Spectacle options</replaceable
+></arg
+> </cmdsynopsis>
+</refsynopsisdiv>
+
+
+<refsect1 id="description"
+><title
+>Описание</title>
+<para
+><command
+>spectacle</command
+> — простое приложение для создания снимков экрана. Оно позволяет создавать снимки всего рабочего стола, отдельного монитора, текущего активного окна, окна под указателем мыши или прямоугольной области экрана. Снимки можно комментировать, печатать, передавать другим приложениям для обработки или быстро сохранять без изменений.</para>
+
+</refsect1>
+
+<refsect1 id="options"
+><title
+>Параметры Spectacle</title>
+<variablelist>
+
+<varlistentry>
+<term
+><option
+>-h, --help</option
+></term>
+<listitem>
+<para
+>Показывает справку по параметрам командной строки.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>--help-all</option
+></term>
+<listitem>
+<para
+>Показывает справку, включая параметры, специфичные для Qt.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-v, --version</option
+></term>
+<listitem>
+<para
+>Показывает сведения о версии.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-f, --fullscreen</option
+></term>
+<listitem>
+<para
+>Захватывает весь рабочий стол (по умолчанию).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>--scaled</option
+></term>
+<listitem>
+<para
+>При использовании вместе с <option
+>-f</option
+>/<option
+>--fullscreen</option
+> выполняется захват всех экранов с масштабированием до одинакового размера. Без <option
+>-f</option
+> не действует.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-m, --current</option
+></term>
+<listitem>
+<para
+>Захватывает текущий монитор.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-a, --activewindow</option
+></term>
+<listitem>
+<para
+>Захватывает активное окно.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-u, --windowundercursor</option
+></term>
+<listitem>
+<para
+>Захватывает окно под курсором вместе с родительскими окнами всплывающих меню.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-t, --transientonly</option
+></term>
+<listitem>
+<para
+>Захватывает окно под курсором без родительских окон всплывающих меню.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-r, --region</option
+></term>
+<listitem>
+<para
+>Захватывает прямоугольную область экрана.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-l, --launchonly</option
+></term>
+<listitem>
+<para
+>Запускает Spectacle без создания снимка экрана.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-g, --gui</option
+></term>
+<listitem>
+<para
+>Запускает в графическом режиме (по умолчанию).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-b, --background</option
+></term>
+<listitem>
+<para
+>Создаёт снимок экрана и завершает работу, не показывая графический интерфейс.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-s, --dbus</option
+></term>
+<listitem>
+<para
+>Запускает в режиме активации через DBus.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-n, --nonotify</option
+></term>
+<listitem>
+<para
+>В фоновом режиме не показывает уведомление при создании снимка экрана.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-o, --output <replaceable
+>fileName</replaceable
+></option
+></term>
+<listitem>
+<para
+>В фоновом режиме сохраняет изображение в указанный файл <replaceable
+>fileName</replaceable
+>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-d, --delay <replaceable
+>delayMsec</replaceable
+></option
+></term>
+<listitem>
+<para
+>В фоновом режиме задаёт задержку перед созданием снимка (в миллисекундах).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-c, --copy-image</option
+></term>
+<listitem>
+<para
+>В фоновом режиме копирует снимок экрана только в буфер обмена, если не указан также параметр -o.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-C, --copy-path</option
+></term>
+<listitem>
+<para
+>В фоновом режиме копирует путь к файлу снимка экрана в буфер обмена.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-w, --onclick</option
+></term>
+<listitem>
+<para
+>Ожидает щелчка перед созданием снимка экрана. Отменяет задержку.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-i, --new-instance</option
+></term>
+<listitem>
+<para
+>Запускает новый экземпляр Spectacle с графическим интерфейсом без регистрации в DBus.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-p, --pointer</option
+></term>
+<listitem>
+<para
+>В фоновом режиме включает указатель мыши в снимок экрана.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-e, --no-decoration</option
+></term>
+<listitem>
+<para
+>В фоновом режиме не включает оформление окон в снимок экрана.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-E, --edit-existing <replaceable
+>existingFileName</replaceable
+></option
+></term>
+<listitem>
+<para
+>Открывает существующий файл снимка экрана для редактирования.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+
+<refsect1 id="feedback"
+><title
+>Обратная связь</title>
+<para
+>В IRC (irc.libera.chat, #kde), по электронной почте (kde-graphics-devel@kde.org) или на веб-сайте: &lt;<ulink url="https://apps.kde.org/spectacle"
+>https://apps.kde.org/spectacle</ulink
+>&gt;</para>
+</refsect1>
+
+<refsect1>
+<title
+>Смотрите также</title>
+<simplelist>
+<member
+>Более подробная документация для пользователя доступна по адресу <ulink url="help:/spectacle"
+>help:/spectacle</ulink
+> (введите этот <acronym
+>URL</acronym
+> в &konqueror; или выполните <userinput
+><command
+>khelpcenter</command
+> <parameter
+>help:/spectacle</parameter
+></userinput
+>).</member>
+<member
+>kf6options(7)</member>
+<member
+>qt6options(7)</member>
+<member
+>Дополнительные сведения также доступны на странице <ulink url="https://apps.kde.org/spectacle"
+>https://apps.kde.org/spectacle</ulink
+></member>
+</simplelist>
+</refsect1>
+
+<refsect1 id="copyright"
+><title
+>Авторские права</title>
+<para
+>© Boudhayan Gupta, 2015</para>
+<para
+>Лицензия: GNU General Public Version 2 &lt;<ulink url="https://www.gnu.org/licenses/gpl-2.0.html"
+>https://www.gnu.org/licenses/gpl-2.0.html</ulink
+>&gt;</para>
+</refsect1>
+</refentry>
+
