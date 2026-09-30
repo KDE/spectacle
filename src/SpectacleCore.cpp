@@ -428,8 +428,10 @@ SpectacleCore::SpectacleCore(QObject *parent)
     connect(videoPlatform, &VideoPlatform::recordingSaved, this, [this](const QUrl &fileUrl) {
         // Always try to save. Needed to move recordings out of temp dir.
         ExportManager::instance()->exportVideo(autoExportActions() | ExportManager::Save, fileUrl, videoOutputUrl());
+        m_recordingEventLoopLocker.reset();
     });
     connect(videoPlatform, &VideoPlatform::recordingCanceled, this, [this] {
+        m_recordingEventLoopLocker.reset();
         if (m_startMode != StartMode::Gui || !m_returnToViewer || isGuiNull()) {
             Q_EMIT allDone();
             return;
@@ -444,7 +446,8 @@ SpectacleCore::SpectacleCore(QObject *parent)
             w->setVisible(true);
         }
     });
-    connect(videoPlatform, &VideoPlatform::recordingFailed, this, [onScreenshotOrRecordingFailed](const QString &message){
+    connect(videoPlatform, &VideoPlatform::recordingFailed, this, [this, onScreenshotOrRecordingFailed](const QString &message){
+        m_recordingEventLoopLocker.reset();
         auto uiMessage = i18nc("@info", "An error occurred while attempting to record the screen.");
         onScreenshotOrRecordingFailed(message, uiMessage, &SpectacleCore::dbusRecordingFailed);
     });
@@ -1550,7 +1553,11 @@ void SpectacleCore::startRecording(VideoPlatform::RecordingMode mode, bool withP
     if (m_videoPlatform->isRecording() || mode == VideoPlatform::NoRecordingModes) {
         return;
     }
-    if (!CaptureWindow::instances().empty()) {
+    const bool hasCaptureWindows = !CaptureWindow::instances().empty();
+    if (hasCaptureWindows && mode != VideoPlatform::Region && !m_recordingEventLoopLocker) {
+        m_recordingEventLoopLocker = std::make_unique<QEventLoopLocker>();
+    }
+    if (hasCaptureWindows) {
         SpectacleWindow::setVisibilityForAll(QWindow::Hidden);
         if (mode != VideoPlatform::Region) {
             m_returnToViewer = true;

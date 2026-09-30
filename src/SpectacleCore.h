@@ -172,6 +172,7 @@ private:
     std::unique_ptr<QTimer> m_annotationSyncTimer;
     std::unique_ptr<QVariantAnimation> m_delayAnimation;
     std::unique_ptr<QEventLoopLocker> m_eventLoopLocker;
+    std::unique_ptr<QEventLoopLocker> m_recordingEventLoopLocker;
 
     // Use ViewerWindow::instance() to get the viewer window.
     ViewerWindow::UniquePointer m_viewerWindow = {nullptr, nullptr};
