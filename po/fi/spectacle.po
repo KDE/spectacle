@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-01 02:45+0000\n"
-"PO-Revision-Date: 2026-03-03 15:17+0200\n"
+"PO-Revision-Date: 2026-08-25 10:12+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -100,6 +100,8 @@ msgstr "Kaappaa koko työpöytä (oletus)"
 msgid ""
 "When used with -f/--fullscreen, capture all screens scaled to the same size"
 msgstr ""
+"Yhdessä -f/--fullscreen-valitsimen kanssa kaappaa kaikki näytöt skaalattuna "
+"samankokoisiksi"
 
 #: src/CommandLineOptions.h:30
 #, kde-format
@@ -249,12 +251,9 @@ msgstr ""
 "><filename>%1</filename>"
 
 #: src/ExportManager.cpp:491
-#, fuzzy, kde-format
-#| msgid "Cannot save screenshot. Error while writing file."
+#, kde-format
 msgid "Cannot save screenshot. Error while opening file."
-msgstr ""
-"Kuvakaappauksen tallentaminen epäonnistui. Tiedostoa tallennettaessa sattui "
-"virhe."
+msgstr "Kuvakaappausta ei voida tallentaa. Virhe avattaessa tiedostoa."
 
 #: src/ExportManager.cpp:495
 #, kde-format
@@ -881,7 +880,7 @@ msgstr "Nauhoitus"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "This feature is not supported on the current platform"
-msgstr ""
+msgstr "Nykyinen alusta ei tue tätä ominaisuutta"
 
 #: src/Gui/EditAction.qml:11
 #, kde-format
@@ -1099,28 +1098,26 @@ msgstr "Näytä näyttönauhoituksessa hiiriosoitin"
 #, kde-format
 msgctxt "@option:check for recordings"
 msgid "Record system audio"
-msgstr ""
+msgstr "Nauhoita järjestelmä-ääni"
 
 #: src/Gui/OptionsMenu.cpp:145
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Include the audio that is currently playing on the system in the recording"
-msgstr ""
+msgstr "Sisällytä nauhoitukseen järjestelmässä toistettava ääni"
 
 #: src/Gui/OptionsMenu.cpp:153
-#, fuzzy, kde-format
-#| msgctxt "@action global shortcut"
-#| msgid "Record Screen"
+#, kde-format
 msgctxt "@option:check for recordings"
 msgid "Record microphone"
-msgstr "Nauhoita näyttöä"
+msgstr "Nauhoita mikrofoni"
 
 #: src/Gui/OptionsMenu.cpp:154
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include audio from the default microphone in the recording"
-msgstr ""
+msgstr "Sisällytä nauhoitukseen oletusmikrofonista tuleva ääni"
 
 #: src/Gui/OptionsMenuButton.qml:10
 #, kde-format
@@ -1147,15 +1144,13 @@ msgid "New Recording"
 msgstr "Uusi nauhoitus"
 
 #: src/Gui/RecordingSettingsColumn.qml:22
-#, fuzzy, kde-format
-#| msgid "Include mouse pointer"
+#, kde-format
 msgctxt "@option:check"
 msgid "Include mouse pointer"
-msgstr "Kaappaa myös hiiriosoitin"
+msgstr "Sisällytä hiiriosoitin"
 
 #: src/Gui/RecordingSettingsColumn.qml:23
-#, fuzzy, kde-format
-#| msgid "Show the mouse cursor in the screen recording."
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the screen recording."
 msgstr "Näytä hiiriosoitin näytön nauhoituksessa."
@@ -1164,34 +1159,32 @@ msgstr "Näytä hiiriosoitin näytön nauhoituksessa."
 #, kde-format
 msgctxt "@option:check"
 msgid "Record system audio"
-msgstr ""
+msgstr "Nauhoita järjestelmä-ääni"
 
 #: src/Gui/RecordingSettingsColumn.qml:33
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Include the audio that is currently playing on the system in the recording."
-msgstr ""
+msgstr "Sisällytä nauhoitukseen järjestelmässä toistettava ääni."
 
 #: src/Gui/RecordingSettingsColumn.qml:45
-#, fuzzy, kde-format
-#| msgctxt "@action global shortcut"
-#| msgid "Record Screen"
+#, kde-format
 msgctxt "@option:check"
 msgid "Record microphone"
-msgstr "Nauhoita näyttöä"
+msgstr "Nauhoita mikrofoni"
 
 #: src/Gui/RecordingSettingsColumn.qml:46
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include audio from the default microphone in the recording."
-msgstr ""
+msgstr "Sisällytä nauhoitukseen oletusmikrofonista tuleva ääni."
 
 #: src/Gui/RecordingSettingsColumn.qml:57
 #, kde-format
 msgctxt "@info"
 msgid "The selected video format does not support audio."
-msgstr ""
+msgstr "Valittu videomuoto ei tue ääntä."
 
 #: src/Gui/RecordingView.qml:90
 #, kde-format
@@ -1653,17 +1646,15 @@ msgstr "Sisällytetäänkö hiiriosoitin videon nauhoitukseen"
 
 #. i18n: ectx: label, entry (videoRecordSystemAudio), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:99
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the video"
+#, kde-format
 msgid "Whether system audio is included in the recording"
-msgstr "Sisällytetäänkö hiiriosoitin videon nauhoitukseen"
+msgstr "Sisällytetäänkö järjestelmä-ääni nauhoitukseen"
 
 #. i18n: ectx: label, entry (videoRecordMicrophone), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:103
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the video"
+#, kde-format
 msgid "Whether microphone audio is included in the recording"
-msgstr "Sisällytetäänkö hiiriosoitin videon nauhoitukseen"
+msgstr "Sisällytetäänkö mikrofoniääni nauhoitukseen"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:107
@@ -2230,12 +2221,10 @@ msgid "An error occurred while taking a screenshot."
 msgstr "Kuvakaappausta otettaessa tapahtui virhe."
 
 #: src/SpectacleCore.cpp:304
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording with Sound"
-msgstr "Spectacle nauhoittaa"
+msgstr "Spectacle nauhoittaa (myös äänen)"
 
 #: src/SpectacleCore.cpp:305
 #, kde-format
@@ -2244,12 +2233,10 @@ msgid "Spectacle is Recording"
 msgstr "Spectacle nauhoittaa"
 
 #: src/SpectacleCore.cpp:310
-#, fuzzy, kde-format
-#| msgctxt "recording notification title"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording with Sound"
-msgstr "Spectacle nauhoittaa"
+msgstr "Spectacle nauhoittaa (myös äänen)"
 
 #: src/SpectacleCore.cpp:311
 #, kde-format
@@ -2475,6 +2462,8 @@ msgctxt "@info:shell"
 msgid ""
 "--scaled is only allowed together with -f/--fullscreen and will be ignored"
 msgstr ""
+"--scaled sallitaan vain yhdessä -f/--fullscreen-valitsimen kanssa ja "
+"sivuutetaan"
 
 #: src/SpectacleCore.cpp:1074
 #, kde-format
