@@ -239,17 +239,17 @@ msgstr ""
 #: src/CommandLineOptions.h:104
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
-msgstr "В фоновом режиме, включая указатель мыши"
+msgstr "В фоновом режиме включать указатель мыши в снимок экрана."
 
 #: src/CommandLineOptions.h:108
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
-msgstr "В фоновом режиме, не включая заголовок и границы окна"
+msgstr "В фоновом режиме не включать заголовок и границы окна в снимок."
 
 #: src/CommandLineOptions.h:110
 #, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
-msgstr "В фоновом режиме, не включая тень окна"
+msgstr "В фоновом режиме не включать тень окна в снимок."
 
 #: src/CommandLineOptions.h:113
 #, kde-format
@@ -274,8 +274,8 @@ msgid ""
 "Cannot save screenshot because creating the directory failed:<nl/><filename>"
 "%1</filename>"
 msgstr ""
-"Не удалось сохранить снимок экрана из-за ошибки создания каталога: <nl/"
-"><filename>«%1»</filename>"
+"Не удалось сохранить снимок экрана из-за ошибки создания папки:<nl/"
+"><filename>%1</filename>"
 
 #: src/ExportManager.cpp:491
 #, kde-format
@@ -294,8 +294,8 @@ msgid ""
 "Cannot save screenshot because creating the remote directory failed:<nl/"
 "><filename>%1</filename>"
 msgstr ""
-"Не удалось сохранить снимок экрана из-за ошибки создания каталога в сетевой "
-"файловой системе: <nl/><filename>«%1»</filename>"
+"Не удалось сохранить снимок экрана из-за ошибки создания папки в сетевой "
+"файловой системе:<nl/><filename>%1</filename>"
 
 #: src/ExportManager.cpp:526 src/ExportManager.cpp:576
 #, kde-format
@@ -327,7 +327,7 @@ msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
 "Не удалось экспортировать видео: адресом временного файла должен быть "
-"существующий временный файл"
+"существующий локальный файл"
 
 #: src/ExportManager.cpp:813
 #, kde-format
@@ -378,13 +378,13 @@ msgstr "День (полное название)"
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (1–12)"
-msgstr "Месяц (1-12)"
+msgstr "Месяц (1–12)"
 
 #: src/ExportManager.cpp:949
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (01–12)"
-msgstr "Месяц (01-12)"
+msgstr "Месяц (01–12)"
 
 #: src/ExportManager.cpp:950
 #, kde-format
@@ -420,43 +420,43 @@ msgstr "Час (0–23)"
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (00–23)"
-msgstr "Час (00-23)"
+msgstr "Час (00–23)"
 
 #: src/ExportManager.cpp:956
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (1–12)"
-msgstr "Час (1-12)"
+msgstr "Час (1–12)"
 
 #: src/ExportManager.cpp:957
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (01–12)"
-msgstr "Час (01-12)"
+msgstr "Час (01–12)"
 
 #: src/ExportManager.cpp:958
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Minute (0–59)"
-msgstr "Минута (0-59)"
+msgstr "Минута (0–59)"
 
 #: src/ExportManager.cpp:959
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Minute (00–59)"
-msgstr "Минута (00-59)"
+msgstr "Минута (00–59)"
 
 #: src/ExportManager.cpp:960
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Second (0–59)"
-msgstr "Секунда (0-59)"
+msgstr "Секунда (0–59)"
 
 #: src/ExportManager.cpp:961
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Second (00–59)"
-msgstr "Секунда (00-59)"
+msgstr "Секунда (00–59)"
 
 #: src/ExportManager.cpp:962
 #, kde-format
@@ -504,7 +504,7 @@ msgstr "Смещение часового пояса (±0000)"
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone offset (±00:00)"
-msgstr "Смещение часового пояса  (±00:00)"
+msgstr "Смещение часового пояса (±00:00)"
 
 #: src/ExportManager.cpp:974
 #, kde-format
@@ -539,7 +539,7 @@ msgstr "Принять"
 #: src/Gui/AnnotationOptionsToolBarContents.qml:56
 #, kde-format
 msgid "Stroke:"
-msgstr "Обводка"
+msgstr "Обводка:"
 
 #. i18n uses so it doesn't matter that much
 #. unless someone decides to set the locale for a specific
@@ -744,7 +744,7 @@ msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
 msgstr[0] "Отмена (%1 секунда)"
 msgstr[1] "Отмена (%1 секунды)"
-msgstr[2] "Отмена (%1 секунда)"
+msgstr[2] "Отмена (%1 секунд)"
 msgstr[3] "Отмена (%1 секунда)"
 
 #: src/Gui/CaptureOptions.qml:17
@@ -783,7 +783,7 @@ msgstr "Включая заголовок и границы окна"
 #, kde-format
 msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
-msgstr "При съёмке окна захватывать его заголовок и границы"
+msgstr "При съёмке окна захватывать его заголовок и границы."
 
 #: src/Gui/CaptureSettingsColumn.qml:34
 #, kde-format
@@ -819,17 +819,17 @@ msgstr "Выйти после сохранения или копирования
 #: src/Gui/CaptureSettingsColumn.qml:55
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image."
-msgstr "Выйти из Spectacle после сохранения или копирования снимка экрана"
+msgstr "Выйти из Spectacle после сохранения или копирования снимка экрана."
 
 #: src/Gui/CaptureSettingsColumn.qml:64
 #, kde-format
 msgid "Capture on click"
-msgstr "По щелчку"
+msgstr "Снимать по щелчку"
 
 #: src/Gui/CaptureSettingsColumn.qml:66
 #, kde-format
 msgid "Wait for a mouse click before capturing the screenshot image."
-msgstr "Ждать щелчка мышью перед съёмкой изображения экрана"
+msgstr "Ждать щелчка мышью перед съёмкой изображения экрана."
 
 #: src/Gui/CaptureSettingsColumn.qml:76
 #, kde-format
@@ -921,7 +921,7 @@ msgstr "Возможность не поддерживается на текущ
 #, kde-format
 msgctxt "@action edit screenshot"
 msgid "Edit…"
-msgstr "Комментировать…"
+msgstr "Редактировать…"
 
 #: src/Gui/ExportMenu.cpp:44
 #, kde-format
@@ -938,7 +938,7 @@ msgstr "Открыть папку со снимками экрана, задан
 #, kde-format
 msgctxt "@action:button open screenshot in other application"
 msgid "Other Application…"
-msgstr "Другое приложение..."
+msgstr "Другое приложение…"
 
 #: src/Gui/ExportMenu.cpp:165
 #, kde-format
@@ -954,7 +954,7 @@ msgstr "Извлечение текста по языку"
 #: src/Gui/ExportMenu.cpp:294
 #, kde-format
 msgid "OCR engine is not available."
-msgstr "Движок распознавания текста недоступен."
+msgstr "Модуль распознавания текста недоступен."
 
 #: src/Gui/ExportMenu.cpp:302
 #, kde-format
@@ -966,7 +966,7 @@ msgstr ""
 #: src/Gui/ExportMenu.cpp:303
 #, kde-format
 msgid "OCR engine is initializing…"
-msgstr "Инициализация движка распознавания текста..."
+msgstr "Инициализация модуля распознавания текста…"
 
 #: src/Gui/ExportMenu.cpp:313
 #, kde-format
@@ -995,7 +995,7 @@ msgstr "Справка"
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Containing Folder"
-msgstr "Открыть содержащую папку"
+msgstr "Открыть папку с файлом"
 
 #: src/Gui/InlineMessageList.qml:139
 #, kde-format
@@ -1099,7 +1099,7 @@ msgstr "Выйти из Spectacle после сохранения или коп�
 #, kde-format
 msgctxt "@option:check"
 msgid "Capture On Click"
-msgstr "По щелчку"
+msgstr "Снимать по щелчку"
 
 #: src/Gui/OptionsMenu.cpp:109
 #, kde-format
@@ -1154,7 +1154,7 @@ msgstr "Записывать звук с микрофона"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include audio from the default microphone in the recording"
-msgstr "Включая звук с микрофона по умолчанию в запись"
+msgstr "Включать в запись звук с микрофона по умолчанию"
 
 # BUGME: please add @title:window; please add ellipsis to the action name --aspotashev
 #: src/Gui/OptionsMenuButton.qml:10
@@ -1167,7 +1167,7 @@ msgstr "Параметры"
 #, kde-format
 msgctxt "@action start recording"
 msgid "Record"
-msgstr "Запись"
+msgstr "Записать"
 
 #: src/Gui/RecordingModeMenu.cpp:16
 #, kde-format
@@ -1264,7 +1264,7 @@ msgstr "Сохранить"
 #, kde-format
 msgctxt "@action"
 msgid "Save As…"
-msgstr "Сохранить как..."
+msgstr "Сохранить как…"
 
 #: src/Gui/ScreenshotModeMenu.cpp:16
 #, kde-format
@@ -1331,7 +1331,7 @@ msgstr "После создания снимка экрана:"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:71
 #, kde-format
 msgid "Save file to default folder"
-msgstr "Сохранять изображение в расположение по умолчанию"
+msgstr "Сохранять изображение в папку по умолчанию"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_clipboardGroup)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:82
@@ -1355,7 +1355,7 @@ msgstr "Копировать полный путь в буфер обмена"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:116
 #, kde-format
 msgid "While Spectacle is running"
-msgstr "При работе программы"
+msgstr "При работе Spectacle"
 
 #. i18n: ectx: property (text), widget (QLabel, printKeyActionLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:123
@@ -1443,7 +1443,7 @@ msgstr "Запоминать выбранную область:"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:237
 #, kde-format
 msgid "Until Spectacle is closed"
-msgstr "До выхода из программы"
+msgstr "До закрытия Spectacle"
 
 #. i18n: ectx: property (text), widget (KTitleWidget, ocrTitle)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:261
@@ -1485,7 +1485,7 @@ msgstr ""
 #: src/Gui/SettingsDialog/GeneralOptions.ui:395
 #, kde-format
 msgid "OCR functionality is not available"
-msgstr "Функционал распознавания текста недоступен"
+msgstr "Функция распознавания текста недоступна"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, ocrInfoIcon)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:413
@@ -1509,7 +1509,7 @@ msgstr "Путь для сохранения:"
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:26
 #, kde-format
 msgid "Compression Quality:"
-msgstr "Качество изображения:"
+msgstr "Качество сжатия:"
 
 #. i18n: ectx: property (text), widget (QLabel, imageCompressionQualityHelpLable)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:53
@@ -1552,7 +1552,7 @@ msgid ""
 "You can use the following placeholders in the filename, which will be "
 "replaced with actual text when the file is saved:"
 msgstr ""
-"В имени файла возможно использовать следующие подстановочные знаки, которые "
+"В имени файла можно использовать следующие подстановочные знаки, которые "
 "будут заменены на фактический текст при сохранении файла:"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:87
@@ -1626,7 +1626,7 @@ msgstr "Сохранять снимок экрана в файл после ег
 #: src/Gui/SettingsDialog/spectacle.kcfg:55
 #, kde-format
 msgid "Clipboard action which should be executed after the screenshot is taken"
-msgstr "Действия с буфером обмена выполняются после создания снимка экрана"
+msgstr "Действие с буфером обмена, выполняемое после создания снимка экрана"
 
 #. i18n: ectx: label, entry (useLightMaskColor), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:51
@@ -1641,7 +1641,7 @@ msgid ""
 "Whether the screenshot should be captured after selecting the region and "
 "releasing the mouse"
 msgstr ""
-"Выполнять снимок экрана при отпускании клавиши мыши после задания "
+"Выполнять снимок экрана при отпускании кнопки мыши после задания "
 "прямоугольной области"
 
 #. i18n: ectx: label, entry (rememberSelectionRect), group (General)
@@ -1708,7 +1708,7 @@ msgstr "Не убирать тень окна со снимка экрана"
 #: src/Gui/SettingsDialog/spectacle.kcfg:115
 #, kde-format
 msgid "Only capture the current pop up menu"
-msgstr "Захватить только текущее контекстное меню"
+msgstr "Захватить только текущее всплывающее меню"
 
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:119
@@ -1734,7 +1734,7 @@ msgstr "Имя файла по умолчанию"
 #: src/Gui/SettingsDialog/spectacle.kcfg:151
 #, kde-format
 msgid "Compression quality for lossy file formats"
-msgstr "Уровень сжатия при сохранении в формате с потерей качества"
+msgstr "Качество сжатия для форматов с потерями"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:159
@@ -1864,7 +1864,7 @@ msgstr "+ Shift: перемещение с шагом 1 пикс."
 #, kde-format
 msgctxt "Mouse action"
 msgid "Drag handles"
-msgstr "Области перетаскивания"
+msgstr "Перетаскивание маркеров"
 
 #: src/Gui/ShortcutsTextBox.qml:44
 #, kde-format
@@ -1911,7 +1911,7 @@ msgstr[3] " секунда"
 #, kde-format
 msgctxt "Decimal number of seconds"
 msgid " seconds"
-msgstr " секунд"
+msgstr " секунды"
 
 #: src/Gui/SpectacleWindow.cpp:172
 #, kde-format
@@ -1947,7 +1947,7 @@ msgstr "Масштаб:"
 #: src/Gui/ViewerPage.qml:202
 #, kde-format
 msgid "Image Zoom"
-msgstr "Мастаб изображения"
+msgstr "Масштаб изображения"
 
 #: src/Gui/ViewerWindow.cpp:53
 #, kde-format
@@ -1963,7 +1963,7 @@ msgstr "Spectacle"
 #: src/Main.cpp:46
 #, kde-format
 msgid "KDE Screenshot Utility"
-msgstr "Утилита для создания снимков экрана от KDE"
+msgstr "Приложение для создания снимков экрана от KDE"
 
 #: src/Main.cpp:48
 #, kde-format
@@ -1993,15 +1993,15 @@ msgid ""
 "seem to be available. Use Spectacle on KDE Plasma, or use a different "
 "screenshot tool."
 msgstr ""
-"Для работы этого приложения в графическом окружении Wayland необходим "
-"компоновщик рабочего стола KWin. Данное приложение предназначено только для "
-"работы в окружении рабочего стола Plasma."
+"В Wayland для работы Spectacle необходим компоновщик KWin из KDE Plasma, но "
+"он, по-видимому, недоступен. Используйте Spectacle в KDE Plasma или другое "
+"средство создания снимков экрана."
 
 #: src/OcrManager.cpp:578
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Orientation and Script Detection"
-msgstr "Определение ориентации и текста"
+msgstr "Определение ориентации и письменности"
 
 #: src/OcrManager.cpp:619
 #, kde-format
@@ -2011,7 +2011,7 @@ msgstr "Определение формул"
 #: src/OcrManager.cpp:622
 #, kde-format
 msgid "Orientation and Script Detection"
-msgstr "Определение ориентации и текста"
+msgstr "Определение ориентации и письменности"
 
 #: src/Platforms/ImagePlatformKWin.cpp:134
 #, kde-format
@@ -2096,7 +2096,7 @@ msgid ""
 "the recording."
 msgstr ""
 "Трансляция была прекращена, поскольку параметры целевого экрана были "
-"изменены образом, препятствующим продолжению записи."
+"изменены таким образом, препятствующим продолжению записи."
 
 #: src/Platforms/VideoPlatformWayland.cpp:283
 #, kde-format
@@ -2106,7 +2106,7 @@ msgid ""
 "the recording."
 msgstr ""
 "Трансляция была прекращена, поскольку параметры целевого окна были изменены "
-"образом, препятствующим продолжению записи."
+"таким образом, препятствующим продолжению записи."
 
 #: src/Platforms/VideoPlatformWayland.cpp:287
 #, kde-format
@@ -2116,7 +2116,7 @@ msgid ""
 "way that disrupted the recording."
 msgstr ""
 "Трансляция была прекращена, поскольку параметры целевой области были "
-"изменены образом, препятствующим продолжению записи."
+"изменены таким образом, препятствующим продолжению записи."
 
 #: src/Platforms/VideoPlatformWayland.cpp:303
 #, kde-format
@@ -2168,9 +2168,7 @@ msgstr "Не удалось выбрать окно: %1"
 #, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
-msgstr ""
-"Не удалось выбрать экран: ни один экран не содержит информации о "
-"расположении указателя мыши"
+msgstr "Не удалось выбрать экран: ни на одном экране нет указателя мыши"
 
 #: src/Platforms/VideoPlatformWayland.cpp:454
 #, kde-format
@@ -2255,7 +2253,7 @@ msgstr "Запустить или остановить запись окна"
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Region Recording"
-msgstr "Запустить или остановить запись"
+msgstr "Запустить или остановить запись области"
 
 #: src/ShortcutActions.cpp:94
 #, kde-format
@@ -2309,7 +2307,7 @@ msgid ""
 "<shortcut>%1</shortcut>."
 msgstr ""
 "Для остановки записи нажмите на пульсирующий красный значок в системном "
-"лотке или нажмите <shortcut>%1</shortcut>. "
+"лотке или нажмите <shortcut>%1</shortcut>."
 
 #: src/SpectacleCore.cpp:355
 #, kde-format
@@ -2379,7 +2377,8 @@ msgid ""
 "The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</"
 "link>"
 msgstr ""
-"Снимок экрана скопирован в буфер обмена и в файл <link url=\"%1\">%2</link>."
+"Снимок экрана скопирован в буфер обмена и сохранён в файл <link url=\"%1\">"
+"%2</link>."
 
 #: src/SpectacleCore.cpp:500
 #, kde-kuit-format
@@ -2504,7 +2503,7 @@ msgstr "Снимок экрана недоступен."
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
-msgstr "Извлечение текста из изображения..."
+msgstr "Извлечение текста из изображения…"
 
 #: src/SpectacleCore.cpp:1059
 #, kde-format
@@ -2519,7 +2518,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
-msgstr "%1 не является допустимым режимом при указании ключа -- record"
+msgstr "%1 не является допустимым режимом при указании ключа --record"
 
 #: src/SpectacleCore.cpp:1313
 #, kde-format

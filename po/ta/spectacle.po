@@ -1,13 +1,13 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the spectacle package.
 #
-# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024, 2025, 2026 Kishore G <kishore96@gmail.com>
+# SPDX-FileCopyrightText: 2021-2026 Kishore G <kishore96@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-01 02:45+0000\n"
-"PO-Revision-Date: 2026-02-01 18:51+0530\n"
+"PO-Revision-Date: 2026-10-04 18:45+0200\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
 "Language: ta\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.12.1\n"
+"X-Generator: Lokalize 26.08.1\n"
 
 #, kde-format
 msgctxt "translatable folder name"
@@ -95,6 +95,8 @@ msgstr "முழு பணிமேடையின் படமெடு (இ�
 msgid ""
 "When used with -f/--fullscreen, capture all screens scaled to the same size"
 msgstr ""
+"அனைத்து திரைகளையும் ஒரே அளவிற்கு மாற்றும் (-f/--fullscreen எனும் தேர்வுடன் "
+"பயன்படுத்தக்கூடியது)"
 
 #: src/CommandLineOptions.h:30
 #, kde-format
@@ -227,10 +229,9 @@ msgid "Open and edit existing screenshot file"
 msgstr "ஏற்கனவேயுள்ள திரைப்பிடிப்பை திறந்து திருத்து"
 
 #: src/CommandLineOptions.h:116
-#, fuzzy, kde-format
-#| msgid "Accept on click-and-release"
+#, kde-format
 msgid "Accept region selection on click-and-release"
-msgstr "க்ளிக் செய்து விடும்போது ஏற்றுக்கொள்"
+msgstr "கிளிக் செய்து விடும்போது தேர்வை ஏற்றுக்கொள்"
 
 #: src/ExportManager.cpp:466
 #, kde-format
@@ -249,10 +250,9 @@ msgstr ""
 "%1</filename>"
 
 #: src/ExportManager.cpp:491
-#, fuzzy, kde-format
-#| msgid "Cannot save screenshot. Error while writing file."
+#, kde-format
 msgid "Cannot save screenshot. Error while opening file."
-msgstr "திரைப்பிடிப்பை சேமிக்க முடியவில்லை. கோப்புக்கு எழுதுவதில் சிக்கல்."
+msgstr "திரைப்பிடிப்பை சேமிக்க முடியவில்லை. கோப்பைத் திறப்பதில் சிக்கல்."
 
 #: src/ExportManager.cpp:495
 #, kde-format
@@ -519,8 +519,8 @@ msgstr "கோடு:"
 msgctxt "px: pixels"
 msgid "%1px"
 msgid_plural "%1px"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1px"
+msgstr[1] "%1px"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:93
 #, kde-format
@@ -879,7 +879,7 @@ msgstr "திரைப்பதிவு"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "This feature is not supported on the current platform"
-msgstr ""
+msgstr "தற்போதைய இயங்குதளத்தில் இவ்வம்சம் ஆதரிக்கப்படாது"
 
 #: src/Gui/EditAction.qml:11
 #, kde-format
@@ -1098,28 +1098,26 @@ msgstr "திரைப்பதிவில் சுட்டிக்கு�
 #, kde-format
 msgctxt "@option:check for recordings"
 msgid "Record system audio"
-msgstr ""
+msgstr "கணினியின் ஒலியையும் பதிவுசெய்"
 
 #: src/Gui/OptionsMenu.cpp:145
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Include the audio that is currently playing on the system in the recording"
-msgstr ""
+msgstr "கணினியால் இசைக்கப்பட்டுக்கொண்டிருக்கும் ஒலியையும் திரைப்பதிவில் பதிவுசெய்யும்"
 
 #: src/Gui/OptionsMenu.cpp:153
-#, fuzzy, kde-format
-#| msgctxt "@action global shortcut"
-#| msgid "Record Screen"
+#, kde-format
 msgctxt "@option:check for recordings"
 msgid "Record microphone"
-msgstr "திரையை பதிவு செய்"
+msgstr "ஒலிவாங்கியை பதிவு செய்"
 
 #: src/Gui/OptionsMenu.cpp:154
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include audio from the default microphone in the recording"
-msgstr ""
+msgstr "இயல்பிருக்கு ஒலிவாங்கி உணரும் ஒலியையும் திரைப்பதிவில் பதிவுசெய்யும்"
 
 #: src/Gui/OptionsMenuButton.qml:10
 #, kde-format
@@ -1146,51 +1144,47 @@ msgid "New Recording"
 msgstr "புதிய திரைப்பதிவு"
 
 #: src/Gui/RecordingSettingsColumn.qml:22
-#, fuzzy, kde-format
-#| msgid "Include mouse pointer"
+#, kde-format
 msgctxt "@option:check"
 msgid "Include mouse pointer"
 msgstr "சுட்டிக்குறியை உட்படுத்து"
 
 #: src/Gui/RecordingSettingsColumn.qml:23
-#, fuzzy, kde-format
-#| msgid "Show the mouse cursor in the screen recording."
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the screen recording."
-msgstr "திரைப்பதிவில் சுட்டிக்குறியையும் காட்டு."
+msgstr "திரைப்பதிவில் சுட்டிக்குறியையும் காட்டும்"
 
 #: src/Gui/RecordingSettingsColumn.qml:32
 #, kde-format
 msgctxt "@option:check"
 msgid "Record system audio"
-msgstr ""
+msgstr "கணினியின் ஒலியையும் பதிவுசெய்"
 
 #: src/Gui/RecordingSettingsColumn.qml:33
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Include the audio that is currently playing on the system in the recording."
-msgstr ""
+msgstr "கணினியால் இசைக்கப்பட்டுக்கொண்டிருக்கும் ஒலியையும் திரைப்பதிவில் பதிவுசெய்யும்."
 
 #: src/Gui/RecordingSettingsColumn.qml:45
-#, fuzzy, kde-format
-#| msgctxt "@action global shortcut"
-#| msgid "Record Screen"
+#, kde-format
 msgctxt "@option:check"
 msgid "Record microphone"
-msgstr "திரையை பதிவு செய்"
+msgstr "ஒலிவாங்கியை பதிவு செய்"
 
 #: src/Gui/RecordingSettingsColumn.qml:46
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include audio from the default microphone in the recording."
-msgstr ""
+msgstr "இயல்பிருக்கு ஒலிவாங்கி உணரும் ஒலியையும் திரைப்பதிவில் பதிவுசெய்யும்."
 
 #: src/Gui/RecordingSettingsColumn.qml:57
 #, kde-format
 msgctxt "@info"
 msgid "The selected video format does not support audio."
-msgstr ""
+msgstr "தேர்ந்தெடுத்துள்ள நிகழ்படப்படிவம் ஒலியை ஆதரிக்காதது"
 
 #: src/Gui/RecordingView.qml:90
 #, kde-format
@@ -1648,17 +1642,15 @@ msgstr "நிகழ்படப் பதிவில் சுட்டிக�
 
 #. i18n: ectx: label, entry (videoRecordSystemAudio), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:99
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the video"
+#, kde-format
 msgid "Whether system audio is included in the recording"
-msgstr "நிகழ்படப் பதிவில் சுட்டிக்குறி உட்பட வேண்டுமா"
+msgstr "நிகழ்படப் பதிவில் கணினியின் ஒலியை உட்படுத்த வேண்டுமா"
 
 #. i18n: ectx: label, entry (videoRecordMicrophone), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:103
-#, fuzzy, kde-format
-#| msgid "Whether the mouse cursor is included in the video"
+#, kde-format
 msgid "Whether microphone audio is included in the recording"
-msgstr "நிகழ்படப் பதிவில் சுட்டிக்குறி உட்பட வேண்டுமா"
+msgstr "நிகழ்படப் பதிவில் ஒலிவாங்கியின் ஒலியை உட்படுத்த வேண்டுமா"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:107
@@ -2220,12 +2212,10 @@ msgid "An error occurred while taking a screenshot."
 msgstr "திரைப்பிடிப்பை எடுப்பதில் சிக்கல் ஏற்பட்டது."
 
 #: src/SpectacleCore.cpp:304
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip title for recording tray icon"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording with Sound"
-msgstr "ஸ்பெக்டக்குல் பதிவு செய்கிறது"
+msgstr "ஸ்பெக்டக்குல் பதிவு செய்கிறது (ஒலியுடன்)"
 
 #: src/SpectacleCore.cpp:305
 #, kde-format
@@ -2234,12 +2224,10 @@ msgid "Spectacle is Recording"
 msgstr "ஸ்பெக்டக்குல் பதிவு செய்கிறது"
 
 #: src/SpectacleCore.cpp:310
-#, fuzzy, kde-format
-#| msgctxt "recording notification title"
-#| msgid "Spectacle is Recording"
+#, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording with Sound"
-msgstr "ஸ்பெக்டக்குல் பதிவு செய்கிறது"
+msgstr "ஸ்பெக்டக்குல் பதிவு செய்கிறது (ஒலியுடன்)"
 
 #: src/SpectacleCore.cpp:311
 #, kde-format
@@ -2466,6 +2454,8 @@ msgctxt "@info:shell"
 msgid ""
 "--scaled is only allowed together with -f/--fullscreen and will be ignored"
 msgstr ""
+"--scaled எனும் தேர்வு, -f/--fullscreen என்பதுடன் சேர்த்தே பயன்படுத்தப்பட வேண்டியதாக "
+"உள்ளதால் தற்போது பொருட்படுத்தப்படாது"
 
 #: src/SpectacleCore.cpp:1074
 #, kde-format
