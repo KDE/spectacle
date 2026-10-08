@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-01 02:45+0000\n"
-"PO-Revision-Date: 2026-10-02 11:27+0200\n"
+"PO-Revision-Date: 2026-10-07 14:30+0200\n"
 "Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
 "Language: sr\n"
@@ -45,7 +45,7 @@ msgstr "Видео снимак екрана"
 #, kde-format
 msgctxt "@action in capture mode section"
 msgid "Rectangular Region"
-msgstr "Правоугаона зона"
+msgstr "Правоугаона област"
 
 #: src/CaptureModeModel.cpp:164
 #, kde-format
@@ -135,7 +135,7 @@ msgstr "Сними прозор тренутно под показивачем, 
 #: src/CommandLineOptions.h:46
 #, kde-format
 msgid "Capture a rectangular region of the screen"
-msgstr "Ухвати правоугаону зону екрана"
+msgstr "Ухвати правоугаону област екрана"
 
 #: src/CommandLineOptions.h:50
 #, kde-format
@@ -146,7 +146,7 @@ msgid ""
 "- w, window"
 msgstr ""
 "Сними екран у задатом режиму. Режими:\n"
-"- r, region (зона)\n"
+"- r, region (област)\n"
 "- s, screen (екран)\n"
 "- w, window (прозор)"
 
@@ -234,7 +234,7 @@ msgstr "Отвори и уреди постојећи фајл снимка"
 #: src/CommandLineOptions.h:116
 #, kde-format
 msgid "Accept region selection on click-and-release"
-msgstr "Прихвати избор зоне при отпуштању клика"
+msgstr "Прихвати избор области при отпуштању клика"
 
 #: src/ExportManager.cpp:466
 #, kde-format
@@ -1284,7 +1284,7 @@ msgstr "При покретању Спектакла:"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:25
 #, kde-format
 msgid "Take rectangular screenshot"
-msgstr "ухвати снимак правоугаоне зоне"
+msgstr "ухвати снимак правоугаоне области"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:30
@@ -1370,7 +1370,7 @@ msgstr "врати фокус на Спектакл"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:165
 #, kde-format
 msgid "Rectangular Region Selection"
-msgstr "Избор правоугаоне зоне"
+msgstr "Избор правоугаоне области"
 
 #. i18n: ectx: property (text), widget (QLabel, generalLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:172
@@ -1422,7 +1422,7 @@ msgstr "док се држи Shift"
 #: src/Gui/SettingsDialog/GeneralOptions.ui:219
 #, kde-format
 msgid "Remember selected area:"
-msgstr "Запамти изабрану зону:"
+msgstr "Запамти изабрану област:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_rememberSelectionRect)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:237
@@ -1617,7 +1617,7 @@ msgstr "Радња са клипбордом која се извршава по
 #: src/Gui/SettingsDialog/spectacle.kcfg:51
 #, kde-format
 msgid "Whether to use a light color mask in the region selection dialog"
-msgstr "Да ли користити светлу маску боје у дијалогу за избор зоне"
+msgstr "Да ли користити светлу маску боје у дијалогу за избор области"
 
 #. i18n: ectx: label, entry (useReleaseToCapture), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:64
@@ -1625,13 +1625,13 @@ msgstr "Да ли користити светлу маску боје у диј�
 msgid ""
 "Whether the screenshot should be captured after selecting the region and "
 "releasing the mouse"
-msgstr "Да ли снимак треба ухватити после избора зоне и отпуштања миша"
+msgstr "Да ли снимак треба ухватити после избора области и отпуштања миша"
 
 #. i18n: ectx: label, entry (rememberSelectionRect), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:68
 #, kde-format
 msgid "Remember the last rectangular region"
-msgstr "Запамти последњу правоугаону зону"
+msgstr "Запамти последњу правоугаону област"
 
 #. i18n: ectx: label, entry (ocrLanguages), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:77
@@ -1643,7 +1643,7 @@ msgstr "Подразумевани језици за ОЦР препознава
 #: src/Gui/SettingsDialog/spectacle.kcfg:83
 #, kde-format
 msgid "The last used region the user selected"
-msgstr "Последња зона коју је корисник изабрао"
+msgstr "Последња област коју је корисник изабрао"
 
 #. i18n: ectx: label, entry (captureOnClick), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:87
@@ -2098,7 +2098,7 @@ msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
-"Ток је затворен јер се екран који садржи циљну зону променио тако да је "
+"Ток је затворен јер се екран који садржи циљну област променио тако да је "
 "снимање прекинуто."
 
 #: src/Platforms/VideoPlatformWayland.cpp:303
@@ -2161,7 +2161,7 @@ msgstr "Не могу да изаберем прозор: није нађен н
 #, kde-format
 msgctxt "@item recording mode"
 msgid "Rectangular Region"
-msgstr "правоугаона зона"
+msgstr "правоугаона област"
 
 # >> @item:inlistbox
 #: src/RecordingModeModel.cpp:107
@@ -2206,7 +2206,7 @@ msgstr "Сними активни прозор"
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Capture Rectangular Region"
-msgstr "Сними правоугаону зону"
+msgstr "Сними правоугаону област"
 
 #: src/ShortcutActions.cpp:69
 #, kde-format
@@ -2238,7 +2238,7 @@ msgstr "Покрени/заустави снимање прозора"
 #, kde-format
 msgctxt "@action global shortcut"
 msgid "Start/Stop Region Recording"
-msgstr "Покрени/заустави снимање зоне"
+msgstr "Покрени/заустави снимање области"
 
 # >> @item
 #: src/ShortcutActions.cpp:94
@@ -2469,7 +2469,7 @@ msgstr "Отвори у уређивачу текста"
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
-msgstr "Изаберите зону пре извлачења текста"
+msgstr "Изаберите област пре извлачења текста"
 
 #: src/SpectacleCore.cpp:792
 #, kde-format
