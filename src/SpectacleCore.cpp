@@ -331,10 +331,9 @@ SpectacleCore::SpectacleCore(QObject *parent)
             const auto messageBody = stopShortcut.isEmpty()
                 ? i18nc("recording notification message without shortcut", "To finish the recording, click the pulsing red System Tray icon.")
                 : xi18nc("recording notification message with shortcut", "To finish the recording, click the pulsing red System Tray icon or press <shortcut>%1</shortcut>.", stopShortcut.toString(QKeySequence::NativeText));
-            auto notification = new KNotification(u"notification"_s, KNotification::CloseOnTimeout | KNotification::DefaultEvent, this);
+            auto notification = new KNotification(u"recordingStarted"_s, KNotification::CloseOnTimeout, this);
             notification->setTitle(messageTitle);
             notification->setText(messageBody);
-            notification->setIconName(u"media-record"_s);
             // Whether the notification is transient and should not be kept in history.
             notification->setHint(u"transient"_s, true);
             // Can't set notification duration with KNotification directly.
@@ -392,10 +391,9 @@ SpectacleCore::SpectacleCore(QObject *parent)
                                   "Time recorded: %1\n" //
                                   "Click to stop rendering early (this will lose data)",
                                   recordedTime());
-            auto notification = new KNotification(u"notification"_s, KNotification::CloseOnTimeout | KNotification::DefaultEvent, this);
+            auto notification = new KNotification(u"recordingSaveInProgress"_s, KNotification::CloseOnTimeout, this);
             notification->setTitle(messageTitle);
             notification->setText(messageBody);
-            notification->setIconName(u"process-working-symbolic"_s);
             notification->setHint(u"transient"_s, true);
             connect(m_videoPlatform.get(), &VideoPlatform::recordingStateChanged, notification, [notification](VideoPlatform::RecordingState state) {
                 if (state != VideoPlatform::RecordingState::Rendering) {
