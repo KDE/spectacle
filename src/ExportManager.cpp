@@ -648,6 +648,10 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
         QUrl dirUrl = url.adjusted(QUrl::RemoveFilename);
         if (!dirUrl.isValid()) {
             dirUrl = Settings::self()->lastImageSaveAsLocation().adjusted(QUrl::RemoveFilename);
+            if ((dirUrl.isLocalFile() && !QDir(dirUrl.toLocalFile()).exists())
+                || (!dirUrl.isLocalFile() && !isFileExists(dirUrl))) {
+                dirUrl = QUrl::fromLocalFile(defaultSaveLocation());
+            }
         }
         dialog->setDirectoryUrl(dirUrl);
         const auto formattedFilename = this->formattedFilename(Settings::imageFilenameTemplate(), m_timestamp, ImageMetaData::windowTitle(m_saveImage), dirUrl);
@@ -823,12 +827,15 @@ void ExportManager::exportVideo(ExportManager::Actions actions, const QUrl &inpu
         auto dialog = new QFileDialog();
         dialog->setAcceptMode(QFileDialog::AcceptSave);
         dialog->setFileMode(QFileDialog::AnyFile);
-        const auto outputDir = outputUrl.adjusted(QUrl::RemoveFilename);
-        if (!outputDir.isValid()) {
-            dialog->setDirectoryUrl(Settings::self()->lastVideoSaveAsLocation().adjusted(QUrl::RemoveFilename));
-        } else {
-            dialog->setDirectoryUrl(outputUrl);
+        QUrl dirUrl = outputUrl.adjusted(QUrl::RemoveFilename);
+        if (!dirUrl.isValid()) {
+            dirUrl = Settings::self()->lastVideoSaveAsLocation().adjusted(QUrl::RemoveFilename);
+            if ((dirUrl.isLocalFile() && !QDir(dirUrl.toLocalFile()).exists())
+                || (!dirUrl.isLocalFile() && !isFileExists(dirUrl))) {
+                dirUrl = QUrl::fromLocalFile(defaultVideoSaveLocation());
+            }
         }
+        dialog->setDirectoryUrl(dirUrl);
         dialog->setDefaultSuffix(extension);
         dialog->selectFile(!outputName.isEmpty() ? outputName : inputName);
         dialog->setMimeTypeFilters({mimetype});
