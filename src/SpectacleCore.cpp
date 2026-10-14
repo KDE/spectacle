@@ -1038,7 +1038,9 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
         } else if (m_cliOptions[Option::Region]) {
             return GrabMode::PerScreenImageNative;
         } else if (m_cliOptions[Option::WindowUnderCursor]) {
-            return GrabMode::WindowUnderCursor;
+            return toGrabMode(CaptureMode::WindowUnderCursor, false);
+        } else if (m_cliOptions[Option::TransientOnly]) {
+            return toGrabMode(CaptureMode::WindowUnderCursor, true);
         }
         return std::nullopt;
     };
