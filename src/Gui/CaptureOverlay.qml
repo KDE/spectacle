@@ -696,7 +696,7 @@ MouseArea {
                     id: annotationsContents
                     spacing: parent.spacing
                     displayMode: QQC.AbstractButton.IconOnly
-                    focusPolicy: Qt.NoFocus
+                    buttonFocusPolicy: Qt.NoFocus
                     isFullscreenCapture: true
                 }
 
@@ -857,7 +857,7 @@ MouseArea {
                         contentItem: AnnotationOptionsToolBarContents {
                             spacing: parent.spacing
                             displayMode: QQC.AbstractButton.IconOnly
-                            focusPolicy: Qt.NoFocus
+                            buttonFocusPolicy: Qt.NoFocus
                         }
                         topLeftRadius: ((otbLoader.valignment & Qt.AlignBottom) || SelectionEditor.selection.empty) && otbLoader.x >= 0 ? 0 : radius
                         topRightRadius: ((otbLoader.valignment & Qt.AlignBottom) || SelectionEditor.selection.empty) && otbLoader.x + width <= annotationsToolBar.width ? 0 : radius

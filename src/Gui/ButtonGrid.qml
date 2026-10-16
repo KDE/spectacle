@@ -10,7 +10,7 @@ import org.kde.spectacle.private
 Grid {
     id: root
     property int displayMode: QQC.AbstractButton.TextBesideIcon
-    property int focusPolicy: Qt.StrongFocus
+    property int buttonFocusPolicy: Qt.StrongFocus
     readonly property bool mirrored: effectiveLayoutDirection === Qt.RightToLeft
     property bool animationsEnabled: false
 

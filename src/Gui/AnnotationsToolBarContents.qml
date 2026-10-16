@@ -26,7 +26,7 @@ ButtonGrid {
             buttonHeight: QmlUtils.iconTextButtonHeight
             height: flow === Grid.LeftToRight ? buttonHeight : implicitHeight
             width: flow === Grid.TopToBottom ? buttonHeight : implicitWidth
-            focusPolicy: root.focusPolicy
+            buttonFocusPolicy: root.buttonFocusPolicy
             flow: root.flow
             spacing: root.spacing
         }
@@ -77,7 +77,7 @@ ButtonGrid {
         id: button
         property string extraHelp: ""
         implicitHeight: QmlUtils.iconTextButtonHeight
-        focusPolicy: root.focusPolicy
+        focusPolicy: root.buttonFocusPolicy
         display: root.displayMode
         checkable: true
         containmentMask: Item {

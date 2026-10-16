@@ -10,7 +10,7 @@ import org.kde.kquickimageeditor
 
 Grid {
     id: root
-    property int focusPolicy: Qt.StrongFocus
+    property int buttonFocusPolicy: Qt.StrongFocus
     property real buttonHeight: undoButton.implicitHeight
     property bool animationsEnabled: true
     spacing: Kirigami.Units.mediumSpacing
@@ -26,7 +26,7 @@ Grid {
         id: undoButton
         enabled: SpectacleCore.annotationDocument.undoStackDepth > 0
         height: root.buttonHeight
-        focusPolicy: root.focusPolicy
+        focusPolicy: root.buttonFocusPolicy
         display: QQC.ToolButton.IconOnly
         text: i18n("Undo")
         icon.name: "edit-undo"
@@ -37,7 +37,7 @@ Grid {
     TtToolButton {
         enabled: SpectacleCore.annotationDocument.redoStackDepth > 0
         height: root.buttonHeight
-        focusPolicy: root.focusPolicy
+        focusPolicy: root.buttonFocusPolicy
         display: QQC.ToolButton.IconOnly
         text: i18n("Redo")
         icon.name: "edit-redo"
