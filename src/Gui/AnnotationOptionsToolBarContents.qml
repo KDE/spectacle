@@ -19,7 +19,7 @@ Row {
     readonly property bool useSelectionOptions: tool.type === AnnotationTool.SelectTool || (tool.type === AnnotationTool.TextTool && selectedItem.options & AnnotationTool.TextOption)
     readonly property int options: useSelectionOptions ? selectedItem.options : tool.options
     property int displayMode: QQC.AbstractButton.TextBesideIcon
-    property int focusPolicy: Qt.StrongFocus
+    property int buttonFocusPolicy: Qt.StrongFocus
     readonly property bool mirrored: effectiveLayoutDirection === Qt.RightToLeft
 
     clip: childrenRect.width > width || childrenRect.height > height
@@ -39,7 +39,7 @@ Row {
     }
 
     component ToolButton: TtToolButton {
-        focusPolicy: root.focusPolicy
+        focusPolicy: root.buttonFocusPolicy
         display: root.displayMode
     }
 
