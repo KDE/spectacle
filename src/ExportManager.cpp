@@ -655,7 +655,10 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
         }
         dialog->setDirectoryUrl(dirUrl);
         const auto formattedFilename = this->formattedFilename(Settings::imageFilenameTemplate(), m_timestamp, ImageMetaData::windowTitle(m_saveImage), dirUrl);
-        dialog->selectFile(formattedFilename + u"."_s + filenameExtension);
+        const auto fileName = !url.fileName().isEmpty()
+            ? url.fileName()
+            : (formattedFilename + u"."_s + filenameExtension);
+        dialog->selectFile(fileName);
         dialog->setDefaultSuffix(u"."_s + filenameExtension);
         dialog->setMimeTypeFilters(supportedFilters);
         dialog->selectMimeTypeFilter(mimetype);
