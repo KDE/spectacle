@@ -242,7 +242,8 @@ void SpectacleWindow::saveAs()
         return;
     }
     SpectacleCore::instance()->syncExportImage();
-    ExportManager::instance()->exportImage(ExportManager::SaveAs | ExportManager::UserAction);
+    ExportManager::instance()->exportImage(ExportManager::SaveAs | ExportManager::UserAction,
+                                           SpectacleCore::instance()->outputUrl());
 }
 
 void SpectacleWindow::copyImage()

@@ -194,6 +194,8 @@ SpectacleCore::SpectacleCore(QObject *parent)
 
     connect(imagePlatform, &ImagePlatform::newScreenshotTaken, this, [this](const QImage &image){
         InlineMessageModel::instance()->clear();
+        m_editExistingUrl.clear();
+        m_cliOptions[CommandLineOptions::EditExisting] = false;
         m_annotationDocument->clearAnnotations();
         m_annotationDocument->setBaseImage(image);
         setExportImage(image);
@@ -207,6 +209,8 @@ SpectacleCore::SpectacleCore(QObject *parent)
     });
     connect(imagePlatform, &ImagePlatform::newCroppableScreenshotTaken, this, [this](const QImage &image) {
         InlineMessageModel::instance()->clear();
+        m_editExistingUrl.clear();
+        m_cliOptions[CommandLineOptions::EditExisting] = false;
         setVideoMode(false);
         m_annotationDocument->clearAnnotations();
         m_annotationDocument->setBaseImage(image);
@@ -456,6 +460,10 @@ SpectacleCore::SpectacleCore(QObject *parent)
     // set up the export manager
     auto exportManager = ExportManager::instance();
     auto onImageExported = [this](const ExportManager::Actions &actions, const QUrl &url) {
+        if (actions & ExportManager::AnySave) {
+            m_editExistingUrl = url;
+            m_outputUrl.clear();
+        }
         if (actions & ExportManager::UserAction && Settings::quitAfterSaveCopyExport()) {
             deleteWindows();
         }
@@ -1160,12 +1168,10 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
 
 void SpectacleCore::takeNewScreenshot(ImagePlatform::GrabMode grabMode, int timeout, bool includePointer, bool includeDecorations, bool includeWindowShadow)
 {
-    if (m_cliOptions[CommandLineOptions::EditExisting]) {
-        // Clear when a new screenshot is taken to avoid overwriting
-        // the existing file with a completely unrelated image.
-        m_editExistingUrl.clear();
-        m_cliOptions[CommandLineOptions::EditExisting] = false;
-    }
+    // Clear when a new screenshot is taken to avoid overwriting
+    // the previous file with a completely unrelated image.
+    m_editExistingUrl.clear();
+    m_cliOptions[CommandLineOptions::EditExisting] = false;
 
     m_delayAnimation->stop();
 
