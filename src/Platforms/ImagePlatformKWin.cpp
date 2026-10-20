@@ -482,7 +482,10 @@ void ImagePlatformKWin::trackSource(ScreenShotSourceMeta2 *source, OutputSignal 
         for (const auto &result : results) {
             const auto index = result.index();
             if (index == ResultVariant::Image) {
-                images.push_back(std::get<ResultVariant::Image>(result));
+                const auto &image = std::get<ResultVariant::Image>(result);
+                if (!image.isNull()) {
+                    images.push_back(image);
+                }
             } else if (index == ResultVariant::ErrorString) {
                 errorString.append(std::get<ResultVariant::ErrorString>(result) + u"\n"_s);
             }
@@ -490,6 +493,8 @@ void ImagePlatformKWin::trackSource(ScreenShotSourceMeta2 *source, OutputSignal 
 
         if (!images.empty()) {
             Q_EMIT (this->*outputSignal)(combinedImage(images));
+        } else if (errorString.isEmpty()) {
+            errorString = i18nc("@info", "No images were captured.");
         }
         if (!errorString.isEmpty()) {
             Q_EMIT newScreenshotFailed(errorString);
@@ -520,6 +525,9 @@ void ImagePlatformKWin::takeScreenShotActiveScreen(ScreenShotFlags flags)
 void ImagePlatformKWin::takeScreenShotWorkspace(ScreenShotFlags flags)
 {
     const auto &screens = qGuiApp->screens();
+    if (screens.empty()) {
+        Q_EMIT newScreenshotFailed(i18nc("@info", "There are no detectable screens."));
+    }
     QList<ScreenShotSource2 *> sources;
     sources.reserve(screens.count());
     for (auto screen : screens) {
@@ -531,6 +539,9 @@ void ImagePlatformKWin::takeScreenShotWorkspace(ScreenShotFlags flags)
 void ImagePlatformKWin::takeScreenShotCroppable(ScreenShotFlags flags)
 {
     const auto &screens = qGuiApp->screens();
+    if (screens.empty()) {
+        Q_EMIT newScreenshotFailed(i18nc("@info", "There are no detectable screens."));
+    }
     QList<ScreenShotSource2 *> sources;
     sources.reserve(screens.count());
     for (auto screen : screens) {
