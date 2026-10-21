@@ -41,16 +41,6 @@ ColumnLayout {
     }
     QQC.CheckBox {
         Layout.fillWidth: true
-        text: i18n("Capture the current pop-up only")
-        visible: ImagePlatform.supportedGrabModes & ImagePlatform.TransientWithParent
-        QQC.ToolTip.text: i18n("Capture only the current pop-up window (like a menu, tooltip etc) when taking a screenshot of a window. If disabled, the pop-up is captured along with the parent window.")
-        QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
-        QQC.ToolTip.visible: hovered
-        checked: Settings.transientOnly
-        onToggled: Settings.transientOnly = checked
-    }
-    QQC.CheckBox {
-        Layout.fillWidth: true
         text: i18n("Quit after manual Save or Copy")
         QQC.ToolTip.text: i18n("Quit Spectacle after manually saving or copying the image.")
         QQC.ToolTip.delay: Kirigami.Units.toolTipDelay

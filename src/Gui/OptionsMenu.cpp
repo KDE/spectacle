@@ -64,20 +64,6 @@ OptionsMenu::OptionsMenu(QWidget *parent)
         includeWindowShadowAction->setChecked(Settings::includeShadow());
     });
 
-    const bool hasTransientWithParent = SpectacleCore::instance()->imagePlatform()->supportedGrabModes().testFlag(ImagePlatform::TransientWithParent);
-    if (hasTransientWithParent) {
-        auto onlyCapturePopupAction = addAction(i18nc("@option:check", "Capture the current pop-up only"));
-        onlyCapturePopupAction->setToolTip(
-            i18nc("@info:tooltip", "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-                "If disabled, the pop-up is captured along with the parent window"));
-        onlyCapturePopupAction->setCheckable(true);
-        onlyCapturePopupAction->setChecked(Settings::transientOnly());
-        QObject::connect(onlyCapturePopupAction, &QAction::toggled, Settings::self(), &Settings::setTransientOnly);
-        QObject::connect(Settings::self(), &Settings::transientOnlyChanged, onlyCapturePopupAction, [onlyCapturePopupAction](){
-            onlyCapturePopupAction->setChecked(Settings::transientOnly());
-        });
-    }
-
     auto quitAfterSaveAction = addAction(i18nc("@option:check", "Quit after manual Save or Copy"));
     quitAfterSaveAction->setToolTip(i18nc("@info:tooltip", "Quit Spectacle after manually saving or copying the image"));
     quitAfterSaveAction->setCheckable(true);

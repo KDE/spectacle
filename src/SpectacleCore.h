@@ -147,7 +147,7 @@ private:
     void setExportImage(const QImage &image);
     void showViewerIfGuiMode(bool minimized = false);
     void doNotify(ScreenCapture type, const ExportManager::Actions &actions, const QUrl &saveUrl);
-    ImagePlatform::GrabMode toGrabMode(CaptureModeModel::CaptureMode captureMode, bool transientOnly) const;
+    ImagePlatform::GrabMode toGrabMode(CaptureModeModel::CaptureMode captureMode) const;
     CaptureModeModel::CaptureMode toCaptureMode(ImagePlatform::GrabMode grabMode) const;
     bool isGuiNull() const;
     QQmlEngine *getQmlEngine();

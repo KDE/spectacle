@@ -33,14 +33,8 @@ struct CommandLineOptions {
         {u"a"_s, u"activewindow"_s},
         i18n("Capture the active window")
     };
-    const QCommandLineOption windowUnderCursor = {
-        {u"u"_s, u"windowundercursor"_s},
-        i18n("Capture the window currently under the cursor, including parents of pop-up menus")
-    };
-    const QCommandLineOption transientOnly = {
-        {u"t"_s, u"transientonly"_s},
-        i18n("Capture the window currently under the cursor, excluding parents of pop-up menus")
-    };
+    const QCommandLineOption windowUnderCursor = {{u"u"_s, u"windowundercursor"_s},
+                                                  i18n("Capture the window currently under the cursor, including parents of pop-up menus")};
     const QCommandLineOption region = {
         {u"r"_s, u"region"_s},
         i18n("Capture a rectangular region of the screen")
@@ -116,9 +110,8 @@ struct CommandLineOptions {
     const QCommandLineOption releaseCapture = {{u"k"_s, u"release-capture"_s}, i18n("Accept region selection on click-and-release")};
 
     const QList<QCommandLineOption> allOptions = {
-        fullscreen, scaled,      current,      activeWindow, windowUnderCursor, transientOnly, region,       record,         launchOnly,
-        gui,        background,  dbus,         noNotify,     output,            delay,         copyImage,    copyPath,
-        onClick,    newInstance, pointer,      noDecoration, noShadow,          editExisting,  releaseCapture,
+        fullscreen, scaled, current,   activeWindow, windowUnderCursor, region,      record,  launchOnly,   gui,      background,   dbus,           noNotify,
+        output,     delay,  copyImage, copyPath,     onClick,           newInstance, pointer, noDecoration, noShadow, editExisting, releaseCapture,
     };
 
     // Keep order in sync with allOptions
@@ -128,7 +121,6 @@ struct CommandLineOptions {
         Current,
         ActiveWindow,
         WindowUnderCursor,
-        TransientOnly,
         Region,
         Record,
         LaunchOnly,

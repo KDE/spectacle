@@ -949,24 +949,16 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
      * when nothing happens immediately after starting spectacle.
      */
 
-    // In the GUI/CLI, the TransientWithParent mode is represented by the
-    // "Window Under Cursor" option and the real WindowUnderCursor mode is
-    // represented by the popup-only/transientOnly setting, which is meant to
-    // override TransientWithParent. Needless to say, This is rather convoluted.
-    // TODO: Improve the API for transientOnly or make it obsolete.
-    bool transientOnly;
     bool onClick;
     bool includeDecorations;
     bool includePointer;
     bool includeShadow;
     if (m_startMode == StartMode::Background) {
-        transientOnly = m_cliOptions[Option::TransientOnly];
         onClick = m_cliOptions[Option::OnClick];
         includeDecorations = !m_cliOptions[Option::NoDecoration];
         includePointer = m_cliOptions[Option::Pointer];
         includeShadow = !m_cliOptions[Option::NoShadow];
     } else {
-        transientOnly = Settings::transientOnly() || m_cliOptions[Option::TransientOnly];
         onClick = Settings::captureOnClick() || m_cliOptions[Option::OnClick];
         includeDecorations = Settings::includeDecorations()
                             && !m_cliOptions[Option::NoDecoration];
@@ -1038,9 +1030,7 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
         } else if (m_cliOptions[Option::Region]) {
             return GrabMode::PerScreenImageNative;
         } else if (m_cliOptions[Option::WindowUnderCursor]) {
-            return toGrabMode(CaptureMode::WindowUnderCursor, false);
-        } else if (m_cliOptions[Option::TransientOnly]) {
-            return toGrabMode(CaptureMode::WindowUnderCursor, true);
+            return toGrabMode(CaptureMode::WindowUnderCursor);
         }
         return std::nullopt;
     };
@@ -1051,7 +1041,7 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
         case Settings::TakeFullscreenScreenshot:
             return GrabMode::AllScreens;
         case Settings::UseLastUsedCapturemode:
-            return toGrabMode(CaptureMode(Settings::captureMode()), transientOnly);
+            return toGrabMode(CaptureMode(Settings::captureMode()));
         default:
             return GrabMode::NoGrabModes;
         }
@@ -1099,7 +1089,6 @@ void SpectacleCore::activate(const QStringList &arguments, const QString &workin
         m_cliOptions[Option::Current] ||
         m_cliOptions[Option::ActiveWindow] ||
         m_cliOptions[Option::WindowUnderCursor] ||
-        m_cliOptions[Option::TransientOnly] ||
         m_cliOptions[Option::Region] ||
         m_cliOptions[Option::Record];
     // clang-format on
@@ -1231,7 +1220,7 @@ void SpectacleCore::takeNewScreenshot(int captureMode, int timeout, bool include
     if (timeout < 0 && !m_imagePlatform->supportedShutterModes().testFlag(ImagePlatform::OnClick)) {
         timeout = Settings::captureDelay() * 1000;
     }
-    takeNewScreenshot(toGrabMode(CaptureMode(captureMode), Settings::transientOnly()), timeout, includePointer, includeDecorations, includeShadow);
+    takeNewScreenshot(toGrabMode(CaptureMode(captureMode)), timeout, includePointer, includeDecorations, includeShadow);
 }
 
 void SpectacleCore::cancelScreenshot()
@@ -1405,7 +1394,7 @@ ExportManager::Actions SpectacleCore::autoExportActions() const
     return actions;
 }
 
-ImagePlatform::GrabMode SpectacleCore::toGrabMode(CaptureModeModel::CaptureMode captureMode, bool transientOnly) const
+ImagePlatform::GrabMode SpectacleCore::toGrabMode(CaptureModeModel::CaptureMode captureMode) const
 {
     using GrabMode = ImagePlatform::GrabMode;
     using CaptureMode = CaptureModeModel::CaptureMode;
@@ -1418,11 +1407,10 @@ ImagePlatform::GrabMode SpectacleCore::toGrabMode(CaptureModeModel::CaptureMode 
         return GrabMode::ActiveWindow;
     } else if (captureMode == CaptureMode::WindowUnderCursor
         && supportedGrabModes.testFlag(ImagePlatform::WindowUnderCursor)) {
-        // TODO: Improve API for transientOnly or make it obsolete.
-        if (transientOnly || !supportedGrabModes.testFlag(ImagePlatform::TransientWithParent)) {
-            return GrabMode::WindowUnderCursor;
-        } else {
+        if (supportedGrabModes.testFlag(ImagePlatform::TransientWithParent)) {
             return GrabMode::TransientWithParent;
+        } else {
+            return GrabMode::WindowUnderCursor;
         }
     } else if (captureMode == CaptureMode::RectangularRegion
         && supportedGrabModes.testFlag(ImagePlatform::PerScreenImageNative)) {
