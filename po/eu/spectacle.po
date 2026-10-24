@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-20 00:55+0000\n"
+"POT-Creation-Date: 2026-10-24 00:52+0000\n"
 "PO-Revision-Date: 2026-08-19 22:13+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -111,7 +111,7 @@ msgstr "Atzeman uneko monitorea"
 msgid "Capture the active window"
 msgstr "Atzeman leiho aktiboa"
 
-#: src/CommandLineOptions.h:38
+#: src/CommandLineOptions.h:37
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
@@ -119,21 +119,12 @@ msgid ""
 msgstr ""
 "Atzeman kurtsorearen azpiko leihoa, menu-gainerakorren guraso leihoak barne"
 
-#: src/CommandLineOptions.h:42
-#, kde-format
-msgid ""
-"Capture the window currently under the cursor, excluding parents of pop-up "
-"menus"
-msgstr ""
-"Atzeman kurtsoaren azpiko leihoa, menu-gainerakorren guraso leihoak kanpo "
-"utzita"
-
-#: src/CommandLineOptions.h:46
+#: src/CommandLineOptions.h:40
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "Atzeman pantailaren eremu laukizuzen bat"
 
-#: src/CommandLineOptions.h:50
+#: src/CommandLineOptions.h:44
 #, kde-format
 msgid ""
 "Record the screen using the given mode. Modes:\n"
@@ -146,44 +137,44 @@ msgstr ""
 "- s, pantaila\n"
 "- w, leihoa"
 
-#: src/CommandLineOptions.h:58
+#: src/CommandLineOptions.h:52
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "Abiatu Spectacle pantaila-argazki bat hartu gabe"
 
-#: src/CommandLineOptions.h:62
+#: src/CommandLineOptions.h:56
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "Hasi «interfaze grafiko» moduan (lehenetsia)"
 
-#: src/CommandLineOptions.h:66
+#: src/CommandLineOptions.h:60
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "Hartu pantaila-argazki bat eta irten interfaze grafikoa erakusteke"
 
-#: src/CommandLineOptions.h:70
+#: src/CommandLineOptions.h:64
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "Abiarazi «DBus-aktibazio» moduan"
 
-#: src/CommandLineOptions.h:74
+#: src/CommandLineOptions.h:68
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
 msgstr ""
 "Atzealdeko moduan, ez gaineratu jakinarazpen bat pantaila-argazkia hartzean"
 
-#: src/CommandLineOptions.h:78
+#: src/CommandLineOptions.h:72
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "Atzealdeko moduan, gorde irudia adierazitako fitxategian"
 
-#: src/CommandLineOptions.h:83
+#: src/CommandLineOptions.h:77
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr "Atzealdeko moduan, itxaron argazkia hartu aurretik (milisegundotan)"
 
-#: src/CommandLineOptions.h:88
+#: src/CommandLineOptions.h:82
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
@@ -192,47 +183,47 @@ msgstr ""
 "Atzealdeko moduan, kopiatu pantaila-argazkiko irudia arbelera, -o ere "
 "erabiltzen ez bada."
 
-#: src/CommandLineOptions.h:92
+#: src/CommandLineOptions.h:86
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr ""
 "Atzealdeko moduan, kopiatu pantaila-argazki fitxategiaren bide-izena arbelera"
 
-#: src/CommandLineOptions.h:96
+#: src/CommandLineOptions.h:90
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr ""
 "Itxaron klik bati pantaila-argazkia hartzeko. Itxaron-denbora baliogabetzen "
 "du"
 
-#: src/CommandLineOptions.h:100
+#: src/CommandLineOptions.h:94
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr ""
 "Spectacle-ren instantzia grafiko berri bat abiarazten du DBus-en "
 "erregistratu gabe"
 
-#: src/CommandLineOptions.h:104
+#: src/CommandLineOptions.h:98
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "Atzeko plano moduan, barneratu erakuslea pantaila-argazkian"
 
-#: src/CommandLineOptions.h:108
+#: src/CommandLineOptions.h:102
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "Atzeko plano moduan, kanporatu apaingarriak pantaila-argazkitik"
 
-#: src/CommandLineOptions.h:110
+#: src/CommandLineOptions.h:104
 #, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
 msgstr "Hondoko-plano moduan, kanporatu itzalak pantaila-argazkitik"
 
-#: src/CommandLineOptions.h:113
+#: src/CommandLineOptions.h:107
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "Ireki eta editatu dagoen pantaila-argazki fitxategia"
 
-#: src/CommandLineOptions.h:116
+#: src/CommandLineOptions.h:110
 #, kde-format
 msgid "Accept region selection on click-and-release"
 msgstr "Onartu eremu-hautapena klik egin eta askatzean"
@@ -766,41 +757,25 @@ msgstr "Erakutsi leihoaren itzala leiho baten pantaila-argazki bat hartzean."
 
 #: src/Gui/CaptureSettingsColumn.qml:44
 #, kde-format
-msgid "Capture the current pop-up only"
-msgstr "Atzeman uneko gainerakorra soilik"
-
-#: src/Gui/CaptureSettingsColumn.qml:46
-#, kde-format
-msgid ""
-"Capture only the current pop-up window (like a menu, tooltip etc) when "
-"taking a screenshot of a window. If disabled, the pop-up is captured along "
-"with the parent window."
-msgstr ""
-"Atzeman soilik uneko leiho gainerakorra (menu bat, tresna-iradokizun bat, "
-"etab.) leiho baten pantaila-argazkia hartzean. Ezgaituta badago, "
-"gainerakorra haren guraso leihoarekin batera atzematen da."
-
-#: src/Gui/CaptureSettingsColumn.qml:54
-#, kde-format
 msgid "Quit after manual Save or Copy"
 msgstr "Irten eskuz gorde edo kopiatu ondoren"
 
-#: src/Gui/CaptureSettingsColumn.qml:55
+#: src/Gui/CaptureSettingsColumn.qml:45
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image."
 msgstr "Irten Spectacle-tik irudia eskuz gorde edo kopiatu ondoren."
 
-#: src/Gui/CaptureSettingsColumn.qml:64
+#: src/Gui/CaptureSettingsColumn.qml:54
 #, kde-format
 msgid "Capture on click"
 msgstr "Atzeman klik egitean"
 
-#: src/Gui/CaptureSettingsColumn.qml:66
+#: src/Gui/CaptureSettingsColumn.qml:56
 #, kde-format
 msgid "Wait for a mouse click before capturing the screenshot image."
 msgstr "Itxaron saguaren klik bati pantaila-argazkia atzemateko."
 
-#: src/Gui/CaptureSettingsColumn.qml:76
+#: src/Gui/CaptureSettingsColumn.qml:66
 #, kde-format
 msgid "Delay:"
 msgstr "Atzerapena:"
@@ -1030,91 +1005,74 @@ msgctxt "@info:tooltip"
 msgid "Show the window shadow"
 msgstr "Erakutsi leihoaren itzala"
 
-#: src/Gui/OptionsMenu.cpp:69
-#, kde-format
-msgctxt "@option:check"
-msgid "Capture the current pop-up only"
-msgstr "Atzeman uneko gainerakorra soilik"
-
-#: src/Gui/OptionsMenu.cpp:71
-#, kde-format
-msgctxt "@info:tooltip"
-msgid ""
-"Capture only the current pop-up window (like a menu, tooltip etc).\n"
-"If disabled, the pop-up is captured along with the parent window"
-msgstr ""
-"Atzeman soilik uneko leiho gainerakorra (menu bat, tresna-argibidea bat "
-"etab. bezala).\n"
-"Ezgaituta badago, gainerakorra guraso leihoarekin batera atzematen da"
-
-#: src/Gui/OptionsMenu.cpp:81
+#: src/Gui/OptionsMenu.cpp:67
 #, kde-format
 msgctxt "@option:check"
 msgid "Quit after manual Save or Copy"
 msgstr "Irten eskuz gorde edo kopiatu ondoren"
 
-#: src/Gui/OptionsMenu.cpp:82
+#: src/Gui/OptionsMenu.cpp:68
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr "Irten Spectacle-tik irudia eskuz gorde edo kopiatu ondoren"
 
-#: src/Gui/OptionsMenu.cpp:94
+#: src/Gui/OptionsMenu.cpp:80
 #, kde-format
 msgctxt "@option:check"
 msgid "Capture On Click"
 msgstr "Atzeman klik egitean"
 
-#: src/Gui/OptionsMenu.cpp:109
+#: src/Gui/OptionsMenu.cpp:95
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Delay:"
 msgstr "Atzerapena:"
 
-#: src/Gui/OptionsMenu.cpp:114
+#: src/Gui/OptionsMenu.cpp:100
 #, kde-format
 msgctxt "@item 0 delay special value"
 msgid "No Delay"
 msgstr "Atzerapenik ez"
 
-#: src/Gui/OptionsMenu.cpp:133
+#: src/Gui/OptionsMenu.cpp:119
 #, kde-format
 msgctxt "@title:menu"
 msgid "Recording Settings"
 msgstr "Grabatzeko ezarpenak"
 
-#: src/Gui/OptionsMenu.cpp:135
+#: src/Gui/OptionsMenu.cpp:121
 #, kde-format
 msgctxt "@option:check for recordings"
 msgid "Include mouse pointer"
 msgstr "Jaso saguaren erakuslea"
 
-#: src/Gui/OptionsMenu.cpp:136
+#: src/Gui/OptionsMenu.cpp:122
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the recording"
 msgstr "Erakutsi saguaren kurtsorea grabazioan"
 
-#: src/Gui/OptionsMenu.cpp:144
+#: src/Gui/OptionsMenu.cpp:130
 #, kde-format
 msgctxt "@option:check for recordings"
 msgid "Record system audio"
 msgstr "Sistemaren audioa grabatu"
 
-#: src/Gui/OptionsMenu.cpp:145
+#: src/Gui/OptionsMenu.cpp:131
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Include the audio that is currently playing on the system in the recording"
 msgstr "Grabazioan sisteman une honetan jotzen ari den audioa jaso"
 
-#: src/Gui/OptionsMenu.cpp:153
+#: src/Gui/OptionsMenu.cpp:139
 #, kde-format
 msgctxt "@option:check for recordings"
 msgid "Record microphone"
 msgstr "Mikrofonoaren audioa grabatu"
 
-#: src/Gui/OptionsMenu.cpp:154
+#: src/Gui/OptionsMenu.cpp:140
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include audio from the default microphone in the recording"
@@ -1668,74 +1626,68 @@ msgstr "Leihoaren apaingarriak pantaila-argazkian sartuko diren"
 msgid "Whether the window shadow is included in the screenshot"
 msgstr "Leihoaren itzala pantaila-argazkian jasoko den edo ez"
 
-#. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:115
-#, kde-format
-msgid "Only capture the current pop up menu"
-msgstr "Atzeman soilik uneko menu-gainerakorra"
-
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:119
+#: src/Gui/SettingsDialog/spectacle.kcfg:115
 #, kde-format
 msgid "Quit after saving or copying an image"
 msgstr "Irten irudi bat gorde edo kopiatu ondoren"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:123
+#: src/Gui/SettingsDialog/spectacle.kcfg:119
 #, kde-format
 msgid "Delay"
 msgstr "Atzerapena"
 
 #. i18n: ectx: label, entry (imageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (videoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:134
-#: src/Gui/SettingsDialog/spectacle.kcfg:180
+#: src/Gui/SettingsDialog/spectacle.kcfg:130
+#: src/Gui/SettingsDialog/spectacle.kcfg:176
 #, kde-format
 msgid "Default filename"
 msgstr "Lehenetsitako fitxategi-izena"
 
 #. i18n: ectx: label, entry (imageCompressionQuality), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:151
+#: src/Gui/SettingsDialog/spectacle.kcfg:147
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "Galeradun fitxategi formatuen konpresio kalitatea"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:159
+#: src/Gui/SettingsDialog/spectacle.kcfg:155
 #, kde-format
 msgid "Default save image format"
 msgstr "Irudia gordetzeko formatu lehenetsia"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:163
+#: src/Gui/SettingsDialog/spectacle.kcfg:159
 #, kde-format
 msgid "The filename template used when saving screenshots"
 msgstr "Pantaila-argazkiak gordetzeko erabilitako fitxategi-izen txantiloia"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:170
-#: src/Gui/SettingsDialog/spectacle.kcfg:209
+#: src/Gui/SettingsDialog/spectacle.kcfg:166
+#: src/Gui/SettingsDialog/spectacle.kcfg:205
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "Gordetako azken fitxategiaren bide-izena"
 
 #. i18n: ectx: label, entry (lastImageSaveAsLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveAsLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:174
-#: src/Gui/SettingsDialog/spectacle.kcfg:213
+#: src/Gui/SettingsDialog/spectacle.kcfg:170
+#: src/Gui/SettingsDialog/spectacle.kcfg:209
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "\"Gorde honela\" ekintzarekin erabilitako azken bide-izena"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:197
+#: src/Gui/SettingsDialog/spectacle.kcfg:193
 #, kde-format
 msgid "Default video format"
 msgstr "Bideo formatu lehenetsia"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:202
+#: src/Gui/SettingsDialog/spectacle.kcfg:198
 #, kde-format
 msgid "The filename template used when saving screencasts"
 msgstr "Pantaila-grabazioak gordetzeko erabilitako fitxategi-izen txantiloia"
@@ -2460,7 +2412,7 @@ msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr "Iruditik testua erauzten..."
 
-#: src/SpectacleCore.cpp:1062
+#: src/SpectacleCore.cpp:1052
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -2469,13 +2421,13 @@ msgstr ""
 "--scaled aukera -f/--fullscreen aukerarekin bakarrik onartzen da; bestelaez "
 "da kontuan hartuko"
 
-#: src/SpectacleCore.cpp:1077
+#: src/SpectacleCore.cpp:1067
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 ez da «--record» aukerarako modu balioduna"
 
-#: src/SpectacleCore.cpp:1314
+#: src/SpectacleCore.cpp:1303
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2485,24 +2437,24 @@ msgstr ""
 "Pantaila-argazki bat gorde da '%1' gisa '%2'(e)(a)n eta pantaila-argazkiaren "
 "bide-izena zure arbelean gorde da."
 
-#: src/SpectacleCore.cpp:1318
+#: src/SpectacleCore.cpp:1307
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Pantaila-argazki bat gorde da '%1' gisa zure irudien karpetan."
 
-#: src/SpectacleCore.cpp:1321
+#: src/SpectacleCore.cpp:1310
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Pantaila-argazki bat gorde da '%1' gisa '%2'(e)(a)n."
 
-#: src/SpectacleCore.cpp:1325
+#: src/SpectacleCore.cpp:1314
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Pantaila-argazki bat gorde da zure arbelean."
 
-#: src/SpectacleCore.cpp:1330
+#: src/SpectacleCore.cpp:1319
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2512,25 +2464,25 @@ msgstr ""
 "Grabaketa bat '%1' gisa gorde da '%2'(e)(a)n eta grabaketaren bide-izena "
 "zure arbelean gorde da."
 
-#: src/SpectacleCore.cpp:1332
+#: src/SpectacleCore.cpp:1321
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Grabaketa bat gorde da '%1' gisa zure bideoen karpetan."
 
-#: src/SpectacleCore.cpp:1334
+#: src/SpectacleCore.cpp:1323
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Grabaketa bat gorde da '%1' gisa '%2'(e)(a)n."
 
-#: src/SpectacleCore.cpp:1346
+#: src/SpectacleCore.cpp:1335
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Ireki"
 
-#: src/SpectacleCore.cpp:1360
+#: src/SpectacleCore.cpp:1349
 #, kde-format
 msgid "Annotate"
 msgstr "Oharra idaztea"
@@ -2558,6 +2510,41 @@ msgstr "WebP animatua (GIF baino hobea)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (bateragarria, baina ez eraginkorra)"
+
+#~ msgid ""
+#~ "Capture the window currently under the cursor, excluding parents of pop-"
+#~ "up menus"
+#~ msgstr ""
+#~ "Atzeman kurtsoaren azpiko leihoa, menu-gainerakorren guraso leihoak kanpo "
+#~ "utzita"
+
+#~ msgid "Capture the current pop-up only"
+#~ msgstr "Atzeman uneko gainerakorra soilik"
+
+#~ msgid ""
+#~ "Capture only the current pop-up window (like a menu, tooltip etc) when "
+#~ "taking a screenshot of a window. If disabled, the pop-up is captured "
+#~ "along with the parent window."
+#~ msgstr ""
+#~ "Atzeman soilik uneko leiho gainerakorra (menu bat, tresna-iradokizun bat, "
+#~ "etab.) leiho baten pantaila-argazkia hartzean. Ezgaituta badago, "
+#~ "gainerakorra haren guraso leihoarekin batera atzematen da."
+
+#~ msgctxt "@option:check"
+#~ msgid "Capture the current pop-up only"
+#~ msgstr "Atzeman uneko gainerakorra soilik"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid ""
+#~ "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+#~ "If disabled, the pop-up is captured along with the parent window"
+#~ msgstr ""
+#~ "Atzeman soilik uneko leiho gainerakorra (menu bat, tresna-argibidea bat "
+#~ "etab. bezala).\n"
+#~ "Ezgaituta badago, gainerakorra guraso leihoarekin batera atzematen da"
+
+#~ msgid "Only capture the current pop up menu"
+#~ msgstr "Atzeman soilik uneko menu-gainerakorra"
 
 #~ msgctxt "@info"
 #~ msgid ""

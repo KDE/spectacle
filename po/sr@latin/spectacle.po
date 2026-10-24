@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-20 00:55+0000\n"
+"POT-Creation-Date: 2026-10-24 00:52+0000\n"
 "PO-Revision-Date: 2026-10-07 14:30+0200\n"
 "Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -116,7 +116,7 @@ msgid "Capture the active window"
 msgstr "Snimi aktivni prozor"
 
 # switch-rule: t-cursor > t-pointer
-#: src/CommandLineOptions.h:38
+#: src/CommandLineOptions.h:37
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
@@ -124,20 +124,12 @@ msgid ""
 msgstr ""
 "Snimi prozor trenutno pod pokazivačem, uključujući roditelje iskačućih menija"
 
-# switch-rule: t-cursor > t-pointer
-#: src/CommandLineOptions.h:42
-#, kde-format
-msgid ""
-"Capture the window currently under the cursor, excluding parents of pop-up "
-"menus"
-msgstr "Snimi prozor trenutno pod pokazivačem, bez roditelja iskačućih menija"
-
-#: src/CommandLineOptions.h:46
+#: src/CommandLineOptions.h:40
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "Uhvati pravougaonu oblast ekrana"
 
-#: src/CommandLineOptions.h:50
+#: src/CommandLineOptions.h:44
 #, kde-format
 msgid ""
 "Record the screen using the given mode. Modes:\n"
@@ -150,43 +142,43 @@ msgstr ""
 "- s, screen (ekran)\n"
 "- w, window (prozor)"
 
-#: src/CommandLineOptions.h:58
+#: src/CommandLineOptions.h:52
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "Pokreni Spectacle bez hvatanja snimka"
 
-#: src/CommandLineOptions.h:62
+#: src/CommandLineOptions.h:56
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "Pokreni sa grafičkim sučeljem (podrazumevano)"
 
-#: src/CommandLineOptions.h:66
+#: src/CommandLineOptions.h:60
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "Uhvati snimak i napusti bez prikazivanja sučelja"
 
-#: src/CommandLineOptions.h:70
+#: src/CommandLineOptions.h:64
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "Pokreni sa aktiviranjem preko D‑Busa"
 
-#: src/CommandLineOptions.h:74
+#: src/CommandLineOptions.h:68
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
 msgstr "U pozadinskom režimu, ne izbacuj obaveštenje kada se uhvati snimak"
 
-#: src/CommandLineOptions.h:78
+#: src/CommandLineOptions.h:72
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "U pozadinskom režimu, sačuvaj sliku u zadati fajl"
 
-#: src/CommandLineOptions.h:83
+#: src/CommandLineOptions.h:77
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr "U pozadinskom režimu, zastoj pre hvatanja snimka (u milisekundama)"
 
-#: src/CommandLineOptions.h:88
+#: src/CommandLineOptions.h:82
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
@@ -194,44 +186,44 @@ msgid ""
 msgstr ""
 "U pozadinskom režimu, kopiraj snimak u klipbord, osim ako je zadato i -o."
 
-#: src/CommandLineOptions.h:92
+#: src/CommandLineOptions.h:86
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr "U pozadinskom režimu, kopiraj putanju fajla snimka u klipbord"
 
-#: src/CommandLineOptions.h:96
+#: src/CommandLineOptions.h:90
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr "Sačekaj klik pre hvatanja snimka (potiskuje zastoj)"
 
-#: src/CommandLineOptions.h:100
+#: src/CommandLineOptions.h:94
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr ""
 "Pokreni novi primerak Spectaclea sa grafičkim sučeljem, bez registrovanja na "
 "D‑Busu"
 
-#: src/CommandLineOptions.h:104
+#: src/CommandLineOptions.h:98
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "U pozadinskom režimu, uključi pokazivač u snimak"
 
-#: src/CommandLineOptions.h:108
+#: src/CommandLineOptions.h:102
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "U pozadinskom režimu, izostavi dekoracije sa snimka"
 
-#: src/CommandLineOptions.h:110
+#: src/CommandLineOptions.h:104
 #, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
 msgstr "U pozadinskom režimu, izostavi senke sa snimka"
 
-#: src/CommandLineOptions.h:113
+#: src/CommandLineOptions.h:107
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "Otvori i uredi postojeći fajl snimka"
 
-#: src/CommandLineOptions.h:116
+#: src/CommandLineOptions.h:110
 #, kde-format
 msgid "Accept region selection on click-and-release"
 msgstr "Prihvati izbor oblasti pri otpuštanju klika"
@@ -775,41 +767,25 @@ msgstr "Prikaži senku prozora pri hvatanju snimka prozora."
 
 #: src/Gui/CaptureSettingsColumn.qml:44
 #, kde-format
-msgid "Capture the current pop-up only"
-msgstr "Uhvati samo trenutni iskakač"
-
-#: src/Gui/CaptureSettingsColumn.qml:46
-#, kde-format
-msgid ""
-"Capture only the current pop-up window (like a menu, tooltip etc) when "
-"taking a screenshot of a window. If disabled, the pop-up is captured along "
-"with the parent window."
-msgstr ""
-"Hvata samo trenutni iskačući prozor (npr. meni, oblačić itd.) pri hvatanju "
-"snimka prozora. Ako je isključeno, iskakač se hvata zajedno sa roditeljskim "
-"prozorom."
-
-#: src/Gui/CaptureSettingsColumn.qml:54
-#, kde-format
 msgid "Quit after manual Save or Copy"
 msgstr "Napusti posle ručnog upisivanja ili kopiranja"
 
-#: src/Gui/CaptureSettingsColumn.qml:55
+#: src/Gui/CaptureSettingsColumn.qml:45
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image."
 msgstr "Napusti Spectacle posle ručnog upisivanja ili kopiranja slike."
 
-#: src/Gui/CaptureSettingsColumn.qml:64
+#: src/Gui/CaptureSettingsColumn.qml:54
 #, kde-format
 msgid "Capture on click"
 msgstr "Snimi na klik"
 
-#: src/Gui/CaptureSettingsColumn.qml:66
+#: src/Gui/CaptureSettingsColumn.qml:56
 #, kde-format
 msgid "Wait for a mouse click before capturing the screenshot image."
 msgstr "Sačekaj na klik mišem pre hvatanja snimka ekrana."
 
-#: src/Gui/CaptureSettingsColumn.qml:76
+#: src/Gui/CaptureSettingsColumn.qml:66
 #, kde-format
 msgid "Delay:"
 msgstr "Zastoj:"
@@ -1046,93 +1022,77 @@ msgctxt "@info:tooltip"
 msgid "Show the window shadow"
 msgstr "Prikaži senku prozora"
 
-#: src/Gui/OptionsMenu.cpp:69
-#, kde-format
-msgctxt "@option:check"
-msgid "Capture the current pop-up only"
-msgstr "Uhvati samo trenutni iskakač"
-
-#: src/Gui/OptionsMenu.cpp:71
-#, kde-format
-msgctxt "@info:tooltip"
-msgid ""
-"Capture only the current pop-up window (like a menu, tooltip etc).\n"
-"If disabled, the pop-up is captured along with the parent window"
-msgstr ""
-"Hvata samo trenutni iskačući prozor (npr. meni, oblačić itd.).\n"
-"Ako je isključeno, iskakač se hvata zajedno sa roditeljskim prozorom"
-
-#: src/Gui/OptionsMenu.cpp:81
+#: src/Gui/OptionsMenu.cpp:67
 #, kde-format
 msgctxt "@option:check"
 msgid "Quit after manual Save or Copy"
 msgstr "Napusti posle ručnog upisivanja ili kopiranja"
 
-#: src/Gui/OptionsMenu.cpp:82
+#: src/Gui/OptionsMenu.cpp:68
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr "Napusti Spectacle posle ručnog upisivanja ili kopiranja slike"
 
 # >> @option:check
-#: src/Gui/OptionsMenu.cpp:94
+#: src/Gui/OptionsMenu.cpp:80
 #, kde-format
 msgctxt "@option:check"
 msgid "Capture On Click"
 msgstr "Snimi na klik"
 
-#: src/Gui/OptionsMenu.cpp:109
+#: src/Gui/OptionsMenu.cpp:95
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Delay:"
 msgstr "Zastoj:"
 
 # >> @item:inrange
-#: src/Gui/OptionsMenu.cpp:114
+#: src/Gui/OptionsMenu.cpp:100
 #, kde-format
 msgctxt "@item 0 delay special value"
 msgid "No Delay"
 msgstr "bez zastoja"
 
-#: src/Gui/OptionsMenu.cpp:133
+#: src/Gui/OptionsMenu.cpp:119
 #, kde-format
 msgctxt "@title:menu"
 msgid "Recording Settings"
 msgstr "Postavke snimanja"
 
-#: src/Gui/OptionsMenu.cpp:135
+#: src/Gui/OptionsMenu.cpp:121
 #, kde-format
 msgctxt "@option:check for recordings"
 msgid "Include mouse pointer"
 msgstr "Uključi pokazivač miša"
 
 # switch-rule: t-cursor > t-pointer
-#: src/Gui/OptionsMenu.cpp:136
+#: src/Gui/OptionsMenu.cpp:122
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the recording"
 msgstr "Prikaži pokazivač miša u snimku"
 
-#: src/Gui/OptionsMenu.cpp:144
+#: src/Gui/OptionsMenu.cpp:130
 #, kde-format
 msgctxt "@option:check for recordings"
 msgid "Record system audio"
 msgstr "Snimi zvuk sistema"
 
-#: src/Gui/OptionsMenu.cpp:145
+#: src/Gui/OptionsMenu.cpp:131
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Include the audio that is currently playing on the system in the recording"
 msgstr "Uključi u snimak zvuk koji se trenutno pušta na sistemu"
 
-#: src/Gui/OptionsMenu.cpp:153
+#: src/Gui/OptionsMenu.cpp:139
 #, kde-format
 msgctxt "@option:check for recordings"
 msgid "Record microphone"
 msgstr "Snimi mikrofon"
 
-#: src/Gui/OptionsMenu.cpp:154
+#: src/Gui/OptionsMenu.cpp:140
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include audio from the default microphone in the recording"
@@ -1692,74 +1652,68 @@ msgstr "Da li su dekoracije prozora uključene u snimak"
 msgid "Whether the window shadow is included in the screenshot"
 msgstr "Da li je senka prozora uključena u snimak"
 
-#. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:115
-#, kde-format
-msgid "Only capture the current pop up menu"
-msgstr "Uhvati samo trenutni iskačući meni"
-
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:119
+#: src/Gui/SettingsDialog/spectacle.kcfg:115
 #, kde-format
 msgid "Quit after saving or copying an image"
 msgstr "Napusti posle upisivanja ili kopiranja slike"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:123
+#: src/Gui/SettingsDialog/spectacle.kcfg:119
 #, kde-format
 msgid "Delay"
 msgstr "Zastoj"
 
 #. i18n: ectx: label, entry (imageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (videoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:134
-#: src/Gui/SettingsDialog/spectacle.kcfg:180
+#: src/Gui/SettingsDialog/spectacle.kcfg:130
+#: src/Gui/SettingsDialog/spectacle.kcfg:176
 #, kde-format
 msgid "Default filename"
 msgstr "Podrazumevano ime fajla"
 
 #. i18n: ectx: label, entry (imageCompressionQuality), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:151
+#: src/Gui/SettingsDialog/spectacle.kcfg:147
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "Kvalitet kompresije za formate fajlova sa gubicima"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:159
+#: src/Gui/SettingsDialog/spectacle.kcfg:155
 #, kde-format
 msgid "Default save image format"
 msgstr "Podrazumevani format za upisivanje slika"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:163
+#: src/Gui/SettingsDialog/spectacle.kcfg:159
 #, kde-format
 msgid "The filename template used when saving screenshots"
 msgstr "Šablon imena fajla pri upisivanju snimaka ekrana"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:170
-#: src/Gui/SettingsDialog/spectacle.kcfg:209
+#: src/Gui/SettingsDialog/spectacle.kcfg:166
+#: src/Gui/SettingsDialog/spectacle.kcfg:205
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "Putanja poslednjeg sačuvanog fajla"
 
 #. i18n: ectx: label, entry (lastImageSaveAsLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveAsLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:174
-#: src/Gui/SettingsDialog/spectacle.kcfg:213
+#: src/Gui/SettingsDialog/spectacle.kcfg:170
+#: src/Gui/SettingsDialog/spectacle.kcfg:209
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "Poslednja putanja korišćena za radnju „Sačuvaj kao“"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:197
+#: src/Gui/SettingsDialog/spectacle.kcfg:193
 #, kde-format
 msgid "Default video format"
 msgstr "Podrazumevani video format"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:202
+#: src/Gui/SettingsDialog/spectacle.kcfg:198
 #, kde-format
 msgid "The filename template used when saving screencasts"
 msgstr "Šablon imena fajla pri upisivanju video snimaka ekrana"
@@ -2489,20 +2443,20 @@ msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr "Izvlačim tekst iz slike..."
 
-#: src/SpectacleCore.cpp:1062
+#: src/SpectacleCore.cpp:1052
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "--scaled is only allowed together with -f/--fullscreen and will be ignored"
 msgstr "--scaled je dozvoljeno samo uz -f/--fullscreen i biće zanemareno"
 
-#: src/SpectacleCore.cpp:1077
+#: src/SpectacleCore.cpp:1067
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 nije ispravan režim za --record"
 
-#: src/SpectacleCore.cpp:1314
+#: src/SpectacleCore.cpp:1303
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2512,24 +2466,24 @@ msgstr ""
 "Snimak je sačuvan kao „%1“ u „%2“, a putanja fajla snimka je sačuvana u "
 "klipbord."
 
-#: src/SpectacleCore.cpp:1318
+#: src/SpectacleCore.cpp:1307
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Snimak je sačuvan kao „%1“ u vašoj fascikli slika."
 
-#: src/SpectacleCore.cpp:1321
+#: src/SpectacleCore.cpp:1310
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Snimak je sačuvan kao „%1“ u „%2“."
 
-#: src/SpectacleCore.cpp:1325
+#: src/SpectacleCore.cpp:1314
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Snimak je sačuvan u klipbord."
 
-#: src/SpectacleCore.cpp:1330
+#: src/SpectacleCore.cpp:1319
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2539,25 +2493,25 @@ msgstr ""
 "Snimak je sačuvan kao „%1“ u „%2“, a putanja fajla snimka je sačuvana u "
 "klipbord."
 
-#: src/SpectacleCore.cpp:1332
+#: src/SpectacleCore.cpp:1321
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Snimak je sačuvan kao „%1“ u vašoj fascikli videa."
 
-#: src/SpectacleCore.cpp:1334
+#: src/SpectacleCore.cpp:1323
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Snimak je sačuvan kao „%1“ u „%2“."
 
-#: src/SpectacleCore.cpp:1346
+#: src/SpectacleCore.cpp:1335
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Otvori"
 
-#: src/SpectacleCore.cpp:1360
+#: src/SpectacleCore.cpp:1349
 #, kde-format
 msgid "Annotate"
 msgstr "Dodaj tumačenja"
@@ -2586,3 +2540,37 @@ msgstr "animirani WebP (bolji od GIF‑a)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "format GIF (saglasan, ali neefikasan)"
+
+# switch-rule: t-cursor > t-pointer
+#~ msgid ""
+#~ "Capture the window currently under the cursor, excluding parents of pop-"
+#~ "up menus"
+#~ msgstr ""
+#~ "Snimi prozor trenutno pod pokazivačem, bez roditelja iskačućih menija"
+
+#~ msgid "Capture the current pop-up only"
+#~ msgstr "Uhvati samo trenutni iskakač"
+
+#~ msgid ""
+#~ "Capture only the current pop-up window (like a menu, tooltip etc) when "
+#~ "taking a screenshot of a window. If disabled, the pop-up is captured "
+#~ "along with the parent window."
+#~ msgstr ""
+#~ "Hvata samo trenutni iskačući prozor (npr. meni, oblačić itd.) pri "
+#~ "hvatanju snimka prozora. Ako je isključeno, iskakač se hvata zajedno sa "
+#~ "roditeljskim prozorom."
+
+#~ msgctxt "@option:check"
+#~ msgid "Capture the current pop-up only"
+#~ msgstr "Uhvati samo trenutni iskakač"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid ""
+#~ "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+#~ "If disabled, the pop-up is captured along with the parent window"
+#~ msgstr ""
+#~ "Hvata samo trenutni iskačući prozor (npr. meni, oblačić itd.).\n"
+#~ "Ako je isključeno, iskakač se hvata zajedno sa roditeljskim prozorom"
+
+#~ msgid "Only capture the current pop up menu"
+#~ msgstr "Uhvati samo trenutni iskačući meni"

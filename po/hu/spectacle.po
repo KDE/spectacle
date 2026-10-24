@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-20 00:55+0000\n"
+"POT-Creation-Date: 2026-10-24 00:52+0000\n"
 "PO-Revision-Date: 2026-06-18 21:39+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -109,26 +109,19 @@ msgstr "Aktuális monitor rögzítése"
 msgid "Capture the active window"
 msgstr "Aktív ablak rögzítése"
 
-#: src/CommandLineOptions.h:38
+#: src/CommandLineOptions.h:37
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
 "menus"
 msgstr "Kurzor alatti ablak rögzítése, beleértve a felugró menük szüleit"
 
-#: src/CommandLineOptions.h:42
-#, kde-format
-msgid ""
-"Capture the window currently under the cursor, excluding parents of pop-up "
-"menus"
-msgstr "Kurzor alatti ablak rögzítése, kihagyva a felugró menük szüleit"
-
-#: src/CommandLineOptions.h:46
+#: src/CommandLineOptions.h:40
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "Téglalap alakú terület rögzítése a képernyőn"
 
-#: src/CommandLineOptions.h:50
+#: src/CommandLineOptions.h:44
 #, kde-format
 msgid ""
 "Record the screen using the given mode. Modes:\n"
@@ -141,88 +134,88 @@ msgstr ""
 "-s, képernyő\n"
 "-w, ablak"
 
-#: src/CommandLineOptions.h:58
+#: src/CommandLineOptions.h:52
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "A Spectacle indítása képernyőkép készítése nélkül"
 
-#: src/CommandLineOptions.h:62
+#: src/CommandLineOptions.h:56
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "Grafikus felület indítása (alapértelmezés)"
 
-#: src/CommandLineOptions.h:66
+#: src/CommandLineOptions.h:60
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr ""
 "Képernyőkép készítése és kilépés a grafikus felület megjelenítése nélkül"
 
-#: src/CommandLineOptions.h:70
+#: src/CommandLineOptions.h:64
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "Indítás DBus-Activation módban"
 
-#: src/CommandLineOptions.h:74
+#: src/CommandLineOptions.h:68
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
 msgstr "Ne jelenjen meg értesítés képernyőkép készítésekor"
 
-#: src/CommandLineOptions.h:78
+#: src/CommandLineOptions.h:72
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "Kép mentése a megadott fájlba"
 
-#: src/CommandLineOptions.h:83
+#: src/CommandLineOptions.h:77
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr "Késleltetés képernyőkép készítése előtt (ezredmásodpercekben)"
 
-#: src/CommandLineOptions.h:88
+#: src/CommandLineOptions.h:82
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
 "used."
 msgstr "Képernyőkép másolása a vágólapra, hacsak az -o opció nincs megadva."
 
-#: src/CommandLineOptions.h:92
+#: src/CommandLineOptions.h:86
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr "Képfájl elérési útjának másolása a vágólapra"
 
-#: src/CommandLineOptions.h:96
+#: src/CommandLineOptions.h:90
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr ""
 "Várakozás kattintásra képernyőkép készítése előtt. Érvényteleníti a "
 "késleltetést"
 
-#: src/CommandLineOptions.h:100
+#: src/CommandLineOptions.h:94
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr "Új grafikus felület indítása a DBusra regisztrálás nélkül"
 
-#: src/CommandLineOptions.h:104
+#: src/CommandLineOptions.h:98
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "Egérmutató belefoglalása a képernyőképbe"
 
-#: src/CommandLineOptions.h:108
+#: src/CommandLineOptions.h:102
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "Dekorációk lehagyása a képernyőképről"
 
-#: src/CommandLineOptions.h:110
+#: src/CommandLineOptions.h:104
 #, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
 msgstr "Árnyékok lehagyása a képernyőképről"
 
-#: src/CommandLineOptions.h:113
+#: src/CommandLineOptions.h:107
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "Meglévő képernyőképfájl megnyitása és szerkesztése"
 
-#: src/CommandLineOptions.h:116
+#: src/CommandLineOptions.h:110
 #, kde-format
 msgid "Accept region selection on click-and-release"
 msgstr "Területkijelölés elfogadása kattintás és felengedéssel"
@@ -757,41 +750,25 @@ msgstr "Az ablak árnyékának megjelenítése ablak képernyőképének készí
 
 #: src/Gui/CaptureSettingsColumn.qml:44
 #, kde-format
-msgid "Capture the current pop-up only"
-msgstr "Csak az aktuális felugró ablak mentése"
-
-#: src/Gui/CaptureSettingsColumn.qml:46
-#, kde-format
-msgid ""
-"Capture only the current pop-up window (like a menu, tooltip etc) when "
-"taking a screenshot of a window. If disabled, the pop-up is captured along "
-"with the parent window."
-msgstr ""
-"Csak az aktuális felugró ablak (menü, buboréksúgó, stb) mentése ablak "
-"képernyőképének készítésekor. Ha nincs engedélyezve, a felugró ablak a szülő "
-"ablakkal együtt kerül mentésre."
-
-#: src/Gui/CaptureSettingsColumn.qml:54
-#, kde-format
 msgid "Quit after manual Save or Copy"
 msgstr "Kilépés kézi mentés vagy másolás után"
 
-#: src/Gui/CaptureSettingsColumn.qml:55
+#: src/Gui/CaptureSettingsColumn.qml:45
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image."
 msgstr "Kilépés a Spectacle-ből a kép kézi mentése vagy másolása után."
 
-#: src/Gui/CaptureSettingsColumn.qml:64
+#: src/Gui/CaptureSettingsColumn.qml:54
 #, kde-format
 msgid "Capture on click"
 msgstr "Rögzítés kattintásra"
 
-#: src/Gui/CaptureSettingsColumn.qml:66
+#: src/Gui/CaptureSettingsColumn.qml:56
 #, kde-format
 msgid "Wait for a mouse click before capturing the screenshot image."
 msgstr "Várjon egérkattintásra a képernyőkép készítése előtt."
 
-#: src/Gui/CaptureSettingsColumn.qml:76
+#: src/Gui/CaptureSettingsColumn.qml:66
 #, kde-format
 msgid "Delay:"
 msgstr "Késleltetés:"
@@ -1021,84 +998,68 @@ msgctxt "@info:tooltip"
 msgid "Show the window shadow"
 msgstr "Az ablak árnyékának megjelenítése"
 
-#: src/Gui/OptionsMenu.cpp:69
-#, kde-format
-msgctxt "@option:check"
-msgid "Capture the current pop-up only"
-msgstr "Csak a jelenlegi felugró ablak mentése"
-
-#: src/Gui/OptionsMenu.cpp:71
-#, kde-format
-msgctxt "@info:tooltip"
-msgid ""
-"Capture only the current pop-up window (like a menu, tooltip etc).\n"
-"If disabled, the pop-up is captured along with the parent window"
-msgstr ""
-"Csak a jelenlegi felugró ablak (menü, buboréksúgó, stb.) mentése.\n"
-"Ha nincs engedélyezve, a felugró ablak a szülő ablakkal együtt kerül mentésre"
-
-#: src/Gui/OptionsMenu.cpp:81
+#: src/Gui/OptionsMenu.cpp:67
 #, kde-format
 msgctxt "@option:check"
 msgid "Quit after manual Save or Copy"
 msgstr "Kilépés kézi mentés vagy másolás után"
 
-#: src/Gui/OptionsMenu.cpp:82
+#: src/Gui/OptionsMenu.cpp:68
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr "Kilépés a Spectacle-ből a kép kézi mentése vagy másolása után"
 
-#: src/Gui/OptionsMenu.cpp:94
+#: src/Gui/OptionsMenu.cpp:80
 #, kde-format
 msgctxt "@option:check"
 msgid "Capture On Click"
 msgstr "Rögzítés kattintásra"
 
-#: src/Gui/OptionsMenu.cpp:109
+#: src/Gui/OptionsMenu.cpp:95
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Delay:"
 msgstr "Késleltetés:"
 
-#: src/Gui/OptionsMenu.cpp:114
+#: src/Gui/OptionsMenu.cpp:100
 #, kde-format
 msgctxt "@item 0 delay special value"
 msgid "No Delay"
 msgstr "Nincs késleltetés"
 
-#: src/Gui/OptionsMenu.cpp:133
+#: src/Gui/OptionsMenu.cpp:119
 #, kde-format
 msgctxt "@title:menu"
 msgid "Recording Settings"
 msgstr "Felvételi beállítások"
 
-#: src/Gui/OptionsMenu.cpp:135
+#: src/Gui/OptionsMenu.cpp:121
 #, kde-format
 msgctxt "@option:check for recordings"
 msgid "Include mouse pointer"
 msgstr "Egérmutató belefoglalása"
 
-#: src/Gui/OptionsMenu.cpp:136
+#: src/Gui/OptionsMenu.cpp:122
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the recording"
 msgstr "Az egérmutató megjelenítése a képernyőfelvételen."
 
-#: src/Gui/OptionsMenu.cpp:144
+#: src/Gui/OptionsMenu.cpp:130
 #, kde-format
 msgctxt "@option:check for recordings"
 msgid "Record system audio"
 msgstr ""
 
-#: src/Gui/OptionsMenu.cpp:145
+#: src/Gui/OptionsMenu.cpp:131
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Include the audio that is currently playing on the system in the recording"
 msgstr ""
 
-#: src/Gui/OptionsMenu.cpp:153
+#: src/Gui/OptionsMenu.cpp:139
 #, fuzzy, kde-format
 #| msgctxt "@action global shortcut"
 #| msgid "Record Screen"
@@ -1106,7 +1067,7 @@ msgctxt "@option:check for recordings"
 msgid "Record microphone"
 msgstr "Képernyő felvétele"
 
-#: src/Gui/OptionsMenu.cpp:154
+#: src/Gui/OptionsMenu.cpp:140
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include audio from the default microphone in the recording"
@@ -1662,74 +1623,68 @@ msgstr "Az ablakdekorációkat tartalmazza-e a képernyőkép"
 msgid "Whether the window shadow is included in the screenshot"
 msgstr "Az ablak árnyékát tartalmazza-e a képernyőkép"
 
-#. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:115
-#, kde-format
-msgid "Only capture the current pop up menu"
-msgstr "Csak a jelenlegi felugró menü rögzítése"
-
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:119
+#: src/Gui/SettingsDialog/spectacle.kcfg:115
 #, kde-format
 msgid "Quit after saving or copying an image"
 msgstr "Kilépés a kép mentése és másolása után"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:123
+#: src/Gui/SettingsDialog/spectacle.kcfg:119
 #, kde-format
 msgid "Delay"
 msgstr "Késleltetés"
 
 #. i18n: ectx: label, entry (imageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (videoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:134
-#: src/Gui/SettingsDialog/spectacle.kcfg:180
+#: src/Gui/SettingsDialog/spectacle.kcfg:130
+#: src/Gui/SettingsDialog/spectacle.kcfg:176
 #, kde-format
 msgid "Default filename"
 msgstr "Alapértelmezett fájlnév"
 
 #. i18n: ectx: label, entry (imageCompressionQuality), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:151
+#: src/Gui/SettingsDialog/spectacle.kcfg:147
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "Tömörítés minősége veszteséges képformátumoknál"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:159
+#: src/Gui/SettingsDialog/spectacle.kcfg:155
 #, kde-format
 msgid "Default save image format"
 msgstr "Alapértelmezett képformátum"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:163
+#: src/Gui/SettingsDialog/spectacle.kcfg:159
 #, kde-format
 msgid "The filename template used when saving screenshots"
 msgstr "A képernyőképek mentésekor használt fájlnévsablon"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:170
-#: src/Gui/SettingsDialog/spectacle.kcfg:209
+#: src/Gui/SettingsDialog/spectacle.kcfg:166
+#: src/Gui/SettingsDialog/spectacle.kcfg:205
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "A legutóbb mentett fájl elérési útja"
 
 #. i18n: ectx: label, entry (lastImageSaveAsLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveAsLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:174
-#: src/Gui/SettingsDialog/spectacle.kcfg:213
+#: src/Gui/SettingsDialog/spectacle.kcfg:170
+#: src/Gui/SettingsDialog/spectacle.kcfg:209
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "A „Mentés másként” művelethez legutóbb használt elérési út"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:197
+#: src/Gui/SettingsDialog/spectacle.kcfg:193
 #, kde-format
 msgid "Default video format"
 msgstr "Alapértelmezett videóformátum"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:202
+#: src/Gui/SettingsDialog/spectacle.kcfg:198
 #, kde-format
 msgid "The filename template used when saving screencasts"
 msgstr "A képernyővideók mentésekor használt fájlnévsablon"
@@ -2452,7 +2407,7 @@ msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr "Szöveg kinyerése képből…"
 
-#: src/SpectacleCore.cpp:1062
+#: src/SpectacleCore.cpp:1052
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -2461,13 +2416,13 @@ msgstr ""
 "A --scaled opció csak a -f/--fullscreen opcióval együtt használható, "
 "egyébként mellőzésre kerül"
 
-#: src/SpectacleCore.cpp:1077
+#: src/SpectacleCore.cpp:1067
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "A(z) %1 nem érvényes mód a --record kapcsolóhoz"
 
-#: src/SpectacleCore.cpp:1314
+#: src/SpectacleCore.cpp:1303
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2477,24 +2432,24 @@ msgstr ""
 "A képernyőkép mentve lett, mint „%1” ide: „%2”, a helye pedig a vágólapra "
 "került."
 
-#: src/SpectacleCore.cpp:1318
+#: src/SpectacleCore.cpp:1307
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Képernyőkép mentve mint „%1” a Képek mappába."
 
-#: src/SpectacleCore.cpp:1321
+#: src/SpectacleCore.cpp:1310
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Képernyőkép mentve mint „%1” ide: „%2”."
 
-#: src/SpectacleCore.cpp:1325
+#: src/SpectacleCore.cpp:1314
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Képernyőkép mentve a vágólapra."
 
-#: src/SpectacleCore.cpp:1330
+#: src/SpectacleCore.cpp:1319
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2504,25 +2459,25 @@ msgstr ""
 "A felvétel mentve lett, mint „%1” ide: „%2”, a helye pedig a vágólapra "
 "került."
 
-#: src/SpectacleCore.cpp:1332
+#: src/SpectacleCore.cpp:1321
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Felvétel mentve mint „%1” a Videók mappába."
 
-#: src/SpectacleCore.cpp:1334
+#: src/SpectacleCore.cpp:1323
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Felvétel mentve mint „%1” ide: „%2”."
 
-#: src/SpectacleCore.cpp:1346
+#: src/SpectacleCore.cpp:1335
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Megnyitás"
 
-#: src/SpectacleCore.cpp:1360
+#: src/SpectacleCore.cpp:1349
 #, kde-format
 msgid "Annotate"
 msgstr "Feliratozás"
@@ -2550,6 +2505,39 @@ msgstr "Animált WebP (jobb mint a GIF)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (kompatibilis, de nem hatékony)"
+
+#~ msgid ""
+#~ "Capture the window currently under the cursor, excluding parents of pop-"
+#~ "up menus"
+#~ msgstr "Kurzor alatti ablak rögzítése, kihagyva a felugró menük szüleit"
+
+#~ msgid "Capture the current pop-up only"
+#~ msgstr "Csak az aktuális felugró ablak mentése"
+
+#~ msgid ""
+#~ "Capture only the current pop-up window (like a menu, tooltip etc) when "
+#~ "taking a screenshot of a window. If disabled, the pop-up is captured "
+#~ "along with the parent window."
+#~ msgstr ""
+#~ "Csak az aktuális felugró ablak (menü, buboréksúgó, stb) mentése ablak "
+#~ "képernyőképének készítésekor. Ha nincs engedélyezve, a felugró ablak a "
+#~ "szülő ablakkal együtt kerül mentésre."
+
+#~ msgctxt "@option:check"
+#~ msgid "Capture the current pop-up only"
+#~ msgstr "Csak a jelenlegi felugró ablak mentése"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid ""
+#~ "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+#~ "If disabled, the pop-up is captured along with the parent window"
+#~ msgstr ""
+#~ "Csak a jelenlegi felugró ablak (menü, buboréksúgó, stb.) mentése.\n"
+#~ "Ha nincs engedélyezve, a felugró ablak a szülő ablakkal együtt kerül "
+#~ "mentésre"
+
+#~ msgid "Only capture the current pop up menu"
+#~ msgstr "Csak a jelenlegi felugró menü rögzítése"
 
 #~ msgctxt "@info"
 #~ msgid ""

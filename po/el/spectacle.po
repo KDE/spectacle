@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-20 00:55+0000\n"
+"POT-Creation-Date: 2026-10-24 00:52+0000\n"
 "PO-Revision-Date: 2024-09-19 16:16+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -115,7 +115,7 @@ msgstr "Σύλληψη της τρέχουσας οθόνης"
 msgid "Capture the active window"
 msgstr "Σύλληψη του ενεργού παραθύρου"
 
-#: src/CommandLineOptions.h:38
+#: src/CommandLineOptions.h:37
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
@@ -124,21 +124,12 @@ msgstr ""
 "Σύλληψη του παραθύρου που βρίσκεται τώρα κάτω από τον δρομέα, μαζί με τους "
 "γονείς των αιωρουμένων μενού"
 
-#: src/CommandLineOptions.h:42
-#, kde-format
-msgid ""
-"Capture the window currently under the cursor, excluding parents of pop-up "
-"menus"
-msgstr ""
-"Σύλληψη του παραθύρου που βρίσκεται τώρα κάτω από τον δρομέα, χωρίς τους "
-"γονείς των αιωρουμένων μενού"
-
-#: src/CommandLineOptions.h:46
+#: src/CommandLineOptions.h:40
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "Σύλληψη μιας ορθογώνιας περιοχής της οθόνης"
 
-#: src/CommandLineOptions.h:50
+#: src/CommandLineOptions.h:44
 #, kde-format
 msgid ""
 "Record the screen using the given mode. Modes:\n"
@@ -147,28 +138,28 @@ msgid ""
 "- w, window"
 msgstr ""
 
-#: src/CommandLineOptions.h:58
+#: src/CommandLineOptions.h:52
 #, fuzzy, kde-format
 #| msgid "After taking a screenshot:"
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "Μετά τη λήψη στιγμιοτύπου:"
 
-#: src/CommandLineOptions.h:62
+#: src/CommandLineOptions.h:56
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "Εκκίνηση σε λειτουργία GUI (προκαθορισμένο)"
 
-#: src/CommandLineOptions.h:66
+#: src/CommandLineOptions.h:60
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "Λήψη στιγμιότυπου οθόνης και έξοδος χωρίς εμφάνιση του GUI"
 
-#: src/CommandLineOptions.h:70
+#: src/CommandLineOptions.h:64
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "Εκκίνηση σε λειτουργία DBus-Activation"
 
-#: src/CommandLineOptions.h:74
+#: src/CommandLineOptions.h:68
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
@@ -176,20 +167,20 @@ msgstr ""
 "Σε λειτουργία παρασκηνίου, να μην αιωρείται ειδοποίηση κατά τη λήψη του "
 "στιγμιοτύπων"
 
-#: src/CommandLineOptions.h:78
+#: src/CommandLineOptions.h:72
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr ""
 "Σε λειτουργία παρασκηνίου, να αποθηκεύεται η εικόνα στο επιλεγμένο αρχείο"
 
-#: src/CommandLineOptions.h:83
+#: src/CommandLineOptions.h:77
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr ""
 "Σε λειτουργία παρασκηνίου, να υπάρχει καθυστέρηση πριν τη λήψη (σε χιλιοστά "
 "δευτερολέπτου)"
 
-#: src/CommandLineOptions.h:88
+#: src/CommandLineOptions.h:82
 #, fuzzy, kde-format
 #| msgid "In background mode, copy screenshot image to clipboard"
 msgid ""
@@ -199,38 +190,38 @@ msgstr ""
 "Σε λειτουργία παρασκηνίου, να αντιγράφεται το στιγμιότυπο της εικόνας στο "
 "πρόχειρο"
 
-#: src/CommandLineOptions.h:92
+#: src/CommandLineOptions.h:86
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr ""
 "Σε λειτουργία παρασκηνίου, να αντιγράφεται η διαδρομή του αρχείου "
 "στιγμιότυπου στο πρόχειρο"
 
-#: src/CommandLineOptions.h:96
+#: src/CommandLineOptions.h:90
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr "Αναμονή για κλικ πριν τη λήψη στιγμιότυπου. Ακυρώνει την καθυστέρηση."
 
-#: src/CommandLineOptions.h:100
+#: src/CommandLineOptions.h:94
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr ""
 "Εκκινεί μια νέα διεργασία γραφικού περιβάλλοντος του spectacle χωρίς "
 "καταχώρηση στο DBus"
 
-#: src/CommandLineOptions.h:104
+#: src/CommandLineOptions.h:98
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "Σε λειτουργία παρασκηνίου, να περιλαμβάνεται δείκτης στο στιγμιότυπο"
 
-#: src/CommandLineOptions.h:108
+#: src/CommandLineOptions.h:102
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr ""
 "Σε λειτουργία παρασκηνίου, να αποκλείονται οι διακοσμήσεις παραθύρου στο "
 "στιγμιότυπο"
 
-#: src/CommandLineOptions.h:110
+#: src/CommandLineOptions.h:104
 #, fuzzy, kde-format
 #| msgid "In background mode, exclude decorations in the screenshot"
 msgid "In background mode, exclude shadows in the screenshot"
@@ -238,12 +229,12 @@ msgstr ""
 "Σε λειτουργία παρασκηνίου, να αποκλείονται οι διακοσμήσεις παραθύρου στο "
 "στιγμιότυπο"
 
-#: src/CommandLineOptions.h:113
+#: src/CommandLineOptions.h:107
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr ""
 
-#: src/CommandLineOptions.h:116
+#: src/CommandLineOptions.h:110
 #, fuzzy, kde-format
 #| msgid "Accept on click-and-release"
 msgid "Accept region selection on click-and-release"
@@ -812,47 +803,28 @@ msgstr ""
 
 #: src/Gui/CaptureSettingsColumn.qml:44
 #, kde-format
-msgid "Capture the current pop-up only"
-msgstr "Σύλληψη του τρέχοντος αιωρούμενου πλαισίου μόνο"
-
-#: src/Gui/CaptureSettingsColumn.qml:46
-#, fuzzy, kde-format
-#| msgid ""
-#| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-#| "If disabled, the pop-up is captured along with the parent window"
-msgid ""
-"Capture only the current pop-up window (like a menu, tooltip etc) when "
-"taking a screenshot of a window. If disabled, the pop-up is captured along "
-"with the parent window."
-msgstr ""
-"Να συλληφθεί μόνο το τρέχον αιωρούμενο παράθυρο (όπως μενού, υπόδειξη κτλ).\n"
-"Αν η επιλογή αυτή δεν είναι ενεργοποιημένη, το αιωρούμενο πλαίσιο θα "
-"συλληφθεί μαζί με το γονικό παράθυρο"
-
-#: src/Gui/CaptureSettingsColumn.qml:54
-#, kde-format
 msgid "Quit after manual Save or Copy"
 msgstr "Έξοδος μετά από χειροκίνητη αποθήκευση ή αντιγραφή"
 
-#: src/Gui/CaptureSettingsColumn.qml:55
+#: src/Gui/CaptureSettingsColumn.qml:45
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image."
 msgstr ""
 "Έξοδος από το Spectacle μετά από χειροκίνητη αποθήκευση ή αντιγραφή της "
 "εικόνας."
 
-#: src/Gui/CaptureSettingsColumn.qml:64
+#: src/Gui/CaptureSettingsColumn.qml:54
 #, fuzzy, kde-format
 #| msgid "On Click"
 msgid "Capture on click"
 msgstr "Χωρίς κλικ"
 
-#: src/Gui/CaptureSettingsColumn.qml:66
+#: src/Gui/CaptureSettingsColumn.qml:56
 #, kde-format
 msgid "Wait for a mouse click before capturing the screenshot image."
 msgstr "Αναμονή για κλικ ποντικιού πριν από τη σύλληψη του στιγμιότυπο οθόνης."
 
-#: src/Gui/CaptureSettingsColumn.qml:76
+#: src/Gui/CaptureSettingsColumn.qml:66
 #, kde-format
 msgid "Delay:"
 msgstr "Καθυστέρηση:"
@@ -1110,35 +1082,14 @@ msgctxt "@info:tooltip"
 msgid "Show the window shadow"
 msgstr "Να συμπεριληφθούν η γραμμή τίτλου του παραθύρου και τα περιθώρια"
 
-#: src/Gui/OptionsMenu.cpp:69
-#, fuzzy, kde-format
-#| msgid "Capture the current pop-up only"
-msgctxt "@option:check"
-msgid "Capture the current pop-up only"
-msgstr "Σύλληψη του τρέχοντος αιωρούμενου πλαισίου μόνο"
-
-#: src/Gui/OptionsMenu.cpp:71
-#, fuzzy, kde-format
-#| msgid ""
-#| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-#| "If disabled, the pop-up is captured along with the parent window"
-msgctxt "@info:tooltip"
-msgid ""
-"Capture only the current pop-up window (like a menu, tooltip etc).\n"
-"If disabled, the pop-up is captured along with the parent window"
-msgstr ""
-"Να συλληφθεί μόνο το τρέχον αιωρούμενο παράθυρο (όπως μενού, υπόδειξη κτλ).\n"
-"Αν η επιλογή αυτή δεν είναι ενεργοποιημένη, το αιωρούμενο πλαίσιο θα "
-"συλληφθεί μαζί με το γονικό παράθυρο"
-
-#: src/Gui/OptionsMenu.cpp:81
+#: src/Gui/OptionsMenu.cpp:67
 #, fuzzy, kde-format
 #| msgid "Quit after manual Save or Copy"
 msgctxt "@option:check"
 msgid "Quit after manual Save or Copy"
 msgstr "Έξοδος μετά από χειροκίνητη αποθήκευση ή αντιγραφή"
 
-#: src/Gui/OptionsMenu.cpp:82
+#: src/Gui/OptionsMenu.cpp:68
 #, fuzzy, kde-format
 #| msgid "Quit Spectacle after manually saving or copying the image"
 msgctxt "@info:tooltip"
@@ -1147,62 +1098,62 @@ msgstr ""
 "Έξοδος από το Spectacle μετά από χειροκίνητη αποθήκευση ή αντιγραφή της "
 "εικόνας"
 
-#: src/Gui/OptionsMenu.cpp:94
+#: src/Gui/OptionsMenu.cpp:80
 #, fuzzy, kde-format
 #| msgid "On Click"
 msgctxt "@option:check"
 msgid "Capture On Click"
 msgstr "Χωρίς κλικ"
 
-#: src/Gui/OptionsMenu.cpp:109
+#: src/Gui/OptionsMenu.cpp:95
 #, fuzzy, kde-format
 #| msgid "Delay:"
 msgctxt "@label:spinbox"
 msgid "Delay:"
 msgstr "Καθυστέρηση:"
 
-#: src/Gui/OptionsMenu.cpp:114
+#: src/Gui/OptionsMenu.cpp:100
 #, fuzzy, kde-format
 #| msgid "No Delay"
 msgctxt "@item 0 delay special value"
 msgid "No Delay"
 msgstr "Χωρίς καθυστέρηση"
 
-#: src/Gui/OptionsMenu.cpp:133
+#: src/Gui/OptionsMenu.cpp:119
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgctxt "@title:menu"
 msgid "Recording Settings"
 msgstr "Εγγραφή οθόνης"
 
-#: src/Gui/OptionsMenu.cpp:135
+#: src/Gui/OptionsMenu.cpp:121
 #, fuzzy, kde-format
 #| msgid "Include mouse pointer"
 msgctxt "@option:check for recordings"
 msgid "Include mouse pointer"
 msgstr "Να συμπεριληφθεί ο δείκτης του ποντικιού"
 
-#: src/Gui/OptionsMenu.cpp:136
+#: src/Gui/OptionsMenu.cpp:122
 #, fuzzy, kde-format
 #| msgid "Show the mouse cursor in the screenshot image"
 msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the recording"
 msgstr "Να εμφανιστεί ο δρομέας του ποντικιού στην εικόνα του στιγμιότυπου"
 
-#: src/Gui/OptionsMenu.cpp:144
+#: src/Gui/OptionsMenu.cpp:130
 #, kde-format
 msgctxt "@option:check for recordings"
 msgid "Record system audio"
 msgstr ""
 
-#: src/Gui/OptionsMenu.cpp:145
+#: src/Gui/OptionsMenu.cpp:131
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Include the audio that is currently playing on the system in the recording"
 msgstr ""
 
-#: src/Gui/OptionsMenu.cpp:153
+#: src/Gui/OptionsMenu.cpp:139
 #, fuzzy, kde-format
 #| msgctxt "@action global shortcut"
 #| msgid "Record Screen"
@@ -1210,7 +1161,7 @@ msgctxt "@option:check for recordings"
 msgid "Record microphone"
 msgstr "Εγγραφή οθόνης"
 
-#: src/Gui/OptionsMenu.cpp:154
+#: src/Gui/OptionsMenu.cpp:140
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include audio from the default microphone in the recording"
@@ -1787,46 +1738,40 @@ msgstr "Αν η διακόσμηση του παραθύρου θα συμπερ
 msgid "Whether the window shadow is included in the screenshot"
 msgstr "Αν η διακόσμηση του παραθύρου θα συμπεριλαμβάνεται στο στιγμιότυπο"
 
-#. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:115
-#, kde-format
-msgid "Only capture the current pop up menu"
-msgstr "Σύλληψη μόνο του τρέχοντος αιωρούμενου πλαισίου"
-
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:119
+#: src/Gui/SettingsDialog/spectacle.kcfg:115
 #, kde-format
 msgid "Quit after saving or copying an image"
 msgstr "Έξοδος μετά από αποθήκευση ή αντιγραφή μιας εικόνας"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:123
+#: src/Gui/SettingsDialog/spectacle.kcfg:119
 #, kde-format
 msgid "Delay"
 msgstr "Καθυστέρηση"
 
 #. i18n: ectx: label, entry (imageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (videoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:134
-#: src/Gui/SettingsDialog/spectacle.kcfg:180
+#: src/Gui/SettingsDialog/spectacle.kcfg:130
+#: src/Gui/SettingsDialog/spectacle.kcfg:176
 #, kde-format
 msgid "Default filename"
 msgstr "Προκαθορισμένο όνομα αρχείου"
 
 #. i18n: ectx: label, entry (imageCompressionQuality), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:151
+#: src/Gui/SettingsDialog/spectacle.kcfg:147
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "Ποιότητα συμπίεσης για τύπους αποθήκευσης αρχείων με απώλειες"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:159
+#: src/Gui/SettingsDialog/spectacle.kcfg:155
 #, kde-format
 msgid "Default save image format"
 msgstr "Προκαθορισμένος τύπος αποθήκευσης εικόνας"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:163
+#: src/Gui/SettingsDialog/spectacle.kcfg:159
 #, fuzzy, kde-format
 #| msgid "The default filename used when saving"
 msgid "The filename template used when saving screenshots"
@@ -1834,29 +1779,29 @@ msgstr "Το προκαθορισμένο όνομα αρχείου κατά τ�
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:170
-#: src/Gui/SettingsDialog/spectacle.kcfg:209
+#: src/Gui/SettingsDialog/spectacle.kcfg:166
+#: src/Gui/SettingsDialog/spectacle.kcfg:205
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "Η διαδρομή του αρχείου που αποθηκεύθηκε τελευταίο"
 
 #. i18n: ectx: label, entry (lastImageSaveAsLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveAsLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:174
-#: src/Gui/SettingsDialog/spectacle.kcfg:213
+#: src/Gui/SettingsDialog/spectacle.kcfg:170
+#: src/Gui/SettingsDialog/spectacle.kcfg:209
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "Η τελευταία διαδρομή που χρησιμοποιήθηκε στην ενέργεια «αποθήκευση ως»"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:197
+#: src/Gui/SettingsDialog/spectacle.kcfg:193
 #, fuzzy, kde-format
 #| msgid "Default save image format"
 msgid "Default video format"
 msgstr "Προκαθορισμένος τύπος αποθήκευσης εικόνας"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:202
+#: src/Gui/SettingsDialog/spectacle.kcfg:198
 #, fuzzy, kde-format
 #| msgid "The default filename used when saving"
 msgid "The filename template used when saving screencasts"
@@ -2593,20 +2538,20 @@ msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr ""
 
-#: src/SpectacleCore.cpp:1062
+#: src/SpectacleCore.cpp:1052
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "--scaled is only allowed together with -f/--fullscreen and will be ignored"
 msgstr ""
 
-#: src/SpectacleCore.cpp:1077
+#: src/SpectacleCore.cpp:1067
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr ""
 
-#: src/SpectacleCore.cpp:1314
+#: src/SpectacleCore.cpp:1303
 #, fuzzy, kde-format
 #| msgid ""
 #| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
@@ -2619,7 +2564,7 @@ msgstr ""
 "Το στιγμιότυπο έχει αποθηκευθεί ως (<a href=\"%1\">%2</a>) και η θέση του "
 "έχει αντιγραφεί στο πρόχειρο"
 
-#: src/SpectacleCore.cpp:1318
+#: src/SpectacleCore.cpp:1307
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -2627,19 +2572,19 @@ msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο φάκελο Pictures."
 
-#: src/SpectacleCore.cpp:1321
+#: src/SpectacleCore.cpp:1310
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο '%2'."
 
-#: src/SpectacleCore.cpp:1325
+#: src/SpectacleCore.cpp:1314
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε στο πρόχειρο."
 
-#: src/SpectacleCore.cpp:1330
+#: src/SpectacleCore.cpp:1319
 #, fuzzy, kde-format
 #| msgid ""
 #| "The screenshot has been saved as <a href=\"%1\">%2</a> and its location "
@@ -2652,7 +2597,7 @@ msgstr ""
 "Το στιγμιότυπο έχει αποθηκευθεί ως (<a href=\"%1\">%2</a>) και η θέση του "
 "έχει αντιγραφεί στο πρόχειρο"
 
-#: src/SpectacleCore.cpp:1332
+#: src/SpectacleCore.cpp:1321
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -2660,20 +2605,20 @@ msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο φάκελο Pictures."
 
-#: src/SpectacleCore.cpp:1334
+#: src/SpectacleCore.cpp:1323
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο '%2'."
 
-#: src/SpectacleCore.cpp:1346
+#: src/SpectacleCore.cpp:1335
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Άνοιγμα"
 
-#: src/SpectacleCore.cpp:1360
+#: src/SpectacleCore.cpp:1349
 #, kde-format
 msgid "Annotate"
 msgstr "Σχολιασμός"
@@ -2701,6 +2646,53 @@ msgstr ""
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr ""
+
+#~ msgid ""
+#~ "Capture the window currently under the cursor, excluding parents of pop-"
+#~ "up menus"
+#~ msgstr ""
+#~ "Σύλληψη του παραθύρου που βρίσκεται τώρα κάτω από τον δρομέα, χωρίς τους "
+#~ "γονείς των αιωρουμένων μενού"
+
+#~ msgid "Capture the current pop-up only"
+#~ msgstr "Σύλληψη του τρέχοντος αιωρούμενου πλαισίου μόνο"
+
+#, fuzzy
+#~| msgid ""
+#~| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+#~| "If disabled, the pop-up is captured along with the parent window"
+#~ msgid ""
+#~ "Capture only the current pop-up window (like a menu, tooltip etc) when "
+#~ "taking a screenshot of a window. If disabled, the pop-up is captured "
+#~ "along with the parent window."
+#~ msgstr ""
+#~ "Να συλληφθεί μόνο το τρέχον αιωρούμενο παράθυρο (όπως μενού, υπόδειξη "
+#~ "κτλ).\n"
+#~ "Αν η επιλογή αυτή δεν είναι ενεργοποιημένη, το αιωρούμενο πλαίσιο θα "
+#~ "συλληφθεί μαζί με το γονικό παράθυρο"
+
+#, fuzzy
+#~| msgid "Capture the current pop-up only"
+#~ msgctxt "@option:check"
+#~ msgid "Capture the current pop-up only"
+#~ msgstr "Σύλληψη του τρέχοντος αιωρούμενου πλαισίου μόνο"
+
+#, fuzzy
+#~| msgid ""
+#~| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+#~| "If disabled, the pop-up is captured along with the parent window"
+#~ msgctxt "@info:tooltip"
+#~ msgid ""
+#~ "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+#~ "If disabled, the pop-up is captured along with the parent window"
+#~ msgstr ""
+#~ "Να συλληφθεί μόνο το τρέχον αιωρούμενο παράθυρο (όπως μενού, υπόδειξη "
+#~ "κτλ).\n"
+#~ "Αν η επιλογή αυτή δεν είναι ενεργοποιημένη, το αιωρούμενο πλαίσιο θα "
+#~ "συλληφθεί μαζί με το γονικό παράθυρο"
+
+#~ msgid "Only capture the current pop up menu"
+#~ msgstr "Σύλληψη μόνο του τρέχοντος αιωρούμενου πλαισίου"
 
 #~ msgctxt "@info"
 #~ msgid ""

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-20 00:55+0000\n"
+"POT-Creation-Date: 2026-10-24 00:52+0000\n"
 "PO-Revision-Date: 2024-08-04 16:55+0700\n"
 "Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
 "Language-Team: Interlingue <>\n"
@@ -113,26 +113,19 @@ msgstr "Capturar li actual monitor"
 msgid "Capture the active window"
 msgstr "Capturar li activ fenestre"
 
-#: src/CommandLineOptions.h:38
+#: src/CommandLineOptions.h:37
 #, fuzzy, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
 "menus"
 msgstr "Capturar li tot Pupitre"
 
-#: src/CommandLineOptions.h:42
-#, fuzzy, kde-format
-msgid ""
-"Capture the window currently under the cursor, excluding parents of pop-up "
-"menus"
-msgstr "Capturar li tot Pupitre"
-
-#: src/CommandLineOptions.h:46
+#: src/CommandLineOptions.h:40
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "Capturar un rectangulari region del ecran"
 
-#: src/CommandLineOptions.h:50
+#: src/CommandLineOptions.h:44
 #, fuzzy, kde-format
 msgid ""
 "Record the screen using the given mode. Modes:\n"
@@ -141,85 +134,85 @@ msgid ""
 "- w, window"
 msgstr "Capturar un rectangulari region"
 
-#: src/CommandLineOptions.h:58
+#: src/CommandLineOptions.h:52
 #, fuzzy, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "Spectacle"
 
-#: src/CommandLineOptions.h:62
+#: src/CommandLineOptions.h:56
 #, fuzzy, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "%1 ne es un valid mode por --record"
 
-#: src/CommandLineOptions.h:66
+#: src/CommandLineOptions.h:60
 #, fuzzy, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "Captura del ecran"
 
-#: src/CommandLineOptions.h:70
+#: src/CommandLineOptions.h:64
 #, fuzzy, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "Mode de captura"
 
-#: src/CommandLineOptions.h:74
+#: src/CommandLineOptions.h:68
 #, fuzzy, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
 msgstr "Captura del ecran"
 
-#: src/CommandLineOptions.h:78
+#: src/CommandLineOptions.h:72
 #, fuzzy, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "Gardar"
 
-#: src/CommandLineOptions.h:83
+#: src/CommandLineOptions.h:77
 #, fuzzy, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr "Sin retarde"
 
-#: src/CommandLineOptions.h:88
+#: src/CommandLineOptions.h:82
 #, fuzzy, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
 "used."
 msgstr "Copiar"
 
-#: src/CommandLineOptions.h:92
+#: src/CommandLineOptions.h:86
 #, fuzzy, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr "Copiar"
 
-#: src/CommandLineOptions.h:96
+#: src/CommandLineOptions.h:90
 #, fuzzy, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr "Sin retarde"
 
-#: src/CommandLineOptions.h:100
+#: src/CommandLineOptions.h:94
 #, fuzzy, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr "Spectacle"
 
-#: src/CommandLineOptions.h:104
+#: src/CommandLineOptions.h:98
 #, fuzzy, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "Captura del ecran"
 
-#: src/CommandLineOptions.h:108
+#: src/CommandLineOptions.h:102
 #, fuzzy, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "Captura del ecran"
 
-#: src/CommandLineOptions.h:110
+#: src/CommandLineOptions.h:104
 #, fuzzy, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
 msgstr "Captura del ecran"
 
-#: src/CommandLineOptions.h:113
+#: src/CommandLineOptions.h:107
 #, fuzzy, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "Aperter li contenent fólder"
 
-#: src/CommandLineOptions.h:116
+#: src/CommandLineOptions.h:110
 #, fuzzy, kde-format
 msgid "Accept region selection on click-and-release"
 msgstr "Ja registrat: %1 Fa un clic por finir"
@@ -767,39 +760,26 @@ msgstr "Captura del ecran"
 
 #: src/Gui/CaptureSettingsColumn.qml:44
 #, kde-format
-msgid "Capture the current pop-up only"
-msgstr "Capturar solmen li actual menú"
-
-#: src/Gui/CaptureSettingsColumn.qml:46
-#, fuzzy, kde-format
-msgid ""
-"Capture only the current pop-up window (like a menu, tooltip etc) when "
-"taking a screenshot of a window. If disabled, the pop-up is captured along "
-"with the parent window."
-msgstr "Capturar li actual monitor"
-
-#: src/Gui/CaptureSettingsColumn.qml:54
-#, kde-format
 msgid "Quit after manual Save or Copy"
 msgstr "Surtir pos manual gardation o copiation"
 
-#: src/Gui/CaptureSettingsColumn.qml:55
+#: src/Gui/CaptureSettingsColumn.qml:45
 #, fuzzy, kde-format
 #| msgid "Quit after manual Save or Copy"
 msgid "Quit Spectacle after manually saving or copying the image."
 msgstr "Spectacle"
 
-#: src/Gui/CaptureSettingsColumn.qml:64
+#: src/Gui/CaptureSettingsColumn.qml:54
 #, kde-format
 msgid "Capture on click"
 msgstr "Capturar pos un clic"
 
-#: src/Gui/CaptureSettingsColumn.qml:66
+#: src/Gui/CaptureSettingsColumn.qml:56
 #, fuzzy, kde-format
 msgid "Wait for a mouse click before capturing the screenshot image."
 msgstr "Captura del ecran"
 
-#: src/Gui/CaptureSettingsColumn.qml:76
+#: src/Gui/CaptureSettingsColumn.qml:66
 #, kde-format
 msgid "Delay:"
 msgstr "Retarde:"
@@ -1039,97 +1019,82 @@ msgctxt "@info:tooltip"
 msgid "Show the window shadow"
 msgstr "Registrar un fenestre"
 
-#: src/Gui/OptionsMenu.cpp:69
-#, fuzzy, kde-format
-#| msgid "Capture the current pop-up only"
-msgctxt "@option:check"
-msgid "Capture the current pop-up only"
-msgstr "Capturar solmen li actual menú"
-
-#: src/Gui/OptionsMenu.cpp:71
-#, fuzzy, kde-format
-msgctxt "@info:tooltip"
-msgid ""
-"Capture only the current pop-up window (like a menu, tooltip etc).\n"
-"If disabled, the pop-up is captured along with the parent window"
-msgstr "Capturar li actual monitor"
-
-#: src/Gui/OptionsMenu.cpp:81
+#: src/Gui/OptionsMenu.cpp:67
 #, fuzzy, kde-format
 #| msgid "Quit after manual Save or Copy"
 msgctxt "@option:check"
 msgid "Quit after manual Save or Copy"
 msgstr "Surtir pos manual gardation o copiation"
 
-#: src/Gui/OptionsMenu.cpp:82
+#: src/Gui/OptionsMenu.cpp:68
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr "Spectacle"
 
-#: src/Gui/OptionsMenu.cpp:94
+#: src/Gui/OptionsMenu.cpp:80
 #, fuzzy, kde-format
 #| msgid "Capture On Click"
 msgctxt "@option:check"
 msgid "Capture On Click"
 msgstr "Capturar pos un clic"
 
-#: src/Gui/OptionsMenu.cpp:109
+#: src/Gui/OptionsMenu.cpp:95
 #, fuzzy, kde-format
 #| msgid "Delay:"
 msgctxt "@label:spinbox"
 msgid "Delay:"
 msgstr "Retarde:"
 
-#: src/Gui/OptionsMenu.cpp:114
+#: src/Gui/OptionsMenu.cpp:100
 #, fuzzy, kde-format
 #| msgid "No Delay"
 msgctxt "@item 0 delay special value"
 msgid "No Delay"
 msgstr "Sin retarde"
 
-#: src/Gui/OptionsMenu.cpp:133
+#: src/Gui/OptionsMenu.cpp:119
 #, fuzzy, kde-format
 #| msgid "Recording Settings"
 msgctxt "@title:menu"
 msgid "Recording Settings"
 msgstr "Parametres de registration"
 
-#: src/Gui/OptionsMenu.cpp:135
+#: src/Gui/OptionsMenu.cpp:121
 #, fuzzy, kde-format
 #| msgid "Include mouse pointer"
 msgctxt "@option:check for recordings"
 msgid "Include mouse pointer"
 msgstr "Includer li apuntator del mus"
 
-#: src/Gui/OptionsMenu.cpp:136
+#: src/Gui/OptionsMenu.cpp:122
 #, fuzzy, kde-format
 #| msgid "Cannot save an empty screenshot image."
 msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the recording"
 msgstr "Capturar un fenestre sub li apuntator"
 
-#: src/Gui/OptionsMenu.cpp:144
+#: src/Gui/OptionsMenu.cpp:130
 #, kde-format
 msgctxt "@option:check for recordings"
 msgid "Record system audio"
 msgstr ""
 
-#: src/Gui/OptionsMenu.cpp:145
+#: src/Gui/OptionsMenu.cpp:131
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Include the audio that is currently playing on the system in the recording"
 msgstr ""
 
-#: src/Gui/OptionsMenu.cpp:153
+#: src/Gui/OptionsMenu.cpp:139
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgctxt "@option:check for recordings"
 msgid "Record microphone"
 msgstr "Registrar li ecran"
 
-#: src/Gui/OptionsMenu.cpp:154
+#: src/Gui/OptionsMenu.cpp:140
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include audio from the default microphone in the recording"
@@ -1680,74 +1645,68 @@ msgstr "Registrar un fenestre"
 msgid "Whether the window shadow is included in the screenshot"
 msgstr "Registrar un fenestre"
 
-#. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:115
-#, kde-format
-msgid "Only capture the current pop up menu"
-msgstr "Capturar solmen li actual menú"
-
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:119
+#: src/Gui/SettingsDialog/spectacle.kcfg:115
 #, fuzzy, kde-format
 msgid "Quit after saving or copying an image"
 msgstr "Surtir pos manual gardation o copiation"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:123
+#: src/Gui/SettingsDialog/spectacle.kcfg:119
 #, kde-format
 msgid "Delay"
 msgstr "Retarde"
 
 #. i18n: ectx: label, entry (imageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (videoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:134
-#: src/Gui/SettingsDialog/spectacle.kcfg:180
+#: src/Gui/SettingsDialog/spectacle.kcfg:130
+#: src/Gui/SettingsDialog/spectacle.kcfg:176
 #, kde-format
 msgid "Default filename"
 msgstr "Nómine de file predefinit"
 
 #. i18n: ectx: label, entry (imageCompressionQuality), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:151
+#: src/Gui/SettingsDialog/spectacle.kcfg:147
 #, fuzzy, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "Qualitá de compression:"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:159
+#: src/Gui/SettingsDialog/spectacle.kcfg:155
 #, kde-format
 msgid "Default save image format"
 msgstr "Formate predefinit de image"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:163
+#: src/Gui/SettingsDialog/spectacle.kcfg:159
 #, fuzzy, kde-format
 msgid "The filename template used when saving screenshots"
 msgstr "Capturas"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:170
-#: src/Gui/SettingsDialog/spectacle.kcfg:209
+#: src/Gui/SettingsDialog/spectacle.kcfg:166
+#: src/Gui/SettingsDialog/spectacle.kcfg:205
 #, fuzzy, kde-format
 msgid "The path of the file saved last"
 msgstr "File"
 
 #. i18n: ectx: label, entry (lastImageSaveAsLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveAsLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:174
-#: src/Gui/SettingsDialog/spectacle.kcfg:213
+#: src/Gui/SettingsDialog/spectacle.kcfg:170
+#: src/Gui/SettingsDialog/spectacle.kcfg:209
 #, fuzzy, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "Gardar"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:197
+#: src/Gui/SettingsDialog/spectacle.kcfg:193
 #, kde-format
 msgid "Default video format"
 msgstr "Formate predefinit de video"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:202
+#: src/Gui/SettingsDialog/spectacle.kcfg:198
 #, fuzzy, kde-format
 msgid "The filename template used when saving screencasts"
 msgstr "Registrationes"
@@ -2490,20 +2449,20 @@ msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr ""
 
-#: src/SpectacleCore.cpp:1062
+#: src/SpectacleCore.cpp:1052
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "--scaled is only allowed together with -f/--fullscreen and will be ignored"
 msgstr ""
 
-#: src/SpectacleCore.cpp:1077
+#: src/SpectacleCore.cpp:1067
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 ne es un valid mode por --record"
 
-#: src/SpectacleCore.cpp:1314
+#: src/SpectacleCore.cpp:1303
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -2514,7 +2473,7 @@ msgid ""
 "has been saved to your clipboard."
 msgstr "OIS"
 
-#: src/SpectacleCore.cpp:1318
+#: src/SpectacleCore.cpp:1307
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -2522,19 +2481,19 @@ msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Li captura sta gardat quam «%1» a vor fólder de images."
 
-#: src/SpectacleCore.cpp:1321
+#: src/SpectacleCore.cpp:1310
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Li captura sta gardat quam «%1» a «%2»."
 
-#: src/SpectacleCore.cpp:1325
+#: src/SpectacleCore.cpp:1314
 #, fuzzy, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "OIS"
 
-#: src/SpectacleCore.cpp:1330
+#: src/SpectacleCore.cpp:1319
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -2545,7 +2504,7 @@ msgid ""
 "been saved to your clipboard."
 msgstr "mistresssilvara@hotmail.com"
 
-#: src/SpectacleCore.cpp:1332
+#: src/SpectacleCore.cpp:1321
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A recording was saved as '%1' to your Videos folder."
@@ -2553,20 +2512,20 @@ msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Li registration sta gardat quam «%1» a vor fólder Videos."
 
-#: src/SpectacleCore.cpp:1334
+#: src/SpectacleCore.cpp:1323
 #, fuzzy, kde-format
 #| msgid "A recording was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Li captura sta gardat quam «%1» a «%2»."
 
-#: src/SpectacleCore.cpp:1346
+#: src/SpectacleCore.cpp:1335
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Aperter"
 
-#: src/SpectacleCore.cpp:1360
+#: src/SpectacleCore.cpp:1349
 #, kde-format
 msgid "Annotate"
 msgstr "Anotar"
@@ -2594,6 +2553,38 @@ msgstr ""
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr ""
+
+#, fuzzy
+#~ msgid ""
+#~ "Capture the window currently under the cursor, excluding parents of pop-"
+#~ "up menus"
+#~ msgstr "Capturar li tot Pupitre"
+
+#~ msgid "Capture the current pop-up only"
+#~ msgstr "Capturar solmen li actual menú"
+
+#, fuzzy
+#~ msgid ""
+#~ "Capture only the current pop-up window (like a menu, tooltip etc) when "
+#~ "taking a screenshot of a window. If disabled, the pop-up is captured "
+#~ "along with the parent window."
+#~ msgstr "Capturar li actual monitor"
+
+#, fuzzy
+#~| msgid "Capture the current pop-up only"
+#~ msgctxt "@option:check"
+#~ msgid "Capture the current pop-up only"
+#~ msgstr "Capturar solmen li actual menú"
+
+#, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid ""
+#~ "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+#~ "If disabled, the pop-up is captured along with the parent window"
+#~ msgstr "Capturar li actual monitor"
+
+#~ msgid "Only capture the current pop up menu"
+#~ msgstr "Capturar solmen li actual menú"
 
 #, fuzzy
 #~ msgctxt "@info"

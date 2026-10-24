@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-20 00:55+0000\n"
+"POT-Creation-Date: 2026-10-24 00:52+0000\n"
 "PO-Revision-Date: 2026-08-01 03:57+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -109,7 +109,7 @@ msgstr "მიმდინარე ეკრანის ჩაჭერა"
 msgid "Capture the active window"
 msgstr "აქტიური ფანჯრის ჩაჭერა"
 
-#: src/CommandLineOptions.h:38
+#: src/CommandLineOptions.h:37
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
@@ -118,20 +118,12 @@ msgstr ""
 "ამჟამად კურსორის ქვეშ მყოფი ფანჯრის მხტუნარა მენიუს მშობლების ჩათვლით "
 "გადაღება"
 
-#: src/CommandLineOptions.h:42
-#, kde-format
-msgid ""
-"Capture the window currently under the cursor, excluding parents of pop-up "
-"menus"
-msgstr ""
-"ამჟამად კურსორის ქვეშ მყოფი ფანჯრის მხტუნარა მენიუს მშობლების გარეშე გადაღება"
-
-#: src/CommandLineOptions.h:46
+#: src/CommandLineOptions.h:40
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "ეკრანის მართკუთხა რეგიონის გადაღება"
 
-#: src/CommandLineOptions.h:50
+#: src/CommandLineOptions.h:44
 #, kde-format
 msgid ""
 "Record the screen using the given mode. Modes:\n"
@@ -144,43 +136,43 @@ msgstr ""
 "- s, ეკრანი\n"
 "- w, ფანჯარა"
 
-#: src/CommandLineOptions.h:58
+#: src/CommandLineOptions.h:52
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "Spectacle-ის ეკრანის ანაბეჭდის გადაღების გარეშე გაშვება"
 
-#: src/CommandLineOptions.h:62
+#: src/CommandLineOptions.h:56
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "GUI რეჟიმში გაშვება (ნაგულისხმევი)"
 
-#: src/CommandLineOptions.h:66
+#: src/CommandLineOptions.h:60
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "ეკრანის ანაბეჭდის გადაღება და გასვლა ინტერფეისის ჩვენების გარეშე"
 
-#: src/CommandLineOptions.h:70
+#: src/CommandLineOptions.h:64
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "DBus-ის აქტივაციის რეჟიმში გაშვება"
 
-#: src/CommandLineOptions.h:74
+#: src/CommandLineOptions.h:68
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
 msgstr "ფონურ რეჟიმში ასლის გადაღებისას გაფრთხილება ნაჩვენები არ იქნება"
 
-#: src/CommandLineOptions.h:78
+#: src/CommandLineOptions.h:72
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "ფონურ რეჟიმში სურათების მითითებულ ფაილში შენახვა"
 
-#: src/CommandLineOptions.h:83
+#: src/CommandLineOptions.h:77
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr "ფონურ რეჟიმში დაყოვნება გადაღებამდე (მილიწამებში)"
 
-#: src/CommandLineOptions.h:88
+#: src/CommandLineOptions.h:82
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
@@ -189,44 +181,44 @@ msgstr ""
 "ფონურ რეჟიმში ეკრანის ანაბეჭდის გამოსახულების ბუფერში კოპირება, თუ -o არ "
 "გამოიყენება."
 
-#: src/CommandLineOptions.h:92
+#: src/CommandLineOptions.h:86
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr "ფონურ რეჟიმში, ეკრანის ანაბეჭდის ფაილის ბილიკის ბუფერში კოპირება"
 
-#: src/CommandLineOptions.h:96
+#: src/CommandLineOptions.h:90
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr "ეკრანის ანაბეჭდის გადაღებამდე წკაპის მოლოდინი. აუქმებს დაყოვნებას"
 
-#: src/CommandLineOptions.h:100
+#: src/CommandLineOptions.h:94
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr ""
 "Spectacle-ის ახალი GUI-ის გაშვებული ასლის DBus-თან რეგისტრაციის გარეშე "
 "გაშვება"
 
-#: src/CommandLineOptions.h:104
+#: src/CommandLineOptions.h:98
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "ფონურ რეჟიმში ეკრანის ანაბეჭდზე კურსორის გამოჩენა"
 
-#: src/CommandLineOptions.h:108
+#: src/CommandLineOptions.h:102
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "ფონურ რეჟიმში ეკრანის ანაბეჭდს დეკორაციები არ ექნება"
 
-#: src/CommandLineOptions.h:110
+#: src/CommandLineOptions.h:104
 #, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
 msgstr "ფონურ რეჟიმში ეკრანის ანაბეჭდს ჩრდილი არ ექნება"
 
-#: src/CommandLineOptions.h:113
+#: src/CommandLineOptions.h:107
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "ეკრანის ანაბეჭდის არსებული ფაილის გახსნა და ჩასწორება"
 
-#: src/CommandLineOptions.h:116
+#: src/CommandLineOptions.h:110
 #, kde-format
 msgid "Accept region selection on click-and-release"
 msgstr "რეგიონის არჩევნის მიღება წკაპზე-და-გაშვებაზე"
@@ -758,41 +750,25 @@ msgstr "ფანჯრის ეკრანის ანაბეჭდის 
 
 #: src/Gui/CaptureSettingsColumn.qml:44
 #, kde-format
-msgid "Capture the current pop-up only"
-msgstr "მხოლოდ მიმდინარე მხტუნარა გადაღება"
-
-#: src/Gui/CaptureSettingsColumn.qml:46
-#, kde-format
-msgid ""
-"Capture only the current pop-up window (like a menu, tooltip etc) when "
-"taking a screenshot of a window. If disabled, the pop-up is captured along "
-"with the parent window."
-msgstr ""
-"ფანჯრის ეკრანის ანაბეჭდის გადაღებისას მხოლოდ მიმდინარე მხტუნარა ფანჯრის "
-"გადაღება (მაგ: მენიუ, მინიშნება და ა.შ.). თუ გამორთულია, მხტუნარა მშობელ "
-"ფანჯარასთან ერთად გამოჩნდება."
-
-#: src/Gui/CaptureSettingsColumn.qml:54
-#, kde-format
 msgid "Quit after manual Save or Copy"
 msgstr "გასვლა ხელით შენახვის ან კოპირების შემდეგ"
 
-#: src/Gui/CaptureSettingsColumn.qml:55
+#: src/Gui/CaptureSettingsColumn.qml:45
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image."
 msgstr "Spectacle-დან გასვლა ხელით შენახვის ან კოპირების შემდეგ."
 
-#: src/Gui/CaptureSettingsColumn.qml:64
+#: src/Gui/CaptureSettingsColumn.qml:54
 #, kde-format
 msgid "Capture on click"
 msgstr "გადაღება დაწკაპუნებისას"
 
-#: src/Gui/CaptureSettingsColumn.qml:66
+#: src/Gui/CaptureSettingsColumn.qml:56
 #, kde-format
 msgid "Wait for a mouse click before capturing the screenshot image."
 msgstr "ეკრანის ანაბეჭდის გადაღებამდე თაგუნას წკაპის დალოდება."
 
-#: src/Gui/CaptureSettingsColumn.qml:76
+#: src/Gui/CaptureSettingsColumn.qml:66
 #, kde-format
 msgid "Delay:"
 msgstr "დაყოვნება:"
@@ -1022,90 +998,74 @@ msgctxt "@info:tooltip"
 msgid "Show the window shadow"
 msgstr "ფანჯრის ჩრდილის ჩვენება"
 
-#: src/Gui/OptionsMenu.cpp:69
-#, kde-format
-msgctxt "@option:check"
-msgid "Capture the current pop-up only"
-msgstr "მხოლოდ მიმდინარე მხტუნარას გადაღება"
-
-#: src/Gui/OptionsMenu.cpp:71
-#, kde-format
-msgctxt "@info:tooltip"
-msgid ""
-"Capture only the current pop-up window (like a menu, tooltip etc).\n"
-"If disabled, the pop-up is captured along with the parent window"
-msgstr ""
-"მხოლოდ მიმდინარე მხტუნარა ფანჯრის გადაღება (მაგ: მენიუ, მინიშნება და ა.შ.).\n"
-"თუ გამორთულია, მხტუნარა მშობელ ფანჯარასთან ერთად გამოჩნდება"
-
-#: src/Gui/OptionsMenu.cpp:81
+#: src/Gui/OptionsMenu.cpp:67
 #, kde-format
 msgctxt "@option:check"
 msgid "Quit after manual Save or Copy"
 msgstr "გასვლა ხელით შენახვის ან კოპირების შემდეგ"
 
-#: src/Gui/OptionsMenu.cpp:82
+#: src/Gui/OptionsMenu.cpp:68
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr "Spectacle-დან გასვლა გამოსახულების ხელით შენახვის ან კოპირების შემდეგ"
 
-#: src/Gui/OptionsMenu.cpp:94
+#: src/Gui/OptionsMenu.cpp:80
 #, kde-format
 msgctxt "@option:check"
 msgid "Capture On Click"
 msgstr "ჩაწერა დაწკაპუნებისას"
 
-#: src/Gui/OptionsMenu.cpp:109
+#: src/Gui/OptionsMenu.cpp:95
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Delay:"
 msgstr "დაყოვნება:"
 
-#: src/Gui/OptionsMenu.cpp:114
+#: src/Gui/OptionsMenu.cpp:100
 #, kde-format
 msgctxt "@item 0 delay special value"
 msgid "No Delay"
 msgstr "დაყოვნების გარეშე"
 
-#: src/Gui/OptionsMenu.cpp:133
+#: src/Gui/OptionsMenu.cpp:119
 #, kde-format
 msgctxt "@title:menu"
 msgid "Recording Settings"
 msgstr "ჩაწერის მორგება"
 
-#: src/Gui/OptionsMenu.cpp:135
+#: src/Gui/OptionsMenu.cpp:121
 #, kde-format
 msgctxt "@option:check for recordings"
 msgid "Include mouse pointer"
 msgstr "თაგუნას კურსორის ჩასმა"
 
-#: src/Gui/OptionsMenu.cpp:136
+#: src/Gui/OptionsMenu.cpp:122
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the recording"
 msgstr "ეკრანის ჩანაწერზე თაგუნას კურსორის ჩვენება"
 
-#: src/Gui/OptionsMenu.cpp:144
+#: src/Gui/OptionsMenu.cpp:130
 #, kde-format
 msgctxt "@option:check for recordings"
 msgid "Record system audio"
 msgstr "სისტემის ხმის ჩაწერა"
 
-#: src/Gui/OptionsMenu.cpp:145
+#: src/Gui/OptionsMenu.cpp:131
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Include the audio that is currently playing on the system in the recording"
 msgstr "ჩანაწერში ამჟამად სისტემაში დაკრული ხმის ჩასმა"
 
-#: src/Gui/OptionsMenu.cpp:153
+#: src/Gui/OptionsMenu.cpp:139
 #, kde-format
 msgctxt "@option:check for recordings"
 msgid "Record microphone"
 msgstr "მიკროფონის ჩაწერა"
 
-#: src/Gui/OptionsMenu.cpp:154
+#: src/Gui/OptionsMenu.cpp:140
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include audio from the default microphone in the recording"
@@ -1656,74 +1616,68 @@ msgstr "გამოჩნდება ეკრანის ანაბეჭ�
 msgid "Whether the window shadow is included in the screenshot"
 msgstr "გამოჩნდება ეკრანის ანაბეჭდში ფანჯრის ჩრდილი, თუ არა"
 
-#. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:115
-#, kde-format
-msgid "Only capture the current pop up menu"
-msgstr "მხოლოდ მიმდინარე მხტუნარა მენიუს გადაღება"
-
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:119
+#: src/Gui/SettingsDialog/spectacle.kcfg:115
 #, kde-format
 msgid "Quit after saving or copying an image"
 msgstr "გასვლა გამოსახულების შენახვის ან კოპირების შემდეგ"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:123
+#: src/Gui/SettingsDialog/spectacle.kcfg:119
 #, kde-format
 msgid "Delay"
 msgstr "დაყოვნება"
 
 #. i18n: ectx: label, entry (imageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (videoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:134
-#: src/Gui/SettingsDialog/spectacle.kcfg:180
+#: src/Gui/SettingsDialog/spectacle.kcfg:130
+#: src/Gui/SettingsDialog/spectacle.kcfg:176
 #, kde-format
 msgid "Default filename"
 msgstr "ნაგულისხმევი ფაილის სახელი"
 
 #. i18n: ectx: label, entry (imageCompressionQuality), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:151
+#: src/Gui/SettingsDialog/spectacle.kcfg:147
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "შეკუმშვის ხარისხი კარგვის მქონე ფორმატებისთვის"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:159
+#: src/Gui/SettingsDialog/spectacle.kcfg:155
 #, kde-format
 msgid "Default save image format"
 msgstr "ნაგულისხმევი შესანახი ფაილის ფორმატი"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:163
+#: src/Gui/SettingsDialog/spectacle.kcfg:159
 #, kde-format
 msgid "The filename template used when saving screenshots"
 msgstr "ეკრანის ანაბეჭდების შენახვისას გამოყენებული ფაილის სახელის ნიმუში"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:170
-#: src/Gui/SettingsDialog/spectacle.kcfg:209
+#: src/Gui/SettingsDialog/spectacle.kcfg:166
+#: src/Gui/SettingsDialog/spectacle.kcfg:205
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "ბოლოს შენახული ფაილის ბილიკი"
 
 #. i18n: ectx: label, entry (lastImageSaveAsLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveAsLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:174
-#: src/Gui/SettingsDialog/spectacle.kcfg:213
+#: src/Gui/SettingsDialog/spectacle.kcfg:170
+#: src/Gui/SettingsDialog/spectacle.kcfg:209
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "ბოლო ბილიკი, რომელიც გამოყენებული იყო \"შენახვა, როგორც\" ქმედებისთვის"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:197
+#: src/Gui/SettingsDialog/spectacle.kcfg:193
 #, kde-format
 msgid "Default video format"
 msgstr "ნაგულისხმევი ვიდეოფორმატი"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:202
+#: src/Gui/SettingsDialog/spectacle.kcfg:198
 #, kde-format
 msgid "The filename template used when saving screencasts"
 msgstr "ეკრანის ვიდეოს შენახვისას გამოყენებული ფაილის სახელის ნიმუში"
@@ -2440,7 +2394,7 @@ msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr "მიმდინარეობს ტექსტის ამოღება გამოსახულებიდან..."
 
-#: src/SpectacleCore.cpp:1062
+#: src/SpectacleCore.cpp:1052
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -2449,13 +2403,13 @@ msgstr ""
 "პარამეტრი --scared, მხოლოდ, პარამეტრთან -f/--fullscreen ერთად გამოიყენება და "
 "გამოტოვებული იქნება"
 
-#: src/SpectacleCore.cpp:1077
+#: src/SpectacleCore.cpp:1067
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 პარამეტრისთვის --record სწორი რეჟიმი არაა"
 
-#: src/SpectacleCore.cpp:1314
+#: src/SpectacleCore.cpp:1303
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2465,24 +2419,24 @@ msgstr ""
 "ეკრანის ანაბეჭდი შენახულია, როგორც '%1' '%2'-ზე და ეკრანის ანაბეჭდის ფაილის "
 "ბილიკი შენახულია ბუფერში."
 
-#: src/SpectacleCore.cpp:1318
+#: src/SpectacleCore.cpp:1307
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "ეკრანის ანაბეჭდი შენახულია, როგორც '%1' თქვენი სურათების საქაღალდეში."
 
-#: src/SpectacleCore.cpp:1321
+#: src/SpectacleCore.cpp:1310
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "ეკრანის ანაბეჭდი შენახულია, როგორც '%1' '%2'-ზე."
 
-#: src/SpectacleCore.cpp:1325
+#: src/SpectacleCore.cpp:1314
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "ეკრანის ანაბეჭდი თქვენს ბაფერშია შენახული."
 
-#: src/SpectacleCore.cpp:1330
+#: src/SpectacleCore.cpp:1319
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2492,25 +2446,25 @@ msgstr ""
 "ჩანაწერი შენახულია, როგორც '%1' '%2'-ზე და ჩანაწერის ფაილის ბილიკი შენახულია "
 "ბუფერში."
 
-#: src/SpectacleCore.cpp:1332
+#: src/SpectacleCore.cpp:1321
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "ჩანაწერი შენახულია, როგორც '%1' თქვენი ვიდეოების საქაღალდეში."
 
-#: src/SpectacleCore.cpp:1334
+#: src/SpectacleCore.cpp:1323
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "ჩანაწერი შენახულია, როგორც '%1' '%2'-ზე."
 
-#: src/SpectacleCore.cpp:1346
+#: src/SpectacleCore.cpp:1335
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "გახსნა"
 
-#: src/SpectacleCore.cpp:1360
+#: src/SpectacleCore.cpp:1349
 #, kde-format
 msgid "Annotate"
 msgstr "ანოტაცია"
@@ -2538,6 +2492,41 @@ msgstr "ანიმაციის შემცველი WebP (უკეთ�
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (თავსებადი, მაგრამ არაეფექტური)"
+
+#~ msgid ""
+#~ "Capture the window currently under the cursor, excluding parents of pop-"
+#~ "up menus"
+#~ msgstr ""
+#~ "ამჟამად კურსორის ქვეშ მყოფი ფანჯრის მხტუნარა მენიუს მშობლების გარეშე "
+#~ "გადაღება"
+
+#~ msgid "Capture the current pop-up only"
+#~ msgstr "მხოლოდ მიმდინარე მხტუნარა გადაღება"
+
+#~ msgid ""
+#~ "Capture only the current pop-up window (like a menu, tooltip etc) when "
+#~ "taking a screenshot of a window. If disabled, the pop-up is captured "
+#~ "along with the parent window."
+#~ msgstr ""
+#~ "ფანჯრის ეკრანის ანაბეჭდის გადაღებისას მხოლოდ მიმდინარე მხტუნარა ფანჯრის "
+#~ "გადაღება (მაგ: მენიუ, მინიშნება და ა.შ.). თუ გამორთულია, მხტუნარა მშობელ "
+#~ "ფანჯარასთან ერთად გამოჩნდება."
+
+#~ msgctxt "@option:check"
+#~ msgid "Capture the current pop-up only"
+#~ msgstr "მხოლოდ მიმდინარე მხტუნარას გადაღება"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid ""
+#~ "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+#~ "If disabled, the pop-up is captured along with the parent window"
+#~ msgstr ""
+#~ "მხოლოდ მიმდინარე მხტუნარა ფანჯრის გადაღება (მაგ: მენიუ, მინიშნება და ა."
+#~ "შ.).\n"
+#~ "თუ გამორთულია, მხტუნარა მშობელ ფანჯარასთან ერთად გამოჩნდება"
+
+#~ msgid "Only capture the current pop up menu"
+#~ msgstr "მხოლოდ მიმდინარე მხტუნარა მენიუს გადაღება"
 
 #~ msgctxt "@info"
 #~ msgid ""

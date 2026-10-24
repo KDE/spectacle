@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-20 00:55+0000\n"
+"POT-Creation-Date: 2026-10-24 00:52+0000\n"
 "PO-Revision-Date: 2024-12-25 19:45+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -108,26 +108,19 @@ msgstr "वर्तमाननिरीक्षकं गृह्यता�
 msgid "Capture the active window"
 msgstr "सक्रियविण्डो गृह्यताम्"
 
-#: src/CommandLineOptions.h:38
+#: src/CommandLineOptions.h:37
 #, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
 "menus"
 msgstr "कर्सरस्य अधः वर्तमानं विण्डो गृह्यताम्, यत्र पॉप-अप-मेनू-मातापितरौ अपि सन्ति"
 
-#: src/CommandLineOptions.h:42
-#, kde-format
-msgid ""
-"Capture the window currently under the cursor, excluding parents of pop-up "
-"menus"
-msgstr "कर्सरस्य अधः वर्तमानं विण्डो गृह्यताम्, पॉप-अप-मेनू-मातापितरौ विहाय"
-
-#: src/CommandLineOptions.h:46
+#: src/CommandLineOptions.h:40
 #, kde-format
 msgid "Capture a rectangular region of the screen"
 msgstr "स्क्रीनस्य आयताकारप्रदेशं गृह्यताम्"
 
-#: src/CommandLineOptions.h:50
+#: src/CommandLineOptions.h:44
 #, kde-format
 msgid ""
 "Record the screen using the given mode. Modes:\n"
@@ -140,43 +133,43 @@ msgstr ""
 "- s, screen\n"
 "- व, खिडकी"
 
-#: src/CommandLineOptions.h:58
+#: src/CommandLineOptions.h:52
 #, kde-format
 msgid "Launch Spectacle without taking a screenshot"
 msgstr "स्क्रीनशॉट् न गृहीत्वा Spectacle प्रारम्भं कुर्वन्तु"
 
-#: src/CommandLineOptions.h:62
+#: src/CommandLineOptions.h:56
 #, kde-format
 msgid "Start in GUI mode (default)"
 msgstr "GUI मोड् (पूर्वनिर्धारितम्) आरभ्यताम् ।"
 
-#: src/CommandLineOptions.h:66
+#: src/CommandLineOptions.h:60
 #, kde-format
 msgid "Take a screenshot and exit without showing the GUI"
 msgstr "स्क्रीनशॉट् गृहीत्वा GUI न दर्शयित्वा निर्गच्छन्तु"
 
-#: src/CommandLineOptions.h:70
+#: src/CommandLineOptions.h:64
 #, kde-format
 msgid "Start in DBus-Activation mode"
 msgstr "DBus-Activation मोड् मध्ये आरभत"
 
-#: src/CommandLineOptions.h:74
+#: src/CommandLineOptions.h:68
 #, kde-format
 msgid ""
 "In background mode, do not pop up a notification when the screenshot is taken"
 msgstr "पृष्ठभूमिविधाने स्क्रीनशॉट् गृहीते सूचनां न पोप् अप कुर्वन्तु"
 
-#: src/CommandLineOptions.h:78
+#: src/CommandLineOptions.h:72
 #, kde-format
 msgid "In background mode, save image to specified file"
 msgstr "पृष्ठभूमिविधाने चित्रं निर्दिष्टसञ्चिकायां रक्षन्तु"
 
-#: src/CommandLineOptions.h:83
+#: src/CommandLineOptions.h:77
 #, kde-format
 msgid "In background mode, delay before taking the shot (in milliseconds)"
 msgstr "पृष्ठभूमिविधाने शॉट् ग्रहीतुं पूर्वं विलम्बं कुर्वन्तु (मिलिसेकेण्ड् मध्ये) ।"
 
-#: src/CommandLineOptions.h:88
+#: src/CommandLineOptions.h:82
 #, kde-format
 msgid ""
 "In background mode, copy screenshot image to clipboard, unless -o is also "
@@ -185,42 +178,42 @@ msgstr ""
 "पृष्ठभूमिविधाने, स्क्रीनशॉट् चित्रं क्लिप्बोर्ड् प्रति प्रतिलिख्यताम्, यावत् -o इत्यस्य अपि "
 "उपयोगः न भवति ।"
 
-#: src/CommandLineOptions.h:92
+#: src/CommandLineOptions.h:86
 #, kde-format
 msgid "In background mode, copy screenshot file path to clipboard"
 msgstr "पृष्ठभूमिविधाने, स्क्रीनशॉट् सञ्चिकामार्गं क्लिप्बोर्ड् प्रति प्रतिलिख्यताम्"
 
-#: src/CommandLineOptions.h:96
+#: src/CommandLineOptions.h:90
 #, kde-format
 msgid "Wait for a click before taking screenshot. Invalidates delay"
 msgstr "स्क्रीनशॉट् ग्रहीतुं पूर्वं क्लिक् प्रतीक्ष्यताम्। विलम्बं अमान्यं करोति"
 
-#: src/CommandLineOptions.h:100
+#: src/CommandLineOptions.h:94
 #, kde-format
 msgid "Starts a new GUI instance of spectacle without registering to DBus"
 msgstr "DBus मध्ये पञ्जीकरणं विना तमाशायाः नूतनं GUI उदाहरणं आरभते"
 
-#: src/CommandLineOptions.h:104
+#: src/CommandLineOptions.h:98
 #, kde-format
 msgid "In background mode, include pointer in the screenshot"
 msgstr "पृष्ठभूमिविधाने स्क्रीनशॉट् मध्ये सूचकं समावेशयन्तु"
 
-#: src/CommandLineOptions.h:108
+#: src/CommandLineOptions.h:102
 #, kde-format
 msgid "In background mode, exclude decorations in the screenshot"
 msgstr "पृष्ठभूमिविधाने स्क्रीनशॉट् मध्ये अलङ्काराः बहिष्कृताः"
 
-#: src/CommandLineOptions.h:110
+#: src/CommandLineOptions.h:104
 #, kde-format
 msgid "In background mode, exclude shadows in the screenshot"
 msgstr "पृष्ठभूमिविधाने स्क्रीनशॉट् मध्ये छायाः बहिष्कृताः कुर्वन्तु"
 
-#: src/CommandLineOptions.h:113
+#: src/CommandLineOptions.h:107
 #, kde-format
 msgid "Open and edit existing screenshot file"
 msgstr "विद्यमानं स्क्रीनशॉट् सञ्चिकां उद्घाट्य सम्पादयन्तु"
 
-#: src/CommandLineOptions.h:116
+#: src/CommandLineOptions.h:110
 #, fuzzy, kde-format
 #| msgid "Accept on click-and-release"
 msgid "Accept region selection on click-and-release"
@@ -766,40 +759,25 @@ msgstr "विण्डो इत्यस्य स्क्रीनशॉट�
 
 #: src/Gui/CaptureSettingsColumn.qml:44
 #, kde-format
-msgid "Capture the current pop-up only"
-msgstr "केवलं वर्तमानं पॉप-अपं गृह्यताम्"
-
-#: src/Gui/CaptureSettingsColumn.qml:46
-#, kde-format
-msgid ""
-"Capture only the current pop-up window (like a menu, tooltip etc) when "
-"taking a screenshot of a window. If disabled, the pop-up is captured along "
-"with the parent window."
-msgstr ""
-"विण्डो इत्यस्य स्क्रीनशॉट् गृह्णन्ते सति केवलं वर्तमानं पॉप-अप विण्डो (यथा मेनू, टूलटिप् "
-"इत्यादीनि) गृह्यताम् । यदि अक्षमम् अस्ति तर्हि मातापितृविण्डो इत्यनेन सह पॉप्-अपः गृह्यते ।"
-
-#: src/Gui/CaptureSettingsColumn.qml:54
-#, kde-format
 msgid "Quit after manual Save or Copy"
 msgstr "मैनुअल् Save अथवा Copy इत्यस्य अनन्तरं त्यजन्तु"
 
-#: src/Gui/CaptureSettingsColumn.qml:55
+#: src/Gui/CaptureSettingsColumn.qml:45
 #, kde-format
 msgid "Quit Spectacle after manually saving or copying the image."
 msgstr "चित्रं मैन्युअल् रूपेण रक्षित्वा प्रतिलिपि कृत्वा वा Spectacle त्यजन्तु ।"
 
-#: src/Gui/CaptureSettingsColumn.qml:64
+#: src/Gui/CaptureSettingsColumn.qml:54
 #, kde-format
 msgid "Capture on click"
 msgstr "क्लिक् कृत्वा कैप्चर कुर्वन्तु"
 
-#: src/Gui/CaptureSettingsColumn.qml:66
+#: src/Gui/CaptureSettingsColumn.qml:56
 #, kde-format
 msgid "Wait for a mouse click before capturing the screenshot image."
 msgstr "स्क्रीनशॉट् इमेज् गृहीतुं पूर्वं मूषकस्य क्लिक् प्रतीक्ष्यताम् ।"
 
-#: src/Gui/CaptureSettingsColumn.qml:76
+#: src/Gui/CaptureSettingsColumn.qml:66
 #, kde-format
 msgid "Delay:"
 msgstr "विलम्बः:"
@@ -1050,96 +1028,76 @@ msgctxt "@info:tooltip"
 msgid "Show the window shadow"
 msgstr "विण्डो छायां दर्शयतु"
 
-#: src/Gui/OptionsMenu.cpp:69
-#, fuzzy, kde-format
-#| msgid "Capture the current pop-up only"
-msgctxt "@option:check"
-msgid "Capture the current pop-up only"
-msgstr "केवलं वर्तमानं पॉप-अपं गृह्यताम्"
-
-#: src/Gui/OptionsMenu.cpp:71
-#, fuzzy, kde-format
-#| msgid ""
-#| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-#| "If disabled, the pop-up is captured along with the parent window"
-msgctxt "@info:tooltip"
-msgid ""
-"Capture only the current pop-up window (like a menu, tooltip etc).\n"
-"If disabled, the pop-up is captured along with the parent window"
-msgstr ""
-"केवलं वर्तमानं पॉप-अप विण्डो (यथा मेनू, टूलटिप् इत्यादि) गृह्यताम् ।\n"
-"यदि अक्षमम् अस्ति तर्हि मातापितृविण्डो इत्यनेन सह पॉप्-अपः गृह्यते"
-
-#: src/Gui/OptionsMenu.cpp:81
+#: src/Gui/OptionsMenu.cpp:67
 #, fuzzy, kde-format
 #| msgid "Quit after manual Save or Copy"
 msgctxt "@option:check"
 msgid "Quit after manual Save or Copy"
 msgstr "मैनुअल् Save अथवा Copy इत्यस्य अनन्तरं त्यजन्तु"
 
-#: src/Gui/OptionsMenu.cpp:82
+#: src/Gui/OptionsMenu.cpp:68
 #, fuzzy, kde-format
 #| msgid "Quit Spectacle after manually saving or copying the image"
 msgctxt "@info:tooltip"
 msgid "Quit Spectacle after manually saving or copying the image"
 msgstr "चित्रं मैन्युअल् रूपेण रक्षित्वा प्रतिलिपि कृत्वा वा Spectacle त्यजन्तु"
 
-#: src/Gui/OptionsMenu.cpp:94
+#: src/Gui/OptionsMenu.cpp:80
 #, fuzzy, kde-format
 #| msgid "Capture On Click"
 msgctxt "@option:check"
 msgid "Capture On Click"
 msgstr "Capture On Click इति"
 
-#: src/Gui/OptionsMenu.cpp:109
+#: src/Gui/OptionsMenu.cpp:95
 #, fuzzy, kde-format
 #| msgid "Delay:"
 msgctxt "@label:spinbox"
 msgid "Delay:"
 msgstr "विलम्बः:"
 
-#: src/Gui/OptionsMenu.cpp:114
+#: src/Gui/OptionsMenu.cpp:100
 #, fuzzy, kde-format
 #| msgid "No Delay"
 msgctxt "@item 0 delay special value"
 msgid "No Delay"
 msgstr "न विलम्बः"
 
-#: src/Gui/OptionsMenu.cpp:133
+#: src/Gui/OptionsMenu.cpp:119
 #, fuzzy, kde-format
 #| msgid "Recording Settings"
 msgctxt "@title:menu"
 msgid "Recording Settings"
 msgstr "रिकार्डिङ्ग सेटिंग्स्"
 
-#: src/Gui/OptionsMenu.cpp:135
+#: src/Gui/OptionsMenu.cpp:121
 #, fuzzy, kde-format
 #| msgid "Include mouse pointer"
 msgctxt "@option:check for recordings"
 msgid "Include mouse pointer"
 msgstr "मूषकसूचकं समावेशयन्तु"
 
-#: src/Gui/OptionsMenu.cpp:136
+#: src/Gui/OptionsMenu.cpp:122
 #, fuzzy, kde-format
 #| msgid "Show the mouse cursor in the screen recording."
 msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the recording"
 msgstr "स्क्रीन रिकार्डिङ्ग् मध्ये मूषकस्य कर्सरं दर्शयतु ।"
 
-#: src/Gui/OptionsMenu.cpp:144
+#: src/Gui/OptionsMenu.cpp:130
 #, kde-format
 msgctxt "@option:check for recordings"
 msgid "Record system audio"
 msgstr ""
 
-#: src/Gui/OptionsMenu.cpp:145
+#: src/Gui/OptionsMenu.cpp:131
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Include the audio that is currently playing on the system in the recording"
 msgstr ""
 
-#: src/Gui/OptionsMenu.cpp:153
+#: src/Gui/OptionsMenu.cpp:139
 #, fuzzy, kde-format
 #| msgctxt "@action global shortcut"
 #| msgid "Record Screen"
@@ -1147,7 +1105,7 @@ msgctxt "@option:check for recordings"
 msgid "Record microphone"
 msgstr "रिकार्ड स्क्रीन"
 
-#: src/Gui/OptionsMenu.cpp:154
+#: src/Gui/OptionsMenu.cpp:140
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include audio from the default microphone in the recording"
@@ -1713,74 +1671,68 @@ msgstr "स्क्रीनशॉट् मध्ये विण्डो अ
 msgid "Whether the window shadow is included in the screenshot"
 msgstr "स्क्रीनशॉट् मध्ये विण्डो छाया समाविष्टा अस्ति वा"
 
-#. i18n: ectx: label, entry (transientOnly), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:115
-#, kde-format
-msgid "Only capture the current pop up menu"
-msgstr "केवलं वर्तमानं पॉप अप मेन्यू गृह्यताम्"
-
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:119
+#: src/Gui/SettingsDialog/spectacle.kcfg:115
 #, kde-format
 msgid "Quit after saving or copying an image"
 msgstr "चित्रं रक्षित्वा प्रतिलिपि कृत्वा वा त्यजन्तु"
 
 #. i18n: ectx: label, entry (captureDelay), group (GuiConfig)
-#: src/Gui/SettingsDialog/spectacle.kcfg:123
+#: src/Gui/SettingsDialog/spectacle.kcfg:119
 #, kde-format
 msgid "Delay"
 msgstr "विलम्बः"
 
 #. i18n: ectx: label, entry (imageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (videoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:134
-#: src/Gui/SettingsDialog/spectacle.kcfg:180
+#: src/Gui/SettingsDialog/spectacle.kcfg:130
+#: src/Gui/SettingsDialog/spectacle.kcfg:176
 #, kde-format
 msgid "Default filename"
 msgstr "पूर्वनिर्धारितं सञ्चिकानाम"
 
 #. i18n: ectx: label, entry (imageCompressionQuality), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:151
+#: src/Gui/SettingsDialog/spectacle.kcfg:147
 #, kde-format
 msgid "Compression quality for lossy file formats"
 msgstr "हानियुक्तसञ्चिकास्वरूपेषु संपीडनगुणवत्ता"
 
 #. i18n: ectx: label, entry (preferredImageFormat), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:159
+#: src/Gui/SettingsDialog/spectacle.kcfg:155
 #, kde-format
 msgid "Default save image format"
 msgstr "पूर्वनिर्धारितं चित्रस्वरूपं रक्षन्तु"
 
 #. i18n: ectx: label, entry (imageFilenameTemplate), group (ImageSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:163
+#: src/Gui/SettingsDialog/spectacle.kcfg:159
 #, kde-format
 msgid "The filename template used when saving screenshots"
 msgstr "स्क्रीनशॉट् रक्षन्ते सति प्रयुक्तः सञ्चिकानाम टेम्पलेट्"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:170
-#: src/Gui/SettingsDialog/spectacle.kcfg:209
+#: src/Gui/SettingsDialog/spectacle.kcfg:166
+#: src/Gui/SettingsDialog/spectacle.kcfg:205
 #, kde-format
 msgid "The path of the file saved last"
 msgstr "अन्तिमे रक्षितस्य सञ्चिकायाः मार्गः"
 
 #. i18n: ectx: label, entry (lastImageSaveAsLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveAsLocation), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:174
-#: src/Gui/SettingsDialog/spectacle.kcfg:213
+#: src/Gui/SettingsDialog/spectacle.kcfg:170
+#: src/Gui/SettingsDialog/spectacle.kcfg:209
 #, kde-format
 msgid "Last path used for \"save as\" action"
 msgstr "\"save as\" क्रियायाः कृते प्रयुक्तः अन्तिमः मार्गः"
 
 #. i18n: ectx: label, entry (preferredVideoFormat), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:197
+#: src/Gui/SettingsDialog/spectacle.kcfg:193
 #, kde-format
 msgid "Default video format"
 msgstr "पूर्वनिर्धारितं विडियो प्रारूपम्"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
-#: src/Gui/SettingsDialog/spectacle.kcfg:202
+#: src/Gui/SettingsDialog/spectacle.kcfg:198
 #, kde-format
 msgid "The filename template used when saving screencasts"
 msgstr "स्क्रीनकास्ट् रक्षन्ते सति प्रयुक्तः सञ्चिकानाम टेम्पलेट्"
@@ -2551,20 +2503,20 @@ msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr ""
 
-#: src/SpectacleCore.cpp:1062
+#: src/SpectacleCore.cpp:1052
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "--scaled is only allowed together with -f/--fullscreen and will be ignored"
 msgstr ""
 
-#: src/SpectacleCore.cpp:1077
+#: src/SpectacleCore.cpp:1067
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 --record कृते वैधविधिः नास्ति"
 
-#: src/SpectacleCore.cpp:1314
+#: src/SpectacleCore.cpp:1303
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -2577,7 +2529,7 @@ msgstr ""
 "एकः स्क्रीनशॉट् '%1' तः '%2' पर्यन्तं रक्षितः आसीत् तथा च स्क्रीनशॉट् इत्यस्य सञ्चिकामार्गः "
 "भवतः क्लिप्बोर्ड् मध्ये रक्षितः अस्ति ।"
 
-#: src/SpectacleCore.cpp:1318
+#: src/SpectacleCore.cpp:1307
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -2585,19 +2537,19 @@ msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "भवतः चित्रपुटे '%1' इति रूपेण स्क्रीनशॉट् रक्षितम् ।"
 
-#: src/SpectacleCore.cpp:1321
+#: src/SpectacleCore.cpp:1310
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "एकं स्क्रीनशॉट् '%1' तः '%2' पर्यन्तं रक्षितम् आसीत् ।"
 
-#: src/SpectacleCore.cpp:1325
+#: src/SpectacleCore.cpp:1314
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "भवतः क्लिप्बोर्ड् मध्ये एकः स्क्रीनशॉट् रक्षितः आसीत् ।"
 
-#: src/SpectacleCore.cpp:1330
+#: src/SpectacleCore.cpp:1319
 #, fuzzy, kde-format
 #| msgid ""
 #| "A recording was saved as '%1' to '%2' and the file path of the recording "
@@ -2610,7 +2562,7 @@ msgstr ""
 "एकं रिकार्डिङ्ग् '%1' तः '%2' पर्यन्तं रक्षितम् आसीत् तथा च रिकार्डिङ्ग् इत्यस्य "
 "सञ्चिकामार्गः भवतः क्लिप्बोर्ड् मध्ये रक्षितः अस्ति ।"
 
-#: src/SpectacleCore.cpp:1332
+#: src/SpectacleCore.cpp:1321
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A recording was saved as '%1' to your Videos folder."
@@ -2618,20 +2570,20 @@ msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "एकं रिकार्डिङ्ग् भवतः Videos समुच्चय मध्ये '%1' इति रूपेण रक्षितम् आसीत् ।"
 
-#: src/SpectacleCore.cpp:1334
+#: src/SpectacleCore.cpp:1323
 #, fuzzy, kde-format
 #| msgid "A recording was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "एकं अभिलेखनं '%1' तः '%2' पर्यन्तं रक्षितम् आसीत् ।"
 
-#: src/SpectacleCore.cpp:1346
+#: src/SpectacleCore.cpp:1335
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "उद्घाटित"
 
-#: src/SpectacleCore.cpp:1360
+#: src/SpectacleCore.cpp:1349
 #, kde-format
 msgid "Annotate"
 msgstr "टिप्पणीं कुरुत"
@@ -2659,6 +2611,44 @@ msgstr "एनिमेटेड् WebP (GIF इत्यस्मात् उ
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (सङ्गतम्, परन्तु अकुशलम्)"
+
+#~ msgid ""
+#~ "Capture the window currently under the cursor, excluding parents of pop-"
+#~ "up menus"
+#~ msgstr "कर्सरस्य अधः वर्तमानं विण्डो गृह्यताम्, पॉप-अप-मेनू-मातापितरौ विहाय"
+
+#~ msgid "Capture the current pop-up only"
+#~ msgstr "केवलं वर्तमानं पॉप-अपं गृह्यताम्"
+
+#~ msgid ""
+#~ "Capture only the current pop-up window (like a menu, tooltip etc) when "
+#~ "taking a screenshot of a window. If disabled, the pop-up is captured "
+#~ "along with the parent window."
+#~ msgstr ""
+#~ "विण्डो इत्यस्य स्क्रीनशॉट् गृह्णन्ते सति केवलं वर्तमानं पॉप-अप विण्डो (यथा मेनू, टूलटिप् "
+#~ "इत्यादीनि) गृह्यताम् । यदि अक्षमम् अस्ति तर्हि मातापितृविण्डो इत्यनेन सह पॉप्-अपः गृह्यते "
+#~ "।"
+
+#, fuzzy
+#~| msgid "Capture the current pop-up only"
+#~ msgctxt "@option:check"
+#~ msgid "Capture the current pop-up only"
+#~ msgstr "केवलं वर्तमानं पॉप-अपं गृह्यताम्"
+
+#, fuzzy
+#~| msgid ""
+#~| "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+#~| "If disabled, the pop-up is captured along with the parent window"
+#~ msgctxt "@info:tooltip"
+#~ msgid ""
+#~ "Capture only the current pop-up window (like a menu, tooltip etc).\n"
+#~ "If disabled, the pop-up is captured along with the parent window"
+#~ msgstr ""
+#~ "केवलं वर्तमानं पॉप-अप विण्डो (यथा मेनू, टूलटिप् इत्यादि) गृह्यताम् ।\n"
+#~ "यदि अक्षमम् अस्ति तर्हि मातापितृविण्डो इत्यनेन सह पॉप्-अपः गृह्यते"
+
+#~ msgid "Only capture the current pop up menu"
+#~ msgstr "केवलं वर्तमानं पॉप अप मेन्यू गृह्यताम्"
 
 #~ msgctxt "@info"
 #~ msgid ""
