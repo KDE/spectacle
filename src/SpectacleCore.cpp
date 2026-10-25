@@ -626,6 +626,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
                     
                     auto job = new KIO::OpenUrlJob(QUrl::fromLocalFile(tempFile.fileName()));
                     job->setStartupId(notification->xdgActivationToken().toUtf8());
+                    job->setDeleteTemporaryFile(true);
                     job->start();
                 }
 
