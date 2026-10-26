@@ -151,6 +151,7 @@ Comment[uk]=Створення знімків вікон та записів з 
 Comment[zh_CN]=截图和录屏应用
 Comment[zh_TW]=拍攝螢幕截圖或進行螢幕錄影
 Categories=Qt;KDE;Utility;
+X-DocPath=spectacle/index.html
 Keywords=snapshot;capture;print;screenshot;snipping;snipping tool;snip;
 Keywords[ar]=لقطة;صورة;طباعة;شاشة;لقطة شاشة;قصاصة;
 Keywords[az]=ekran şəkli;çəkmək;çap;kəsmək;kəsmə aləti;kəs;
