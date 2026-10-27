@@ -56,7 +56,6 @@ ScreenshotModeMenu::ScreenshotModeMenu(QWidget *parent)
             action->setShortcuts(globalShortcuts(globalAction));
             auto onTriggered = [mode] {
                 SpectacleCore::instance()->takeNewScreenshot(mode);
-                Settings::setCaptureMode(mode);
             };
             connect(action, &QAction::triggered, action, onTriggered);
         }

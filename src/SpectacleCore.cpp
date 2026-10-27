@@ -1222,6 +1222,7 @@ void SpectacleCore::takeNewScreenshot(ImagePlatform::GrabMode grabMode, int time
 
 void SpectacleCore::takeNewScreenshot(int captureMode, int timeout, bool includePointer, bool includeDecorations, bool includeShadow)
 {
+    Settings::setCaptureMode(captureMode);
     using CaptureMode = CaptureModeModel::CaptureMode;
     if (timeout < 0 && !m_imagePlatform->supportedShutterModes().testFlag(ImagePlatform::OnClick)) {
         timeout = Settings::captureDelay() * 1000;
