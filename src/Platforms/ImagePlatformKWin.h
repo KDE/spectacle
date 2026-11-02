@@ -33,13 +33,13 @@ struct ResultVariant : public std::variant<std::monostate, QImage, QString> {
  * The PlatformKWin3 class uses the org.kde.KWin.ScreenShot3 dbus interface
  * for taking screenshots of screens and windows.
  */
-class ImagePlatformKWin3 final : public ImagePlatform
+class ImagePlatformKWin final : public ImagePlatform
 {
     Q_OBJECT
 
 public:
-    explicit ImagePlatformKWin3(QObject *parent = nullptr);
-    ~ImagePlatformKWin3() override = default;
+    explicit ImagePlatformKWin(QObject *parent = nullptr);
+    ~ImagePlatformKWin() override = default;
 
     enum class ScreenShotFlag : uint {
         IncludeCursor = 0x1,
@@ -105,7 +105,7 @@ class ScreenShotSourceArea3 final : public ScreenShotSource3
     Q_OBJECT
 
 public:
-    ScreenShotSourceArea3(const QRect &area, ImagePlatformKWin3::ScreenShotFlags flags);
+    ScreenShotSourceArea3(const QRect &area, ImagePlatformKWin::ScreenShotFlags flags);
 };
 
 /**
@@ -118,7 +118,7 @@ class ScreenShotSourceInteractive3 final : public ScreenShotSource3
     Q_OBJECT
 
 public:
-    ScreenShotSourceInteractive3(ImagePlatformKWin3::InteractiveKind kind, ImagePlatformKWin3::ScreenShotFlags flags);
+    ScreenShotSourceInteractive3(ImagePlatformKWin::InteractiveKind kind, ImagePlatformKWin::ScreenShotFlags flags);
 };
 
 /**
@@ -130,7 +130,7 @@ class ScreenShotSourceScreen3 final : public ScreenShotSource3
     Q_OBJECT
 
 public:
-    ScreenShotSourceScreen3(const QScreen *screen, ImagePlatformKWin3::ScreenShotFlags flags);
+    ScreenShotSourceScreen3(const QScreen *screen, ImagePlatformKWin::ScreenShotFlags flags);
 };
 
 /**
@@ -142,7 +142,7 @@ class ScreenShotSourceActiveWindow3 final : public ScreenShotSource3
     Q_OBJECT
 
 public:
-    ScreenShotSourceActiveWindow3(ImagePlatformKWin3::ScreenShotFlags flags);
+    ScreenShotSourceActiveWindow3(ImagePlatformKWin::ScreenShotFlags flags);
 };
 
 /**
@@ -154,7 +154,7 @@ class ScreenShotSourceActiveScreen3 final : public ScreenShotSource3
     Q_OBJECT
 
 public:
-    ScreenShotSourceActiveScreen3(ImagePlatformKWin3::ScreenShotFlags flags);
+    ScreenShotSourceActiveScreen3(ImagePlatformKWin::ScreenShotFlags flags);
 };
 
 /**
@@ -184,7 +184,7 @@ class ScreenShotSourceWorkspace3 final : public ScreenShotSource3
     Q_OBJECT
 
 public:
-    ScreenShotSourceWorkspace3(ImagePlatformKWin3::ScreenShotFlags flags);
+    ScreenShotSourceWorkspace3(ImagePlatformKWin::ScreenShotFlags flags);
 };
 
-Q_DECLARE_OPERATORS_FOR_FLAGS(ImagePlatformKWin3::ScreenShotFlags)
+Q_DECLARE_OPERATORS_FOR_FLAGS(ImagePlatformKWin::ScreenShotFlags)
