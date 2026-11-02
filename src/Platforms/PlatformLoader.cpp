@@ -30,8 +30,8 @@ ImagePlatformPtr getForcedImagePlatform()
         return nullptr;
     }
 
-    if (platformName == ImagePlatformKWin3::staticMetaObject.className()) {
-        return std::make_unique<ImagePlatformKWin3>();
+    if (platformName == ImagePlatformKWin::staticMetaObject.className()) {
+        return std::make_unique<ImagePlatformKWin>();
 #if WITH_X11
     } else if (platformName == ImagePlatformXcb::staticMetaObject.className()) {
         return std::make_unique<ImagePlatformXcb>();
@@ -57,7 +57,7 @@ ImagePlatformPtr loadImagePlatform()
     const bool isReallyX11 = false;
 #endif
     if (ScreenShotEffect::isLoaded() && ScreenShotEffect::version() != ScreenShotEffect::NullVersion) {
-        return std::make_unique<ImagePlatformKWin3>();
+        return std::make_unique<ImagePlatformKWin>();
     }
 #if WITH_X11
     else if (isReallyX11) {
