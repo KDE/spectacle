@@ -30,8 +30,8 @@ ImagePlatformPtr getForcedImagePlatform()
         return nullptr;
     }
 
-    if (platformName == ImagePlatformKWin::staticMetaObject.className()) {
-        return std::make_unique<ImagePlatformKWin>();
+    if (platformName == ImagePlatformKWin3::staticMetaObject.className()) {
+        return std::make_unique<ImagePlatformKWin3>();
 #if WITH_X11
     } else if (platformName == ImagePlatformXcb::staticMetaObject.className()) {
         return std::make_unique<ImagePlatformXcb>();
@@ -56,15 +56,8 @@ ImagePlatformPtr loadImagePlatform()
 #else
     const bool isReallyX11 = false;
 #endif
-    // Before KWin 5.27.8, there was an infinite loop in KWin on X11 when doing rectangle captures.
-    // Spectacle uses CaptureScreen DBus calls to KWin for rectangle captures.
-    if (ScreenShotEffect::isLoaded() && ScreenShotEffect::version() != ScreenShotEffect::NullVersion
-        && (!isReallyX11 || PlasmaVersion::get() >= PlasmaVersion::check(5, 27, 8))) {
-        if (PlasmaVersion::get() >= PlasmaVersion::check(6, 8, 80)) {
-            return std::make_unique<ImagePlatformKWin3>();
-        } else {
-            return std::make_unique<ImagePlatformKWin>();
-        }
+    if (ScreenShotEffect::isLoaded() && ScreenShotEffect::version() != ScreenShotEffect::NullVersion) {
+        return std::make_unique<ImagePlatformKWin3>();
     }
 #if WITH_X11
     else if (isReallyX11) {
