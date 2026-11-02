@@ -60,7 +60,11 @@ ImagePlatformPtr loadImagePlatform()
     // Spectacle uses CaptureScreen DBus calls to KWin for rectangle captures.
     if (ScreenShotEffect::isLoaded() && ScreenShotEffect::version() != ScreenShotEffect::NullVersion
         && (!isReallyX11 || PlasmaVersion::get() >= PlasmaVersion::check(5, 27, 8))) {
-        return std::make_unique<ImagePlatformKWin>();
+        if (PlasmaVersion::get() >= PlasmaVersion::check(6, 8, 80)) {
+            return std::make_unique<ImagePlatformKWin3>();
+        } else {
+            return std::make_unique<ImagePlatformKWin>();
+        }
     }
 #if WITH_X11
     else if (isReallyX11) {
