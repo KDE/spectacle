@@ -24,25 +24,25 @@ msgstr ""
 #| msgid "Take a New Screenshot"
 msgctxt "translatable folder name"
 msgid "Screenshots"
-msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
+msgstr "Στιγμιότυπα οθόνης"
 
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgctxt "part of default image filename template"
 msgid "Screenshot"
-msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
+msgstr "Στιγμιότυπο οθόνης"
 
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgctxt "translatable folder name"
 msgid "Screencasts"
-msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
+msgstr "Screencasts"
 
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgctxt "part of default video filename template"
 msgid "Screencast"
-msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
+msgstr "Screencast"
 
 #: src/CaptureModeModel.cpp:162
 #, kde-format
@@ -51,10 +51,10 @@ msgid "Rectangular Region"
 msgstr "Ορθογώνια περιοχή"
 
 #: src/CaptureModeModel.cpp:164
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@action in capture mode section"
 msgid "All Screens (Scaled to same size)"
-msgstr ""
+msgstr "Όλες οι οθόνες (Κλιμακωμένο στο ίδιο μέγεθος)"
 
 #: src/CaptureModeModel.cpp:166
 #, kde-format
@@ -73,20 +73,20 @@ msgstr "Ενεργό παράθυρο"
 #| msgid "Active Window"
 msgctxt "@action in capture mode section"
 msgid "Select Window"
-msgstr "Ενεργό παράθυρο"
+msgstr "Επιλογή παραθύρου"
 
 #: src/CaptureModeModel.cpp:171
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@action in capture mode section"
 msgid "Window Under Cursor"
-msgstr "Παράθυρο κάτω από το δρομέα"
+msgstr "Παράθυρο πίσω από τον δείκτη"
 
 #: src/CaptureModeModel.cpp:174
 #, fuzzy, kde-format
 #| msgid "Full Screen"
 msgctxt "@action in capture mode section"
 msgid "All Screens"
-msgstr "Πλήρης οθόνη"
+msgstr "Όλες οι οθόνες"
 
 #: src/CaptureModeModel.cpp:176
 #, kde-format
@@ -95,54 +95,60 @@ msgid "Full Screen"
 msgstr "Πλήρης οθόνη"
 
 #: src/CommandLineOptions.h:22
-#, kde-format
+#, fuzzy, kde-format
 msgid "Capture the entire desktop (default)"
-msgstr "Σύλληψη όλου του γραφικού περιβάλλοντος (προκαθορισμένο)"
+msgstr "Λήψη όλης της επιφάνειας εργασίας (προεπιλογή)"
 
 #: src/CommandLineOptions.h:26
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "When used with -f/--fullscreen, capture all screens scaled to the same size"
 msgstr ""
+"Όταν χρησιμοποιείται με -f/--fullscreen, λήψη όλων των οθονών κλιμακωμένων "
+"στο ίδιο μέγεθος"
 
 #: src/CommandLineOptions.h:30
-#, kde-format
+#, fuzzy, kde-format
 msgid "Capture the current monitor"
-msgstr "Σύλληψη της τρέχουσας οθόνης"
+msgstr "Λήψη της τρέχουσας οθόνης"
 
 #: src/CommandLineOptions.h:34
-#, kde-format
+#, fuzzy, kde-format
 msgid "Capture the active window"
-msgstr "Σύλληψη του ενεργού παραθύρου"
+msgstr "Λήψη του ενεργού παραθύρου"
 
 #: src/CommandLineOptions.h:37
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "Capture the window currently under the cursor, including parents of pop-up "
 "menus"
 msgstr ""
-"Σύλληψη του παραθύρου που βρίσκεται τώρα κάτω από τον δρομέα, μαζί με τους "
-"γονείς των αιωρουμένων μενού"
+"Λήψη του παραθύρου που βρίσκεται τώρα κάτω από τον δείκτη, μαζί με τους "
+"γονείς των αναδυόμενων μενού"
 
 #: src/CommandLineOptions.h:40
-#, kde-format
+#, fuzzy, kde-format
 msgid "Capture a rectangular region of the screen"
-msgstr "Σύλληψη μιας ορθογώνιας περιοχής της οθόνης"
+msgstr "Λήψη μιας ορθογώνιας περιοχής της οθόνης"
 
 #: src/CommandLineOptions.h:44
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "Record the screen using the given mode. Modes:\n"
 "- r, region\n"
 "- s, screen\n"
 "- w, window"
 msgstr ""
+"Καταγραφή οθόνης χρησιμοποιώντας τη δοσμένη λειτουργία. Λειτουργίες:\n"
+"- r, περιοχή\n"
+"- s, οθόνη\n"
+"- w, παράθυρο"
 
 #: src/CommandLineOptions.h:52
 #, fuzzy, kde-format
 #| msgid "After taking a screenshot:"
 msgid "Launch Spectacle without taking a screenshot"
-msgstr "Μετά τη λήψη στιγμιοτύπου:"
+msgstr "Εκκίνηση Spectacle χωρίς λήψη στιγμιότυπου οθόνης"
 
 #: src/CommandLineOptions.h:56
 #, kde-format
@@ -188,7 +194,7 @@ msgid ""
 "used."
 msgstr ""
 "Σε λειτουργία παρασκηνίου, να αντιγράφεται το στιγμιότυπο της εικόνας στο "
-"πρόχειρο"
+"πρόχειρο, εκτός αν χρησιμοποιείται και το -o."
 
 #: src/CommandLineOptions.h:86
 #, kde-format
@@ -225,20 +231,18 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgid "In background mode, exclude decorations in the screenshot"
 msgid "In background mode, exclude shadows in the screenshot"
-msgstr ""
-"Σε λειτουργία παρασκηνίου, να αποκλείονται οι διακοσμήσεις παραθύρου στο "
-"στιγμιότυπο"
+msgstr "Σε λειτουργία παρασκηνίου, να εξαιρούνται οι σκιές στο στιγμιότυπο"
 
 #: src/CommandLineOptions.h:107
-#, kde-format
+#, fuzzy, kde-format
 msgid "Open and edit existing screenshot file"
-msgstr ""
+msgstr "Άνοιγμα και επεξεργασία υπάρχοντος αρχείου στιγμιότυπου"
 
 #: src/CommandLineOptions.h:110
 #, fuzzy, kde-format
 #| msgid "Accept on click-and-release"
 msgid "Accept region selection on click-and-release"
-msgstr "Αποδοχή με κλικ-κι-ελευθέρωση"
+msgstr "Αποδοχή επιλογής περιοχής με κλικ-και-απελευθέρωση"
 
 #: src/ExportManager.cpp:466
 #, fuzzy, kde-format
@@ -261,9 +265,7 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgid "Cannot save screenshot. Error while writing file."
 msgid "Cannot save screenshot. Error while opening file."
-msgstr ""
-"Αδυναμία αποθήκευσης στιγμιότυπου οθόνης. Σφάλμα κατά την εγγραφή του "
-"αρχείου."
+msgstr "Αδυναμία αποθήκευσης στιγμιότυπου οθόνης. Σφάλμα ανοίγματος αρχείου."
 
 #: src/ExportManager.cpp:495
 #, kde-format
@@ -308,18 +310,22 @@ msgid "Cannot save an empty screenshot image."
 msgstr "Αδυναμία αποθήκευσης κενής εικόνας στιγμιότυπου οθόνης."
 
 #: src/ExportManager.cpp:814
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Temporary file URL must be an existing local file"
 msgstr ""
+"Αποτυχία εξαγωγής βίντεο: Το προσωρινό URL αρχείου πρέπει να είναι υπάρχον "
+"τοπικό αρχείο"
 
 #: src/ExportManager.cpp:821
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:shell"
 msgid ""
 "Failed to export video: Output file URL must be a valid URL with a file name"
 msgstr ""
+"Αποτυχία εξαγωγής βίντεο: Το URL αρχείου εξόδου πρέπει να είναι ένα έγκυρο "
+"URL με όνομα αρχείου"
 
 #: src/ExportManager.cpp:910
 #, fuzzy, kde-format
@@ -327,8 +333,8 @@ msgstr ""
 msgctxt "@info, %1 is a file path"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
-"Αδυναμία αποθήκευσης εικόνας. Αδυναμία φόρτωσης αρχείου στην απομακρυσμένη "
-"θέση."
+"Αδυναμία αποθήκευσης καταγραφής. Αδυναμία μετακίνησης αρχείου σε τοποθεσία: "
+"%1"
 
 #: src/ExportManager.cpp:938
 #, kde-format
@@ -336,52 +342,52 @@ msgid "Printing failed. The printer failed to initialize."
 msgstr "Αποτυχία εκτύπωσης. Αποτυχία αρχικοποίησης του εκτυπωτή."
 
 #: src/ExportManager.cpp:955
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (1–31)"
-msgstr ""
+msgstr "Ημέρα (1–31)"
 
 #: src/ExportManager.cpp:956
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (01–31)"
-msgstr ""
+msgstr "Ημέρα (01–31)"
 
 #: src/ExportManager.cpp:957
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (short name)"
-msgstr ""
+msgstr "Ημέρα (Σύντομο όνομα)"
 
 #: src/ExportManager.cpp:958
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (long name)"
-msgstr ""
+msgstr "Ημέρα (Πλήρες όνομα)"
 
 #: src/ExportManager.cpp:959
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (1–12)"
-msgstr ""
+msgstr "Μήνας (1–12)"
 
 #: src/ExportManager.cpp:960
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (01–12)"
-msgstr ""
+msgstr "Μήνας (01–12)"
 
 #: src/ExportManager.cpp:961
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (short name)"
-msgstr ""
+msgstr "Μήνας (σύντομο όνομα)"
 
 #: src/ExportManager.cpp:962
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (long name)"
-msgstr ""
+msgstr "Μήνας (πλήρες όνομα)"
 
 #: src/ExportManager.cpp:963
 #, fuzzy, kde-format
@@ -404,112 +410,112 @@ msgid "Year (4 digit)"
 msgstr "Έτος (4 ψηφία)"
 
 #: src/ExportManager.cpp:965
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (0–23)"
-msgstr ""
+msgstr "Ώρα (0–23)"
 
 #: src/ExportManager.cpp:966
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (00–23)"
-msgstr ""
+msgstr "Ώρα (00–23)"
 
 #: src/ExportManager.cpp:967
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (1–12)"
-msgstr ""
+msgstr "Ώρα (1–12)"
 
 #: src/ExportManager.cpp:968
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (01–12)"
-msgstr ""
+msgstr "Ώρα (01–12)"
 
 #: src/ExportManager.cpp:969
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Minute (0–59)"
-msgstr ""
+msgstr "Λεπτό (0–59)"
 
 #: src/ExportManager.cpp:970
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Minute (00–59)"
-msgstr ""
+msgstr "Λεπτό (00–59)"
 
 #: src/ExportManager.cpp:971
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Second (0–59)"
-msgstr ""
+msgstr "Δευτερόλεπτο (0–59)"
 
 #: src/ExportManager.cpp:972
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Second (00–59)"
-msgstr ""
+msgstr "Δευτερόλεπτο (00–59)"
 
 #: src/ExportManager.cpp:973
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Millisecond (0–999)"
-msgstr ""
+msgstr "Χιλιοστό του δευτερολέπτου (0–999)"
 
 #: src/ExportManager.cpp:975
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Millisecond (000–999)"
-msgstr ""
+msgstr "Χιλιοστό του δευτερολέπτου (000–999)"
 
 #: src/ExportManager.cpp:976
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "AM/PM"
-msgstr ""
+msgstr "ΠΜ/ΜΜ"
 
 #: src/ExportManager.cpp:978
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "am/pm"
-msgstr ""
+msgstr "πμ/μμ"
 
 #: src/ExportManager.cpp:980
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "AM/PM or am/pm (localized)"
-msgstr ""
+msgstr "ΠΜ/ΜΜ ή πμ/μμ (τοπική γλώσσα)"
 
 #: src/ExportManager.cpp:982
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone (short name)"
-msgstr ""
+msgstr "ζώνη ώρας (σύντομο όνομα)"
 
 #: src/ExportManager.cpp:983
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone offset (±0000)"
-msgstr ""
+msgstr "Μετατόπιση ζώνης ώρας (±0000)"
 
 #: src/ExportManager.cpp:984
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone offset (±00:00)"
-msgstr ""
+msgstr "Μετατόπιση ζώνης ώρας (±00:00)"
 
 #: src/ExportManager.cpp:985
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone (long name)"
-msgstr ""
+msgstr "Ζώνη ώρας (πλήρες όνομα)"
 
 #: src/ExportManager.cpp:986
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "filename placeholder description"
 msgid "Seconds since the Unix epoch"
-msgstr ""
+msgstr "Δευτερόλεπτα από το Unix epoch"
 
 #: src/ExportManager.cpp:987
 #, fuzzy, kde-format
@@ -529,151 +535,151 @@ msgstr "Τίτλος παραθύρου"
 #| msgid "Sequential numbering, padded out to N digits"
 msgctxt "filename placeholder description"
 msgid "Sequential numbering, padded by inserting additional '#' characters"
-msgstr "Ακολουθιακή αρίθμηση, γέμισμα με Ν ψηφία"
+msgstr "Ακολουθιακή αρίθμηση, γέμισμα με εισαγωγή επιπλέον χαρακτήρων \"#\""
 
 #: src/Gui/AcceptAction.qml:9
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@action accept selection"
 msgid "Accept"
-msgstr ""
+msgstr "Αποδοχή"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:56
-#, kde-format
+#, fuzzy, kde-format
 msgid "Stroke:"
-msgstr ""
+msgstr "Ιχνογράφηση:"
 
 #. i18n uses so it doesn't matter that much
 #. unless someone decides to set the locale for a specific
 #. part of spectacle in the future.
 #: src/Gui/AnnotationOptionsToolBarContents.qml:88
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "px: pixels"
 msgid "%1px"
 msgid_plural "%1px"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1px"
+msgstr[1] "%1px"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:93
-#, kde-format
+#, fuzzy, kde-format
 msgid "Stroke Width"
-msgstr ""
+msgstr "Πλάτος Ιχνογράφησης"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:126
-#, kde-format
+#, fuzzy, kde-format
 msgid "Stroke Color"
-msgstr ""
+msgstr "Χρώμα Ιχνογράφησης"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:162
-#, kde-format
+#, fuzzy, kde-format
 msgid "Fill:"
-msgstr ""
+msgstr "Γέμισμα:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:174
-#, kde-format
+#, fuzzy, kde-format
 msgid "Fill Color"
-msgstr ""
+msgstr "Χρώμα γεμίσματος"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:213
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@label:slider strength of effect"
 msgid "Strength:"
-msgstr ""
+msgstr "Ένταση:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:232
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "The strength of the effect."
-msgstr ""
+msgstr "Η δύναμη του εφέ."
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:259
-#, kde-format
+#, fuzzy, kde-format
 msgid "Font:"
-msgstr ""
+msgstr "Γραμματοσειρά:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:273
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "%2 font family, %3 font style name, %1 font point size"
 msgid "%2 %3 %1pt"
 msgid_plural "%2 %3 %1pts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 %3 %1pt"
+msgstr[1] "%2 %3 %1pts"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:274
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "%2 font family %1 font point size"
 msgid "%2 %1pt"
 msgid_plural "%2 %1pts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 %1pt"
+msgstr[1] "%2 %1pts"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:286
-#, kde-format
+#, fuzzy, kde-format
 msgid "Font Color"
-msgstr ""
+msgstr "Χρώμα γραμματοσειράς"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:325
-#, kde-format
+#, fuzzy, kde-format
 msgid "Number:"
-msgstr ""
+msgstr "Αριθμός:"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:344
-#, kde-format
+#, fuzzy, kde-format
 msgid "Number for number annotations"
-msgstr ""
+msgstr "Αριθμός για σημειώσεις αριθμού"
 
 #: src/Gui/AnnotationOptionsToolBarContents.qml:372
-#, kde-format
+#, fuzzy, kde-format
 msgid "Shadow"
-msgstr ""
+msgstr "Σκίαση"
 
 #: src/Gui/AnnotationsToolBarContents.qml:108
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@action:intoolbar no tool, to allow dragging"
 msgid "None"
-msgstr ""
+msgstr "Κανένα"
 
 #: src/Gui/AnnotationsToolBarContents.qml:120
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@action:intoolbar crop image tool"
 msgid "Crop"
-msgstr ""
+msgstr "Περικοπή"
 
 #: src/Gui/AnnotationsToolBarContents.qml:127
 #, fuzzy, kde-format
 #| msgid "Active Window"
 msgctxt "@action:intoolbar select annotation tool"
 msgid "Select"
-msgstr "Ενεργό παράθυρο"
+msgstr "Επιλογή"
 
 #: src/Gui/AnnotationsToolBarContents.qml:136
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@action:intoolbar freehand line tool"
 msgid "Freehand"
-msgstr ""
+msgstr "Ελεύθερη γραμμή"
 
 #: src/Gui/AnnotationsToolBarContents.qml:137
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Shift: Snap to straight lines"
-msgstr ""
+msgstr "Shift: Κλείδωμα σε ευθείες γραμμές"
 
 #: src/Gui/AnnotationsToolBarContents.qml:144
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@action:intoolbar highlighter line tool"
 msgid "Highlighter"
-msgstr ""
+msgstr "Τονισμός"
 
 #: src/Gui/AnnotationsToolBarContents.qml:153
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@action:intoolbar straight line tool"
 msgid "Line"
-msgstr ""
+msgstr "Γραμμή"
 
 #: src/Gui/AnnotationsToolBarContents.qml:154
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Shift: Snap to 45 degree increments"
-msgstr ""
+msgstr "Shift: Κλείδωμα σε βήματα 45 μοιρών"
 
 #: src/Gui/AnnotationsToolBarContents.qml:161
 #, fuzzy, kde-format
@@ -681,52 +687,54 @@ msgstr ""
 #| msgid "Arrow keys"
 msgctxt "@action:intoolbar arrow line tool"
 msgid "Arrow"
-msgstr "Πλήκτρα βέλους"
+msgstr "Βέλος"
 
 #: src/Gui/AnnotationsToolBarContents.qml:170
 #, fuzzy, kde-format
 #| msgid "Rectangular Region"
 msgctxt "@action:intoolbar rectangle tool"
 msgid "Rectangle"
-msgstr "Ορθογώνια περιοχή"
+msgstr "Ορθογώνιο"
 
 #: src/Gui/AnnotationsToolBarContents.qml:172
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Shift: Snap to diagonal movements\n"
 "Control: Resize from center"
 msgstr ""
+"Shift: Κλείδωμα σε διαγώνιες κινήσεις\n"
+"Control: Αλλαγή μεγέθους από το κέντρο"
 
 #: src/Gui/AnnotationsToolBarContents.qml:179
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@action:intoolbar ellipse tool"
 msgid "Ellipse"
-msgstr ""
+msgstr "Έλλειψη"
 
 #: src/Gui/AnnotationsToolBarContents.qml:187
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@action:intoolbar pixelate tool"
 msgid "Pixelate"
-msgstr ""
+msgstr "Pixelate"
 
 #: src/Gui/AnnotationsToolBarContents.qml:195
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@action:intoolbar blur tool"
 msgid "Blur"
-msgstr ""
+msgstr "Θόλωμα"
 
 #: src/Gui/AnnotationsToolBarContents.qml:203
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@action:intoolbar text tool"
 msgid "Text"
-msgstr ""
+msgstr "Κείμενο"
 
 #: src/Gui/AnnotationsToolBarContents.qml:210
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@action:intoolbar number stamp tool"
 msgid "Number"
-msgstr ""
+msgstr "Αριθμός"
 
 #: src/Gui/CancelAction.qml:9
 #, fuzzy, kde-format
@@ -743,8 +751,8 @@ msgstr "Ακύρωση"
 #| msgid_plural "%1 seconds"
 msgid "Cancel (%1 second)"
 msgid_plural "Cancel (%1 seconds)"
-msgstr[0] "%1 δευτερόλεπτο"
-msgstr[1] "%1 δευτερόλεπτα"
+msgstr[0] "Ακύρωση (%1 δευτερόλεπτο)"
+msgstr[1] "Ακύρωση (%1 δευτερόλεπτα)"
 
 #: src/Gui/CaptureOptions.qml:17
 #, kde-format
@@ -756,7 +764,7 @@ msgstr "Λήψη νέου στιγμιότυπου οθόνης"
 #| msgid "Take a New Screenshot"
 msgctxt "@title:group"
 msgid "Screenshot Settings"
-msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
+msgstr "Ρυθμίσεις στιγμιοτύπου οθόνης"
 
 #: src/Gui/CaptureOverlay.qml:148
 #, fuzzy, kde-format
@@ -765,9 +773,7 @@ msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
 #| "or press Esc to quit"
 msgctxt "@info basic crop tool explanation"
 msgid "Click and drag to make a selection."
-msgstr ""
-"Κάνετε κλικ και έλκυση για να σχεδιαστεί ένα ορθογώνιο επιλογής.\n"
-"ή πιέστε Esc για έξοδο"
+msgstr "Κάνετε κλικ και απόθεση για να κάνετε μια επιλογή."
 
 #: src/Gui/CaptureSettingsColumn.qml:16
 #, kde-format
@@ -785,21 +791,24 @@ msgid "Include window titlebar and borders"
 msgstr "Να συμπεριληφθούν η γραμμή τίτλου του παραθύρου και τα περιθώρια"
 
 #: src/Gui/CaptureSettingsColumn.qml:26
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "Show the window title bar and border when taking a screenshot of a window."
 msgstr ""
+"Εμφάνιση της μπάρας τίτλου παραθύρου και περιθώρια κατά την αποτύπωση "
+"στιγμιότυπου παραθύρου."
 
 #: src/Gui/CaptureSettingsColumn.qml:34
 #, fuzzy, kde-format
 #| msgid "Include window titlebar and borders"
 msgid "Include window shadow"
-msgstr "Να συμπεριληφθούν η γραμμή τίτλου του παραθύρου και τα περιθώρια"
+msgstr "Να συμπεριληφθούν η σκιά του παραθύρου"
 
 #: src/Gui/CaptureSettingsColumn.qml:35
-#, kde-format
+#, fuzzy, kde-format
 msgid "Show the window shadow when taking a screenshot of a window."
 msgstr ""
+"Εμφάνιση της σκιάς του παραθύρου κατά την αποτύπωση στιγμιότυπου παραθύρου."
 
 #: src/Gui/CaptureSettingsColumn.qml:44
 #, kde-format
@@ -817,7 +826,7 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgid "On Click"
 msgid "Capture on click"
-msgstr "Χωρίς κλικ"
+msgstr "Αποτύπωση με κλικ"
 
 #: src/Gui/CaptureSettingsColumn.qml:56
 #, kde-format
@@ -830,17 +839,17 @@ msgid "Delay:"
 msgstr "Καθυστέρηση:"
 
 #: src/Gui/CopyImageAction.qml:13
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@action"
 msgid "Copy"
-msgstr ""
+msgstr "Αντιγραφή"
 
 #: src/Gui/CopyLocationAction.qml:9
 #, fuzzy, kde-format
 #| msgid "Copy Location to Clipboard"
 msgctxt "@action"
 msgid "Copy Location"
-msgstr "Αντιγραφή θέσης στο πρόχειρο"
+msgstr "Αντιγραφή τοποθεσίας"
 
 #: src/Gui/DelaySpinBox.qml:15
 #, kde-format
@@ -856,8 +865,8 @@ msgstr "Χωρίς καθυστέρηση"
 msgctxt "Integer number of seconds"
 msgid "%2 second"
 msgid_plural "%2 seconds"
-msgstr[0] "%1 δευτερόλεπτο"
-msgstr[1] "%1 δευτερόλεπτα"
+msgstr[0] "%2 δευτερόλεπτο"
+msgstr[1] "%2 δευτερόλεπτα"
 
 #: src/Gui/DelaySpinBox.qml:26
 #, fuzzy, kde-format
@@ -866,17 +875,17 @@ msgstr[1] "%1 δευτερόλεπτα"
 #| msgid_plural "%1 seconds"
 msgctxt "Decimal number of seconds"
 msgid "%1 seconds"
-msgstr "%1 δευτερόλεπτο"
+msgstr "%1 δευτερόλεπτα"
 
 #: src/Gui/DialogPage.qml:53
-#, kde-format
+#, fuzzy, kde-format
 msgid "Configure Spectacle…"
-msgstr ""
+msgstr "Ρύθμιση Spectacle…"
 
 #: src/Gui/DialogPage.qml:61
-#, kde-format
+#, fuzzy, kde-format
 msgid "Help"
-msgstr ""
+msgstr "Βοήθεια"
 
 #: src/Gui/DialogPage.qml:80
 #, fuzzy, kde-format
@@ -890,40 +899,40 @@ msgstr "Λήψη στιγμιοτύπου οθόνης:"
 #| msgid "Save Options"
 msgctxt "@title:group"
 msgid "Options"
-msgstr "Επιλογές αποθήκευσης"
+msgstr "Επιλογές"
 
 #: src/Gui/DialogPage.qml:121
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgctxt "@title:group"
 msgid "Make a Recording:"
-msgstr "Εγγραφή οθόνης"
+msgstr "Κάντε μια Εγγραφή:"
 
 #: src/Gui/DialogPage.qml:162
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgctxt "@title:tab"
 msgid "Screenshot"
-msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
+msgstr "Στιγμιότυπο οθόνης"
 
 #: src/Gui/DialogPage.qml:168
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgctxt "@title:tab"
 msgid "Recording"
-msgstr "Εγγραφή οθόνης"
+msgstr "Εγγραφή"
 
 #: src/Gui/DialogPage.qml:171 src/Gui/RecordingModeMenuButton.qml:18
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "This feature is not supported on the current platform"
-msgstr ""
+msgstr "Αυτή η δυνατότητα δεν υποστηρίζεται στη τρέχουσα πλατφόρμα"
 
 #: src/Gui/EditAction.qml:11
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@action edit screenshot"
 msgid "Edit…"
-msgstr ""
+msgstr "Επεξεργασία…"
 
 #: src/Gui/ExportMenu.cpp:44
 #, fuzzy, kde-format
@@ -942,7 +951,7 @@ msgstr "Άνοιγμα προκαθορισμένου φακέλου στιγμ�
 #| msgid "Other Application..."
 msgctxt "@action:button open screenshot in other application"
 msgid "Other Application…"
-msgstr "Άλλη εφαρμογή..."
+msgstr "Άλλη εφαρμογή…"
 
 #: src/Gui/ExportMenu.cpp:165
 #, kde-format
@@ -950,31 +959,31 @@ msgid "Share"
 msgstr "Διαμοιρασμός"
 
 #: src/Gui/ExportMenu.cpp:258
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@action:menu"
 msgid "Extract Text by Language"
-msgstr ""
+msgstr "Εξαγωγή κειμένου βάσει γλώσσας"
 
 #: src/Gui/ExportMenu.cpp:294
-#, kde-format
+#, fuzzy, kde-format
 msgid "OCR engine is not available."
-msgstr ""
+msgstr "Μη διαθέσιμη μηχανής OCR."
 
 #: src/Gui/ExportMenu.cpp:302
-#, kde-format
+#, fuzzy, kde-format
 msgid "OCR is not available. Please install Tesseract OCR."
-msgstr ""
+msgstr "Το OCR δεν είναι διαθέσιμο. Παρακαλούμε εγκαταστήστε το Tesseract OCR."
 
 #: src/Gui/ExportMenu.cpp:303
-#, kde-format
+#, fuzzy, kde-format
 msgid "OCR engine is initializing…"
-msgstr ""
+msgstr "Αρχικοποίηση μηχανής OCR…"
 
 #: src/Gui/ExportMenu.cpp:313
 #, fuzzy, kde-format
 #| msgid "No KIPI plugins available"
 msgid "No OCR language data available."
-msgstr "Δεν υπάρχουν διαθέσιμα πρόσθετα KIPI"
+msgstr "Δεν υπάρχουν διαθέσιμα δεδομένα γλώσσας OCR."
 
 #: src/Gui/ExportMenuButton.qml:13
 #, fuzzy, kde-format
@@ -984,16 +993,16 @@ msgid "Export"
 msgstr "Εξαγωγή"
 
 #: src/Gui/HelpMenu.cpp:40
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@title:menu"
 msgid "Help"
-msgstr ""
+msgstr "Βοήθεια"
 
 #: src/Gui/HelpMenuButton.qml:10
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@action"
 msgid "Help"
-msgstr ""
+msgstr "Βοήθεια"
 
 #: src/Gui/InlineMessageList.qml:129
 #, fuzzy, kde-format
@@ -1010,29 +1019,29 @@ msgid "Copy to Clipboard"
 msgstr "Αντιγραφή στο πρόχειρο"
 
 #: src/Gui/InlineMessageList.qml:149
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@action:button close inline notification"
 msgid "Close"
-msgstr ""
+msgstr "Κλείσιμο"
 
 #: src/Gui/NewScreenshotToolButton.qml:27
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgid "New Screenshot"
-msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
+msgstr "Νέο στιγμιότυπο οθόνης"
 
 #: src/Gui/OcrAction.qml:15
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@action"
 msgid "Extract Text"
-msgstr ""
+msgstr "Εξαγωγή κειμένου"
 
 #: src/Gui/OptionsMenu.cpp:38
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgctxt "@title:menu"
 msgid "Screenshot Settings"
-msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
+msgstr "Ρυθμίσεις στιγμιοτύπου οθόνης"
 
 #: src/Gui/OptionsMenu.cpp:40
 #, fuzzy, kde-format
@@ -1053,7 +1062,7 @@ msgstr "Να εμφανιστεί ο δρομέας του ποντικιού σ
 #| msgid "Include window titlebar and borders"
 msgctxt "@option:check"
 msgid "Include window titlebar and borders"
-msgstr "Να συμπεριληφθούν η γραμμή τίτλου του παραθύρου και τα περιθώρια"
+msgstr "Να συμπεριληφθούν η γραμμή τίτλου του παραθύρου και περιθώρια"
 
 #: src/Gui/OptionsMenu.cpp:50
 #, fuzzy, kde-format
@@ -1073,14 +1082,14 @@ msgstr ""
 #| msgid "Include window titlebar and borders"
 msgctxt "@option:check"
 msgid "Include window shadow"
-msgstr "Να συμπεριληφθούν η γραμμή τίτλου του παραθύρου και τα περιθώρια"
+msgstr "Να συμπεριληφθεί η σκιά του παραθύρου"
 
 #: src/Gui/OptionsMenu.cpp:59
 #, fuzzy, kde-format
 #| msgid "Include window titlebar and borders"
 msgctxt "@info:tooltip"
 msgid "Show the window shadow"
-msgstr "Να συμπεριληφθούν η γραμμή τίτλου του παραθύρου και τα περιθώρια"
+msgstr "Εμφάνιση σκιάς παραθύρου"
 
 #: src/Gui/OptionsMenu.cpp:67
 #, fuzzy, kde-format
@@ -1103,7 +1112,7 @@ msgstr ""
 #| msgid "On Click"
 msgctxt "@option:check"
 msgid "Capture On Click"
-msgstr "Χωρίς κλικ"
+msgstr "Αποτύπωση με κλικ"
 
 #: src/Gui/OptionsMenu.cpp:95
 #, fuzzy, kde-format
@@ -1124,7 +1133,7 @@ msgstr "Χωρίς καθυστέρηση"
 #| msgid "Record Screen"
 msgctxt "@title:menu"
 msgid "Recording Settings"
-msgstr "Εγγραφή οθόνης"
+msgstr "Ρυθμίσεις Εγγραφής"
 
 #: src/Gui/OptionsMenu.cpp:121
 #, fuzzy, kde-format
@@ -1138,20 +1147,21 @@ msgstr "Να συμπεριληφθεί ο δείκτης του ποντικι�
 #| msgid "Show the mouse cursor in the screenshot image"
 msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the recording"
-msgstr "Να εμφανιστεί ο δρομέας του ποντικιού στην εικόνα του στιγμιότυπου"
+msgstr "Να εμφανιστεί ο δρομέας του ποντικιού στην καταγραφή"
 
 #: src/Gui/OptionsMenu.cpp:130
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@option:check for recordings"
 msgid "Record system audio"
-msgstr ""
+msgstr "Καταγραφή ήχου συστήματος"
 
 #: src/Gui/OptionsMenu.cpp:131
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Include the audio that is currently playing on the system in the recording"
 msgstr ""
+"Συμπερίληψη ήχου που παίζεται εκείνη τη στιγμή στο σύστημα, στην καταγραφή"
 
 #: src/Gui/OptionsMenu.cpp:139
 #, fuzzy, kde-format
@@ -1159,68 +1169,69 @@ msgstr ""
 #| msgid "Record Screen"
 msgctxt "@option:check for recordings"
 msgid "Record microphone"
-msgstr "Εγγραφή οθόνης"
+msgstr "Εγγραφή μικροφώνου"
 
 #: src/Gui/OptionsMenu.cpp:140
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Include audio from the default microphone in the recording"
-msgstr ""
+msgstr "Συμπερίληψη ήχου από το προεπιλεγμένο μικρόφωνο στη καταγραφή"
 
 #: src/Gui/OptionsMenuButton.qml:10
 #, fuzzy, kde-format
 #| msgid "Save Options"
 msgctxt "@action"
 msgid "Options"
-msgstr "Επιλογές αποθήκευσης"
+msgstr "Επιλογές"
 
 #: src/Gui/RecordAction.qml:11
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgctxt "@action start recording"
 msgid "Record"
-msgstr "Εγγραφή οθόνης"
+msgstr "Εγγραφή"
 
 #: src/Gui/RecordingModeMenu.cpp:16
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgctxt "@title:menu"
 msgid "Recording Modes"
-msgstr "Εγγραφή οθόνης"
+msgstr "Λειτουργίες Εγγραφής"
 
 #: src/Gui/RecordingModeMenuButton.qml:12
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgctxt "@action select new recording mode"
 msgid "New Recording"
-msgstr "Εγγραφή οθόνης"
+msgstr "Νέα Εγγραφή"
 
 #: src/Gui/RecordingSettingsColumn.qml:22
 #, fuzzy, kde-format
 #| msgid "Include mouse pointer"
 msgctxt "@option:check"
 msgid "Include mouse pointer"
-msgstr "Να συμπεριληφθεί ο δείκτης του ποντικιού"
+msgstr "Να συμπεριληφθεί ο δείκτης ποντικιού"
 
 #: src/Gui/RecordingSettingsColumn.qml:23
 #, fuzzy, kde-format
 #| msgid "Show the mouse cursor in the screenshot image"
 msgctxt "@info:tooltip"
 msgid "Show the mouse cursor in the screen recording."
-msgstr "Να εμφανιστεί ο δρομέας του ποντικιού στην εικόνα του στιγμιότυπου"
+msgstr "Να εμφανιστεί ο δρομέας του ποντικιού στην καταγραφή οθόνης."
 
 #: src/Gui/RecordingSettingsColumn.qml:32
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@option:check"
 msgid "Record system audio"
-msgstr ""
+msgstr "Καταγραφή ήχου συστήματος"
 
 #: src/Gui/RecordingSettingsColumn.qml:33
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Include the audio that is currently playing on the system in the recording."
 msgstr ""
+"Συμπερίληψη ήχου που παίζεται εκείνη τη στιγμή στο σύστημα, στην καταγραφή."
 
 #: src/Gui/RecordingSettingsColumn.qml:45
 #, fuzzy, kde-format
@@ -1228,19 +1239,19 @@ msgstr ""
 #| msgid "Record Screen"
 msgctxt "@option:check"
 msgid "Record microphone"
-msgstr "Εγγραφή οθόνης"
+msgstr "Εγγραφή μικροφώνου"
 
 #: src/Gui/RecordingSettingsColumn.qml:46
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Include audio from the default microphone in the recording."
-msgstr ""
+msgstr "Συμπερίληψη ήχου από το προεπιλεγμένο μικρόφωνο στη καταγραφή."
 
 #: src/Gui/RecordingSettingsColumn.qml:57
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info"
 msgid "The selected video format does not support audio."
-msgstr ""
+msgstr "Η επιλεγμένη μορφή βίντεο δεν υποστηρίζει ήχο."
 
 #: src/Gui/RecordingView.qml:90
 #, fuzzy, kde-format
@@ -1249,28 +1260,30 @@ msgctxt "Recording in progress, %1 is the length of the recording so far"
 msgid ""
 "Recording:\n"
 "%1"
-msgstr "Εγγραφή οθόνης"
+msgstr ""
+"Εγγραφή:\n"
+"%1"
 
 #: src/Gui/RecordingView.qml:129
-#, kde-format
+#, fuzzy, kde-format
 msgid "Pause"
-msgstr ""
+msgstr "Παύση"
 
 #: src/Gui/RecordingView.qml:129
-#, kde-format
+#, fuzzy, kde-format
 msgid "Play"
-msgstr ""
+msgstr "Αναπαραγωγή"
 
 #: src/Gui/RecordOptions.qml:23
 #, fuzzy, kde-format
 #| msgid "Record Screen"
 msgid "Recording Settings"
-msgstr "Εγγραφή οθόνης"
+msgstr "Ρυθμίσεις Εγγραφής"
 
 #: src/Gui/RecordOptions.qml:37
-#, kde-format
+#, fuzzy, kde-format
 msgid "Finish recording"
-msgstr ""
+msgstr "Ολοκλήρωση Εγγραφής"
 
 #: src/Gui/SaveAction.qml:13
 #, fuzzy, kde-format
@@ -1291,58 +1304,61 @@ msgstr "Αποθήκευση ως..."
 #| msgid "Take a New Screenshot"
 msgctxt "@title:menu"
 msgid "Screenshot Modes"
-msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
+msgstr "Λειτουργίες Στιγμιοτύπου οθόνης"
 
 #: src/Gui/ScreenshotModeMenuButton.qml:11
 #, fuzzy, kde-format
 #| msgid "Take a New Screenshot"
 msgctxt "@action select new screenshot mode"
 msgid "New Screenshot"
-msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
+msgstr "Νέο στιγμιότυπο οθόνης"
 
 #: src/Gui/ScreenshotView.qml:196
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info crop tool explanation"
 msgid ""
 "Click and drag to make a selection.\n"
 "Double click the selection to accept and crop.\n"
 "Right click to clear the selection."
 msgstr ""
+"Κάντε κλικ και σύρετε για κάνετε μία επιλογή.\n"
+"Κάντε διπλό κλικ την επιλογή για αποδοχή και περικοπή.\n"
+"Δεξί κλικ για εκκαθάριση επιλογής."
 
 #. i18n: ectx: property (text), widget (QLabel, launchActionSpectacleLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:17
 #, fuzzy, kde-format
 #| msgid "Launch Spectacle"
 msgid "When launching Spectacle:"
-msgstr "Εκτέλεση του Spectacle"
+msgstr "Κατά την εκτέλεση του Spectacle:"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:25
 #, fuzzy, kde-format
 #| msgid "Take a new screenshot"
 msgid "Take rectangular screenshot"
-msgstr "Λήψη νέου στιγμιότυπου οθόνης"
+msgstr "Λήψη ορθογώνιου στιγμιότυπου οθόνης"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:30
 #, fuzzy, kde-format
 #| msgid "Take a new screenshot"
 msgid "Take full screen screenshot"
-msgstr "Λήψη νέου στιγμιοτύπου οθόνης"
+msgstr "Λήψη πλήρους στιγμιοτύπου οθόνης"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:35
 #, fuzzy, kde-format
 #| msgid "The last used save mode"
 msgid "Use last-used capture mode"
-msgstr "Η πιο πρόσφατης λειτουργία αποθήκευσης"
+msgstr "Η πιο πρόσφατης λειτουργία αποτύπωσης"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_launchAction)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:40
 #, fuzzy, kde-format
 #| msgid "Save screenshot automatically after it is taken"
 msgid "Do not take a screenshot automatically"
-msgstr "Αυτόματη αποθήκευση στιγμιοτύπου οθόνης μετά τη λήψη"
+msgstr "Να μη γίνεται αυτόματη λήψη στιγμιοτύπου οθόνης"
 
 #. i18n: ectx: property (text), widget (QLabel, afterScreenshotLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:64
@@ -1355,7 +1371,7 @@ msgstr "Μετά τη λήψη στιγμιότυπου:"
 #, fuzzy, kde-format
 #| msgid "Autosave file to default folder"
 msgid "Save file to default folder"
-msgstr "Αυτόματη αποθήκευση του αρχείου στον προκαθορισμένο φάκελο"
+msgstr "Αποθήκευση αρχείου στον προκαθορισμένο φάκελο"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_clipboardGroup)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:82
@@ -1410,7 +1426,7 @@ msgstr "Επιστροφή εστίασης στο Spectacle"
 #, fuzzy, kde-format
 #| msgid "Rectangular Region"
 msgid "Rectangular Region Selection"
-msgstr "Ορθογώνια περιοχή"
+msgstr "Επιλογή ορθογώνιας περιοχής"
 
 #. i18n: ectx: property (text), widget (QLabel, generalLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:172
@@ -1454,9 +1470,9 @@ msgstr "Πάντα"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_showMagnifier)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:211
-#, kde-format
+#, fuzzy, kde-format
 msgid "While holding Shift"
-msgstr ""
+msgstr "Ενώ πατάτε το Shift"
 
 #. i18n: ectx: property (text), widget (QLabel, rememberLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:219
@@ -1472,53 +1488,58 @@ msgstr "Μέχρι να κλείσει το Spectacle"
 
 #. i18n: ectx: property (text), widget (KTitleWidget, ocrTitle)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:261
-#, kde-format
+#, fuzzy, kde-format
 msgid "Text Recognition (OCR)"
-msgstr ""
+msgstr "Αναγνώριση κειμένου (OCR)"
 
 #. i18n: ectx: property (text), widget (QLabel, ocrLanguageLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:268
-#, kde-format
+#, fuzzy, kde-format
 msgid "Languages for OCR:"
-msgstr ""
+msgstr "Γλώσσες για OCR:"
 
 #. i18n: ectx: property (text), widget (QLabel, closeAfterOcrLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:306
 #, fuzzy, kde-format
 #| msgid "Reset selection:"
 msgid "Text extraction:"
-msgstr "Επαναφορά επιλογής:"
+msgstr "Εξαγωγή κειμένου:"
 
 #. i18n: ectx: label, entry (closeAfterOcr), group (General)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_closeAfterOcr)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:327
 #: src/Gui/SettingsDialog/spectacle.kcfg:38
-#, kde-format
+#, fuzzy, kde-format
 msgid "Close after extraction (skips auto-save)"
-msgstr ""
+msgstr "Κλείσιμο  μετά την εξαγωγή (παραλείπει την αυτόματη αποθήκευση)"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, closeAfterOcrInfo)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:334
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "Spectacle will close after text extraction and automatic saving will be "
 "skipped."
 msgstr ""
+"Το Spectacle θα κλείσει μετά την εξαγωγή κειμένου και η αυτόματη αποθήκευση "
+"θα παραλειφθεί."
 
 #. i18n: ectx: property (text), widget (QLabel, ocrUnavailableLabel)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:395
-#, kde-format
+#, fuzzy, kde-format
 msgid "OCR functionality is not available"
-msgstr ""
+msgstr "Η λειτουργία OCR δεν είναι διαθέσιμη"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, ocrInfoIcon)
 #: src/Gui/SettingsDialog/GeneralOptions.ui:413
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "Please install the required packages:\n"
 "• tesseract\n"
 "• tesseract language data (e.g., tesseract-ocr-eng for English)"
 msgstr ""
+"Παρακαλούμε εγκαταστήστε τα απαιτούμενα πακέτα:\n"
+"• tesseract\n"
+"• tesseract language data (e.g., tesseract-ocr-eng για Αγγλικά)"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/ImageSaveOptions.ui:9
@@ -1566,7 +1587,7 @@ msgstr "Προεπισκόπηση:"
 #| msgid "<filename>%1.%2</filename>"
 msgctxt "@info"
 msgid "<filename>%1</filename>"
-msgstr "<filename>%1.%2</filename>"
+msgstr "<filename>%1</filename>"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:72
 #, fuzzy, kde-format
@@ -1579,7 +1600,7 @@ msgid ""
 msgstr ""
 "Μπορείτε να χρησιμοποιήσετε τους ακόλουθους αντικαταστάτες στο όνομα "
 "αρχείου, οι οποίοι θα αντικατασταθούν με το πραγματικό κείμενο όταν "
-"αποθηκεύεται το αρχείο:<blockquote>"
+"αποθηκεύεται το αρχείο:"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:87
 #, kde-format
@@ -1587,16 +1608,16 @@ msgid "To save to a sub-folder"
 msgstr "Να αποθηκευθεί σε υποφάκελο"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:90
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "show fewer filename placeholder templates"
 msgid "Show Fewer"
-msgstr ""
+msgstr "Εμφάνιση λιγότερων"
 
 #: src/Gui/SettingsDialog/SaveOptionsUtils.h:92
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "show more filename placeholder templates"
 msgid "Show More"
-msgstr ""
+msgstr "Εμφάνιση περισσότερων"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:37
 #, kde-format
@@ -1605,16 +1626,16 @@ msgid "General"
 msgstr "Γενικά"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:38
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "Settings category"
 msgid "Image Saving"
-msgstr ""
+msgstr "Αποθήκευση εικόνας"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:39
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "Settings category"
 msgid "Video Saving"
-msgstr ""
+msgstr "Αποθήκευση βίντεο"
 
 #: src/Gui/SettingsDialog/SettingsDialog.cpp:40
 #, kde-format
@@ -1632,7 +1653,7 @@ msgstr "Συντομεύσεις"
 #, fuzzy, kde-format
 #| msgid "While Spectacle is running"
 msgid "What to do when Spectacle is launched"
-msgstr "Όταν εκτελείται το Spectacle"
+msgstr "Τι να γίνει όταν εκκινείται το Spectacle"
 
 #. i18n: ectx: label, entry (printKeyRunningAction), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:25
@@ -1682,9 +1703,9 @@ msgstr "Να γίνει απομνημόνευση της τελευταίας �
 
 #. i18n: ectx: label, entry (ocrLanguages), group (General)
 #: src/Gui/SettingsDialog/spectacle.kcfg:77
-#, kde-format
+#, fuzzy, kde-format
 msgid "Default languages for OCR text recognition"
-msgstr ""
+msgstr "Προεπιλεγμένες γλώσσες για την αναγνώριση κειμένου μέσω OCR"
 
 #. i18n: ectx: label, entry (selectionRect), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:83
@@ -1709,21 +1730,21 @@ msgstr "Αν ο δρομέας του ποντικιού θα συμπεριλα
 #, fuzzy, kde-format
 #| msgid "Whether the mouse cursor is included in the screenshot"
 msgid "Whether the mouse cursor is included in the video"
-msgstr "Αν ο δρομέας του ποντικιού θα συμπεριλαμβάνεται στο στιγμιότυπο"
+msgstr "Αν ο δρομέας του ποντικιού θα συμπεριλαμβάνεται στο βίντεο"
 
 #. i18n: ectx: label, entry (videoRecordSystemAudio), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:99
 #, fuzzy, kde-format
 #| msgid "Whether the mouse cursor is included in the screenshot"
 msgid "Whether system audio is included in the recording"
-msgstr "Αν ο δρομέας του ποντικιού θα συμπεριλαμβάνεται στο στιγμιότυπο"
+msgstr "Αν ο ήχος συστήματος θα συμπεριλαμβάνεται στη καταγραφή"
 
 #. i18n: ectx: label, entry (videoRecordMicrophone), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:103
 #, fuzzy, kde-format
 #| msgid "Whether the mouse cursor is included in the screenshot"
 msgid "Whether microphone audio is included in the recording"
-msgstr "Αν ο δρομέας του ποντικιού θα συμπεριλαμβάνεται στο στιγμιότυπο"
+msgstr "Αν ο ήχος του μικροφώνου θα συμπεριλαμβάνεται στη καταγραφή"
 
 #. i18n: ectx: label, entry (includeDecorations), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:107
@@ -1736,7 +1757,7 @@ msgstr "Αν η διακόσμηση του παραθύρου θα συμπερ
 #, fuzzy, kde-format
 #| msgid "Whether the window decorations are included in the screenshot"
 msgid "Whether the window shadow is included in the screenshot"
-msgstr "Αν η διακόσμηση του παραθύρου θα συμπεριλαμβάνεται στο στιγμιότυπο"
+msgstr "Αν η σκιά του παραθύρου θα συμπεριλαμβάνεται στο στιγμιότυπο"
 
 #. i18n: ectx: label, entry (quitAfterSaveCopyExport), group (GuiConfig)
 #: src/Gui/SettingsDialog/spectacle.kcfg:115
@@ -1775,7 +1796,9 @@ msgstr "Προκαθορισμένος τύπος αποθήκευσης εικ�
 #, fuzzy, kde-format
 #| msgid "The default filename used when saving"
 msgid "The filename template used when saving screenshots"
-msgstr "Το προκαθορισμένο όνομα αρχείου κατά την αποθήκευση"
+msgstr ""
+"Το πρότυπο όνομα αρχείου που θα χρησιμοποιείται κατά την αποθήκευση "
+"στιγμιοτύπων"
 
 #. i18n: ectx: label, entry (lastImageSaveLocation), group (ImageSave)
 #. i18n: ectx: label, entry (lastVideoSaveLocation), group (VideoSave)
@@ -1798,14 +1821,16 @@ msgstr "Η τελευταία διαδρομή που χρησιμοποιήθη
 #, fuzzy, kde-format
 #| msgid "Default save image format"
 msgid "Default video format"
-msgstr "Προκαθορισμένος τύπος αποθήκευσης εικόνας"
+msgstr "Προκαθορισμένη μορφή βίντεο"
 
 #. i18n: ectx: label, entry (videoFilenameTemplate), group (VideoSave)
 #: src/Gui/SettingsDialog/spectacle.kcfg:198
 #, fuzzy, kde-format
 #| msgid "The default filename used when saving"
 msgid "The filename template used when saving screencasts"
-msgstr "Το προκαθορισμένο όνομα αρχείου κατά την αποθήκευση"
+msgstr ""
+"Το πρότυπο όνομα αρχείου που θα χρησιμοποιείται κατά την αποθήκευση "
+"στιγμιοτύπων"
 
 #. i18n: ectx: property (text), widget (QLabel, saveLocationLabel)
 #: src/Gui/SettingsDialog/VideoSaveOptions.ui:9
@@ -1957,24 +1982,24 @@ msgid "Unsaved"
 msgstr "Μη αποθηκευμεύνη"
 
 #: src/Gui/UndoRedoGroup.qml:31
-#, kde-format
+#, fuzzy, kde-format
 msgid "Undo"
-msgstr ""
+msgstr "Αναίρεση"
 
 #: src/Gui/UndoRedoGroup.qml:42
-#, kde-format
+#, fuzzy, kde-format
 msgid "Redo"
-msgstr ""
+msgstr "Επανάληψη"
 
 #: src/Gui/ViewerPage.qml:188
-#, kde-format
+#, fuzzy, kde-format
 msgid "Zoom:"
-msgstr ""
+msgstr "Εστίαση:"
 
 #: src/Gui/ViewerPage.qml:202
-#, kde-format
+#, fuzzy, kde-format
 msgid "Image Zoom"
-msgstr ""
+msgstr "Εστίαση εικόνας"
 
 #: src/Gui/ViewerWindow.cpp:53
 #, fuzzy, kde-format
@@ -1982,7 +2007,7 @@ msgstr ""
 #| msgid "There was a problem sharing the image: %1"
 msgctxt "@info, %1 is the error message"
 msgid "There was a problem sharing the image: %1"
-msgstr "Υπήρξε πρόβλημα με το διαμοιρασμό της εικόνας: %1"
+msgstr "Υπήρξε πρόβλημα με την κοινοποίηση της εικόνας: %1"
 
 #: src/Main.cpp:44
 #, kde-format
@@ -1990,203 +2015,226 @@ msgid "Spectacle"
 msgstr "Spectacle"
 
 #: src/Main.cpp:46
-#, kde-format
+#, fuzzy, kde-format
 msgid "KDE Screenshot Utility"
-msgstr "Εργαλείο του KDE για λήψη στιγμιοτύπων οθόνης"
+msgstr "Εργαλείο στιγμιοτύπων οθόνης του KDE"
 
 #: src/Main.cpp:48
 #, fuzzy, kde-format
 #| msgid "(C) 2015 Boudhayan Gupta"
 msgid "© 2015 Boudhayan Gupta"
-msgstr "(C) 2015 Boudhayan Gupta"
+msgstr "© 2015 Boudhayan Gupta"
 
 #: src/Main.cpp:52
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Stelios"
+msgstr "Stelios, Λευτέρης Τ."
 
 #: src/Main.cpp:52
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "sstavra@gmail.com"
+msgstr "sstavra@gmail.com, tripoleft@protonmail.com"
 
 #: src/Main.cpp:70
-#, kde-format
+#, fuzzy, kde-format
 msgid ""
 "On Wayland, Spectacle requires KDE Plasma's KWin compositor, which does not "
 "seem to be available. Use Spectacle on KDE Plasma, or use a different "
 "screenshot tool."
 msgstr ""
+"Στο Wayland, το Spectacle απαιτεί τον συνθέτη KWin του KDE Plasma, ο οποίος "
+"δεν φαίνεται να είναι διαθέσιμος. Χρησιμοποιήστε το Spectacle στο KDE Plasma "
+"ή χρησιμοποιήστε ένα διαφορετικό εργαλείο λήψης στιγμιότυπων οθόνης."
 
 #: src/OcrManager.cpp:578
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@item:inlistbox"
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "Προσανατολισμός και ανίχνευση σκριπτ"
 
 #: src/OcrManager.cpp:619
-#, kde-format
+#, fuzzy, kde-format
 msgid "Math/Equation Detection"
-msgstr ""
+msgstr "Ανίχνευση μαθηματικών/εξίσωσης"
 
 #: src/OcrManager.cpp:622
-#, kde-format
+#, fuzzy, kde-format
 msgid "Orientation and Script Detection"
-msgstr ""
+msgstr "Προσανατολισμός και ανίχνευση σκριπτ"
 
 #: src/Platforms/ImagePlatformKWin.cpp:134
 #, fuzzy, kde-format
 #| msgid "After taking a screenshot:"
 msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
-msgstr "Μετά τη λήψη στιγμιοτύπου:"
+msgstr "Κακό πλάτος για στιγμιότυπο KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:139
 #, fuzzy, kde-format
 #| msgid "After taking a screenshot:"
 msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
-msgstr "Μετά τη λήψη στιγμιοτύπου:"
+msgstr "Κακό ύψος για στιγμιότυπο KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:150
 #, fuzzy, kde-format
 #| msgid "After taking a screenshot:"
 msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
-msgstr "Μετά τη λήψη στιγμιοτύπου:"
+msgstr "Κακή μορφή για στιγμιότυπο KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:168
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr ""
+"Δεν ήταν δυνατή η άνοιξη του περιγραφέα αρχείου για την ανάγνωση του "
+"στιγμιότυπου οθόνης του KWin."
 
 #: src/Platforms/ImagePlatformKWin.cpp:238
 #, fuzzy, kde-format
 #| msgid "After taking a screenshot:"
 msgctxt "@info, %1 is an error code"
 msgid "pipe2() failed for KWin screenshot: %1"
-msgstr "Μετά τη λήψη στιγμιοτύπου:"
+msgstr "Το pipe2() απέτυχε για στιγμιότυπο KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:294
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info, %1 is an error message"
 msgid ""
 "KWin screenshot request failed:\n"
 "%1"
 msgstr ""
+"Απέτυχε αίτημα στιγμιότυπου KWin:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:296
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info"
 msgid ""
 "Potentially relevant information:\n"
 "%1"
 msgstr ""
+"Πιθανώς σχετικές πληροφορίες:\n"
+"%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:304
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
-msgstr ""
+msgstr "Μη υποστηριζόμενος τύπος μεταδεδομένων στιγμιoτύπου KWin: %1"
 
 #: src/Platforms/PlatformLoader.cpp:103
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
-msgstr ""
+msgstr "Η καταγραφή οθόνης δεν είναι διαθέσιμη στο X11."
 
 #: src/Platforms/VideoPlatformWayland.cpp:165
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info"
 msgid "KWin Screencasting is not available."
-msgstr ""
+msgstr "Το KWin Screencasting δεν είναι διαθέσιμο."
 
 #: src/Platforms/VideoPlatformWayland.cpp:179
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:shell"
 msgid "Failed to record: File URL is not a local file"
 msgstr ""
+"Αποτυχία εγγραφής: Η διεύθυνση URL του αρχείου δεν αντιστοιχεί σε τοπικό "
+"αρχείο"
 
 #: src/Platforms/VideoPlatformWayland.cpp:279
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info"
 msgid ""
 "The stream closed because the target screen changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Η ροή διακόπηκε επειδή η οθόνη προορισμού άλλαξε με τρόπο που διέκοψε την "
+"εγγραφή."
 
 #: src/Platforms/VideoPlatformWayland.cpp:283
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info"
 msgid ""
 "The stream closed because the target window changed in a way that disrupted "
 "the recording."
 msgstr ""
+"Η ροή διακόπηκε επειδή το παράθυρο προορισμού άλλαξε με τρόπο που διέκοψε "
+"την εγγραφή."
 
 #: src/Platforms/VideoPlatformWayland.cpp:287
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info"
 msgid ""
 "The stream closed because a screen containing the target region changed in a "
 "way that disrupted the recording."
 msgstr ""
+"Η ροή διακόπηκε επειδή μία οθόνη που περιέχει την περιοχή προορισμού άλλαξε "
+"με τρόπο που διέκοψε την εγγραφή."
 
 #: src/Platforms/VideoPlatformWayland.cpp:303
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:shell, %1 is the temporary URL"
 msgid "Failed to record: Temporary file URL is not a local file (%1)"
 msgstr ""
+"Αποτυχία εγγραφής: Η διεύθυνση URL του αρχείου δεν αντιστοιχεί σε τοπικό "
+"αρχείο (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:314
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:shell, %1 is the output file URL"
 msgid "Failed to record: Output file URL is not a local file (%1)"
 msgstr ""
+"Αποτυχία εγγραφής: Η διεύθυνση URL του αρχείου εξόδου δεν αντιστοιχεί σε "
+"τοπικό αρχείο (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:381
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:shell, %1 is a directory path"
 msgid "Failed to record: Unable to create folder (%1)"
-msgstr ""
+msgstr "Αποτυχία εγγραφής: Δεν είναι δυνατή η δημιουργία φακέλου (%1)"
 
 #: src/Platforms/VideoPlatformWayland.cpp:409
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:shell"
 msgid "Screen recording canceled"
-msgstr ""
+msgstr "Ακυρώθηκε η καταγραφή οθόνης"
 
 #: src/Platforms/VideoPlatformWayland.cpp:411
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:shell"
 msgid "Window recording canceled"
-msgstr ""
+msgstr "Ακυρώθηκε η καταγραφή παραθύρου"
 
 #: src/Platforms/VideoPlatformWayland.cpp:417
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select screen: %1"
-msgstr ""
+msgstr "Αποτυχία επιλογής οθόνης: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:419
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:shell, %1 is an error message"
 msgid "Failed to select window: %1"
-msgstr ""
+msgstr "Αποτυχία επιλογής παραθύρου: %1"
 
 #: src/Platforms/VideoPlatformWayland.cpp:447
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select screen: No screen contained the mouse cursor position"
 msgstr ""
+"Αποτυχία επιλογής οθόνης: Καμία οθόνη δεν περιείχε τη θέση του δρομέα του "
+"ποντικιού"
 
 #: src/Platforms/VideoPlatformWayland.cpp:454
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:shell"
 msgid "Failed to select window: No window found"
-msgstr ""
+msgstr "Δεν κατέστη δυνατή η επιλογή παραθύρου: Δεν βρέθηκε παράθυρο"
 
 #: src/RecordingModeModel.cpp:105
 #, kde-format
@@ -2202,7 +2250,7 @@ msgstr "Ορθογώνια περιοχή"
 #| msgid "Window Title"
 msgctxt "@item recording mode"
 msgid "Window"
-msgstr "Τίτλος παραθύρου"
+msgstr "Παράθυρο"
 
 #: src/RecordingModeModel.cpp:109
 #, kde-format
@@ -2245,7 +2293,7 @@ msgstr "Σύλληψη ορθογώνιας περιοχής"
 #| msgid "Capture Active Window"
 msgctxt "@action global shortcut"
 msgid "Capture Selected Window"
-msgstr "Σύλληψη ενεργού παραθύρου"
+msgstr "Αποτύπωση επιλεγμένου παραθύρου"
 
 #: src/ShortcutActions.cpp:69
 #, kde-format
@@ -2258,135 +2306,146 @@ msgstr "Λήψη παραθύρου υπό τον δρομέα"
 #| msgid "While Spectacle is running"
 msgctxt "@action global shortcut"
 msgid "Start/Stop Screen Recording"
-msgstr "Όταν εκτελείται το Spectacle"
+msgstr "Έναρξη/Διακοπή εγγραφής οθόνης"
 
 #: src/ShortcutActions.cpp:82
 #, fuzzy, kde-format
 #| msgid "While Spectacle is running"
 msgctxt "@action global shortcut"
 msgid "Start/Stop Window Recording"
-msgstr "Όταν εκτελείται το Spectacle"
+msgstr "Έναρξη/Διακοπή εγγραφής παραθύρου"
 
 #: src/ShortcutActions.cpp:88
 #, fuzzy, kde-format
 #| msgid "While Spectacle is running"
 msgctxt "@action global shortcut"
 msgid "Start/Stop Region Recording"
-msgstr "Όταν εκτελείται το Spectacle"
+msgstr "Έναρξη/Διακοπή εγγραφής περιοχής"
 
 #: src/ShortcutActions.cpp:94
 #, fuzzy, kde-format
 #| msgid "Launch Spectacle"
 msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
-msgstr "Εκτέλεση του Spectacle"
+msgstr "Εκτέλεση Spectacle χωρίς καταγραφή"
 
 #: src/SpectacleCore.cpp:274
 #, fuzzy, kde-format
 #| msgid "After taking a screenshot:"
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
-msgstr "Μετά τη λήψη στιγμιοτύπου:"
+msgstr "Παρουσιάστηκε σφάλμα κατά τη λήψη στιγμιότυπου."
 
 #: src/SpectacleCore.cpp:303
 #, fuzzy, kde-format
 #| msgid "While Spectacle is running"
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording with Sound"
-msgstr "Όταν εκτελείται το Spectacle"
+msgstr "Το Spectacle πραγματοποιεί εγγραφή με ήχο"
 
 #: src/SpectacleCore.cpp:304
 #, fuzzy, kde-format
 #| msgid "While Spectacle is running"
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
-msgstr "Όταν εκτελείται το Spectacle"
+msgstr "Το Spectacle πραγματοποιεί εγγραφή"
 
 #: src/SpectacleCore.cpp:309
 #, fuzzy, kde-format
 #| msgid "While Spectacle is running"
 msgctxt "recording notification title"
 msgid "Spectacle is Recording with Sound"
-msgstr "Όταν εκτελείται το Spectacle"
+msgstr "Το Spectacle πραγματοποιεί εγγραφή με ήχο"
 
 #: src/SpectacleCore.cpp:310
 #, fuzzy, kde-format
 #| msgid "While Spectacle is running"
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
-msgstr "Όταν εκτελείται το Spectacle"
+msgstr "Το Spectacle πραγματοποιεί εγγραφή"
 
 #: src/SpectacleCore.cpp:336
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "recording notification message without shortcut"
 msgid "To finish the recording, click the pulsing red System Tray icon."
 msgstr ""
+"Για να ολοκληρώσετε την εγγραφή, κάντε κλικ στο κόκκινο εικονίδιο που "
+"αναβοσβήνει στη γραμμή εργασιών."
 
 #: src/SpectacleCore.cpp:337
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
 msgctxt "recording notification message with shortcut"
 msgid ""
 "To finish the recording, click the pulsing red System Tray icon or press "
 "<shortcut>%1</shortcut>."
 msgstr ""
+"Για να ολοκληρώσετε την εγγραφή, κάντε κλικ στο κόκκινο εικονίδιο που "
+"αναβοσβήνει στη γραμμή εργασιών ή πατήστε <shortcut>%1</shortcut>."
 
 #: src/SpectacleCore.cpp:353
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
-msgstr ""
+msgstr "Λείπει υποστήριξη WebP."
 
 #: src/SpectacleCore.cpp:354
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "missing webp support notification message"
 msgid ""
 "Please install Qt Image Formats to get animated system tray icons for "
 "Spectacle, and then report this packaging issue to your distributor."
 msgstr ""
+"Παρακαλούμε εγκαταστήστε το Qt Image Formats για να αποκτήσετε κινούμενα "
+"εικονίδια στη γραμμή εργασιών για το Spectacle και, στη συνέχεια, αναφέρετε "
+"αυτό το πρόβλημα συσκευασίας στον διανομέα σας."
 
 #: src/SpectacleCore.cpp:390
 #, fuzzy, kde-format
 #| msgid "While Spectacle is running"
 msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
-msgstr "Όταν εκτελείται το Spectacle"
+msgstr "Το Spectacle ολοκληρώνει την εγγραφή"
 
 #: src/SpectacleCore.cpp:391
 #, fuzzy, kde-format
 #| msgid "Please wait..."
 msgctxt "recording notification message"
 msgid "Please wait"
-msgstr "Αναμονή..."
+msgstr "Παρακαλώ περιμένετε"
 
 #: src/SpectacleCore.cpp:393
 #, fuzzy, kde-format
 #| msgid "While Spectacle is running"
 msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
-msgstr "Όταν εκτελείται το Spectacle"
+msgstr "Το Spectacle ολοκληρώνει την εγγραφή"
 
 #: src/SpectacleCore.cpp:395
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:tooltip subtitle for rendering tray icon"
 msgid ""
 "Time recorded: %1\n"
 "Click to stop rendering early (this will lose data)"
 msgstr ""
+"Καταγεγραμμένος χρόνος: %1\n"
+"Κάντε κλικ για να διακόψετε πρόωρα την απόδοση (θα χαθούν δεδομένα)"
 
 #: src/SpectacleCore.cpp:420
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
 "Time recorded: %1\n"
 "Click to finish recording"
 msgstr ""
+"Χρόνος καταγραφής: %1\n"
+"Κάντε κλικ για ολοκλήρωση εγγραφής"
 
 #: src/SpectacleCore.cpp:448
 #, fuzzy, kde-format
 #| msgid "After taking a screenshot:"
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
-msgstr "Μετά τη λήψη στιγμιοτύπου:"
+msgstr "Προέκυψε σφάλμα κατά την εγγραφή οθόνης."
 
 #: src/SpectacleCore.cpp:497
 #, fuzzy, kde-kuit-format
@@ -2398,8 +2457,8 @@ msgid ""
 "The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</"
 "link>"
 msgstr ""
-"Το στιγμιότυπο οθόνης αντιγράφτηκε στο πρόχειρο και αποθηκεύθηκε ως <a href="
-"\"%1\">%2</a>"
+"Το στιγμιότυπο οθόνης αντιγράφτηκε στο πρόχειρο και αποθηκεύτηκε ως <link "
+"url=\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:501
 #, fuzzy, kde-kuit-format
@@ -2411,7 +2470,7 @@ msgid ""
 "The screenshot has been saved as <link url=\"%1\">%2</link> and its location "
 "has been copied to clipboard"
 msgstr ""
-"Το στιγμιότυπο έχει αποθηκευθεί ως (<a href=\"%1\">%2</a>) και η θέση του "
+"Το στιγμιότυπο έχει αποθηκευθεί ως <link url=\"%1\">%2</link> και η θέση του "
 "έχει αντιγραφεί στο πρόχειρο"
 
 #: src/SpectacleCore.cpp:506
@@ -2419,7 +2478,7 @@ msgstr ""
 #| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
-msgstr "Το στιγμιότυπο οθόνης αποθηκεύτηκε ως <a href=\"%1\">%2</a>"
+msgstr "Το στιγμιότυπο οθόνης αποθηκεύτηκε ως <link url=\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:510
 #, fuzzy, kde-format
@@ -2438,118 +2497,118 @@ msgid ""
 "The video has been saved as <link url=\"%1\">%2</link> and its location has "
 "been copied to clipboard"
 msgstr ""
-"Το στιγμιότυπο έχει αποθηκευθεί ως (<a href=\"%1\">%2</a>) και η θέση του "
-"έχει αντιγραφεί στο πρόχειρο"
+"Το βίντεο έχει αποθηκευθεί ως <link url=\"%1\">%2</link> και η θέση του έχει "
+"αντιγραφεί στο πρόχειρο"
 
 #: src/SpectacleCore.cpp:547
 #, fuzzy, kde-kuit-format
 #| msgid "The screenshot was saved as <a href=\"%1\">%2</a>"
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
-msgstr "Το στιγμιότυπο οθόνης αποθηκεύτηκε ως <a href=\"%1\">%2</a>"
+msgstr "Το βίντεο αποθηκεύτηκε ως <link url=\"%1\">%2</link>"
 
 #: src/SpectacleCore.cpp:551
 #, fuzzy, kde-format
 #| msgid "The screenshot has been copied to the clipboard."
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
-msgstr "Το στιγμιότυπο οθόνης έχει αντιγραφεί στο πρόχεορο."
+msgstr "Η θέση του βίντεο έχει αντιγραφεί στο πρόχειρο."
 
 #. i18nc because it doesn't work with the link replacement logic.
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
 #: src/SpectacleCore.cpp:571
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info"
 msgid "Code found: %1"
-msgstr ""
+msgstr "Βρέθηκε κωδικός: %1"
 
 #: src/SpectacleCore.cpp:575
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
-msgstr ""
+msgstr "Εντοπίστηκε κωδικός QR με δυαδικό περιεχόμενο."
 
 #: src/SpectacleCore.cpp:583
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
-msgstr ""
+msgstr "Αποτυχία εξαγωγής κειμένου"
 
 #: src/SpectacleCore.cpp:588
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
-msgstr ""
+msgstr "Δεν βρέθηκε κείμενο στην εικόνα"
 
 #: src/SpectacleCore.cpp:592
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
-msgstr ""
+msgstr "Ολοκλήρωση εξαγωγής κειμένου"
 
 #: src/SpectacleCore.cpp:600
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
-msgstr ""
+msgstr "Εξήχθη κείμενο"
 
 #: src/SpectacleCore.cpp:619
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
-msgstr ""
+msgstr "%1 και %2"
 
 #: src/SpectacleCore.cpp:624
 #, fuzzy, kde-kuit-format
 #| msgid "Copy image to clipboard"
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages used: %1"
-msgstr "Αντιγραφή εικόνας στο πρόχειρο"
+msgstr "Αντιγραφή εικόνας στο πρόχειρο. <nl/>Χρησιμοποιήθηκαν οι γλώσσες: %1"
 
 #: src/SpectacleCore.cpp:629
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
-msgstr ""
+msgstr "Άνοιγμα στον Επεξεργαστή κειμένου"
 
 #: src/SpectacleCore.cpp:772
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
-msgstr ""
+msgstr "Παρακαλώ επιλέξτε μια περιοχή πριν την εξαγωγή κειμένου"
 
 #: src/SpectacleCore.cpp:794
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
-msgstr ""
+msgstr "Το OCR δεν είναι διαθέσιμο."
 
 #: src/SpectacleCore.cpp:800
 #, fuzzy, kde-format
 #| msgid "No KIPI plugins available"
 msgctxt "@info"
 msgid "No screenshot available."
-msgstr "Δεν υπάρχουν διαθέσιμα πρόσθετα KIPI"
+msgstr "Δεν υπάρχει διαθέσιμο στιγμιότυπο οθόνης"
 
 #: src/SpectacleCore.cpp:804
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
-msgstr ""
+msgstr "Εξαγωγή κειμένου από εικόνα..."
 
 #: src/SpectacleCore.cpp:1053
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:shell"
 msgid ""
 "--scaled is only allowed together with -f/--fullscreen and will be ignored"
-msgstr ""
+msgstr "--scaled επιτρέπεται μόνο μαζί με -f/--fullscreen και θα αγνοηθεί"
 
 #: src/SpectacleCore.cpp:1068
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
-msgstr ""
+msgstr "%1 δεν είναι έγκυρη λειτουργία για --record"
 
 #: src/SpectacleCore.cpp:1304
 #, fuzzy, kde-format
@@ -2561,8 +2620,8 @@ msgid ""
 "A screenshot was saved as '%1' to '%2' and the file path of the screenshot "
 "has been saved to your clipboard."
 msgstr ""
-"Το στιγμιότυπο έχει αποθηκευθεί ως (<a href=\"%1\">%2</a>) και η θέση του "
-"έχει αντιγραφεί στο πρόχειρο"
+"Το στιγμιότυπο έχει αποθηκευθεί ως %1' σε '%2' και η θέση του έχει "
+"αντιγραφεί στο πρόχειρο"
 
 #: src/SpectacleCore.cpp:1308
 #, fuzzy, kde-format
@@ -2570,7 +2629,7 @@ msgstr ""
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
-msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο φάκελο Pictures."
+msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο φάκελο Εικόνες."
 
 #: src/SpectacleCore.cpp:1311
 #, fuzzy, kde-format
@@ -2594,8 +2653,8 @@ msgid ""
 "A recording was saved as '%1' to '%2' and the file path of the recording has "
 "been saved to your clipboard."
 msgstr ""
-"Το στιγμιότυπο έχει αποθηκευθεί ως (<a href=\"%1\">%2</a>) και η θέση του "
-"έχει αντιγραφεί στο πρόχειρο"
+"Η καταγραφή έχει αποθηκευθεί ως %1' στο '%2' και η θέση της έχει αντιγραφεί "
+"στο πρόχειρο"
 
 #: src/SpectacleCore.cpp:1322
 #, fuzzy, kde-format
@@ -2603,14 +2662,14 @@ msgstr ""
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
-msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο φάκελο Pictures."
+msgstr "Μία καταγραφή αποθηκεύτηκε ως '%1' στο φάκελο Βίντεο."
 
 #: src/SpectacleCore.cpp:1324
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
-msgstr "Ένα στιγμιότυπο οθόνης αποθηκεύτηκε ως '%1' στο '%2'."
+msgstr "Μία καταγραφή αποθηκεύτηκε ως '%1' στο '%2'."
 
 #: src/SpectacleCore.cpp:1336
 #, kde-format
@@ -2624,28 +2683,28 @@ msgid "Annotate"
 msgstr "Σχολιασμός"
 
 #: src/VideoFormatModel.cpp:31
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "WebM/VP9"
-msgstr ""
+msgstr "WebM/VP9"
 
 #: src/VideoFormatModel.cpp:38
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "MP4/H.264"
-msgstr ""
+msgstr "MP4/H.264"
 
 #: src/VideoFormatModel.cpp:45
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "Animated WebP (better than GIF)"
-msgstr ""
+msgstr "Κινούμενο WebP (καλύτερο από GIF)"
 
 #: src/VideoFormatModel.cpp:52
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
-msgstr ""
+msgstr "GIF (συμβατό, μη αποδοτικό)"
 
 #~ msgid ""
 #~ "Capture the window currently under the cursor, excluding parents of pop-"
