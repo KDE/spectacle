@@ -50,8 +50,9 @@ int main(int argc, char **argv)
     aboutData.addAuthor(u"David Redondo"_s, {}, u"kde@david-redondo.de"_s);
     aboutData.addAuthor(u"Noah Davis"_s, {}, u"noahadvs@gmail.com"_s);
     aboutData.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
+    // Not calling setWindowIcon because we don't want Qt to go create pixmaps for xdg_toplevel_icon.
+    aboutData.setProgramLogo(QIcon::fromTheme(u"spectacle"_s));
     KAboutData::setApplicationData(aboutData);
-    app.setWindowIcon(QIcon::fromTheme(u"spectacle"_s));
 
     KCrash::initialize();
 
