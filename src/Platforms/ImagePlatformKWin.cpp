@@ -114,11 +114,8 @@ QImage combinedImage(const QList<QImage> &images)
         const auto size = (image.deviceIndependentSize() * finalDpr).toSize();
         const auto imageDpr = image.devicePixelRatio();
         const bool hasIntDpr = static_cast<int>(imageDpr) == imageDpr;
-        const auto interpolation = hasIntDpr ? Qt::FastTransformation : Qt::SmoothTransformation;
-        painter.drawImage(QRectF{pos, size},
-                          size == image.size() //
-                              ? image
-                              : image.scaled(size, Qt::KeepAspectRatio, interpolation));
+        painter.setRenderHint(QPainter::SmoothPixmapTransform, !hasIntDpr);
+        painter.drawImage(QRectF{pos, size}, image);
     }
     painter.end();
     finalImage.setDevicePixelRatio(finalDpr);
