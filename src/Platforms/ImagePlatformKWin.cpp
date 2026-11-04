@@ -13,6 +13,7 @@
 
 #include <KWindowSystem>
 
+#include <QColorSpace>
 #include <QDBusConnection>
 #include <QDBusConnectionInterface>
 #include <QDBusPendingCall>
@@ -86,6 +87,7 @@ QImage combinedImage(const QList<QImage> &images)
     });
     if (allSameDpr) {
         QImage finalImage{imageRect.size().toSize() * maxDpr, finalFormat};
+        finalImage.setColorSpace(QColorSpace::SRgb);
         QPainter painter(&finalImage);
         for (auto &image : images) {
             // Explicitly setting the position and size so that you don't need to read
@@ -104,6 +106,7 @@ QImage combinedImage(const QList<QImage> &images)
     // We ceil to the next integer size up so that integer DPR images are always crisp.
     const auto finalDpr = std::ceil(maxDpr);
     QImage finalImage{imageRect.size().toSize() * finalDpr, finalFormat};
+    finalImage.setColorSpace(QColorSpace::SRgb);
     finalImage.fill(Qt::transparent);
     QPainter painter(&finalImage);
     for (auto &image : images) {
@@ -155,9 +158,15 @@ static ResultVariant allocateImage(const QVariantMap &metadata)
         }
     }
 
-    return errors.isEmpty() //
-        ? ResultVariant{QImage{width, height, static_cast<QImage::Format>(format)}}
-        : ResultVariant{errors};
+    if (!errors.isEmpty()) {
+        return ResultVariant{errors};
+    }
+
+    QImage image{width, height, static_cast<QImage::Format>(format)};
+    // KWin screenshots in sRGB for now, Qt needlessly detaches the image when
+    // setting the color space later, QTBUG-152033.
+    image.setColorSpace(QColorSpace::SRgb);
+    return ResultVariant{image};
 }
 
 static ResultVariant readImage(int fileDescriptor, const QVariantMap &metadata)
