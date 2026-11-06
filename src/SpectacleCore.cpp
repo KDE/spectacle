@@ -192,7 +192,9 @@ SpectacleCore::SpectacleCore(QObject *parent)
             m_returnToViewer &= !willQuit;
             showViewerIfGuiMode();
             SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
-            ExportManager::instance()->scanQRCode();
+            if (m_startMode != StartMode::Background) {
+                ExportManager::instance()->scanQRCode();
+            }
             ExportManager::instance()->exportImage(exportActions, outputUrl());
         }
     }, Qt::QueuedConnection);
@@ -208,7 +210,9 @@ SpectacleCore::SpectacleCore(QObject *parent)
         m_returnToViewer = true;
         showViewerIfGuiMode();
         SpectacleWindow::setTitleForAll(SpectacleWindow::Unsaved);
-        ExportManager::instance()->scanQRCode();
+        if (m_startMode != StartMode::Background) {
+            ExportManager::instance()->scanQRCode();
+        }
         ExportManager::instance()->exportImage(autoExportActions(), outputUrl());
         setVideoMode(false);
     });
