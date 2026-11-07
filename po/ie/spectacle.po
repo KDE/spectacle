@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-06 00:54+0000\n"
+"POT-Creation-Date: 2026-11-07 01:00+0000\n"
 "PO-Revision-Date: 2024-08-04 16:55+0700\n"
 "Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
 "Language-Team: Interlingue <>\n"
@@ -1914,7 +1914,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "mistresssilvara@hotmail.com"
 
-#: src/Main.cpp:70
+#: src/Main.cpp:71
 #, fuzzy, kde-format
 msgid ""
 "On Wayland, Spectacle requires KDE Plasma's KWin compositor, which does not "
@@ -1938,7 +1938,7 @@ msgstr ""
 msgid "Orientation and Script Detection"
 msgstr ""
 
-#: src/Platforms/ImagePlatformKWin.cpp:137
+#: src/Platforms/ImagePlatformKWin.cpp:134
 #, fuzzy, kde-format
 msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
@@ -1946,7 +1946,7 @@ msgstr ""
 "Ne successat gardar li captura pro que li creation del fólder ne successat:"
 "<nl/><filename>%1</filename>"
 
-#: src/Platforms/ImagePlatformKWin.cpp:142
+#: src/Platforms/ImagePlatformKWin.cpp:139
 #, fuzzy, kde-format
 msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
@@ -1954,7 +1954,7 @@ msgstr ""
 "Ne successat gardar li captura pro que li creation del fólder ne successat:"
 "<nl/><filename>%1</filename>"
 
-#: src/Platforms/ImagePlatformKWin.cpp:153
+#: src/Platforms/ImagePlatformKWin.cpp:150
 #, fuzzy, kde-format
 #| msgid "After taking a screenshot:"
 msgctxt "@info, %1 is a file format like 'png', 'jpg'"
@@ -1963,13 +1963,13 @@ msgstr ""
 "Ne successat gardar li captura pro que li creation del fólder ne successat:"
 "<nl/><filename>%1</filename>"
 
-#: src/Platforms/ImagePlatformKWin.cpp:177
+#: src/Platforms/ImagePlatformKWin.cpp:174
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr "Aperter li contenent fólder"
 
-#: src/Platforms/ImagePlatformKWin.cpp:247
+#: src/Platforms/ImagePlatformKWin.cpp:244
 #, fuzzy, kde-format
 msgctxt "@info, %1 is an error code"
 msgid "pipe2() failed for KWin screenshot: %1"
@@ -1977,7 +1977,7 @@ msgstr ""
 "Ne successat gardar li captura pro que li creation del lontan fólder ne "
 "successat:<nl/><filename>%1</filename>"
 
-#: src/Platforms/ImagePlatformKWin.cpp:303
+#: src/Platforms/ImagePlatformKWin.cpp:300
 #, fuzzy, kde-format
 msgctxt "@info, %1 is an error message"
 msgid ""
@@ -1987,7 +1987,7 @@ msgstr ""
 "Ne successat gardar li captura pro que li creation del lontan fólder ne "
 "successat:<nl/><filename>%1</filename>"
 
-#: src/Platforms/ImagePlatformKWin.cpp:305
+#: src/Platforms/ImagePlatformKWin.cpp:302
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid ""
@@ -1995,7 +1995,7 @@ msgid ""
 "%1"
 msgstr "Registration: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:313
+#: src/Platforms/ImagePlatformKWin.cpp:310
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
@@ -2207,7 +2207,7 @@ msgctxt "@action global shortcut"
 msgid "Launch Spectacle without capturing"
 msgstr "Lansar Spectacle sin captura"
 
-#: src/SpectacleCore.cpp:274
+#: src/SpectacleCore.cpp:278
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "An error occurred while taking a screenshot."
@@ -2215,7 +2215,7 @@ msgstr ""
 "Ne successat gardar li captura pro que li creation del fólder ne successat:"
 "<nl/><filename>%1</filename>"
 
-#: src/SpectacleCore.cpp:303
+#: src/SpectacleCore.cpp:307
 #, fuzzy, kde-format
 #| msgctxt "@info:tooltip title for recording tray icon"
 #| msgid "Spectacle is Recording"
@@ -2223,13 +2223,13 @@ msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording with Sound"
 msgstr "Spectacle registra"
 
-#: src/SpectacleCore.cpp:304
+#: src/SpectacleCore.cpp:308
 #, kde-format
 msgctxt "@info:tooltip title for recording tray icon"
 msgid "Spectacle is Recording"
 msgstr "Spectacle registra"
 
-#: src/SpectacleCore.cpp:309
+#: src/SpectacleCore.cpp:313
 #, fuzzy, kde-format
 #| msgctxt "recording notification title"
 #| msgid "Spectacle is Recording"
@@ -2237,19 +2237,19 @@ msgctxt "recording notification title"
 msgid "Spectacle is Recording with Sound"
 msgstr "Spectacle registra"
 
-#: src/SpectacleCore.cpp:310
+#: src/SpectacleCore.cpp:314
 #, kde-format
 msgctxt "recording notification title"
 msgid "Spectacle is Recording"
 msgstr "Spectacle registra"
 
-#: src/SpectacleCore.cpp:336
+#: src/SpectacleCore.cpp:340
 #, kde-format
 msgctxt "recording notification message without shortcut"
 msgid "To finish the recording, click the pulsing red System Tray icon."
 msgstr ""
 
-#: src/SpectacleCore.cpp:337
+#: src/SpectacleCore.cpp:341
 #, kde-kuit-format
 msgctxt "recording notification message with shortcut"
 msgid ""
@@ -2257,13 +2257,13 @@ msgid ""
 "<shortcut>%1</shortcut>."
 msgstr ""
 
-#: src/SpectacleCore.cpp:353
+#: src/SpectacleCore.cpp:357
 #, kde-format
 msgctxt "missing webp support notification title"
 msgid "WebP support is missing."
 msgstr ""
 
-#: src/SpectacleCore.cpp:354
+#: src/SpectacleCore.cpp:358
 #, kde-format
 msgctxt "missing webp support notification message"
 msgid ""
@@ -2271,7 +2271,7 @@ msgid ""
 "Spectacle, and then report this packaging issue to your distributor."
 msgstr ""
 
-#: src/SpectacleCore.cpp:390
+#: src/SpectacleCore.cpp:394
 #, fuzzy, kde-format
 #| msgctxt "recording notification title"
 #| msgid "Spectacle is Recording"
@@ -2279,13 +2279,13 @@ msgctxt "recording notification title"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle registra"
 
-#: src/SpectacleCore.cpp:391
+#: src/SpectacleCore.cpp:395
 #, kde-format
 msgctxt "recording notification message"
 msgid "Please wait"
 msgstr ""
 
-#: src/SpectacleCore.cpp:393
+#: src/SpectacleCore.cpp:397
 #, fuzzy, kde-format
 #| msgctxt "recording notification title"
 #| msgid "Spectacle is Recording"
@@ -2293,7 +2293,7 @@ msgctxt "@info:tooltip title for rendering tray icon"
 msgid "Spectacle is Finishing the Recording"
 msgstr "Spectacle registra"
 
-#: src/SpectacleCore.cpp:395
+#: src/SpectacleCore.cpp:399
 #, fuzzy, kde-format
 #| msgctxt "@info:tooltip subtitle for recording tray icon"
 #| msgid ""
@@ -2305,7 +2305,7 @@ msgid ""
 "Click to stop rendering early (this will lose data)"
 msgstr "Ja registrat: %1 Fa un clic por finir"
 
-#: src/SpectacleCore.cpp:420
+#: src/SpectacleCore.cpp:424
 #, kde-format
 msgctxt "@info:tooltip subtitle for recording tray icon"
 msgid ""
@@ -2313,13 +2313,13 @@ msgid ""
 "Click to finish recording"
 msgstr "Ja registrat: %1 Fa un clic por finir"
 
-#: src/SpectacleCore.cpp:448
+#: src/SpectacleCore.cpp:452
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "An error occurred while attempting to record the screen."
 msgstr "Registrar li ecran"
 
-#: src/SpectacleCore.cpp:497
+#: src/SpectacleCore.cpp:501
 #, fuzzy, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2327,7 +2327,7 @@ msgid ""
 "link>"
 msgstr "Captura del ecran"
 
-#: src/SpectacleCore.cpp:501
+#: src/SpectacleCore.cpp:505
 #, fuzzy, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2335,19 +2335,19 @@ msgid ""
 "has been copied to clipboard"
 msgstr "Copiar li localisation"
 
-#: src/SpectacleCore.cpp:506
+#: src/SpectacleCore.cpp:510
 #, fuzzy, kde-kuit-format
 msgctxt "@info"
 msgid "The screenshot was saved as <link url=\"%1\">%2</link>"
 msgstr "Captura del ecran"
 
-#: src/SpectacleCore.cpp:510
+#: src/SpectacleCore.cpp:514
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "The screenshot has been copied to the clipboard."
 msgstr "Captura del ecran"
 
-#: src/SpectacleCore.cpp:542
+#: src/SpectacleCore.cpp:546
 #, fuzzy, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2355,13 +2355,13 @@ msgid ""
 "been copied to clipboard"
 msgstr "Copiar li localisation"
 
-#: src/SpectacleCore.cpp:547
+#: src/SpectacleCore.cpp:551
 #, fuzzy, kde-kuit-format
 msgctxt "@info"
 msgid "The video was saved as <link url=\"%1\">%2</link>"
 msgstr "Formate predefinit de video"
 
-#: src/SpectacleCore.cpp:551
+#: src/SpectacleCore.cpp:555
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "The video location has been copied to the clipboard."
@@ -2370,99 +2370,99 @@ msgstr "Video sta partit"
 #. i18nc because it doesn't work with the link replacement logic.
 #. Also see https://invent.kde.org/graphics/spectacle/-/merge_requests/432#note_1111125
 #.
-#: src/SpectacleCore.cpp:571
+#: src/SpectacleCore.cpp:575
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "Code found: %1"
 msgstr "Null aparates Bluetooth es trovat"
 
-#: src/SpectacleCore.cpp:575
+#: src/SpectacleCore.cpp:579
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "Found QR code with binary content."
 msgstr "Contenete"
 
-#: src/SpectacleCore.cpp:583
+#: src/SpectacleCore.cpp:587
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction failed"
 msgstr ""
 
-#: src/SpectacleCore.cpp:588
+#: src/SpectacleCore.cpp:592
 #, kde-format
 msgctxt "@info"
 msgid "No text found in the image"
 msgstr ""
 
-#: src/SpectacleCore.cpp:592
+#: src/SpectacleCore.cpp:596
 #, kde-format
 msgctxt "@info"
 msgid "Text extraction completed"
 msgstr ""
 
-#: src/SpectacleCore.cpp:600
+#: src/SpectacleCore.cpp:604
 #, kde-format
 msgctxt "@info:notification title"
 msgid "Text Extracted"
 msgstr ""
 
-#: src/SpectacleCore.cpp:619
+#: src/SpectacleCore.cpp:623
 #, kde-format
 msgctxt "@info The variables are language names, e.g. 'English and German'"
 msgid "%1 and %2"
 msgstr ""
 
-#: src/SpectacleCore.cpp:624
+#: src/SpectacleCore.cpp:628
 #, fuzzy, kde-kuit-format
 #| msgid "Copy image to clipboard"
 msgctxt "@info:notification"
 msgid "Text copied to clipboard.<nl/>Languages used: %1"
 msgstr "Copiar li image al Paperiere"
 
-#: src/SpectacleCore.cpp:629
+#: src/SpectacleCore.cpp:633
 #, kde-format
 msgctxt "@action:button"
 msgid "Open in Text Editor"
 msgstr ""
 
-#: src/SpectacleCore.cpp:772
+#: src/SpectacleCore.cpp:776
 #, kde-format
 msgctxt "@info"
 msgid "Please select a region before extracting text"
 msgstr ""
 
-#: src/SpectacleCore.cpp:794
+#: src/SpectacleCore.cpp:798
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "OCR is not available."
 msgstr "Null descrition"
 
-#: src/SpectacleCore.cpp:800
+#: src/SpectacleCore.cpp:804
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "No screenshot available."
 msgstr "Null descrition"
 
-#: src/SpectacleCore.cpp:804
+#: src/SpectacleCore.cpp:808
 #, kde-format
 msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr ""
 
-#: src/SpectacleCore.cpp:1053
+#: src/SpectacleCore.cpp:1057
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "--scaled is only allowed together with -f/--fullscreen and will be ignored"
 msgstr ""
 
-#: src/SpectacleCore.cpp:1068
+#: src/SpectacleCore.cpp:1072
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 ne es un valid mode por --record"
 
-#: src/SpectacleCore.cpp:1304
+#: src/SpectacleCore.cpp:1308
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -2473,7 +2473,7 @@ msgid ""
 "has been saved to your clipboard."
 msgstr "OIS"
 
-#: src/SpectacleCore.cpp:1308
+#: src/SpectacleCore.cpp:1312
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A screenshot was saved as '%1' to your Pictures folder."
@@ -2481,19 +2481,19 @@ msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Li captura sta gardat quam «%1» a vor fólder de images."
 
-#: src/SpectacleCore.cpp:1311
+#: src/SpectacleCore.cpp:1315
 #, fuzzy, kde-format
 #| msgid "A screenshot was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Li captura sta gardat quam «%1» a «%2»."
 
-#: src/SpectacleCore.cpp:1315
+#: src/SpectacleCore.cpp:1319
 #, fuzzy, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "OIS"
 
-#: src/SpectacleCore.cpp:1320
+#: src/SpectacleCore.cpp:1324
 #, fuzzy, kde-format
 #| msgid ""
 #| "A screenshot was saved as '%1' to '%2' and the file path of the "
@@ -2504,7 +2504,7 @@ msgid ""
 "been saved to your clipboard."
 msgstr "mistresssilvara@hotmail.com"
 
-#: src/SpectacleCore.cpp:1322
+#: src/SpectacleCore.cpp:1326
 #, fuzzy, kde-format
 #| msgctxt "Placeholder is filename"
 #| msgid "A recording was saved as '%1' to your Videos folder."
@@ -2512,20 +2512,20 @@ msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Li registration sta gardat quam «%1» a vor fólder Videos."
 
-#: src/SpectacleCore.cpp:1324
+#: src/SpectacleCore.cpp:1328
 #, fuzzy, kde-format
 #| msgid "A recording was saved as '%1' to '%2'."
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Li captura sta gardat quam «%1» a «%2»."
 
-#: src/SpectacleCore.cpp:1336
+#: src/SpectacleCore.cpp:1340
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Aperter"
 
-#: src/SpectacleCore.cpp:1350
+#: src/SpectacleCore.cpp:1354
 #, kde-format
 msgid "Annotate"
 msgstr "Anotar"
