@@ -86,7 +86,7 @@ QImage combinedImage(const QList<QImage> &images)
         return i.devicePixelRatio() == maxDpr;
     });
     if (allSameDpr) {
-        QImage finalImage{imageRect.size().toSize() * maxDpr, finalFormat};
+        QImage finalImage{(imageRect.size() * maxDpr).toSize(), finalFormat};
         finalImage.setColorSpace(QColorSpace::SRgb);
         QPainter painter(&finalImage);
         for (auto &image : images) {
@@ -105,7 +105,7 @@ QImage combinedImage(const QList<QImage> &images)
     }
     // We ceil to the next integer size up so that integer DPR images are always crisp.
     const auto finalDpr = std::ceil(maxDpr);
-    QImage finalImage{imageRect.size().toSize() * finalDpr, finalFormat};
+    QImage finalImage{(imageRect.size() * finalDpr).toSize(), finalFormat};
     finalImage.setColorSpace(QColorSpace::SRgb);
     finalImage.fill(Qt::transparent);
     QPainter painter(&finalImage);
