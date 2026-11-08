@@ -86,6 +86,7 @@ QImage combinedImage(const QList<QImage> &images)
     });
     if (allSameDpr) {
         QImage finalImage{(imageRect.size() * maxDpr).toSize(), finalFormat};
+        finalImage.fill(QColorConstants::Transparent);
         QPainter painter(&finalImage);
         for (auto &image : images) {
             // Explicitly setting the position and size so that you don't need to read
