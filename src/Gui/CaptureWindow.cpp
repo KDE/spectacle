@@ -87,6 +87,12 @@ CaptureWindow::CaptureWindow(Mode mode, QScreen *screen, QQmlEngine *engine, QWi
     setMode(mode); // sets source and other stuff based on mode.
     if (auto rootItem = rootObject()) {
         rootItem->installEventFilter(selectionEditor);
+    } else {
+        connect(this, &QQuickView::statusChanged, this, [this](QQuickView::Status status) {
+            if (status == QQuickView::Ready) {
+                rootObject()->installEventFilter(SelectionEditor::instance());
+            }
+        });
     }
 }
 
@@ -127,7 +133,7 @@ void CaptureWindow::setMode(CaptureWindow::Mode mode)
     QVariantMap initialProperties = {// Set the parent in initialProperties to avoid having
                                      // the parent and window be null in Component.onCompleted
                                      {u"parent"_s, QVariant::fromValue(contentItem())}};
-    setSource(QUrl("%1/Gui/CaptureOverlay.qml"_L1.arg(SPECTACLE_QML_PATH)), initialProperties);
+    setSource(QUrl("%1/Gui/CaptureOverlay.qml"_L1.arg(SPECTACLE_QML_PATH)), initialProperties, QQmlComponent::Asynchronous);
 }
 
 bool CaptureWindow::accept()

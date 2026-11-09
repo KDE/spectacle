@@ -6,8 +6,9 @@
 
 #pragma once
 
-#include <QQuickView>
+#include <QQmlComponent>
 #include <QQmlContext>
+#include <QQuickView>
 
 class SpectacleWindowPrivate;
 
@@ -104,8 +105,8 @@ protected:
     static QString titlePresetString(TitlePreset preset, const QString &fileName = {});
     static void deleter(SpectacleWindow *window);
 
-    // set source, but with a window specific QQmlContext and initial properties
-    void setSource(const QUrl &source, const QVariantMap &initialProperties);
+    // set source, but with a window specific QQmlContext, initial properties, and compilation mode (async/sync).
+    void setSource(const QUrl &source, const QVariantMap &initialProperties, QQmlComponent::CompilationMode compilationMode = QQmlComponent::PreferSynchronous);
 
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;

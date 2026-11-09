@@ -189,7 +189,7 @@ void SpectacleWindow::deleter(SpectacleWindow *window)
     window->deleteLater();
 }
 
-void SpectacleWindow::setSource(const QUrl &source, const QVariantMap &initialProperties)
+void SpectacleWindow::setSource(const QUrl &source, const QVariantMap &initialProperties, QQmlComponent::CompilationMode compilationMode)
 {
     if (source.isEmpty()) {
         m_component.reset(nullptr);
@@ -197,15 +197,15 @@ void SpectacleWindow::setSource(const QUrl &source, const QVariantMap &initialPr
         return;
     }
 
-    m_component.reset(new QQmlComponent(engine(), source, this));
+    m_component.reset(new QQmlComponent(engine(), source, compilationMode, this));
     auto *component = m_component.get();
     QObject *object = nullptr;
 
     if (component->isLoading()) {
         connect(component, &QQmlComponent::statusChanged, this, [this, component, source, initialProperties](auto status) {
-            disconnect(component, &QQmlComponent::statusChanged, this, nullptr);
             QObject *object = nullptr;
-            if (component->isReady()) {
+            if (status == QQmlComponent::Ready) {
+                disconnect(component, &QQmlComponent::statusChanged, this, nullptr);
                 if (!initialProperties.isEmpty()) {
                     object = component->createWithInitialProperties(initialProperties,
                                                                     m_context.get());
