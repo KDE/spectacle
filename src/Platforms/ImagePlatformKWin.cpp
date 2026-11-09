@@ -69,7 +69,7 @@ QImage combinedImage(const QList<QImage> &images)
         return {};
     }
     if (images.size() == 1) {
-        return images.constFirst();
+        return std::move(images.front());
     }
     QRectF imageRect;
     qreal maxDpr = 0;
@@ -467,7 +467,7 @@ void ImagePlatformKWin::doGrab(ShutterMode, GrabMode grabMode, bool includePoint
 
 void ImagePlatformKWin::trackSource(ScreenShotSource2 *source)
 {
-    connect(source, &ScreenShotSource2::finished, this, [this, source](const ScreenShotSource2::Result &result) {
+    connect(source, &ScreenShotSource2::finished, this, [this, source](ScreenShotSource2::Result result) {
         source->deleteLater();
         if (!result.has_value()) {
             Q_EMIT newScreenshotFailed(result.error());
@@ -477,27 +477,27 @@ void ImagePlatformKWin::trackSource(ScreenShotSource2 *source)
             Q_EMIT newScreenshotCanceled();
             return;
         }
-        Q_EMIT newScreenshotTaken(result.value());
+        Q_EMIT newScreenshotTaken(std::move(result.value()));
     });
 }
 
 template<typename OutputSignal>
 void ImagePlatformKWin::trackSource(ScreenShotSourceMeta2 *source, OutputSignal outputSignal)
 {
-    connect(source, &ScreenShotSourceMeta2::finished, this, [this, source, outputSignal](const QList<ScreenShotSource2::Result> &results) {
+    connect(source, &ScreenShotSourceMeta2::finished, this, [this, source, outputSignal](QList<ScreenShotSource2::Result> results) {
         source->deleteLater();
         QList<QImage> images;
         QString errorString;
-        for (const auto &result : results) {
+        for (auto &result : results) {
             if (result.has_value() && !result.value().isNull()) {
-                images.emplace_back(result.value());
+                images.emplace_back(std::move(result.value()));
             } else {
                 errorString.append(result.error() % u'\n');
             }
         }
 
         if (!images.empty()) {
-            Q_EMIT (this->*outputSignal)(combinedImage(images));
+            Q_EMIT (this->*outputSignal)(combinedImage(std::move(images)));
         }
         if (!errorString.isEmpty()) {
             Q_EMIT newScreenshotFailed(errorString);

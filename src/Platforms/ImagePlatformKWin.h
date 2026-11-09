@@ -86,7 +86,7 @@ public:
     explicit ScreenShotSource2(const QString &methodName, ArgType... arguments);
 
 Q_SIGNALS:
-    void finished(const Result &result);
+    void finished(Result result);
 
 private:
     QDBusUnixFileDescriptor m_pipeFileDescriptor;
@@ -165,7 +165,7 @@ public:
     explicit ScreenShotSourceMeta2(const QList<ScreenShotSource2 *> &sources);
 
 Q_SIGNALS:
-    void finished(const QList<ScreenShotSource2::Result> &results);
+    void finished(QList<ScreenShotSource2::Result> results);
 
 private:
     QList<ScreenShotSource2::Result> m_results;
