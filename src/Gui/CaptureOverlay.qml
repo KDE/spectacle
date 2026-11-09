@@ -84,23 +84,31 @@ MouseArea {
 
     component Overlay: Rectangle {
         color: Settings.useLightMaskColor ? "white" : "black"
-        opacity: if (SpectacleCore.videoPlatform.isRecording
-            || (annotationsLoader.visible
-                && SelectionEditor.selection.empty
-                && root.document && (!root.document.tool.isNoTool
-                                     || root.document.undoStackDepth > 0))) {
-            return 0
-        } else if (SelectionEditor.selection.empty) {
-            return 0.25
-        } else {
-            return 0.5
-        }
+        opacity: 0
+        visible: opacity > 0
         LayoutMirroring.enabled: false
         Behavior on opacity {
             NumberAnimation {
                 duration: Kirigami.Units.longDuration
                 easing.type: Easing.OutCubic
             }
+        }
+
+        Component.onCompleted: {
+            // This is not a direct binding so we get an initial animation.
+            opacity = Qt.binding(() => {
+                if (SpectacleCore.videoPlatform.isRecording
+                    || (annotationsLoader.visible
+                        && SelectionEditor.selection.empty
+                        && root.document && (!root.document.tool.isNoTool
+                                             || root.document.undoStackDepth > 0))) {
+                    return 0
+                } else if (SelectionEditor.selection.empty) {
+                    return 0.25
+                } else {
+                    return 0.5
+                }
+            })
         }
     }
     Overlay { // top / full overlay when nothing selected
