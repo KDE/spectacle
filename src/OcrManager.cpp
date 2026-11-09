@@ -1,5 +1,6 @@
 /*
  *  SPDX-FileCopyrightText: 2025 Jhair Paris <dev@jhairparis.com>
+ *  SPDX-FileCopyrightText: 2026 Kai Uwe Broulik <kde@broulik.de>
  *
  *  SPDX-License-Identifier: LGPL-2.0-or-later
  */
@@ -9,12 +10,11 @@
 #include "spectacle_debug.h"
 
 #include <QApplication>
-#include <QBuffer>
 #include <QClipboard>
 #include <QDir>
 #include <QFile>
 #include <QLocale>
-#include <QMutexLocker>
+#include <QMetaObject>
 #include <QStandardPaths>
 #include <QStringList>
 #include <QThread>
@@ -22,7 +22,6 @@
 #include <KLocalizedString>
 
 #include <algorithm>
-#include <memory>
 
 using namespace Qt::StringLiterals;
 
@@ -30,63 +29,55 @@ OcrManager *OcrManager::s_instance = nullptr;
 
 OcrManager::OcrManager(QObject *parent)
     : QObject(parent)
-    , m_tesseract(nullptr)
-    , m_worker(nullptr)
     , m_workerThread(std::make_unique<QThread>())
     , m_timeoutTimer(new QTimer(this))
-    , m_status(OcrStatus::Ready)
-    , m_currentLanguageCode() // Current language code ("eng+spa")
-    , m_configuredLanguages() // Languages from Settings (persistent)
-    , m_activeLanguages()
-    , m_shouldRestoreToConfigured(false) // Flag to restore after temp language use
-    , m_initialized(false)
 {
+    m_workerThread->setObjectName(u"OcrThread"_s);
+
     m_timeoutTimer->setSingleShot(true);
     m_timeoutTimer->setInterval(30000);
 
     connect(m_timeoutTimer, &QTimer::timeout, this, [this]() {
         qCWarning(SPECTACLE_LOG) << "OCR recognition timed out";
         setStatus(OcrStatus::Error);
+        Q_EMIT textRecognized({}, {}, false);
     });
 
     m_worker = new OcrWorker();
     m_worker->moveToThread(m_workerThread.get());
+
+    connect(m_worker, &OcrWorker::initFinished, this, &OcrManager::handleInitializationComplete);
+    connect(m_worker, &OcrWorker::languagesChanged, this, &OcrManager::handleLanguagesChanged);
     connect(m_worker, &OcrWorker::imageProcessed, this, &OcrManager::handleRecognitionComplete);
+
     m_workerThread->start();
 
     connect(Settings::self(), &Settings::ocrLanguagesChanged, this, [this]() {
         if (m_configSyncSuspended) {
             return;
         }
-        const QStringList newLanguages = Settings::ocrLanguages();
-        const QString combinedLanguages = newLanguages.join(u"+"_s);
-        if (combinedLanguages != m_currentLanguageCode) {
-            setLanguagesByCode(newLanguages);
+
+        const QStringList languages = Settings::ocrLanguages();
+
+        if (languages != m_configuredLanguages) {
+            setLanguagesByCode(languages);
         }
     });
 
-    QTimer::singleShot(0, this, &OcrManager::initializeTesseract);
+    QMetaObject::invokeMethod(m_worker, &OcrWorker::init, Qt::QueuedConnection, Settings::ocrLanguages());
 }
 
 OcrManager::~OcrManager()
 {
-    if (m_workerThread && m_workerThread->isRunning()) {
-        m_workerThread->quit();
-        if (!m_workerThread->wait(3000)) {
-            qCWarning(SPECTACLE_LOG) << "Worker thread did not stop in time, terminating";
-            m_workerThread->terminate();
-            m_workerThread->wait();
-        }
+    m_workerThread->quit();
+    if (!m_workerThread->wait(3000)) {
+        qCWarning(SPECTACLE_LOG) << "Worker thread did not stop in time, terminating";
+        m_workerThread->terminate();
+        m_workerThread->wait();
     }
-    if (m_worker) {
-        delete m_worker;
-        m_worker = nullptr;
-    }
-    if (m_tesseract) {
-        m_tesseract->End();
-        delete m_tesseract;
-        m_tesseract = nullptr;
-    }
+
+    delete m_worker;
+    m_worker = nullptr;
 }
 
 OcrManager *OcrManager::instance()
@@ -97,9 +88,43 @@ OcrManager *OcrManager::instance()
     return s_instance;
 }
 
+void OcrManager::handleInitializationComplete(bool success, const QStringList &availableLanguages, const QStringList &activeLanguages)
+{
+    m_available = success;
+
+    for (const QString &language : availableLanguages) {
+        if (language == u"osd"_s) {
+            m_languageNames.insert(language, i18nc("@item:inlistbox", "Orientation and Script Detection"));
+        } else {
+            m_languageNames.insert(language, tesseractLangName(language));
+        }
+    }
+    m_activeLanguages = activeLanguages;
+    m_availableLanguages = availableLanguages;
+
+    if (!success) {
+        qCWarning(SPECTACLE_LOG) << "OCR worker initialization failed";
+        setStatus(OcrStatus::Error);
+        return;
+    }
+
+    m_configuredLanguages = m_activeLanguages;
+
+    // Persist fallback languages if the saved configuration
+    // could not be used during initialization.
+    if (Settings::ocrLanguages() != m_configuredLanguages) {
+        Settings::setOcrLanguages(m_configuredLanguages);
+        Settings::self()->save();
+    }
+
+    setStatus(OcrStatus::Ready);
+
+    qCDebug(SPECTACLE_LOG) << "OCR worker initialized with:" << m_activeLanguages;
+}
+
 bool OcrManager::isAvailable() const
 {
-    return m_initialized && m_tesseract != nullptr;
+    return m_available;
 }
 
 OcrManager::OcrStatus OcrManager::status() const
@@ -109,11 +134,12 @@ OcrManager::OcrStatus OcrManager::status() const
 
 QMap<QString, QString> OcrManager::availableLanguagesWithNames() const
 {
-    QMap<QString, QString> result;
-    for (const QString &langCode : m_availableLanguages) {
-        result[langCode] = m_languageNames.value(langCode, langCode);
-    }
-    return result;
+    return m_languageNames;
+}
+
+QString OcrManager::currentLanguageCode() const
+{
+    return m_activeLanguages.join(u"+"_s);
 }
 
 void OcrManager::setLanguagesByCode(const QStringList &languageCodes)
@@ -123,19 +149,35 @@ void OcrManager::setLanguagesByCode(const QStringList &languageCodes)
         return;
     }
 
-    if (validateAndApplyLanguages(languageCodes)) {
-        m_configuredLanguages = m_activeLanguages;
-        Settings::setOcrLanguages(m_activeLanguages);
-        Settings::self()->save();
-        qCDebug(SPECTACLE_LOG) << "OCR languages successfully changed to:" << m_currentLanguageCode;
-    } else {
-        qCWarning(SPECTACLE_LOG) << "Failed to set OCR languages";
+    if (!isAvailable()) {
+        qCWarning(SPECTACLE_LOG) << "Cannot change OCR languages: engine unavailable";
+        return;
     }
+
+    m_pendingConfiguredLanguages = languageCodes;
+    QMetaObject::invokeMethod(m_worker, &OcrWorker::setLanguages, Qt::QueuedConnection, languageCodes);
 }
 
-QString OcrManager::currentLanguageCode() const
+void OcrManager::handleLanguagesChanged(const QStringList &activeLanguages, bool success)
 {
-    return m_currentLanguageCode;
+    if (!success) {
+        qCWarning(SPECTACLE_LOG) << "Failed to change OCR languages";
+
+        m_pendingConfiguredLanguages.clear();
+        return;
+    }
+
+    m_activeLanguages = activeLanguages;
+
+    if (!m_pendingConfiguredLanguages.isEmpty()) {
+        m_configuredLanguages = activeLanguages;
+        m_pendingConfiguredLanguages.clear();
+
+        Settings::setOcrLanguages(m_configuredLanguages);
+        Settings::self()->save();
+
+        qCDebug(SPECTACLE_LOG) << "OCR languages changed to:" << currentLanguageCode();
+    }
 }
 
 void OcrManager::setConfigSyncSuspended(bool suspended)
@@ -180,16 +222,9 @@ void OcrManager::recognizeText(const QImage &image)
         return;
     }
 
-    // Ensure configured languages are active
-    if (m_configuredLanguages.isEmpty() || m_activeLanguages != m_configuredLanguages) {
-        if (!validateAndApplyLanguages(m_configuredLanguages)) {
-            qCWarning(SPECTACLE_LOG) << "Cannot start OCR: failed to activate configured languages";
-            Q_EMIT textRecognized(QString(), QStringList(), false);
-            return;
-        }
-    }
+    m_shouldRestoreToConfigured = false;
 
-    beginRecognition(image);
+    beginRecognition(image, m_configuredLanguages);
 }
 
 void OcrManager::recognizeTextWithLanguage(const QImage &image, const QString &languageCode)
@@ -218,21 +253,26 @@ void OcrManager::recognizeTextWithLanguage(const QImage &image, const QString &l
     }
 
     const QStringList tempLanguages{languageCode};
-    if (!validateAndApplyLanguages(tempLanguages)) {
-        qCWarning(SPECTACLE_LOG) << "Cannot start OCR with language" << languageCode << ": failed to activate language";
-        Q_EMIT textRecognized(QString(), QStringList(), false);
-        return;
-    }
 
     // Store that we need to restore after recognition
     m_shouldRestoreToConfigured = (m_activeLanguages != m_configuredLanguages);
 
-    beginRecognition(image);
+    beginRecognition(image, tempLanguages);
 }
 
-void OcrManager::handleRecognitionComplete(const QString &text, bool success)
+void OcrManager::beginRecognition(const QImage &image, const QStringList &languages)
+{
+    setStatus(OcrStatus::Processing);
+    m_timeoutTimer->start();
+
+    QMetaObject::invokeMethod(m_worker, &OcrWorker::processImage, Qt::QueuedConnection, image, languages);
+}
+
+void OcrManager::handleRecognitionComplete(const QString &text, const QStringList &activeLanguages, bool success)
 {
     m_timeoutTimer->stop();
+
+    m_activeLanguages = activeLanguages;
 
     if (success) {
         setStatus(OcrStatus::Ready);
@@ -251,212 +291,16 @@ void OcrManager::handleRecognitionComplete(const QString &text, bool success)
 
     // Restore configured languages if we used temporary ones
     if (m_shouldRestoreToConfigured && !m_configuredLanguages.isEmpty()) {
-        validateAndApplyLanguages(m_configuredLanguages);
+        const QStringList configuredLanguages = m_configuredLanguages;
+
+        QMetaObject::invokeMethod(
+            m_worker,
+            [worker = m_worker, configuredLanguages]() {
+                worker->setLanguages(configuredLanguages);
+            },
+            Qt::QueuedConnection);
+
         m_shouldRestoreToConfigured = false;
-    }
-}
-
-bool OcrManager::validateAndApplyLanguages(const QStringList &languageCodes)
-{
-    if (languageCodes.isEmpty()) {
-        qCWarning(SPECTACLE_LOG) << "No OCR languages provided";
-        return false;
-    }
-
-    QStringList validLanguages;
-    for (const QString &lang : languageCodes) {
-        if (lang == u"osd"_s) {
-            qCDebug(SPECTACLE_LOG) << "Skipping 'osd' language";
-            continue;
-        }
-
-        if (!isLanguageAvailable(lang)) {
-            qCWarning(SPECTACLE_LOG) << "OCR language not available:" << lang;
-            continue;
-        }
-
-        if (!validLanguages.contains(lang)) {
-            validLanguages.append(lang);
-        }
-    }
-
-    if (validLanguages.isEmpty()) {
-        qCWarning(SPECTACLE_LOG) << "No valid OCR languages after filtering";
-        return false;
-    }
-
-    if (validLanguages.size() > MAX_OCR_LANGUAGES) {
-        validLanguages = validLanguages.mid(0, MAX_OCR_LANGUAGES);
-        qCInfo(SPECTACLE_LOG) << "Limited to" << MAX_OCR_LANGUAGES << "languages:" << validLanguages;
-    }
-
-    const QString combinedLanguages = validLanguages.join(u"+"_s);
-
-    if (m_currentLanguageCode == combinedLanguages && !m_activeLanguages.isEmpty()) {
-        qCDebug(SPECTACLE_LOG) << "Languages already active, no change needed";
-        return true;
-    }
-
-    if (!setupTesseractLanguages(validLanguages)) {
-        qCWarning(SPECTACLE_LOG) << "Failed to apply OCR languages:" << combinedLanguages;
-        return false;
-    }
-
-    m_activeLanguages = validLanguages;
-    m_currentLanguageCode = combinedLanguages;
-
-    qCDebug(SPECTACLE_LOG) << "OCR languages applied:" << combinedLanguages;
-    return true;
-}
-
-void OcrManager::beginRecognition(const QImage &image)
-{
-    setStatus(OcrStatus::Processing);
-    m_timeoutTimer->start();
-
-    QMetaObject::invokeMethod(
-        m_worker,
-        [worker = m_worker, image, tesseract = m_tesseract]() {
-            worker->processImage(image, tesseract);
-        },
-        Qt::QueuedConnection);
-}
-
-void OcrManager::initializeTesseract()
-{
-    auto cleanupTesseract = [this]() {
-        if (m_tesseract) {
-            m_tesseract->End();
-            delete m_tesseract;
-            m_tesseract = nullptr;
-        }
-    };
-
-    try {
-        m_tesseract = new TessBaseAPI;
-
-        if (m_tesseract->Init(nullptr, nullptr) != 0) {
-            qCWarning(SPECTACLE_LOG) << "Failed to initialize Tesseract OCR engine";
-            setStatus(OcrStatus::Error);
-            cleanupTesseract();
-            return;
-        }
-
-        const char *datapath = m_tesseract->GetDatapath();
-        QString tessdataPath = datapath ? QString::fromUtf8(datapath) : QString();
-        if (tessdataPath.isEmpty()) {
-            qCWarning(SPECTACLE_LOG) << "Tesseract datapath is empty";
-            setStatus(OcrStatus::Error);
-            cleanupTesseract();
-            return;
-        }
-        qCDebug(SPECTACLE_LOG) << "Using tessdata path:" << tessdataPath;
-
-        setupAvailableLanguages(tessdataPath);
-
-        if (m_availableLanguages.isEmpty()) {
-            qCWarning(SPECTACLE_LOG) << "No language data files found in tessdata directory";
-            setStatus(OcrStatus::Error);
-            cleanupTesseract();
-            return;
-        }
-
-        m_tesseract->End();
-
-        QStringList configLanguages = Settings::ocrLanguages();
-        QStringList initLanguages;
-
-        // Use configured languages if valid, otherwise fallback to first available
-        for (const QString &lang : configLanguages) {
-            if (!lang.isEmpty() && m_availableLanguages.contains(lang) && lang != u"osd"_s) {
-                initLanguages.append(lang);
-            }
-        }
-
-        if (initLanguages.isEmpty()) {
-            auto it = std::find_if(m_availableLanguages.begin(), m_availableLanguages.end(), [](const QString &lang) {
-                return lang != u"osd"_s;
-            });
-
-            if (it != m_availableLanguages.end()) {
-                initLanguages.append(*it);
-            } else {
-                qCCritical(SPECTACLE_LOG) << "No fallback language available (only osd present)";
-                setStatus(OcrStatus::Error);
-                cleanupTesseract();
-                return;
-            }
-        }
-
-        const QString combinedInitLanguages = initLanguages.join(u"+"_s);
-        qCDebug(SPECTACLE_LOG) << "Initializing Tesseract with languages:" << combinedInitLanguages;
-
-        if (m_tesseract->Init(nullptr, combinedInitLanguages.toUtf8().constData()) != 0) {
-            qCWarning(SPECTACLE_LOG) << "Failed to initialize Tesseract with languages:" << combinedInitLanguages;
-            setStatus(OcrStatus::Error);
-            cleanupTesseract();
-            return;
-        }
-
-        m_currentLanguageCode = combinedInitLanguages;
-        m_tesseract->SetPageSegMode(tesseract::PSM_AUTO);
-
-        m_initialized = true;
-        setStatus(OcrStatus::Ready);
-        qCDebug(SPECTACLE_LOG) << "Tesseract OCR engine initialized successfully with languages:" << combinedInitLanguages;
-
-        loadSavedLanguageSetting();
-    } catch (const std::exception &e) {
-        qCWarning(SPECTACLE_LOG) << "Exception during Tesseract initialization:" << e.what();
-        setStatus(OcrStatus::Error);
-        cleanupTesseract();
-    }
-}
-
-void OcrManager::loadSavedLanguageSetting()
-{
-    if (!isAvailable()) {
-        qCDebug(SPECTACLE_LOG) << "OCR not available, skipping language loading";
-        return;
-    }
-
-    QStringList savedLanguages = Settings::ocrLanguages();
-    qCDebug(SPECTACLE_LOG) << "Loaded OCR languages setting from config:" << savedLanguages;
-    qCDebug(SPECTACLE_LOG) << "Current OCR language code:" << m_currentLanguageCode;
-    qCDebug(SPECTACLE_LOG) << "Available languages:" << m_availableLanguages;
-
-    QStringList validLanguages;
-    for (const QString &lang : savedLanguages) {
-        if (lang != u"osd"_s && isLanguageAvailable(lang)) {
-            validLanguages.append(lang);
-        }
-    }
-
-    if (validLanguages.isEmpty()) {
-        // Find first valid language as fallback
-        auto it = std::find_if(m_availableLanguages.begin(), m_availableLanguages.end(), [](const QString &lang) {
-            return lang != u"osd"_s;
-        });
-        if (it != m_availableLanguages.end()) {
-            validLanguages.append(*it);
-        } else {
-            qCWarning(SPECTACLE_LOG) << "No usable languages available (only osd present), cannot set default";
-            return;
-        }
-        qCDebug(SPECTACLE_LOG) << "No valid saved languages, using default:" << validLanguages;
-        Settings::setOcrLanguages(validLanguages);
-        Settings::self()->save();
-    }
-
-    m_configuredLanguages = validLanguages;
-
-    const QString combinedLanguages = validLanguages.join(u"+"_s);
-    if (combinedLanguages != m_currentLanguageCode) {
-        qCDebug(SPECTACLE_LOG) << "Loading OCR languages setting:" << validLanguages;
-        validateAndApplyLanguages(validLanguages);
-    } else {
-        qCDebug(SPECTACLE_LOG) << "OCR languages already set to:" << combinedLanguages;
-        m_activeLanguages = validLanguages;
     }
 }
 
@@ -468,122 +312,6 @@ void OcrManager::setStatus(OcrStatus status)
 
     m_status = status;
     Q_EMIT statusChanged(status);
-}
-
-bool OcrManager::isLanguageAvailable(const QString &languageCode) const
-{
-    return m_availableLanguages.contains(languageCode);
-}
-
-bool OcrManager::setupTesseractLanguages(const QStringList &langCodes)
-{
-    if (!m_tesseract || langCodes.isEmpty()) {
-        return false;
-    }
-
-    const char *datapath = m_tesseract->GetDatapath();
-    QString tessdataPath = datapath ? QString::fromUtf8(datapath) : QString();
-
-    if (tessdataPath.isEmpty()) {
-        qCWarning(SPECTACLE_LOG) << "Tessdata path not found";
-        return false;
-    }
-
-    for (const QString &langCode : langCodes) {
-        const QString langFile = QDir(tessdataPath).filePath(langCode + u".traineddata"_s);
-        if (!QFile::exists(langFile)) {
-            qCWarning(SPECTACLE_LOG) << "Language file not found:" << langFile;
-            return false;
-        }
-    }
-
-    try {
-        m_tesseract->End();
-
-        const QString combinedLangs = langCodes.join(u"+"_s);
-
-        if (m_tesseract->Init(nullptr, combinedLangs.toUtf8().constData()) != 0) {
-            // Fallback to first available language
-            QString fallbackLang;
-            if (!m_availableLanguages.isEmpty()) {
-                auto it = std::find_if(m_availableLanguages.begin(), m_availableLanguages.end(), [](const QString &lang) {
-                    return lang != u"osd"_s;
-                });
-                if (it != m_availableLanguages.end()) {
-                    fallbackLang = *it;
-                }
-            }
-
-            if (fallbackLang.isEmpty() || m_tesseract->Init(nullptr, fallbackLang.toUtf8().constData()) != 0) {
-                qCWarning(SPECTACLE_LOG) << "Failed to initialize Tesseract with languages:" << combinedLangs << "and fallback:" << fallbackLang;
-                return false;
-            }
-
-            m_activeLanguages = QStringList{fallbackLang};
-            m_currentLanguageCode = fallbackLang;
-        }
-
-        m_tesseract->SetPageSegMode(tesseract::PSM_AUTO);
-        return true;
-    } catch (const std::exception &e) {
-        qCWarning(SPECTACLE_LOG) << "Exception while setting up Tesseract languages:" << e.what();
-        return false;
-    }
-}
-
-void OcrManager::setupAvailableLanguages(const QString &tessdataPath)
-{
-    m_availableLanguages.clear();
-    m_languageNames.clear();
-
-    if (!m_tesseract) {
-        qCWarning(SPECTACLE_LOG) << "Cannot enumerate OCR languages: Tesseract not initialized";
-        return;
-    }
-
-    QStringList detectedLanguages;
-
-    std::vector<std::string> languages;
-    m_tesseract->GetAvailableLanguagesAsVector(&languages);
-    if (languages.empty()) {
-        qCWarning(SPECTACLE_LOG) << "Tesseract API returned no languages";
-        return;
-    }
-
-    detectedLanguages.reserve(languages.size());
-    for (const auto &entry : languages) {
-        const QString langCode = QString::fromUtf8(entry);
-        if (langCode.isEmpty()) {
-            continue;
-        }
-
-        if (!tessdataPath.isEmpty()) {
-            const QString trainedDataPath = QDir(tessdataPath).filePath(langCode + u".traineddata"_s);
-            if (!QFile::exists(trainedDataPath)) {
-                qCDebug(SPECTACLE_LOG) << "Skipping OCR language" << langCode << "- missing traineddata at" << trainedDataPath;
-                continue;
-            }
-        }
-
-        if (!detectedLanguages.contains(langCode)) {
-            detectedLanguages.append(langCode);
-        }
-    }
-
-    std::sort(detectedLanguages.begin(), detectedLanguages.end());
-    m_availableLanguages = detectedLanguages;
-
-    for (const QString &langCode : std::as_const(m_availableLanguages)) {
-        if (langCode == u"osd"_s) {
-            m_languageNames.insert(langCode, i18nc("@item:inlistbox", "Orientation and Script Detection"));
-            continue;
-        }
-
-        const QString displayName = tesseractLangName(langCode);
-        m_languageNames.insert(langCode, displayName);
-    }
-
-    qCDebug(SPECTACLE_LOG) << "Detected OCR languages:" << m_availableLanguages;
 }
 
 QString OcrManager::tesseractLangName(const QString &tesseractCode) const
@@ -647,27 +375,203 @@ OcrWorker::OcrWorker(QObject *parent)
 {
 }
 
-void OcrWorker::processImage(const QImage &image, TessBaseAPI *tesseract)
+OcrWorker::~OcrWorker()
 {
-    QMutexLocker locker(&m_mutex);
+    if (m_tesseract) {
+        m_tesseract->End();
+    }
+}
 
-    if (!tesseract || image.isNull()) {
-        Q_EMIT imageProcessed(QString(), false);
+void OcrWorker::init(const QStringList &configuredLanguages)
+{
+    auto cleanup = qScopeGuard([this] {
+        if (m_tesseract) {
+            m_tesseract->End();
+            m_tesseract.reset();
+        }
+        Q_EMIT initFinished(false, {}, {});
+    });
+
+    try {
+        m_tesseract = std::make_unique<tesseract::TessBaseAPI>();
+
+        if (m_tesseract->Init(nullptr, nullptr) != 0) {
+            qCWarning(SPECTACLE_LOG) << "Failed to initialize Tesseract";
+            m_tesseract.reset();
+        } else if (setupAvailableLanguages()) {
+            QStringList initialLanguages;
+
+            for (const QString &language : configuredLanguages) {
+                if (language != u"osd"_s && m_availableLanguages.contains(language) && !initialLanguages.contains(language)) {
+                    initialLanguages.append(language);
+                }
+            }
+
+            if (initialLanguages.isEmpty()) {
+                initialLanguages = fallbackLanguages();
+            }
+
+            if (initialLanguages.isEmpty()) {
+                qCWarning(SPECTACLE_LOG) << "No initial languages";
+                return;
+            }
+
+            if (!applyLanguages(initialLanguages)) {
+                qCWarning(SPECTACLE_LOG) << "Failed to initialize Tesseract with available languages";
+                return;
+            }
+        }
+
+        cleanup.dismiss();
+        Q_EMIT initFinished(true, m_availableLanguages, m_activeLanguages);
+    } catch (const std::exception &e) {
+        qCWarning(SPECTACLE_LOG) << "Exception during Tesseract initialization:" << e.what();
+    }
+}
+
+bool OcrWorker::setupAvailableLanguages()
+{
+    m_availableLanguages.clear();
+
+    if (!m_tesseract) {
+        return false;
+    }
+
+    std::vector<std::string> languages;
+    m_tesseract->GetAvailableLanguagesAsVector(&languages);
+
+    for (const auto &language : languages) {
+        const QString code = QString::fromUtf8(language);
+
+        if (!code.isEmpty() && !m_availableLanguages.contains(code)) {
+            m_availableLanguages.append(code);
+        }
+    }
+
+    std::sort(m_availableLanguages.begin(), m_availableLanguages.end());
+
+    qCDebug(SPECTACLE_LOG) << "Detected OCR languages:" << m_availableLanguages;
+
+    return !m_availableLanguages.isEmpty();
+}
+
+QStringList OcrWorker::fallbackLanguages() const
+{
+    const auto it = std::find_if(m_availableLanguages.cbegin(), m_availableLanguages.cend(), [](const QString &language) {
+        return language != u"osd"_s;
+    });
+
+    if (it == m_availableLanguages.cend()) {
+        return {};
+    }
+
+    return {*it};
+}
+
+bool OcrWorker::applyLanguages(const QStringList &languages)
+{
+    if (!m_tesseract || languages.isEmpty()) {
+        return false;
+    }
+
+    QStringList validLanguages;
+
+    for (const QString &language : languages) {
+        if (language == u"osd"_s) {
+            continue;
+        }
+
+        if (!m_availableLanguages.contains(language)) {
+            qCWarning(SPECTACLE_LOG) << "OCR language not available:" << language;
+            continue;
+        }
+
+        if (!validLanguages.contains(language)) {
+            validLanguages.append(language);
+        }
+    }
+
+    if (validLanguages.size() > OcrManager::MAX_OCR_LANGUAGES) {
+        validLanguages = validLanguages.mid(0, OcrManager::MAX_OCR_LANGUAGES);
+    }
+
+    if (validLanguages.isEmpty()) {
+        return false;
+    }
+
+    if (validLanguages == m_activeLanguages) {
+        return true;
+    }
+
+    // Verify all requested traineddata files exist.
+    const char *datapath = m_tesseract->GetDatapath();
+    const QString tessdataPath = datapath ? QString::fromUtf8(datapath) : QString();
+
+    if (tessdataPath.isEmpty()) {
+        qCWarning(SPECTACLE_LOG) << "Tessdata path is empty";
+        return false;
+    }
+
+    QDir tessdataDir{tessdataPath};
+    for (const QString &language : std::as_const(validLanguages)) {
+        const QString path = tessdataDir.filePath(language + u".traineddata"_s);
+
+        if (!QFile::exists(path)) {
+            qCWarning(SPECTACLE_LOG) << "Language file not found:" << path;
+            return false;
+        }
+    }
+
+    m_tesseract->End();
+
+    const QByteArray languageData = validLanguages.join(u"+"_s).toUtf8();
+
+    if (m_tesseract->Init(nullptr, languageData.constData()) != 0) {
+        qCWarning(SPECTACLE_LOG) << "Failed to initialize Tesseract with:" << validLanguages;
+
+        m_activeLanguages.clear();
+        return false;
+    }
+
+    m_tesseract->SetPageSegMode(tesseract::PSM_AUTO);
+    m_activeLanguages = validLanguages;
+
+    qCDebug(SPECTACLE_LOG) << "Applied OCR languages:" << m_activeLanguages;
+
+    return true;
+}
+
+void OcrWorker::setLanguages(const QStringList &languages)
+{
+    const bool success = applyLanguages(languages);
+
+    Q_EMIT languagesChanged(m_activeLanguages, success);
+}
+
+void OcrWorker::processImage(const QImage &image, const QStringList &languages)
+{
+    if (!m_tesseract || image.isNull()) {
+        Q_EMIT imageProcessed({}, m_activeLanguages, false);
         return;
     }
 
     try {
+        if (!applyLanguages(languages)) {
+            Q_EMIT imageProcessed({}, m_activeLanguages, false);
+            return;
+        }
+
         QImage rgbImage = image.convertToFormat(QImage::Format_RGB888);
 
-        tesseract->SetImage(rgbImage.bits(), rgbImage.width(), rgbImage.height(), 3, rgbImage.bytesPerLine());
+        m_tesseract->SetImage(rgbImage.bits(), rgbImage.width(), rgbImage.height(), 3, rgbImage.bytesPerLine());
 
-        if (tesseract->Recognize(nullptr) != 0) {
-            Q_EMIT imageProcessed(QString(), false);
+        if (m_tesseract->Recognize(nullptr) != 0) {
+            Q_EMIT imageProcessed({}, m_activeLanguages, false);
             return;
         }
 
         QStringList lines;
-        TessResultIterator *iterator = tesseract->GetIterator();
+        TessResultIterator *iterator = m_tesseract->GetIterator();
 
         if (iterator) {
             do {
@@ -684,10 +588,10 @@ void OcrWorker::processImage(const QImage &image, TessBaseAPI *tesseract)
         }
 
         const QString result = lines.join(QLatin1Char('\n')).trimmed();
-        Q_EMIT imageProcessed(result, true);
+        Q_EMIT imageProcessed(result, m_activeLanguages, true);
     } catch (const std::exception &e) {
         qCWarning(SPECTACLE_LOG) << "Exception in OCR worker:" << e.what();
-        Q_EMIT imageProcessed(QString(), false);
+        Q_EMIT imageProcessed({}, m_activeLanguages, false);
     }
 }
 

@@ -1,5 +1,6 @@
 /*
  *  SPDX-FileCopyrightText: 2025 Jhair Paris <dev@jhairparis.com>
+ *  SPDX-FileCopyrightText: 2026 Kai Uwe Broulik <kde@broulik.de>
  *
  *  SPDX-License-Identifier: LGPL-2.0-or-later
  */
@@ -10,7 +11,6 @@
 
 #include <QImage>
 #include <QMap>
-#include <QMutex>
 #include <QObject>
 #include <QString>
 #include <QThread>
@@ -29,15 +29,30 @@ class OcrWorker : public QObject
 
 public:
     explicit OcrWorker(QObject *parent = nullptr);
+    ~OcrWorker() override;
 
 public Q_SLOTS:
-    void processImage(const QImage &image, TessBaseAPI *tesseract);
+    void init(const QStringList &configuredLanguages);
+    void setLanguages(const QStringList &languages);
+    void processImage(const QImage &image, const QStringList &languages);
 
 Q_SIGNALS:
-    void imageProcessed(const QString &text, bool success);
+    void initFinished(bool success, const QStringList &availableLanguages, const QStringList &activeLanguages);
+
+    void languagesChanged(const QStringList &activeLanguages, bool success);
+
+    void imageProcessed(const QString &text, const QStringList &activeLanguages, bool success);
 
 private:
-    QMutex m_mutex;
+    bool applyLanguages(const QStringList &languages);
+    bool setupAvailableLanguages();
+
+    QStringList fallbackLanguages() const;
+
+    std::unique_ptr<tesseract::TessBaseAPI> m_tesseract;
+
+    QStringList m_availableLanguages;
+    QStringList m_activeLanguages;
 };
 
 /**
@@ -131,41 +146,35 @@ Q_SIGNALS:
     void statusChanged(OcrStatus status);
 
 private Q_SLOTS:
-    void handleRecognitionComplete(const QString &text, bool success);
+    void handleInitializationComplete(bool success, const QStringList &availableLanguages, const QStringList &activeLanguages);
+
+    void handleLanguagesChanged(const QStringList &activeLanguages, bool success);
+
+    void handleRecognitionComplete(const QString &text, const QStringList &activeLanguages, bool success);
 
 private:
-    void initializeTesseract();
     void setStatus(OcrStatus status);
-    bool setupTesseractLanguages(const QStringList &langCodes);
-    void setupAvailableLanguages(const QString &tessdataPath);
-    void loadSavedLanguageSetting();
-    bool isLanguageAvailable(const QString &languageCode) const;
-    QString tesseractLangName(const QString &tesseractCode) const;
+    void beginRecognition(const QImage &image, const QStringList &languages);
 
-    /**
-     * @brief Validate, filter, and apply languages to Tesseract
-     * @param languageCodes Languages to validate and apply
-     * @return true if languages were successfully applied
-     */
-    bool validateAndApplyLanguages(const QStringList &languageCodes);
-    void beginRecognition(const QImage &image);
+    QString tesseractLangName(const QString &tesseractCode) const;
 
     static OcrManager *s_instance;
 
-    TessBaseAPI *m_tesseract;
-    OcrWorker *m_worker;
+    OcrWorker *m_worker = nullptr;
     std::unique_ptr<QThread> m_workerThread;
     QTimer *m_timeoutTimer;
 
-    OcrStatus m_status;
-    QString m_currentLanguageCode;
+    OcrStatus m_status = OcrStatus::Ready;
+
     QStringList m_configuredLanguages;
     QStringList m_activeLanguages;
-    bool m_shouldRestoreToConfigured;
     QStringList m_availableLanguages;
-    QMap<QString, QString> m_languageNames;
-    bool m_configSyncSuspended = false;
-    bool m_initialized;
 
-private:
+    QMap<QString, QString> m_languageNames;
+
+    QStringList m_pendingConfiguredLanguages;
+
+    bool m_available = false;
+    bool m_configSyncSuspended = false;
+    bool m_shouldRestoreToConfigured = false;
 };
