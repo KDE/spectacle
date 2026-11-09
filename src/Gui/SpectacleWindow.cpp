@@ -202,8 +202,7 @@ void SpectacleWindow::setSource(const QUrl &source, const QVariantMap &initialPr
     QObject *object = nullptr;
 
     if (component->isLoading()) {
-        connect(component, &QQmlComponent::statusChanged,
-                this, [this, component, &source, &initialProperties]() {
+        connect(component, &QQmlComponent::statusChanged, this, [this, component, source, initialProperties](auto status) {
             disconnect(component, &QQmlComponent::statusChanged, this, nullptr);
             QObject *object = nullptr;
             if (component->isReady()) {
@@ -222,9 +221,9 @@ void SpectacleWindow::setSource(const QUrl &source, const QVariantMap &initialPr
         } else {
             object = component->create(m_context.get());
         }
+        setContent(source, component, object);
     }
 
-    setContent(source, component, object);
 }
 
 void SpectacleWindow::save()
