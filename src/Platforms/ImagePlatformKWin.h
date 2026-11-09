@@ -13,28 +13,12 @@
 #include <QDBusUnixFileDescriptor>
 class QScreen;
 
+#include <expected>
 #include <memory>
 
 class ScreenShotSource2;
 class ScreenShotSourceMeta2;
 class ScreenShotSourceWorkspace2;
-
-// Needed for ResultVariant to compile with Qt meta object stuff.
-inline bool operator<(const QImage &lhs, const QImage &rhs) {
-    return lhs.cacheKey() < rhs.cacheKey();
-}
-
-struct ResultVariant : public std::variant<std::monostate, QImage, QString> {
-    enum Type : std::size_t {
-        CanceledState,
-        Image,
-        ErrorString,
-        NPos = std::variant_npos,
-    };
-    static ResultVariant canceled() {
-        return {std::monostate{}};
-    };
-};
 
 /**
  * The PlatformKWin class uses the org.kde.KWin.ScreenShot2 dbus interface
@@ -97,11 +81,12 @@ class ScreenShotSource2 : public QObject
     Q_OBJECT
 
 public:
+    using Result = std::expected<QImage, QString>;
     template<typename... ArgType>
     explicit ScreenShotSource2(const QString &methodName, ArgType... arguments);
 
 Q_SIGNALS:
-    void finished(const ResultVariant &result);
+    void finished(const Result &result);
 
 private:
     QDBusUnixFileDescriptor m_pipeFileDescriptor;
@@ -180,10 +165,10 @@ public:
     explicit ScreenShotSourceMeta2(const QList<ScreenShotSource2 *> &sources);
 
 Q_SIGNALS:
-    void finished(const QList<ResultVariant> &results);
+    void finished(const QList<ScreenShotSource2::Result> &results);
 
 private:
-    QList<ResultVariant> m_results;
+    QList<ScreenShotSource2::Result> m_results;
 };
 
 /**
