@@ -56,7 +56,7 @@ ExportMenu::ExportMenu(QWidget *parent)
 #endif
 
     addSeparator();
-    getKServiceItems();
+    connect(this, &QMenu::aboutToShow, this, &ExportMenu::getKServiceItems, Qt::SingleShotConnection);
 }
 
 ExportMenu::~ExportMenu()
