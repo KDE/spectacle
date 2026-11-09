@@ -124,7 +124,7 @@ QImage combinedImage(const QList<QImage> &images)
     return finalImage;
 }
 
-static ResultVariant allocateImage(const QVariantMap &metadata)
+static ScreenShotSource2::Result allocateImage(const QVariantMap &metadata)
 {
     QString errors;
 
@@ -157,29 +157,29 @@ static ResultVariant allocateImage(const QVariantMap &metadata)
     }
 
     if (!errors.isEmpty()) {
-        return ResultVariant{errors};
+        return std::unexpected(errors);
     }
 
     QImage image{width, height, static_cast<QImage::Format>(format)};
     // KWin screenshots in sRGB for now, Qt needlessly detaches the image when
     // setting the color space later, QTBUG-152033.
     image.setColorSpace(QColorSpace::SRgb);
-    return ResultVariant{image};
+    return image;
 }
 
-static ResultVariant readImage(int fileDescriptor, const QVariantMap &metadata)
+static ScreenShotSource2::Result readImage(int fileDescriptor, const QVariantMap &metadata)
 {
     QFile file;
     if (!file.open(fileDescriptor, QFileDevice::ReadOnly, QFileDevice::AutoCloseHandle)) {
         close(fileDescriptor);
-        return {i18nc("@info", "Could not open file descriptor for reading KWin screenshot.")};
+        return std::unexpected(i18nc("@info", "Could not open file descriptor for reading KWin screenshot."));
     }
 
-    ResultVariant result = allocateImage(metadata);
-    if (result.index() != ResultVariant::Image) {
+    auto result = allocateImage(metadata);
+    if (!result.has_value()) {
         return result;
     }
-    QImage &resultImage = std::get<ResultVariant::Image>(result);
+    QImage &resultImage = result.value();
 
     bool ok = false;
     qreal scale = metadata.value(u"scale"_s).toReal(&ok);
@@ -241,8 +241,9 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
     int pipeFds[2]{-1, -1};
     if (pipe2(pipeFds, O_CLOEXEC) == -1) {
         const auto errnum = errno;
-        QTimer::singleShot(0, this, [this, errnum]{
-            Q_EMIT finished({i18nc("@info, %1 is an error code", "pipe2() failed for KWin screenshot: %1", QString::fromLocal8Bit(strerror(errnum)))});
+        QTimer::singleShot(0, this, [this, errnum] {
+            Q_EMIT finished(
+                std::unexpected(i18nc("@info, %1 is an error code", "pipe2() failed for KWin screenshot: %1", QString::fromLocal8Bit(strerror(errnum)))));
         });
         return;
     }
@@ -296,25 +297,25 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
         if (reply.isError()) {
             if (reply.error().name() == u"org.kde.KWin.ScreenShot2.Error.Cancelled"_s) {
                 // don't show error on user cancellation
-                Q_EMIT finished(ResultVariant::canceled());
+                Q_EMIT finished(QImage{});
             } else {
                 auto error = i18nc("@info, %1 is an error message", "KWin screenshot request failed:\n%1", reply.error().message());
                 if (!relevantInfo.isEmpty()) {
                     error = error % u"\n"_s % i18nc("@info", "Potentially relevant information:\n%1", relevantInfo);
                 }
-                Q_EMIT finished({error});
+                Q_EMIT finished(std::unexpected(error));
             }
         } else {
             const QVariantMap &metadata = reply;
             const QString type = metadata.value(u"type"_s).toString();
             if (type != "raw"_L1) {
                 const QString errorString = i18nc("@info", "Unsupported KWin screenshot type metadata: %1", type);
-                Q_EMIT finished({errorString});
+                Q_EMIT finished(std::unexpected(errorString));
                 return;
             }
 
-            QFuture<ResultVariant> future = QtConcurrent::run(readImage, m_pipeFileDescriptor.takeFileDescriptor(), metadata);
-            future.then([this](const ResultVariant &result) {
+            QFuture<Result> future = QtConcurrent::run(readImage, m_pipeFileDescriptor.takeFileDescriptor(), metadata);
+            future.then([this](const Result &result) {
                 Q_EMIT finished(result);
             });
         }
@@ -365,7 +366,7 @@ ScreenShotSourceMeta2::ScreenShotSourceMeta2(const QVector<ScreenShotSource2 *> 
     m_results.reserve(size); // reserves memory but does not change size
     for (ScreenShotSource2 *source : sources) {
         source->setParent(this);
-        connect(source, &ScreenShotSource2::finished, this, [this, size](const ResultVariant &result) {
+        connect(source, &ScreenShotSource2::finished, this, [this, size](const ScreenShotSource2::Result &result) {
             m_results.emplaceBack(result);
             if (m_results.size() == size) {
                 Q_EMIT finished(m_results);
@@ -466,32 +467,32 @@ void ImagePlatformKWin::doGrab(ShutterMode, GrabMode grabMode, bool includePoint
 
 void ImagePlatformKWin::trackSource(ScreenShotSource2 *source)
 {
-    connect(source, &ScreenShotSource2::finished, this, [this, source](const ResultVariant &result) {
+    connect(source, &ScreenShotSource2::finished, this, [this, source](const ScreenShotSource2::Result &result) {
         source->deleteLater();
-        const auto index = result.index();
-        if (index == ResultVariant::Image) {
-            Q_EMIT newScreenshotTaken(std::get<ResultVariant::Image>(result));
-        } else if (index == ResultVariant::ErrorString) {
-            Q_EMIT newScreenshotFailed(std::get<ResultVariant::ErrorString>(result));
-        } else if (index == ResultVariant::CanceledState) {
-            Q_EMIT newScreenshotCanceled();
+        if (!result.has_value()) {
+            Q_EMIT newScreenshotFailed(result.error());
+            return;
         }
+        if (result.value().isNull()) {
+            Q_EMIT newScreenshotCanceled();
+            return;
+        }
+        Q_EMIT newScreenshotTaken(result.value());
     });
 }
 
 template<typename OutputSignal>
 void ImagePlatformKWin::trackSource(ScreenShotSourceMeta2 *source, OutputSignal outputSignal)
 {
-    connect(source, &ScreenShotSourceMeta2::finished, this, [this, source, outputSignal](const QList<ResultVariant> &results) {
+    connect(source, &ScreenShotSourceMeta2::finished, this, [this, source, outputSignal](const QList<ScreenShotSource2::Result> &results) {
         source->deleteLater();
         QList<QImage> images;
         QString errorString;
         for (const auto &result : results) {
-            const auto index = result.index();
-            if (index == ResultVariant::Image) {
-                images.push_back(std::get<ResultVariant::Image>(result));
-            } else if (index == ResultVariant::ErrorString) {
-                errorString.append(std::get<ResultVariant::ErrorString>(result) + u"\n"_s);
+            if (result.has_value() && !result.value().isNull()) {
+                images.emplace_back(result.value());
+            } else {
+                errorString.append(result.error() % u'\n');
             }
         }
 
