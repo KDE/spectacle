@@ -19,9 +19,6 @@
 #include "Gui/InlineMessageModel.h"
 #include "ImageMetaData.h"
 #include "OcrManager.h"
-#if WITH_X11
-#include "Platforms/ImagePlatformXcb.h"
-#endif
 #include "Platforms/PlatformLoader.h"
 #include "RecordingModeModel.h"
 #include "ShortcutActions.h"
@@ -37,9 +34,6 @@
 #include <KNotification>
 #include <KStatusNotifierItem>
 #include <KWindowSystem>
-#if WITH_X11
-#include <KX11Extras>
-#endif
 #include <LayerShellQt/Shell>
 #include <LayerShellQt/Window>
 
@@ -1186,22 +1180,6 @@ void SpectacleCore::takeNewScreenshot(ImagePlatform::GrabMode grabMode, int time
 
     timeout = qMax(0, timeout);
     const bool noDelay = timeout == 0;
-#if WITH_X11
-    if (PlasmaVersion::get() < PlasmaVersion::check(5, 27, 4) && KX11Extras::compositingActive()) {
-        // when compositing is enabled, we need to give it enough time for the window
-        // to disappear and all the effects are complete before we take the shot. there's
-        // no way of knowing how long the disappearing effects take, but as per default
-        // settings (and unless the user has set an extremely slow effect), 200
-        // milliseconds is a good amount of wait time.
-        timeout = qMax(timeout, 200);
-    } else if (qobject_cast<ImagePlatformXcb *>(m_imagePlatform.get())) {
-        // X11 compositors (which may or may not be kwin) require small delay for
-        // window to disappear.
-        // Also, minimum 50ms delay is needed to prevent segfaults from xcb function
-        // calls that don't get replies fast enough.
-        timeout = qMax(timeout, 50);
-    }
-#endif
 
     if (noDelay) {
         SpectacleWindow::setVisibilityForAll(QWindow::Hidden);

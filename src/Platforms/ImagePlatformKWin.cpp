@@ -184,13 +184,6 @@ static ResultVariant readImage(int fileDescriptor, const QVariantMap &metadata)
     bool ok = false;
     qreal scale = metadata.value(u"scale"_s).toReal(&ok);
     if (ok) {
-#if WITH_X11
-        // NOTE: KWin X11Output DPR is always 1. This is intentional.
-        // https://bugs.kde.org/show_bug.cgi?id=474778
-        if (KWindowSystem::isPlatformX11() && scale == 1) {
-            scale = qGuiApp->devicePixelRatio();
-        }
-#endif
         resultImage.setDevicePixelRatio(scale);
     }
 

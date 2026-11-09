@@ -5,17 +5,11 @@
  */
 
 #include "PlatformLoader.h"
-#include "Config.h"
-#include "PlasmaVersion.h"
 #include "ScreenShotEffect.h"
 
 #include "ImagePlatformKWin.h"
 #include "PlatformNull.h"
 #include "VideoPlatformWayland.h"
-
-#if WITH_X11
-#include "ImagePlatformXcb.h"
-#endif
 
 #include <KLocalizedString>
 #include <KWindowSystem>
@@ -32,10 +26,6 @@ ImagePlatformPtr getForcedImagePlatform()
 
     if (platformName == ImagePlatformKWin::staticMetaObject.className()) {
         return std::make_unique<ImagePlatformKWin>();
-#if WITH_X11
-    } else if (platformName == ImagePlatformXcb::staticMetaObject.className()) {
-        return std::make_unique<ImagePlatformXcb>();
-#endif
     } else if (platformName == ImagePlatformNull::staticMetaObject.className()) {
         return std::make_unique<ImagePlatformNull>();
     } else if (!platformName.isEmpty()) {
@@ -50,23 +40,10 @@ ImagePlatformPtr loadImagePlatform()
     if (auto platform = getForcedImagePlatform()) {
         return platform;
     }
-#if WITH_X11
-    // Check XDG_SESSION_TYPE because Spectacle might be using the XCB platform via XWayland
-    const bool isReallyX11 = KWindowSystem::isPlatformX11() && qstrcmp(qgetenv("XDG_SESSION_TYPE").constData(), "wayland") != 0;
-#else
-    const bool isReallyX11 = false;
-#endif
-    // Before KWin 5.27.8, there was an infinite loop in KWin on X11 when doing rectangle captures.
     // Spectacle uses CaptureScreen DBus calls to KWin for rectangle captures.
-    if (ScreenShotEffect::isLoaded() && ScreenShotEffect::version() != ScreenShotEffect::NullVersion
-        && (!isReallyX11 || PlasmaVersion::get() >= PlasmaVersion::check(5, 27, 8))) {
+    if (ScreenShotEffect::isLoaded() && ScreenShotEffect::version() != ScreenShotEffect::NullVersion) {
         return std::make_unique<ImagePlatformKWin>();
     }
-#if WITH_X11
-    else if (isReallyX11) {
-        return std::make_unique<ImagePlatformXcb>();
-    }
-#endif
     // If nothing else worked, return the null platform
     return std::make_unique<ImagePlatformNull>();
 }
@@ -98,10 +75,5 @@ VideoPlatformPtr loadVideoPlatform()
     if (KWindowSystem::isPlatformWayland()) {
         return std::make_unique<VideoPlatformWayland>();
     }
-#if WITH_X11
-    if (KWindowSystem::isPlatformX11()) {
-        return std::make_unique<VideoPlatformNull>(i18nc("@info", "Screen recording is not available on X11."));
-    }
-#endif
     return std::make_unique<VideoPlatformNull>();
 }

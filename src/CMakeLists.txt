@@ -64,19 +64,6 @@ target_sources(spectacle PRIVATE
     VideoFormatModel.cpp
 )
 
-if(WITH_X11)
-    target_sources(spectacle PRIVATE Platforms/ImagePlatformXcb.cpp Platforms/ImagePlatformXcb.h)
-
-    target_link_libraries(spectacle PRIVATE
-        XCB::XFIXES
-        XCB::IMAGE
-        XCB::CURSOR
-        XCB::UTIL
-        XCB::RANDR
-    )
-    target_link_libraries(spectacle PRIVATE Qt6::GuiPrivate) # Gui/private/qtx11extras_p.h
-endif()
-
 qt6_generate_wayland_protocol_client_sources(spectacle
     PRIVATE_CODE
     FILES

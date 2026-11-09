@@ -36,8 +36,6 @@ include(KDEGitCommitHooks)
 include(ECMDeprecationSettings)
 include(ECMFindQmlModule)
 
-option(WITH_X11 "Enable X11 support" ON)
-
 # find dependencies
 
 find_package(
@@ -112,10 +110,6 @@ set_package_properties(KF6DocTools PROPERTIES DESCRIPTION
 find_package(KF6Purpose)
 if (KF6Purpose_FOUND)
     set(PURPOSE_FOUND 1)
-endif()
-
-if(WITH_X11)
-    find_package(XCB REQUIRED COMPONENTS XFIXES IMAGE UTIL CURSOR RANDR)
 endif()
 
 # setup handling of deprecated Qt & KF API
