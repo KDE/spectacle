@@ -29,6 +29,7 @@
 #include <QPixmap>
 #include <QScreen>
 #include <QTimer>
+#include <QtConcurrentMap>
 #include <QtConcurrentRun>
 
 #include <errno.h>
@@ -63,7 +64,34 @@ static QVariantMap screenShotFlagsToVardict(ImagePlatformKWin::ScreenShotFlags f
     return options;
 }
 
-QImage combinedImage(const QList<QImage> &images)
+QList<QList<QImage>> takeDisjointSetUnion(QList<QImage> &images, auto &&intersects)
+{
+    const auto n = images.size();
+    std::vector<qsizetype> parentOfChild(n);
+    std::iota(parentOfChild.begin(), parentOfChild.end(), 0);
+    auto find = [&parentOfChild](this auto &&self, auto i) -> qsizetype {
+        return parentOfChild[i] == i ? i : (parentOfChild[i] = self(parentOfChild[i]));
+    };
+    for (qsizetype i = 0; i < n; ++i) {
+        for (qsizetype j = i + 1; j < n; ++j) {
+            if (intersects(images[i], images[j])) {
+                const auto [parent, child] = std::minmax(find(i), find(j));
+                parentOfChild[child] = parent;
+            }
+        }
+    }
+    // keep inner list in order
+    QList<QList<QImage>> result(n);
+    for (qsizetype i = 0; i < n; ++i) {
+        result[find(i)].emplace_back(std::move(images[i]));
+    }
+    result.removeIf([](const auto &inner) {
+        return inner.empty();
+    });
+    return result;
+}
+
+QImage combinedImage(QList<QImage> &&images)
 {
     if (images.empty()) {
         return {};
@@ -81,6 +109,14 @@ QImage combinedImage(const QList<QImage> &images)
         imageRect |= rect;
         geometryList << ImageMetaData::subGeometryPropertyMap(rect, dpr);
     }
+    // The outer list can be used in parallel.
+    // The inner list is for overlapping images and must be used sequentially.
+    auto jobData = takeDisjointSetUnion(images, [](const QImage &a, const QImage &b) {
+        QRectF ar{ImageMetaData::logicalXY(a), a.deviceIndependentSize()};
+        QRectF br{ImageMetaData::logicalXY(b), b.deviceIndependentSize()};
+        return ar.intersects(br);
+    });
+    Q_ASSERT(!jobData.empty() && !jobData.front().empty());
     static const auto finalFormat = QImage::Format_RGBA8888_Premultiplied;
     const bool allSameDpr = std::all_of(images.cbegin(), images.cend(), [maxDpr](const QImage &i){
         return i.devicePixelRatio() == maxDpr;
@@ -89,13 +125,19 @@ QImage combinedImage(const QList<QImage> &images)
         QImage finalImage{(imageRect.size() * maxDpr).toSize(), finalFormat};
         finalImage.setColorSpace(QColorSpace::SRgb);
         finalImage.fill(QColorConstants::Transparent);
-        QPainter painter(&finalImage);
-        for (auto &image : images) {
-            // Explicitly setting the position and size so that you don't need to read
-            // QPainter source code to understand how this works.
-            painter.drawImage({ImageMetaData::logicalXY(image) * maxDpr, image.size()}, image);
-        }
-        painter.end();
+        QtConcurrent::blockingMap(jobData, [&](const QList<QImage> &images) {
+            // A non-owning view of the image data allows multiple QPainters
+            // without making deep copies.
+            QImage target(finalImage.bits(), finalImage.width(), finalImage.height(), finalImage.bytesPerLine(), finalImage.format());
+            QPainter painter(&target);
+            qDebug() << images;
+            for (auto &image : images) {
+                // Explicitly setting the position and size so that you don't need to read
+                // QPainter source code to understand how this works.
+                painter.drawImage({ImageMetaData::logicalXY(image) * maxDpr, image.size()}, image);
+            }
+            painter.end();
+        });
         // Setting DPR after painting prevents it from affecting the coordinates of the QPainter.
         // During testing, setting final image DPR first and relying on QPainter::drawImage
         // automatic scaling would occasionally use the wrong target position. I have no idea why.
@@ -109,16 +151,22 @@ QImage combinedImage(const QList<QImage> &images)
     QImage finalImage{(imageRect.size() * finalDpr).toSize(), finalFormat};
     finalImage.setColorSpace(QColorSpace::SRgb);
     finalImage.fill(Qt::transparent);
-    QPainter painter(&finalImage);
-    for (auto &image : images) {
-        const auto pos = ImageMetaData::logicalXY(image) * finalDpr;
-        const auto size = (image.deviceIndependentSize() * finalDpr).toSize();
-        const auto imageDpr = image.devicePixelRatio();
-        const bool hasIntDpr = static_cast<int>(imageDpr) == imageDpr;
-        painter.setRenderHint(QPainter::SmoothPixmapTransform, !hasIntDpr);
-        painter.drawImage(QRectF{pos, size}, image);
-    }
-    painter.end();
+    QtConcurrent::blockingMap(jobData, [&](const QList<QImage> &images) {
+        // A non-owning view of the image data allows multiple QPainters
+        // without making deep copies.
+        QImage target(finalImage.bits(), finalImage.width(), finalImage.height(), finalImage.bytesPerLine(), finalImage.format());
+        QPainter painter(&target);
+        qDebug() << images;
+        for (auto &image : images) {
+            const auto pos = ImageMetaData::logicalXY(image) * finalDpr;
+            const auto size = (image.deviceIndependentSize() * finalDpr).toSize();
+            const auto imageDpr = image.devicePixelRatio();
+            const bool hasIntDpr = static_cast<int>(imageDpr) == imageDpr;
+            painter.setRenderHint(QPainter::SmoothPixmapTransform, !hasIntDpr);
+            painter.drawImage(QRectF{pos, size}, image);
+        }
+        painter.end();
+    });
     finalImage.setDevicePixelRatio(finalDpr);
     ImageMetaData::setSubGeometryList(finalImage, geometryList);
     return finalImage;
