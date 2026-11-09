@@ -125,6 +125,14 @@ SpectacleCore::SpectacleCore(QObject *parent)
     m_imagePlatform = loadImagePlatform();
     m_videoPlatform = loadVideoPlatform();
     auto imagePlatform = m_imagePlatform.get();
+
+    // HACK HACK HACK Preload QML so QML thread loads it whilst main thread is waiting for KWin.
+    const auto componentUrl = QUrl("%1/Gui/CaptureOverlay.qml"_L1.arg(SPECTACLE_QML_PATH));
+    auto *preloadComponent = new QQmlComponent(getQmlEngine(), componentUrl, QQmlComponent::Asynchronous, this);
+    connect(preloadComponent, &QQmlComponent::statusChanged, this, [this](auto status) {
+        qCritical() << "PRELOAD" << status;
+    });
+
     m_annotationDocument = std::make_unique<AnnotationDocument>();
 
     // essential connections
