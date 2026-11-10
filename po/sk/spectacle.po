@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-09 00:57+0000\n"
+"POT-Creation-Date: 2026-11-10 00:59+0000\n"
 "PO-Revision-Date: 2024-03-24 11:39+0100\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -717,7 +717,7 @@ msgctxt "@title:group"
 msgid "Screenshot Settings"
 msgstr "Nastavenia snímky obrazovky"
 
-#: src/Gui/CaptureOverlay.qml:148
+#: src/Gui/CaptureOverlay.qml:156
 #, kde-format
 msgctxt "@info basic crop tool explanation"
 msgid "Click and drag to make a selection."
@@ -1905,18 +1905,18 @@ msgstr ""
 "nie je dostupný. Používajte Spectacle na KDE Plasma alebo použite iný "
 "nástroj na snímky obrazovky."
 
-#: src/OcrManager.cpp:578
+#: src/OcrManager.cpp:97
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Orientation and Script Detection"
 msgstr "Detekcia orientácie a písma"
 
-#: src/OcrManager.cpp:619
+#: src/OcrManager.cpp:347
 #, kde-format
 msgid "Math/Equation Detection"
 msgstr "Detekcia matematiky/rovníc"
 
-#: src/OcrManager.cpp:622
+#: src/OcrManager.cpp:350
 #, kde-format
 msgid "Orientation and Script Detection"
 msgstr "Detekcia orientácie a písma"
@@ -1946,13 +1946,13 @@ msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr ""
 "Nepodarilo sa otvoriť deskriptor súboru na čítanie snímky obrazovky KWin."
 
-#: src/Platforms/ImagePlatformKWin.cpp:245
+#: src/Platforms/ImagePlatformKWin.cpp:246
 #, kde-format
 msgctxt "@info, %1 is an error code"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "Volanie pipe2() zlyhalo pre snímku obrazovky KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:301
+#: src/Platforms/ImagePlatformKWin.cpp:302
 #, kde-format
 msgctxt "@info, %1 is an error message"
 msgid ""
@@ -1962,7 +1962,7 @@ msgstr ""
 "Požiadavka na snímku obrazovky KWin zlyhala:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:303
+#: src/Platforms/ImagePlatformKWin.cpp:304
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1972,7 +1972,7 @@ msgstr ""
 "Potenciálne relevantné informácie:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:311
+#: src/Platforms/ImagePlatformKWin.cpp:312
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"

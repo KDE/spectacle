@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-09 00:57+0000\n"
+"POT-Creation-Date: 2026-11-10 00:59+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -692,7 +692,7 @@ msgctxt "@title:group"
 msgid "Screenshot Settings"
 msgstr "截图设置"
 
-#: src/Gui/CaptureOverlay.qml:148
+#: src/Gui/CaptureOverlay.qml:156
 #, kde-format
 msgctxt "@info basic crop tool explanation"
 msgid "Click and drag to make a selection."
@@ -1868,18 +1868,18 @@ msgstr ""
 "在 Wayland 环境下，Spectacle 需要调用 KDE Plasma 的 KWin 显示特效混合器，但它"
 "并不可用。请在 KDE Plasma 中使用 Spectacle，或者换用另一个截图工具。"
 
-#: src/OcrManager.cpp:578
+#: src/OcrManager.cpp:97
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Orientation and Script Detection"
 msgstr "方向和书写检测"
 
-#: src/OcrManager.cpp:619
+#: src/OcrManager.cpp:347
 #, kde-format
 msgid "Math/Equation Detection"
 msgstr "数学/方程检测"
 
-#: src/OcrManager.cpp:622
+#: src/OcrManager.cpp:350
 #, kde-format
 msgid "Orientation and Script Detection"
 msgstr "方向和书写检测"
@@ -1908,13 +1908,13 @@ msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr "无法为读取 KWin 屏幕截图打开文件描述符。"
 
-#: src/Platforms/ImagePlatformKWin.cpp:245
+#: src/Platforms/ImagePlatformKWin.cpp:246
 #, kde-format
 msgctxt "@info, %1 is an error code"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "KWin 屏幕截图的 pipe2() 执行失败：%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:301
+#: src/Platforms/ImagePlatformKWin.cpp:302
 #, kde-format
 msgctxt "@info, %1 is an error message"
 msgid ""
@@ -1924,7 +1924,7 @@ msgstr ""
 "KWin 屏幕截图请求失败：\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:303
+#: src/Platforms/ImagePlatformKWin.cpp:304
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1934,7 +1934,7 @@ msgstr ""
 "可能相关的信息：\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:311
+#: src/Platforms/ImagePlatformKWin.cpp:312
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"

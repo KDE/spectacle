@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-09 00:57+0000\n"
+"POT-Creation-Date: 2026-11-10 00:59+0000\n"
 "PO-Revision-Date: 2026-07-06 23:34+0900\n"
 "Last-Translator: Ryuichi Yamada <ryuichi_ya220@outlook.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -715,7 +715,7 @@ msgctxt "@title:group"
 msgid "Screenshot Settings"
 msgstr "スクリーンショット設定"
 
-#: src/Gui/CaptureOverlay.qml:148
+#: src/Gui/CaptureOverlay.qml:156
 #, kde-format
 msgctxt "@info basic crop tool explanation"
 msgid "Click and drag to make a selection."
@@ -1899,18 +1899,18 @@ msgstr ""
 "KDE Plasma 上で Spectacle を使用するか、別のスクリーンショット撮影ツールを使"
 "用してください。"
 
-#: src/OcrManager.cpp:578
+#: src/OcrManager.cpp:97
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Orientation and Script Detection"
 msgstr "向き/文字検出"
 
-#: src/OcrManager.cpp:619
+#: src/OcrManager.cpp:347
 #, kde-format
 msgid "Math/Equation Detection"
 msgstr "数式検出"
 
-#: src/OcrManager.cpp:622
+#: src/OcrManager.cpp:350
 #, kde-format
 msgid "Orientation and Script Detection"
 msgstr "向き/文字検出"
@@ -1941,13 +1941,13 @@ msgstr ""
 "KWin スクリーンショットを読み込むためにファイル記述子を開くことができませんで"
 "した。"
 
-#: src/Platforms/ImagePlatformKWin.cpp:245
+#: src/Platforms/ImagePlatformKWin.cpp:246
 #, kde-format
 msgctxt "@info, %1 is an error code"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "KWin スクリーンショットのための pipe2() が失敗しました: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:301
+#: src/Platforms/ImagePlatformKWin.cpp:302
 #, kde-format
 msgctxt "@info, %1 is an error message"
 msgid ""
@@ -1957,7 +1957,7 @@ msgstr ""
 "KWin スクリーンショットの要求が失敗しました:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:303
+#: src/Platforms/ImagePlatformKWin.cpp:304
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1967,7 +1967,7 @@ msgstr ""
 "関連する可能性のある情報:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:311
+#: src/Platforms/ImagePlatformKWin.cpp:312
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"

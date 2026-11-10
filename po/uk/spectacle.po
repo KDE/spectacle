@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-09 00:57+0000\n"
+"POT-Creation-Date: 2026-11-10 00:59+0000\n"
 "PO-Revision-Date: 2026-08-01 14:02+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -724,7 +724,7 @@ msgctxt "@title:group"
 msgid "Screenshot Settings"
 msgstr "Параметри знімків вікон"
 
-#: src/Gui/CaptureOverlay.qml:148
+#: src/Gui/CaptureOverlay.qml:156
 #, kde-format
 msgctxt "@info basic crop tool explanation"
 msgid "Click and drag to make a selection."
@@ -1921,18 +1921,18 @@ msgstr ""
 "якого, здається, немає у вашій системі. Скористайтеся Spectacle у Плазмі KDE "
 "або використайте іншу програму для створення знімків."
 
-#: src/OcrManager.cpp:578
+#: src/OcrManager.cpp:97
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Orientation and Script Detection"
 msgstr "Виявлення орієнтації та писемності"
 
-#: src/OcrManager.cpp:619
+#: src/OcrManager.cpp:347
 #, kde-format
 msgid "Math/Equation Detection"
 msgstr "Виявлення формул"
 
-#: src/OcrManager.cpp:622
+#: src/OcrManager.cpp:350
 #, kde-format
 msgid "Orientation and Script Detection"
 msgstr "Виявлення орієнтації та писемності"
@@ -1961,13 +1961,13 @@ msgctxt "@info"
 msgid "Could not open file descriptor for reading KWin screenshot."
 msgstr "Не вдалося відкрити дескриптор файла для читання знімка KWin."
 
-#: src/Platforms/ImagePlatformKWin.cpp:245
+#: src/Platforms/ImagePlatformKWin.cpp:246
 #, kde-format
 msgctxt "@info, %1 is an error code"
 msgid "pipe2() failed for KWin screenshot: %1"
 msgstr "Помилка pipe2() для знімка KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:301
+#: src/Platforms/ImagePlatformKWin.cpp:302
 #, kde-format
 msgctxt "@info, %1 is an error message"
 msgid ""
@@ -1977,7 +1977,7 @@ msgstr ""
 "Спроба запиту щодо знімка KWin зазнала невдачі:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:303
+#: src/Platforms/ImagePlatformKWin.cpp:304
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1987,7 +1987,7 @@ msgstr ""
 "Потенційно пов'язані дані:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:311
+#: src/Platforms/ImagePlatformKWin.cpp:312
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
