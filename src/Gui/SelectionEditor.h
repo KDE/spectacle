@@ -58,6 +58,8 @@ public:
     };
     Q_ENUM(Location)
 
+    ~SelectionEditor() override;
+
     static SelectionEditor *instance();
 
     Selection *selection() const;

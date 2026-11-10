@@ -401,6 +401,8 @@ SelectionEditor::SelectionEditor(QObject *parent)
     });
 }
 
+SelectionEditor::~SelectionEditor() = default;
+
 SelectionEditor *SelectionEditor::instance()
 {
     return &privateSelectionEditorSelf()->self;
