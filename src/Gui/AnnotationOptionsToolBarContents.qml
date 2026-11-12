@@ -91,7 +91,7 @@ Row {
                     return Number.fromLocaleString(locale, text.replace(/\D/g,''))
                 }
                 QQC.ToolTip.text: i18n("Stroke Width")
-                QQC.ToolTip.visible: hovered
+                QQC.ToolTip.visible: hovered || visualFocus
                 QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
                 // not using onValueModified because of https://bugreports.qt.io/browse/QTBUG-91281
                 /* When we change the value of the control, we set the corresponding property in the
@@ -230,7 +230,7 @@ Row {
                 to: 1
                 value: strength
                 QQC.ToolTip.text: i18nc("@info:tooltip", "The strength of the effect.")
-                QQC.ToolTip.visible: hovered
+                QQC.ToolTip.visible: hovered || visualFocus
                 QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
                 onMoved: setStrength()
             }
@@ -342,7 +342,7 @@ Row {
                 stepSize: 1
                 value: number
                 QQC.ToolTip.text: i18n("Number for number annotations")
-                QQC.ToolTip.visible: hovered
+                QQC.ToolTip.visible: hovered || visualFocus
                 QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
                 // not using onValueModified because of https://bugreports.qt.io/browse/QTBUG-91281
                 onValueChanged: Qt.callLater(setNumber)

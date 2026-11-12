@@ -32,7 +32,7 @@ ColumnLayout {
                         Math.ceil(SpectacleCore.captureTimeRemaining / 1000))
                 : model.display
             QQC.ToolTip.text: model.shortcuts
-            QQC.ToolTip.visible: (hovered || pressed) && model.shortcuts.length > 0
+            QQC.ToolTip.visible: (hovered || visualFocus) && model.shortcuts.length > 0
             QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
             onClicked: if (showCancel) {
                 SpectacleCore.cancelScreenshot()

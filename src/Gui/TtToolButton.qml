@@ -11,6 +11,6 @@ QQC.ToolButton {
     implicitHeight: QmlUtils.iconTextButtonHeight
     width: display === QQC.ToolButton.IconOnly ? height : implicitWidth
     QQC.ToolTip.text: text
-    QQC.ToolTip.visible: (hovered || pressed) && display === QQC.ToolButton.IconOnly
+    QQC.ToolTip.visible: (hovered || visualFocus) && display === QQC.ToolButton.IconOnly
     QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
 }

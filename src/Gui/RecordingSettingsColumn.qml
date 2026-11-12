@@ -22,7 +22,7 @@ ColumnLayout {
         text: i18nc("@option:check", "Include mouse pointer")
         QQC.ToolTip.text: i18nc("@info:tooltip", "Show the mouse cursor in the screen recording.")
         QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
-        QQC.ToolTip.visible: hovered
+        QQC.ToolTip.visible: hovered || visualFocus
         checked: Settings.videoIncludePointer
         onToggled: Settings.videoIncludePointer = checked
     }
@@ -32,7 +32,7 @@ ColumnLayout {
         text: i18nc("@option:check", "Record system audio")
         QQC.ToolTip.text: i18nc("@info:tooltip", "Include the audio that is currently playing on the system in the recording.")
         QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
-        QQC.ToolTip.visible: hovered
+        QQC.ToolTip.visible: hovered || visualFocus
         // Explain why this is disabled, since a disabled control doesn't get
         // hover events and can't show its tooltip.
         Accessible.description: root.audioSupported ? "" : audioUnsupportedMessage.text
@@ -45,7 +45,7 @@ ColumnLayout {
         text: i18nc("@option:check", "Record microphone")
         QQC.ToolTip.text: i18nc("@info:tooltip", "Include audio from the default microphone in the recording.")
         QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
-        QQC.ToolTip.visible: hovered
+        QQC.ToolTip.visible: hovered || visualFocus
         Accessible.description: root.audioSupported ? "" : audioUnsupportedMessage.text
         checked: Settings.videoRecordMicrophone
         onToggled: Settings.videoRecordMicrophone = checked

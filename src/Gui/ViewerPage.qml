@@ -200,7 +200,7 @@ EmptyPage {
                         return Number.fromLocaleString(locale, text.replace(/\D/g,''))
                     }
                     QQC.ToolTip.text: i18n("Image Zoom")
-                    QQC.ToolTip.visible: hovered
+                    QQC.ToolTip.visible: hovered || visualFocus
                     QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
                     Binding {
                         target: zoomEditor.contentItem

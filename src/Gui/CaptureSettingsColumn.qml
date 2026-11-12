@@ -16,7 +16,7 @@ ColumnLayout {
         text: i18n("Include mouse pointer")
         QQC.ToolTip.text: i18n("Show the mouse cursor in the screenshot image.")
         QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
-        QQC.ToolTip.visible: hovered
+        QQC.ToolTip.visible: hovered || visualFocus
         checked: Settings.includePointer
         onToggled: Settings.includePointer = checked
     }
@@ -25,7 +25,7 @@ ColumnLayout {
         text: i18n("Include window titlebar and borders")
         QQC.ToolTip.text: i18n("Show the window title bar and border when taking a screenshot of a window.")
         QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
-        QQC.ToolTip.visible: hovered
+        QQC.ToolTip.visible: hovered || visualFocus
         checked: Settings.includeDecorations
         onToggled: Settings.includeDecorations = checked
     }
@@ -34,7 +34,7 @@ ColumnLayout {
         text: i18n("Include window shadow")
         QQC.ToolTip.text: i18n("Show the window shadow when taking a screenshot of a window.")
         QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
-        QQC.ToolTip.visible: hovered
+        QQC.ToolTip.visible: hovered || visualFocus
         enabled: Settings.includeDecorations
         checked: Settings.includeShadow
         onToggled: Settings.includeShadow = checked
@@ -44,7 +44,7 @@ ColumnLayout {
         text: i18n("Quit after manual Save or Copy")
         QQC.ToolTip.text: i18n("Quit Spectacle after manually saving or copying the image.")
         QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
-        QQC.ToolTip.visible: hovered
+        QQC.ToolTip.visible: hovered || visualFocus
         checked: Settings.quitAfterSaveCopyExport
         onToggled: Settings.quitAfterSaveCopyExport = checked
     }
@@ -55,7 +55,7 @@ ColumnLayout {
         visible: ImagePlatform.supportedShutterModes === (ImagePlatform.Immediate | ImagePlatform.OnClick)
         QQC.ToolTip.text: i18n("Wait for a mouse click before capturing the screenshot image.")
         QQC.ToolTip.delay: Kirigami.Units.toolTipDelay
-        QQC.ToolTip.visible: hovered || pressed
+        QQC.ToolTip.visible: hovered || visualFocus
         checked: ImagePlatform.supportedShutterModes & ImagePlatform.OnClick && Settings.captureOnClick
         onToggled: Settings.captureOnClick = checked
     }
