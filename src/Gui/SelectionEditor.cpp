@@ -31,14 +31,6 @@ using namespace Qt::StringLiterals;
 using G = Geometry;
 using Location = SelectionEditor::Location;
 
-class SelectionEditorSingleton
-{
-public:
-    SelectionEditor self;
-};
-
-Q_GLOBAL_STATIC(SelectionEditorSingleton, privateSelectionEditorSelf)
-
 static constexpr qreal s_handleRadiusMouse = 9;
 static constexpr qreal s_handleRadiusTouch = 12;
 static constexpr qreal s_minSpacingBetweenHandles = 20;
@@ -389,6 +381,14 @@ QPointF SelectionEditorPrivate::determineInitialMouseOffset() const
 }
 
 // SelectionEditor =================================
+
+class SelectionEditorSingleton
+{
+public:
+    SelectionEditor self;
+};
+
+Q_GLOBAL_STATIC(SelectionEditorSingleton, privateSelectionEditorSelf)
 
 SelectionEditor::SelectionEditor(QObject *parent)
     : QObject(parent)
