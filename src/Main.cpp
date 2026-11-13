@@ -63,6 +63,7 @@ int main(int argc, char **argv)
     // first parsing for help-about
     commandLineParser.process(app.arguments());
     aboutData.processCommandLine(&commandLineParser);
+    QStandardPaths::setTestModeEnabled(commandLineParser.isSet(CommandLineOptions::self()->testmode));
 
     // BUG: https://bugs.kde.org/show_bug.cgi?id=451842
     // We currently don't support desktop environments besides KDE Plasma on Wayland

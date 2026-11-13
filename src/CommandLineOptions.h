@@ -109,9 +109,18 @@ struct CommandLineOptions {
     };
     const QCommandLineOption releaseCapture = {{u"k"_s, u"release-capture"_s}, i18n("Accept region selection on click-and-release")};
 
-    const QList<QCommandLineOption> allOptions = {
-        fullscreen, scaled, current,   activeWindow, windowUnderCursor, region,      record,  launchOnly,   gui,      background,   dbus,           noNotify,
-        output,     delay,  copyImage, copyPath,     onClick,           newInstance, pointer, noDecoration, noShadow, editExisting, releaseCapture,
+    const QCommandLineOption testmode = [] {
+        QCommandLineOption opt = {{u"testmode"_s}, i18nc("@info CLI help", "Run Spectacle in test mode")};
+        opt.setFlags(QCommandLineOption::HiddenFromHelp);
+        return opt;
+    }();
+
+    const QList<QCommandLineOption> allOptions{
+        fullscreen, scaled,       current,        activeWindow, windowUnderCursor, //
+        region,     record,       launchOnly,     gui,          background, //
+        dbus,       noNotify,     output,         delay,        copyImage, //
+        copyPath,   onClick,      newInstance,    pointer,      noDecoration, //
+        noShadow,   editExisting, releaseCapture, testmode,
     };
 
     // Keep order in sync with allOptions
@@ -139,6 +148,7 @@ struct CommandLineOptions {
         NoShadow,
         EditExisting,
         ReleaseCapture,
+        Test,
         TotalOptions
     };
 };
