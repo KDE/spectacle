@@ -1,0 +1,398 @@
+<?xml version="1.0" ?>
+<!DOCTYPE refentry PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Arabic "INCLUDE">
+]>
+
+<refentry lang="&language;">
+<refentryinfo>
+<title
+>دليل برنامج لاقط الشاشة</title>
+<author
+><firstname
+>Yuri</firstname
+><surname
+>Chornoivan</surname
+> <contrib
+>Spectacle man page.</contrib
+> <email
+>yurchor@ukr.net</email
+></author>
+<date
+>2023-11-26</date>
+<releaseinfo
+>لاقط الشاشة 23.08</releaseinfo>
+<productname
+>تطبيقات كِيدِي</productname>
+</refentryinfo>
+
+<refmeta>
+<refentrytitle
+><command
+>spectacle</command
+></refentrytitle>
+<manvolnum
+>1</manvolnum>
+</refmeta>
+
+<refnamediv>
+<refname
+>لاقط الشاشة</refname>
+<refpurpose
+>أداة لأخذ اللقطات</refpurpose>
+</refnamediv>
+<!-- body begins here -->
+<refsynopsisdiv id='synopsis'>
+<cmdsynopsis
+><command
+>spectacle</command
+> <arg choice="opt"
+><replaceable
+>خيارات لاقط الشاشة</replaceable
+></arg
+> </cmdsynopsis>
+</refsynopsisdiv>
+
+
+<refsect1 id="description"
+><title
+>الوصف</title>
+<para
+><command
+>لاقط الشاشة</command
+> هو تطبيق بسيط لالتقاط لقطات شاشة لسطح المكتب. يمكنه التقاط صور لسطح المكتب بأكمله، أو شاشة واحدة، أو النافذة النشطة حاليًا، أو النافذة الموجودة حاليًا تحت الفأرة، أو منطقة مستطيلة من الشاشة. يمكن بعد ذلك شرح الصور أو طباعتها أو إرسالها إلى تطبيقات أخرى لمعالجتها، أو حفظها بسرعة كما هي.</para>
+
+</refsect1>
+
+<refsect1 id="options"
+><title
+>خيارات لاقط الشاشة</title>
+<variablelist>
+
+<varlistentry>
+<term
+><option
+>-h, --help</option
+></term>
+<listitem>
+<para
+>يعرض المساعدة حول خيارات سطر الأوامر.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>--help-all</option
+></term>
+<listitem>
+<para
+>يعرض المساعدة بما في ذلك خيارات Qt الخاصة.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-v, --version</option
+></term>
+<listitem>
+<para
+>يعرض معلومات الإصدار.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-f, --fullscreen</option
+></term>
+<listitem>
+<para
+>التقاط سطح المكتب بأكمله (افتراضي).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>--scaled</option
+></term>
+<listitem>
+<para
+>عند استخدامه مع <option
+>-f</option
+>/<option
+>--fullscreen</option
+>، فإنه يلتقط جميع الشاشات بمقياس موحد لنفس الحجم. ليس له أي تأثير بدون خيار <option
+>-f</option
+>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-m, --current</option
+></term>
+<listitem>
+<para
+>التقاط الشاشة الحالية.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-a, --activewindow</option
+></term>
+<listitem>
+<para
+>التقاط النافذة النشطة.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-u, --windowundercursor</option
+></term>
+<listitem>
+<para
+>التقاط النافذة الموجودة حاليًا تحت المؤشر، بما في ذلك النوافذ الأب للقوائم المنبثقة.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-t, --transientonly</option
+></term>
+<listitem>
+<para
+>التقاط النافذة الموجودة حاليًا تحت المؤشر، مع استبعاد النوافذ الأب للقوائم المنبثقة.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-r, --region</option
+></term>
+<listitem>
+<para
+>التقاط منطقة مستطيلة من الشاشة.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-l, --launchonly</option
+></term>
+<listitem>
+<para
+>تشغيل لاقط الشاشة دون أخذ لقطة.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-g, --gui</option
+></term>
+<listitem>
+<para
+>البدء في وضع الواجهة الرسومية (افتراضي).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-b, --background</option
+></term>
+<listitem>
+<para
+>أخذ لقطة شاشة والخروج دون إظهار الواجهة الرسومية.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-s, --dbus</option
+></term>
+<listitem>
+<para
+>البدء في وضع تفعيل-DBus.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-n, --nonotify</option
+></term>
+<listitem>
+<para
+>في وضع الخلفية، لا تظهر تنبيهًا عند أخذ لقطة الشاشة.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-o, --output <replaceable
+>اسم_الملف</replaceable
+></option
+></term>
+<listitem>
+<para
+>في وضع الخلفية، احفظ الصورة في الملف المحدد <replaceable
+>اسم_الملف</replaceable
+>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-d, --delay <replaceable
+>التأخير_بالميلي_ثانية</replaceable
+></option
+></term>
+<listitem>
+<para
+>في وضع الخلفية، انتظر قبل أخذ اللقطة (بالميلي ثانية).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-c, --copy-image</option
+></term>
+<listitem>
+<para
+>في وضع الخلفية، انسخ لقطة الشاشة إلى الحافظة فقط، ما لم يتم استخدام -o أيضًا.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-C, --copy-path</option
+></term>
+<listitem>
+<para
+>في وضع الخلفية، انسخ مسار ملف لقطة الشاشة إلى الحافظة.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-w, --onclick</option
+></term>
+<listitem>
+<para
+>انتظر نقرة قبل أخذ لقطة الشاشة. هذا يلغي خيار التأخير.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-i, --new-instance</option
+></term>
+<listitem>
+<para
+>يبدأ نسخة رسومية جديدة من لاقط الشاشة دون التسجيل في DBus.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-p, --pointer</option
+></term>
+<listitem>
+<para
+>في وضع الخلفية، ضمّن المؤشر في لقطة الشاشة.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-e, --no-decoration</option
+></term>
+<listitem>
+<para
+>في وضع الخلفية، لا تدرج زخارف النوافذ (الإطارات) في لقطة الشاشة.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><option
+>-E, --edit-existing <replaceable
+>اسم_ملف_موجود</replaceable
+></option
+></term>
+<listitem>
+<para
+>فتح وتحرير ملف لقطة شاشة موجود.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</refsect1>
+
+<refsect1 id="feedback"
+><title
+>الملاحظات</title>
+<para
+>عبر IRC على irc.libera.chat قناة #kde أو عبر البريد الإلكتروني kde-graphics-devel@kde.org أو على الويب &lt;<ulink url="https://apps.kde.org/spectacle"
+>https://apps.kde.org/spectacle</ulink
+>&gt;</para>
+</refsect1>
+
+<refsect1>
+<title
+>انظر أيضًا</title>
+<simplelist>
+<member
+>تتوفر وثائق مستخدم أكثر تفصيلًا من <ulink url="help:/spectacle"
+>help:/spectacle</ulink
+> (إما بإدخال هذا <acronym
+>العنوان</acronym
+> في &konqueror;، أو بتشغيل <userinput
+><command
+>khelpcenter</command
+> <parameter
+>help:/spectacle</parameter
+></userinput
+>).</member>
+<member
+>kf6options(7)</member>
+<member
+>qt6options(7)</member>
+<member
+>هناك أيضًا مزيد من المعلومات المتاحة على <ulink url="https://apps.kde.org/spectacle"
+>https://apps.kde.org/spectacle</ulink
+></member>
+</simplelist>
+</refsect1>
+
+<refsect1 id="copyright"
+><title
+>حقوق النسخ</title>
+<para
+>حقوق النسخ © 2015 Boudhayan Gupta</para>
+<para
+>الترخيص: رخصة جنو العمومية الإصدار 2 &lt;<ulink url="https://www.gnu.org/licenses/gpl-2.0.html"
+>https://www.gnu.org/licenses/gpl-2.0.html</ulink
+>&gt;</para>
+</refsect1>
+</refentry>
+

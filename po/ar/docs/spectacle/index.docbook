@@ -1,0 +1,876 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY spectacle "<application
+>Spectacle</application
+>">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Arabic "INCLUDE"
+> <!-- change language only here -->
+]>
+
+<book id="spectacle" lang="&language;">
+    <bookinfo>
+        <title
+>دليل لاقط الشاشة</title>
+
+        <authorgroup>
+            <author
+>&Boudhayan.Gupta; &Boudhayan.Gupta.mail; </author>
+
+            <othercredit role="developer"
+>&Boudhayan.Gupta; &Boudhayan.Gupta.mail; </othercredit>
+
+            <othercredit role="translator"
+><firstname
+>زايد</firstname
+><surname
+>السعيدي</surname
+><affiliation
+><address
+><email
+>zayed.alsaidi@gmail.com</email
+></address
+></affiliation
+><contrib
+>التّرجمة العربيّة</contrib
+></othercredit
+> 
+        </authorgroup>
+
+        <copyright
+><year
+>1997-2000</year
+><holder
+>&Richard.J.Moore;</holder
+></copyright>
+        <copyright
+><year
+>2000</year
+><holder
+>&Matthias.Ettrich;</holder
+></copyright>
+        <copyright
+><year
+>2015</year
+><holder
+>&Boudhayan.Gupta;</holder
+></copyright>
+
+        <legalnotice
+>&FDLNotice;</legalnotice>
+
+        <date
+>2021-04-25</date>
+        <releaseinfo
+>تطبيقات 21.08</releaseinfo>
+
+        <abstract>
+            <para
+>لاقط الشاشة هو تطبيق لالتقاط لقطات شاشة لسطح المكتب وتحريرها. يمكنه التقاط صور لسطح المكتب بأكمله، أو شاشة واحدة، أو النافذة النشطة حاليًا، أو النافذة الموجودة حاليًا أسفل الفأرة، أو منطقة مستطيلة من الشاشة. يمكن بعد ذلك شرح الصور، أو طباعتها، أو إرسالها إلى تطبيقات أخرى لمعالجتها، أو حفظها بسرعة كما هي.</para>
+        </abstract>
+
+        <keywordset>
+            <keyword
+>كيدي</keyword>
+            <keyword
+>لاقط الشاشة</keyword>
+            <keyword
+>kdegraphics</keyword>
+            <keyword
+>لقطة شاشة</keyword>
+            <keyword
+>التقاط الشاشة</keyword>
+            <keyword
+>التقاط الشاشة</keyword>
+        </keywordset>
+    </bookinfo>
+
+    <chapter id="introduction">
+        <title
+>مقدمة</title>
+
+        <para
+>لاقط الشاشة هو تطبيق لالتقاط لقطات شاشة لسطح المكتب وتحريرها. يمكنه التقاط صور لسطح المكتب بأكمله، أو شاشة واحدة، أو النافذة النشطة حاليًا، أو النافذة الموجودة حاليًا أسفل الفأرة، أو منطقة مستطيلة من الشاشة. يمكن بعد ذلك شرح الصور، أو طباعتها، أو إرسالها إلى تطبيقات أخرى لمعالجتها، أو حفظها بسرعة كما هي.</para>
+
+        <para
+>يرجى الإبلاغ عن أي مشاكل أو طلبات ميزات إلى <ulink url="https://bugs.kde.org/"
+>نظام تتبع علل كيدي</ulink
+>.</para>
+    </chapter>
+
+    <chapter id="starting">
+        <title
+>بدء لاقط الشاشة</title>
+
+        <para
+>يمكن بدء لاقط الشاشة بطرق متنوعة، كما هو موضح أدناه:</para>
+
+        <itemizedlist>
+            <listitem>
+                <para
+>في قائمة مُطلق التطبيقات، يمكن العثور على لاقط الشاشة في <menuchoice
+><guisubmenu
+>تطبيقات</guisubmenu
+><guisubmenu
+>أدوات مساعدة</guisubmenu
+><guimenuitem
+>أداة التقاط الشاشة لاقط الشاشة</guimenuitem
+></menuchoice
+></para>
+            </listitem>
+            <listitem>
+                <para
+>يؤدي الضغط على زر <keysym
+>Print Screen</keysym
+> في لوحة المفاتيح (غالبًا ما يُسمى <keycap
+>PrtSc</keycap
+> أو <keycap
+>PrtScn</keycap
+> أو ما شابه) إلى تشغيل لاقط الشاشة فورًا. بالإضافة إلى ذلك، تتوفر ثلاثة اختصارات لوحة مفاتيح أخرى لالتقاط لقطات الشاشة وحفظها في مجلد الحفظ المبدئي دون إظهار واجهة المستخدم الرسومية:</para>
+                <itemizedlist>
+                <listitem
+><para
+>سيقوم الاختصار <keycombo action="simul"
+><keycap
+>Meta</keycap
+><keysym
+>Print Screen</keysym
+></keycombo
+> بالتقاط لقطة شاشة للنافذة النشطة</para
+></listitem>
+                <listitem
+><para
+>سيقوم الاختصار <keycombo action="simul"
+>&Shift;<keysym
+>Print Screen</keysym
+></keycombo
+> بالتقاط لقطة شاشة لسطح المكتب بالكامل، أي جميع الشاشات</para
+></listitem>
+                <listitem
+><para
+>سيقوم الاختصار <keycombo action="simul"
+><keycap
+>Meta</keycap
+>&Shift;<keysym
+>Print Screen</keysym
+></keycombo
+> بالتقاط لقطة شاشة لمنطقة مستطيلة</para
+></listitem>
+                </itemizedlist>
+                <para
+>يمكنك ضبط موقع الحفظ المبدئي واسم الملف عن طريق تشغيل لاقط الشاشة بشكل عادي والنقر على زر <guibutton
+>اضبط...</guibutton
+>، ثم الانتقال إلى قسم الحفظ.</para>
+            </listitem>
+            <listitem>
+                <para
+>يمكن أيضًا استخدام سطر الأوامر المصغر مشغل كيدي (الذي يُستدعى عبر <keycombo action="simul"
+>&Alt;<keycap
+>F2</keycap
+></keycombo
+>) لبدء لاقط الشاشة.</para>
+            </listitem>
+            <listitem>
+                <para
+>يمكن بدء لاقط الشاشة من سطر الأوامر. يمتلك لاقط الشاشة مجموعة واسعة من خيارات سطر الأوامر، بما في ذلك وضع الخلفية الذي يمكن استخدامه لبرمجة التقاط لقطات الشاشة دون إظهار واجهة المستخدم الرسومية أو طلب تفاعل المستخدم.</para>
+
+                <para
+>لبدء لاقط الشاشة من محث الأوامر، اكتب:</para>
+                <screen width="40"
+><prompt
+>%</prompt
+> <command
+>spectacle &amp;</command
+>
+                </screen>
+
+                <para
+>لعرض القائمة الكاملة لخيارات سطر الأوامر وشرحها، اكتب:</para>
+                <screen width="40"
+><prompt
+>%</prompt
+> <command
+>spectacle --help</command
+>
+                </screen>
+            </listitem>
+        </itemizedlist>
+    </chapter>
+
+    <chapter id="using">
+        <title
+>استخدام لاقط الشاشة</title>
+
+        <para
+>بمجرد بدء لاقط الشاشة، ستظهر نافذة مثل التالية: <mediaobject>
+                <imageobject>
+                    <imagedata fileref="MainWindow.png" format="PNG"/>
+                </imageobject>
+                <textobject>
+                    <phrase
+>النافذة الرئيسة للاقط الشاشة</phrase>
+                </textobject>
+            </mediaobject>
+        </para>
+
+        <para
+>يلتقط لاقط الشاشة صورة لسطح المكتب بالكامل فور بدئه، ولكن قبل أن يعرض نفسه على الشاشة. يتيح لك هذا إنشاء صور لقطة شاشة لكامل سطح المكتب بسرعة.</para>
+
+        <para
+>تُعرض اللقطة التي أُخذت بواسطة لاقط الشاشة في نافذة المعاينة، الموجودة في الجانب الأيسر من نافذة تطبيق لاقط الشاشة.</para>
+
+        <para
+>يمكن حفظ الصورة في مكان من اختيارك بالنقر على زر <guibutton
+>احفظ كَ‍</guibutton
+> أو بكتابة <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>S</keycap
+></keycombo
+>. يفتح هذا حوار الحفظ القياسي، حيث يمكنك اختيار اسم الملف وموقع المجلد والتنسيق الذي ستُحفظ به لقطة الشاشة. يمكنك تحرير اسم الملف إلى أي شيء تريده، بما في ذلك اسم لقطة شاشة حُفظت مسبقًا.</para>
+
+        <para
+>لحفظ لقطة شاشة في الموقع المبدئي، انقر على جزء السهم من زر <guibutton
+>احفظ كَ‍...</guibutton
+> واضغط على زر <guimenuitem
+>احفظ</guimenuitem
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+>). سيُتذكر وضع الحفظ الجديد للمرة القادمة. يمكن ضبط موقع الحفظ المبدئي واسم الملف، كما هو موضح لاحقًا.</para>
+
+        <para
+>لحفظ الصورة بسرعة وإنهاء لاقط الشاشة، انقر على مربع الاختيار بجانب <guilabel
+>أنهِ بعد الحفظ اليدوي أو النسخ</guilabel
+>، ثم انقر فوق جزء السهم من زر <guibutton
+>احفظ كَ‍...</guibutton
+> واضغط على عنصر <guimenuitem
+>احفظ</guimenuitem
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+>). يحفظ هذا الصورة كملف PNG في مجلد <filename class="directory"
+>صور</filename
+> المبدئي، ويخرج من التطبيق فورًا. وكما ذكر أعلاه، سيُتذكر وضع الحفظ الجديد هذا.</para>
+
+        <sect1 id="taking-screenshot">
+            <title
+>التقاط لقطة شاشة</title>
+
+            <para
+>عندما تفتح لاقط الشاشة، فإنه يلتقط فورًا لقطة شاشة للشاشة بأكملها كنوع من التسهيل، ما لم يُضبط خلاف ذلك في الخيارات العامة، ويعرض معاينة لها في النافذة الرئيسة. يمكنك حفظ لقطة الشاشة هذه باستخدام الأزرار الموجودة في أسفل النافذة، أو التقاط لقطة جديدة باستخدام عناصر التحكم الموجودة على يمين المعاينة.</para>
+
+            <para
+>لإهمال لقطة الشاشة الحالية والتقاط لقطة أخرى، اضغط على زر <guibutton
+>التقط لقطة شاشة جديدة</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>).</para>
+            
+            <para
+>بعد التقاط لقطة شاشة، سيعرض لك لاقط الشاشة لوحة معلومات تحتوي على رابط لملف لقطة الشاشة ويقترح عليك <guibutton
+>افتح المجلد المحتوي</guibutton
+> لهذا الملف.</para>
+
+            <para
+>يمكنك ضبط خيارات معينة على الجانب الأيمن من نافذة التطبيق قبل التقاط لقطة شاشة جديدة. تسمح لك هذه الخيارات بتحديد منطقة الشاشة المراد التقاطها، وضبط تأخير قبل التقاط الصورة، وضبط ما إذا كان يجب التقاط مؤشر الفأرة و/أو زخارف النافذة مع لقطة الشاشة.</para>
+
+            <sect2>
+                <title
+>وضع الالتقاط</title>
+
+                <para
+>تسمح لك إعدادات وضع الالتقاط بتحديد منطقة الشاشة التي يجب التقاطها، وما إذا كان يجب أن يكون هناك تأخير بين الضغط على زر <guibutton
+>التقط لقطة شاشة جديدة</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>) والتقاط لقطة الشاشة. يمكنك أيضًا تفعيل مربع الاختيار <guilabel
+>عند النقر</guilabel
+>، الذي يعطل وظيفة التأخير ولا يلتقط لقطة الشاشة إلا بعد النقر في أي مكان على الشاشة بعد النقر فوق زر <guibutton
+>التقط لقطة شاشة جديدة</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>).</para>
+
+                <para
+>يسمح لك المربع المنسدل <guilabel
+>المنطقة</guilabel
+> بتحديد منطقة الشاشة التي يجب التقاطها. هناك خمسة خيارات للاختيار من بينها، كما هو موضح أدناه.</para>
+
+                <itemizedlist>
+                    <listitem>
+                        <para
+>يأخذ خيار <guilabel
+>كامل الشاشة (كل الشاشات)</guilabel
+> لقطة شاشة لسطح المكتب بالكامل، موزعة على جميع المخرجات، بما في ذلك جميع الشاشات وأجهزة العرض وما إلى ذلك.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>يأخذ خيار <guilabel
+>الشاشة الحالية</guilabel
+> لقطة شاشة للمخرج الذي يحتوي حاليًا على مؤشر الفأرة.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>يسمح لك خيار <guilabel
+>منطقة مستطيلة</guilabel
+> بتحديد منطقة مستطيلة من سطح المكتب بالفأرة. قد تمتد هذه المنطقة عبر مخرجات مختلفة.</para>
+
+                        <para
+>لا يأخذ هذا الوضع لقطة شاشة فورًا ولكنه يسمح لك برسم مستطيل على شاشتك، والذي يمكن تحريكه وتغيير حجمه حسب الحاجة. بمجرد رسم مستطيل التحديد المطلوب، سيؤدي النقر المزدوج في أي مكان على الشاشة، أو الضغط على زر &Enter; في لوحة المفاتيح، إلى التقاط لقطة الشاشة.</para>
+                        
+                        <para
+>يمكنك استخدام مفاتيح الأسهم لتحريك المستطيل وضبطه. الضغط على مفاتيح الأسهم سيحرك المستطيل. سيؤدي الاستمرار في الضغط على مفتاح &Shift; أثناء الضغط على مفاتيح الأسهم إلى تحريك المستطيل ببطء، لضبط اختيارك بدقة. سيؤدي الاستمرار في الضغط على مفتاح &Alt; أثناء الضغط على مفاتيح الأسهم إلى ضبط حجم المستطيل.</para>
+                                    
+                    </listitem>
+                    <listitem>
+                        <para
+>يأخذ خيار <guilabel
+>النافذة النشطة</guilabel
+> لقطة شاشة للنافذة التي تحت التركيز حاليًا. يُنصح باستخدام تأخير مع هذا الوضع، لمنحك وقتًا لتحديد وتنشيط نافذة قبل التقاط لقطة الشاشة.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>يأخذ خيار <guilabel
+>النافذة تحت المؤشر</guilabel
+> لقطة شاشة للنافذة الموجودة تحت مؤشر الفأرة. إذا كان المؤشر فوق قائمة منبثقة، يحاول لاقط الشاشة التقاط لقطة شاشة للقائمة وكذلك نافذتها الأب.</para>
+
+                        <para
+>بينما يعمل هذا في معظم الأوقات، قد يفشل في بعض الحالات الحصول على معلومات حول النافذة الأب. في هذه الحالة، يعود لاقط الشاشة إلى الطريقة القديمة لالتقاط الصورة آليًا، ويلتقط صورة للقائمة المنبثقة فقط. يمكنك أيضًا فرض الطريقة القديمة لالتقاط الصورة بتحديد مربع الاختيار <guilabel
+>التقط القائمة المنبثقة الحالية فقط</guilabel
+> ضمن <guilabel
+>خيارات</guilabel
+></para>
+                    </listitem>
+                </itemizedlist>
+
+                <para
+>يسمح لك المربع العددي <guilabel
+>تأخير</guilabel
+> بضبط التأخير بين الضغط على زر <guibutton
+>التقط لقطة شاشة جديدة</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>) والتقاط لقطة الشاشة. يمكن ضبط هذا التأخير بزيادات قدرها 1 ثانية باستخدام أزرار المربع العددي أو لوحة المفاتيح.</para>
+                
+                <para
+>عند التقاط لقطة شاشة مؤجلة زمنيًا، يعرض لاقط الشاشة الوقت المتبقي قبل التقاط لقطة الشاشة في عنوان نافذته، ويجعله مرئيًا في عنصر مدير المهام الخاص به. كما يعرض زر مدير المهام للاقط الشاشة شريط تقدم، حتى تتمكن من تتبع موعد أخذ اللقطة.</para>
+                
+                <para
+>أثناء انتظار لقطة الشاشة المتأخرة، يمكنك إلغاء تصغير لاقط الشاشة وسيتحول زر <guibutton
+>التقط لقطة شاشة جديدة</guibutton
+> إلى زر <guibutton
+>إلغاء</guibutton
+>. سيُعرض شريط التقدم هنا أيضًا، مما يمنحك الفرصة لإيقاف العد التنازلي.</para>
+
+                <para
+>يؤدي تفعيل مربع الاختيار <guilabel
+>عند النقر</guilabel
+> إلى تجاوز التأخير. عند تفعيل هذا المربع، يؤدي الضغط على زر <guibutton
+>التقط لقطة شاشة جديدة</guibutton
+> (<keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>) إلى إخفاء نافذة لاقط الشاشة وتغيير مؤشر الفأرة إلى شعيرة متصالبة. تُلقط لقطة الشاشة عند النقر بزر الفأرة الأيسر، أو تُجهض إذا نُقر على أي أزرار فأرة أخرى. لاحظ أنه لا يمكنك التفاعل مع سطح المكتب باستخدام الفأرة عندما يكون المؤشر عبارة عن شعيرة متصالبة، ولكن يمكنك استخدام لوحة المفاتيح.</para>
+            </sect2>
+
+            <sect2>
+                <title
+>خيارات</title>
+
+                <para
+>تسمح لك إعدادات الخيارات باختيار ما إذا كان يجب تضمين مؤشر الفأرة في لقطات الشاشة، وما إذا كان سيتم التقاط زخارف النافذة مع صورة نافذة تطبيق واحد. في وضع <guilabel
+>نافذة تحت المؤشر</guilabel
+>، يسمح لك أيضًا باختيار ما إذا كان لاقط الشاشة سيلتقط فقط صورة القائمة المنبثقة الحالية تحت المؤشر، أم سيشمل أيضًا النافذة الأب. أخيرًا، سيؤدي <guilabel
+>أنهِ بعد الحفظ أو النسخ</guilabel
+> إلى إنهاء لاقط الشاشة بعد أي عمليات حفظ أو نسخ.</para>
+
+                <itemizedlist>
+                    <listitem>
+                        <para
+>يؤدي تفعيل مربع الاختيار <guilabel
+>ضمّن مؤشر الفأرة</guilabel
+> إلى تضمين صورة لمؤشر الفأرة في لقطة الشاشة.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>يُفعل خيار <guilabel
+>ضمّن شريط عنوان النافذة وحدودها</guilabel
+> فقط عند تحديد إما وضع <guilabel
+>النافذة النشطة</guilabel
+> أو وضع <guilabel
+>نافذة تحت المؤشر</guilabel
+> في مربع <guilabel
+>المنطقة</guilabel
+> المنسدل. يؤدي تحديد هذا الخيار إلى تضمين حدود النافذة وزخرفتها في لقطة الشاشة، بينما يعطي إلغاء تحديده صورة لمحتويات النافذة فقط.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>يُفعل خيار <guilabel
+>ضمّن ظل النافذة</guilabel
+> فقط عند تحديد إما وضع <guilabel
+>النافذة النشطة</guilabel
+> أو وضع <guilabel
+>نافذة تحت المؤشر</guilabel
+> في مربع <guilabel
+>المنطقة</guilabel
+> المنسدل. يؤدي تحديد هذا الخيار إلى تضمين ظل النافذة في لقطة الشاشة، بينما يعطي إلغاء تحديده صورة للنافذة بدون الظل.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>يُفعل خيار <guilabel
+>التقط القائمة المنبثقة الحالية فقط</guilabel
+> فقط عند تحديد وضع <guilabel
+>نافذة تحت المؤشر</guilabel
+> في مربع <guilabel
+>المنطقة</guilabel
+> المنسدل. يؤدي تحديد هذا الخيار إلى التقاط القائمة المنبثقة الموجودة تحت المؤشر فقط، دون نافذتها الأب.</para>
+                    </listitem>
+                    <listitem>
+                        <para
+>سيؤدي خيار <guilabel
+>أنهِ بعد الحفظ اليدوي أو النسخ</guilabel
+> إلى إنهاء لاقط الشاشة بعد أي عمليات حفظ أو نسخ. لاحظ أن لقطة الشاشة المنسوخة لن يُحتفظ بها إلا إذا كنت تشغل مديرًا للحافظة يقبل الصور. يمكن ضبط حافظة كيدي بهذه الطريقة بالنقر بزر الفأرة الأيمن على أيقونتها، واختيار <guilabel
+>اضبط الحافظة...</guilabel
+>، وإلغاء تحديد <guilabel
+>تجاهل الصور</guilabel
+>.</para>
+                    </listitem>
+                </itemizedlist>
+            </sect2>
+        </sect1>
+    </chapter>
+
+    <chapter id="additional-functionality">
+        <title
+>وظائف إضافية</title>
+
+        <sect1>
+            <title
+>الأزرار</title>
+
+            <para
+>توجد بعض الأزرار في الجزء السفلي من نافذة لاقط الشاشة. وظائفها موضحة أدناه:</para>
+
+            <variablelist>
+                <varlistentry>
+                    <term
+><guibutton
+>مساعدة</guibutton
+></term>
+                    <listitem>
+                        <para
+>يعطيك عناصر القائمة الشائعة الموضحة في <ulink url="help:/fundamentals/menus.html#menus-help"
+>قائمة المساعدة</ulink
+> لأساسيات كيدي.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>اضبط...</guibutton
+></term>
+                    <listitem>
+                        <para
+>يمنحك الوصول إلى نافذة ضبط لاقط الشاشة حيث يمكنك تغيير إعدادات الالتقاط وموقع الحفظ المبدئي واسم الملف.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>اشرح</guibutton
+></term>
+                    <listitem>
+                        <para
+>يفتح نافذة محرر الشرح التي توفر أدوات شرح متنوعة:</para>
+                        <mediaobject>
+                            <imageobject>
+                                <imagedata fileref="Annotate.png" format="PNG"/>
+                            </imageobject>
+                            <textobject>
+                                <phrase
+>محرر الشرح</phrase>
+                            </textobject>
+                        </mediaobject>
+                        <para
+>جرب أدوات الشرح. قد تجد كل ما يلزم لشرح لقطات الشاشة هناك: أسهم، قلم، علامات، صناديق نصوص، أرقام، وحتى رموز تعبيرية. من الممكن تغيير معاملات الأدوات وإضافة تأثيرات (ظل، تدرج رمادي، وحدود). </para>
+                        <para
+>عندما تعتقد أن الشرح قد انتهى، اضغط على زر <guibutton
+>تم الشرح</guibutton
+>. </para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>أدوات</guibutton
+></term>
+                    <listitem>
+                        <para
+>يفتح قائمة منسدلة تقدم أدوات متنوعة:</para>
+                        <itemizedlist>
+                            <listitem>
+                                <para
+>سيقوم <guimenuitem
+>افتح مجلد لقطات الشاشة المبدئي</guimenuitem
+> بتمييز آخر لقطة شاشة حُفظت في مدير الملفات المبدئي</para>
+                            </listitem>
+                            <listitem>
+                                <para
+>الوصول إلى حوار <guimenuitem
+>اطبع</guimenuitem
+></para>
+                            </listitem>
+                            <listitem>
+                                <para
+>مجموعة من البرامج الخارجية لتسجيل الشاشة</para>
+                            </listitem>
+                        </itemizedlist>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>صدّر</guibutton
+></term>
+                    <listitem>
+                        <para
+>يفتح قائمة منسدلة تسمح لك بفتح لقطة الشاشة مباشرة بجميع البرامج المرتبطة بنوع MIME لملفات PNG. اعتمادًا على البرامج المثبتة، ستتمكن من فتح اللقطة وتحريرها في تطبيقات الرسومات أو العوارض لديك.</para>
+
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>انسخ الصورة إلى الحافظة/انسخ الموقع إلى الحافظة</guibutton
+></term>
+                    <listitem>
+                        <para
+>ينسخ لقطة الشاشة الحالية أو موقعها إلى الحافظة. يمكنك أيضًا استخدام اختصار لوحة المفاتيح <keycombo action="simul"
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> لهذا الغرض.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guibutton
+>احفظ كَ‍</guibutton
+></term>
+                    <listitem>
+                        <para
+>يحفظ لقطة الشاشة كصورة PNG في مجلد الصور المبدئي ويخرج من التطبيق فورًا.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </sect1>
+
+        <sect1>
+            <title
+>اضبط</title>
+            <para
+>استخدم زر <guibutton
+>اضبط...</guibutton
+> لفتح حوار الضبط.</para>
+            <sect2>
+            <title
+>عامّ</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="ApplicationPreferences.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                        <phrase
+>عامّ</phrase>
+                    </textobject>
+                </mediaobject>
+            <variablelist>
+                <varlistentry>
+                    <term
+><guilabel
+>عند بدء لاقط الشاشة</guilabel
+></term>
+                    <listitem>
+                        <para
+>يسمح بـ <guilabel
+>التقاط لقطة شاشة لكامل الشاشة</guilabel
+>، أو استخدام آخر وضع التقاط مُستخدم، أو عدم التقاط لقطة شاشة آليًا. آخر وضع التقاط مُستخدم هو الذي ضُبط في وضع الالتقاط</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>بعد أخذ لقطة</guilabel
+></term>
+                    <listitem>
+                        <para
+>يسمح بـ <guilabel
+>حفظ الملف في المجلد المبدئي</guilabel
+>، أو إيقاف تشغيل أي إجراءات للحافظة، أو نسخ الصورة إلى الحافظة، أو نسخ مسار لقطة الشاشة إلى الحافظة. يمكن ضبط الموقع المبدئي باستخدام صفحة ضبط <link linkend="save-page"
+>احفظ</link
+>. من الممكن <guilabel
+>نسخ موقع الملف إلى الحافظة</guilabel
+>. يمكنك بعد ذلك لصقه في أي مكان يقبل إدخال النص. لاحظ أنه يجب عليك تشغيل مدير حافظة من أجل الاحتفاظ بالمسار في الحافظة بعد خروج لاقط الشاشة.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>اضغط مفتاح لقطة الشاشة لـ</guilabel
+></term>
+                    <listitem>
+                        <para
+>عند الضغط على اختصار لعمل لقطة شاشة وكان لاقط الشاشة قيد التشغيل بالفعل، من الممكن ضبط سلوك نظام التقاط لقطات الشاشة. يمكنك الاختيار بين التقاط لقطة شاشة جديدة، أو فتح نافذة لاقط شاشة جديدة، أو إعادة التركيز إلى نافذة لاقط الشاشة الموجودة.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>استخدم خلفية فاتحة</guilabel
+></term>
+                    <listitem>
+                        <para
+>استخدم لون خلفية فاتحًا لإخفاء المنطقة المقتطعة في محدد المنطقة المستطيلة. قد يجعل هذا المؤشرات الداكنة أسهل في الرؤية.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>أظهر المكبر</guilabel
+></term>
+                    <listitem>
+                        <para
+>عند حفظ لقطة شاشة، انسخ الموقع الذي حُفظ فيه الملف إلى الحافظة. يمكنك بعد ذلك لصقه في أي مكان يقبل إدخال النص. لاحظ أنه يجب عليك تشغيل مدير حافظة من أجل الاحتفاظ بالمسار في الحافظة بعد خروج لاقط الشاشة.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>اقبل عند النقر والإفلات</guilabel
+></term>
+                    <listitem>
+                        <para
+>إذا حُدد، اقبل المنطقة المحددة بمجرد إفلات زر الفأرة في وضع <guilabel
+>منطقة مستطيلة</guilabel
+>.</para>
+                        <para
+>عند اختيار منطقة جديدة، دون توفر منطقة محفوظة مسبقًا، فإن النقر والسحب وإفلات زر الفأرة يجب أن يلتقط المنطقة المحددة فورًا. عندما تُعرض منطقة محفوظة مسبقًا، يمكن التلاعب بالمنطقة المحفوظة بشكل أكبر ويتطلب حفظ هذه المنطقة تأكيدًا يدويًا (&Enter; أو النقر المزدوج بزر الفأرة الأيسر). يؤدي النقر والسحب خارج المنطقة المحفوظة مسبقًا إلى التقاط المنطقة المختارة حديثًا فورًا.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>تذكّر المنطقة المحددة</guilabel
+></term>
+                    <listitem>
+                        <para
+>مبدئيًا، يتذكر لاقط الشاشة الاختيار الأولي عندما تلتقط لقطة شاشة لمنطقة مستطيلة حتى تغلق نافذة لاقط الشاشة. يمكنك أيضًا اختيار جعل لاقط الشاشة لا يتذكر المنطقة المحددة أبدًا أو يتذكرها بين جلسات الالتقاط.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+            </sect2>
+            <sect2 id="save-page">
+            <title
+>احفظ</title>
+            <para
+>عندما تستخدم وظيفة <guilabel
+>احفظ</guilabel
+>، يحفظ لاقط الشاشة الصورة باسم ملف مبدئي، في مجلد الصور الخاص بك (الموجود داخل مجلدك المنزلي). يتضمن اسم الملف المبدئي التاريخ والوقت الذي التقطت فيه الصورة.</para>
+
+            <para
+>تسمح لك صفحة <guilabel
+>احفظ</guilabel
+> بضبط موقع الحفظ المبدئي واسم الملف. يؤدي النقر فوق هذا الخيار إلى إظهار مربع حوار مثل التالي: <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="SaveOptions.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                        <phrase
+>احفظ</phrase>
+                    </textobject>
+                </mediaobject>
+            </para>
+            <variablelist>
+                <varlistentry>
+                    <term
+><guilabel
+>موقع الحفظ</guilabel
+></term>
+                    <listitem>
+                    <para
+>في صندوق نص الموقع، اضبط المجلد الذي ترغب في حفظ لقطات الشاشة فيه عند الضغط على <guibutton
+>احفظ</guibutton
+>.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>جودة الضغط</guilabel
+></term>
+                    <listitem>
+                        <para
+>اختر جودة الصورة عند الحفظ بتنسيقات صور بها فقد مثل JPEG. تعطي القيم الأعلى جودة أفضل ولكنها تزيد من حجم الملف. راجع <ulink url="https://en.wikipedia.org/wiki/Image_file_formats"
+>صفحة ويكيبيديا</ulink
+> للحصول على تفاصيل حول تنسيقات الصور المستخدمة في لاقط الشاشة.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term
+><guilabel
+>اسم الملف</guilabel
+></term>
+                    <listitem>
+                        <para
+>اضبط اسم ملف مبدئي للقطات الشاشة المحفوظة.</para>
+                        <para
+>يمكنك استخدام العناصر النائبة التالية في اسم الملف، والتي سيُستبدل بها النص الفعلي عند حفظ الملف:</para>
+                        <itemizedlist>
+                        <listitem
+><para
+><userinput
+>&lt;dd&gt;</userinput
+>: اليوم</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>&lt;hh&gt;</userinput
+>: الساعة</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>&lt;MM&gt;</userinput
+>: الشهر</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>&lt;ss&gt;</userinput
+>: الثانية</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>&lt;title&gt;</userinput
+>: عنوان النافذة</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>&lt;yyyy&gt;</userinput
+>: السنة (4 أرقام)</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>&lt;#&gt;</userinput
+>: رقم تسلسلي</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>&lt;mm&gt;</userinput
+>: الدقيقة</para
+></listitem>
+                        <listitem
+><para
+><userinput
+>&lt;yy&gt;</userinput
+>: السنة (رقمان)</para
+></listitem>
+                        </itemizedlist>
+                        <para
+>يمكنك النقر فوق العناصر النائبة في القائمة المرجعية أدناه لإدراجها في سطر <guilabel
+>اسم الملف</guilabel
+>.</para>
+                        <para
+>إذا كان هناك ملف بهذا الاسم موجودًا بالفعل، سيُلحق رقم تسلسلي باسم الملف. على سبيل المثال، إذا كان اسم الملف هو <filename
+>Screenshot</filename
+>، و<filename
+>Screenshot.png</filename
+> موجود بالفعل، فسيُحفظ كـ <filename
+>Screenshot-1.png</filename
+>.</para>
+                        <para
+>استخدم المربع المنسدل بجوار حقل النص لاختيار تنسيق الصورة المبدئي للقطات الشاشة. راجع <ulink url="https://en.wikipedia.org/wiki/Image_file_formats"
+>صفحة ويكيبيديا</ulink
+> للحصول على تفاصيل حول تنسيقات الصور المستخدمة في لاقط الشاشة.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+            </sect2>
+            <sect2>
+            <title
+>الاختصارات</title>
+            <para
+>يمكن استخدام صفحة الضبط هذه لتغيير الاختصارات المبدئية للاقط الشاشة. من الممكن ضبط اختصارات لبدء لاقط الشاشة والتقاط أجزاء مختلفة من سطح المكتب. </para>
+            </sect2>
+        </sect1>
+
+        <sect1>
+            <title
+>السحب والإفلات</title>
+            <para
+>يمكن سحب الصورة الملتطقة إلى تطبيق أو مستند آخر. إذا كان التطبيق قادرًا على التعامل مع الصور، تُدرج نسخة من الصورة الكاملة هناك.</para>
+
+            <para
+>إذا سحبت لقطة شاشة إلى نافذة مدير ملفات، يظهر حوار حيث يمكنك تحرير اسم الملف واختيار تنسيق الصورة وسيُدرج الملف في المجلد الحالي.</para>
+
+            <para
+>إذا سحبت لقطة الشاشة إلى صندوق نص، يُدرج المسار إلى الملف المحفوظ مؤقتًا. هذا مفيد على سبيل المثال لرفع لقطة شاشة عبر نماذج الويب أو لإرفاق لقطات شاشة في تقارير العلل على <ulink url="https://bugs.kde.org/"
+>متتبع علل كيدي</ulink
+>.</para>
+
+            <para
+>يعمل هذا مع جميع العملاء الذين لا يلتقطون بيانات الصورة، ولكنهم يبحثون فقط عن رابط URL في بيانات MIME المسحوبة.</para>
+        </sect1>
+    </chapter>
+
+    <chapter id="credits">
+        <title
+>الحقوق والترخيص</title>
+
+        <para
+>حقوق نشر البرنامج © 2015 &Boudhayan.Gupta; &Boudhayan.Gupta.mail;.</para>
+
+        <para
+>تستند أجزاء من الكود مباشرة إلى كود من مشروع ك-لقطة. حقوق النشر © 1997-2011 لمطوري ك-لقطة. تتوفر إشعارات تعيين حقوق النشر التفصيلية في الترويسات في كود المصدر.</para>
+
+        <para
+>تستند أجزاء من الكود مباشرة إلى كود من مشروع مدير نوافذ كيدي. حقوق النشر © 2008، 2013 لمطوري مدير نوافذ كيدي. تتوفر إشعارات تعيين حقوق النشر التفصيلية في الترويسات في كود المصدر.</para>
+
+        <para
+>التوثيق مستند إلى توثيق ك-لقطة الأصلي:</para>
+
+        <itemizedlist>
+            <listitem>
+                <para
+>حقوق النشر © 1997-2000 &Richard.J.Moore; &Richard.J.Moore.mail;</para>
+            </listitem>
+            <listitem>
+                <para
+>حقوق النشر © 2000 &Matthias.Ettrich; &Matthias.Ettrich.mail;</para>
+            </listitem>
+        </itemizedlist>
+
+        <para
+>الترجمة: زايد السعيدي <email
+>zayed.alsaidi@gmail.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
