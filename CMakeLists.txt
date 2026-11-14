@@ -38,6 +38,13 @@ include(ECMFindQmlModule)
 
 option(WITH_X11 "Enable X11 support" ON)
 
+if(DEFINED ENV{KDECI_BUILD})
+    set(KDECI_BUILD true)
+endif()
+if (NOT BUILD_TESTING)
+    set(BUILD_TESTING ${KDECI_BUILD})
+endif()
+
 # find dependencies
 
 find_package(
@@ -129,7 +136,10 @@ add_subdirectory(dbus)
 add_subdirectory(desktop)
 add_subdirectory(icons)
 add_subdirectory(kconf_update)
-add_subdirectory(tests)
+if(BUILD_TESTING)
+    add_subdirectory(appiumtests)
+    add_subdirectory(tests)
+endif()
 
 if (KF6DocTools_FOUND)
     add_subdirectory(doc)

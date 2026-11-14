@@ -27,6 +27,11 @@ Dependencies:
     'libraries/kquickimageeditor': '@latest-kf6'
     'third-party/wayland': '@latest'
 
+RuntimeDependencies:
+ - 'on': ['Linux']
+   'require':
+    'sdk/selenium-webdriver-at-spi': '@same'
+
 Options:
  require-passing-tests-on: ['@all']
  enable-lsan: True
