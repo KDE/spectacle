@@ -4,6 +4,7 @@
 
 import QtQuick
 import QtQuick.Controls as QQC
+import org.kde.kirigami as Kirigami
 import org.kde.spectacle.private
 
 TtToolButton {
