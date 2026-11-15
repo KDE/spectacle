@@ -6,6 +6,7 @@
 #include "CaptureModeModel.h"
 #include "SpectacleCore.h"
 #include "ShortcutActions.h"
+#include "settings.h"
 #include <KGlobalAccel>
 
 using namespace Qt::StringLiterals;
@@ -55,6 +56,7 @@ ScreenshotModeMenu::ScreenshotModeMenu(QWidget *parent)
             action->setShortcuts(globalShortcuts(globalAction));
             auto onTriggered = [mode] {
                 SpectacleCore::instance()->takeNewScreenshot(mode);
+                Settings::setCaptureMode(mode);
             };
             connect(action, &QAction::triggered, action, onTriggered);
         }
