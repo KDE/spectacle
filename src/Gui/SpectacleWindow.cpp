@@ -120,7 +120,15 @@ void SpectacleWindow::setVisibilityForAll(QWindow::Visibility visibility)
         if (visible && !s_activationToken.isEmpty()) {
             qputenv("XDG_ACTIVATION_TOKEN", s_activationToken);
         }
-        window->setVisibility(visibility);
+        if (visibility == QWindow::Visibility::FullScreen) {
+            // WORKAROUND: showFullscreen causes broken activation on Wayland,
+            // since it calls requestActivate again after showing the window (which also activates).
+            // Until Qt is fixed, simply set the window state manually
+            window->setWindowStates(Qt::WindowState::WindowFullScreen);
+            window->setVisible(true);
+        } else {
+            window->setVisibility(visibility);
+        }
     }
     if (visible && !s_activationToken.isEmpty()) {
         s_activationToken.clear();
