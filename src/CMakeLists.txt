@@ -57,7 +57,6 @@ target_sources(spectacle PRIVATE
     Platforms/VideoPlatform.cpp
     Platforms/VideoPlatformWayland.cpp
     RecordingModeModel.cpp
-    ScreenShotEffect.cpp
     ShortcutActions.cpp
     SpectacleCore.cpp
     SpectacleDBusAdapter.cpp

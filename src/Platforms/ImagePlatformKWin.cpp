@@ -11,8 +11,6 @@
 #include "DebugUtils.h"
 #include "ImageMetaData.h"
 
-#include <KWindowSystem>
-
 #include <QColorSpace>
 #include <QDBusConnection>
 #include <QDBusConnectionInterface>
@@ -20,27 +18,21 @@
 #include <QDBusPendingCallWatcher>
 #include <QDBusReply>
 #include <QDBusUnixFileDescriptor>
-#include <QFile>
-#include <QFileDevice>
-#include <QFuture>
-#include <QFutureWatcher>
 #include <QGuiApplication>
 #include <QPainter>
-#include <QPixmap>
 #include <QScreen>
 #include <QTimer>
-#include <QtConcurrentRun>
 
 #include <errno.h>
 #include <fcntl.h>
 #include <string.h>
-#include <unistd.h>
+#include <sys/mman.h>
 
 using namespace Qt::StringLiterals;
 
-static const QString s_screenShotService = u"org.kde.KWin.ScreenShot2"_s;
-static const QString s_screenShotObjectPath = u"/org/kde/KWin/ScreenShot2"_s;
-static const QString s_screenShotInterface = u"org.kde.KWin.ScreenShot2"_s;
+static const QString s_screenShotService = u"org.kde.KWin.ScreenShot3"_s;
+static const QString s_screenShotObjectPath = u"/org/kde/KWin/ScreenShot3"_s;
+static const QString s_screenShotInterface = u"org.kde.KWin.ScreenShot3"_s;
 
 static QVariantMap screenShotFlagsToVardict(ImagePlatformKWin::ScreenShotFlags flags)
 {
@@ -124,73 +116,56 @@ QImage combinedImage(const QList<QImage> &images)
     return finalImage;
 }
 
-static ScreenShotSource2::Result allocateImage(const QVariantMap &metadata)
+static ScreenShotSource3::Result readImage(int fileDescriptor, const QVariantMap &metadata)
 {
-    QString errors;
-
     bool ok;
-    // We use int because QImage takes ints for its size
     const int width = metadata.value(u"width"_s).toInt(&ok);
     if (!ok || width <= 0) {
-        errors = i18nc("@info, %1 is the width", "Bad width for KWin screenshot: %1", QDebug::toString(metadata.value(u"width"_s)));
+        return std::unexpected(i18nc("@info, %1 is the width", "Bad width for KWin screenshot: %1", QDebug::toString(metadata.value(u"width"_s))));
     }
 
     const int height = metadata.value(u"height"_s).toInt(&ok);
     if (!ok || height <= 0) {
-        const auto string = i18nc("@info, %1 is the height", "Bad height for KWin screenshot: %1", QDebug::toString(metadata.value(u"height"_s)));
-        if (!errors.isEmpty()) {
-            errors = errors % u"\n"_s % string;
-        } else {
-            errors = string;
-        }
+        return std::unexpected(i18nc("@info, %1 is the height", "Bad height for KWin screenshot: %1", QDebug::toString(metadata.value(u"height"_s))));
+    }
+
+    const int stride = metadata.value(u"stride"_s).toInt(&ok);
+    if (!ok || stride <= 0) {
+        return std::unexpected(i18nc("@info, %1 is the stride", "Bad stride for KWin screenshot: %1", QDebug::toString(metadata.value(u"stride"_s))));
     }
 
     // We use uint because QImage::Format values are all above 0.
     const uint format = metadata.value(u"format"_s).toUInt(&ok);
     if (!ok || format <= QImage::Format_Invalid || format >= QImage::NImageFormats) {
-        const auto string = i18nc("@info, %1 is a file format like 'png', 'jpg'", "Bad format for KWin screenshot: %1", QDebug::toString(metadata.value(u"format"_s)));
-        if (!errors.isEmpty()) {
-            errors = errors % u"\n"_s % string;
-        } else {
-            errors = string;
-        }
+        return std::unexpected(
+            i18nc("@info, %1 is a file format like 'png', 'jpg'", "Bad format for KWin screenshot: %1", QDebug::toString(metadata.value(u"format"_s))));
     }
 
-    if (!errors.isEmpty()) {
-        return std::unexpected(errors);
+    void *data = mmap(nullptr, stride * height, PROT_READ, MAP_SHARED, fileDescriptor, 0);
+    if (data == MAP_FAILED) {
+        return std::unexpected(i18n("mmap() failed: %1", QString::fromLocal8Bit(strerror(errno))));
     }
 
-    QImage image{width, height, static_cast<QImage::Format>(format)};
-    // KWin screenshots in sRGB for now, Qt needlessly detaches the image when
-    // setting the color space later, QTBUG-152033.
-    image.setColorSpace(QColorSpace::SRgb);
-    return image;
-}
+    struct MemoryMap
+    {
+        void *data;
+        size_t size;
+    };
 
-static ScreenShotSource2::Result readImage(int fileDescriptor, const QVariantMap &metadata)
-{
-    QFile file;
-    if (!file.open(fileDescriptor, QFileDevice::ReadOnly, QFileDevice::AutoCloseHandle)) {
-        close(fileDescriptor);
-        return std::unexpected(i18nc("@info", "Could not open file descriptor for reading KWin screenshot."));
-    }
+    auto memoryMap = new MemoryMap {
+        .data = data,
+        .size = size_t(height * stride),
+    };
 
-    auto result = allocateImage(metadata);
-    if (!result.has_value()) {
-        return result;
-    }
-    QImage &resultImage = result.value();
+    QImage resultImage(static_cast<uchar *>(data), width, height, QImage::Format(format), [](void *data) {
+        auto memoryMap = static_cast<MemoryMap *>(data);
+        munmap(memoryMap->data, memoryMap->size);
+        delete memoryMap;
+    }, memoryMap);
+    resultImage.setColorSpace(QColorSpace::SRgb);
 
-    bool ok = false;
     qreal scale = metadata.value(u"scale"_s).toReal(&ok);
     if (ok) {
-#if WITH_X11
-        // NOTE: KWin X11Output DPR is always 1. This is intentional.
-        // https://bugs.kde.org/show_bug.cgi?id=474778
-        if (KWindowSystem::isPlatformX11() && scale == 1) {
-            scale = qGuiApp->devicePixelRatio();
-        }
-#endif
         resultImage.setDevicePixelRatio(scale);
     }
 
@@ -227,31 +202,15 @@ static ScreenShotSource2::Result readImage(int fileDescriptor, const QVariantMap
         }
     }
 
-    QDataStream stream(&file);
-    stream.readRawData(reinterpret_cast<char *>(resultImage.bits()), resultImage.sizeInBytes());
-
-    return result;
+    return resultImage;
 }
 
 template<typename... ArgType>
-ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... arguments)
+ScreenShotSource3::ScreenShotSource3(const QString &methodName, ArgType... arguments)
 {
-    // Do not set the O_NONBLOCK flag. Code that reads data from the pipe assumes
-    // that read() will block if there is no any data yet.
-    int pipeFds[2]{-1, -1};
-    if (pipe2(pipeFds, O_CLOEXEC) == -1) {
-        const auto errnum = errno;
-        QTimer::singleShot(0, this, [this, errnum] {
-            Q_EMIT finished(
-                std::unexpected(i18nc("@info, %1 is an error code", "pipe2() failed for KWin screenshot: %1", QString::fromLocal8Bit(strerror(errnum)))));
-        });
-        return;
-    }
-
     QDBusMessage message = QDBusMessage::createMethodCall(s_screenShotService, s_screenShotObjectPath, s_screenShotInterface, methodName);
 
     QVariantList dbusArguments{arguments...};
-    dbusArguments.append(QVariant::fromValue(QDBusUnixFileDescriptor(pipeFds[1])));
     message.setArguments(dbusArguments);
     // For arguments that aren't common to other methods.
     // These can help differentiate between different method calls.
@@ -270,8 +229,6 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
     // Spectacle might wait indefinitely for a reply that never comes.
     const int timeout = methodName != u"CaptureInteractive" ? 4000 : 60000;
     QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message, timeout);
-    close(pipeFds[1]);
-    m_pipeFileDescriptor.giveFileDescriptor(pipeFds[0]);
 
     QTimer *timeoutTimer = nullptr;
     if (SPECTACLE_LOG().isDebugEnabled()) {
@@ -288,14 +245,14 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
     auto watcher = new QDBusPendingCallWatcher(pendingCall, this);
     connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, watcher, relevantInfo, timeoutTimer]() {
         watcher->deleteLater();
-        const QDBusPendingReply<QVariantMap> reply = *watcher;
+        const QDBusPendingReply<QDBusUnixFileDescriptor, QVariantMap> reply = *watcher;
         if (timeoutTimer) {
             timeoutTimer->stop();
             timeoutTimer->deleteLater();
         }
 
         if (reply.isError()) {
-            if (reply.error().name() == u"org.kde.KWin.ScreenShot2.Error.Cancelled"_s) {
+            if (reply.error().name() == u"org.kde.KWin.ScreenShot3.Error.Cancelled"_s) {
                 // don't show error on user cancellation
                 Q_EMIT finished(QImage{});
             } else {
@@ -306,7 +263,9 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
                 Q_EMIT finished(std::unexpected(error));
             }
         } else {
-            const QVariantMap &metadata = reply;
+            const QDBusUnixFileDescriptor image = reply.argumentAt<0>();
+            const QVariantMap metadata = reply.argumentAt<1>();
+
             const QString type = metadata.value(u"type"_s).toString();
             if (type != "raw"_L1) {
                 const QString errorString = i18nc("@info", "Unsupported KWin screenshot type metadata: %1", type);
@@ -314,16 +273,13 @@ ScreenShotSource2::ScreenShotSource2(const QString &methodName, ArgType... argum
                 return;
             }
 
-            QFuture<Result> future = QtConcurrent::run(readImage, m_pipeFileDescriptor.takeFileDescriptor(), metadata);
-            future.then([this](const Result &result) {
-                Q_EMIT finished(result);
-            });
+            Q_EMIT finished(readImage(image.fileDescriptor(), metadata));
         }
     });
 }
 
-ScreenShotSourceArea2::ScreenShotSourceArea2(const QRect &area, ImagePlatformKWin::ScreenShotFlags flags)
-    : ScreenShotSource2(u"CaptureArea"_s,
+ScreenShotSourceArea3::ScreenShotSourceArea3(const QRect &area, ImagePlatformKWin::ScreenShotFlags flags)
+    : ScreenShotSource3(u"CaptureArea"_s,
                         qint32(area.x()),
                         qint32(area.y()),
                         quint32(area.width()),
@@ -332,41 +288,38 @@ ScreenShotSourceArea2::ScreenShotSourceArea2(const QRect &area, ImagePlatformKWi
 {
 }
 
-ScreenShotSourceInteractive2::ScreenShotSourceInteractive2(ImagePlatformKWin::InteractiveKind kind, ImagePlatformKWin::ScreenShotFlags flags)
-    : ScreenShotSource2(u"CaptureInteractive"_s, quint32(kind), screenShotFlagsToVardict(flags))
+ScreenShotSourceInteractive3::ScreenShotSourceInteractive3(ImagePlatformKWin::InteractiveKind kind, ImagePlatformKWin::ScreenShotFlags flags)
+    : ScreenShotSource3(u"CaptureInteractive"_s, quint32(kind), screenShotFlagsToVardict(flags))
 {
 }
 
-ScreenShotSourceScreen2::ScreenShotSourceScreen2(const QScreen *screen, ImagePlatformKWin::ScreenShotFlags flags)
-// NOTE: As of Qt 6.4, QScreen::name() is not guaranteed to match the result of any native APIs.
-// It should not be used to uniquely identify a screen, but it happens to work on X11 and Wayland.
-// KWin's ScreenShot2 DBus API uses QScreen::name() as identifiers for screens.
-    : ScreenShotSource2(u"CaptureScreen"_s, screen->name(), screenShotFlagsToVardict(flags))
+ScreenShotSourceScreen3::ScreenShotSourceScreen3(const QScreen *screen, ImagePlatformKWin::ScreenShotFlags flags)
+    : ScreenShotSource3(u"CaptureScreen"_s, screen->name(), screenShotFlagsToVardict(flags))
 {
 }
 
-ScreenShotSourceActiveWindow2::ScreenShotSourceActiveWindow2(ImagePlatformKWin::ScreenShotFlags flags)
-    : ScreenShotSource2(u"CaptureActiveWindow"_s, screenShotFlagsToVardict(flags))
+ScreenShotSourceActiveWindow3::ScreenShotSourceActiveWindow3(ImagePlatformKWin::ScreenShotFlags flags)
+    : ScreenShotSource3(u"CaptureActiveWindow"_s, screenShotFlagsToVardict(flags))
 {
 }
 
-ScreenShotSourceActiveScreen2::ScreenShotSourceActiveScreen2(ImagePlatformKWin::ScreenShotFlags flags)
-    : ScreenShotSource2(u"CaptureActiveScreen"_s, screenShotFlagsToVardict(flags))
+ScreenShotSourceActiveScreen3::ScreenShotSourceActiveScreen3(ImagePlatformKWin::ScreenShotFlags flags)
+    : ScreenShotSource3(u"CaptureActiveScreen"_s, screenShotFlagsToVardict(flags))
 {
 }
 
-ScreenShotSourceWorkspace2::ScreenShotSourceWorkspace2(ImagePlatformKWin::ScreenShotFlags flags)
-    : ScreenShotSource2(u"CaptureWorkspace"_s, screenShotFlagsToVardict(flags))
+ScreenShotSourceWorkspace3::ScreenShotSourceWorkspace3(ImagePlatformKWin::ScreenShotFlags flags)
+    : ScreenShotSource3(u"CaptureWorkspace"_s, screenShotFlagsToVardict(flags))
 {
 }
 
-ScreenShotSourceMeta2::ScreenShotSourceMeta2(const QVector<ScreenShotSource2 *> &sources)
+ScreenShotSourceMeta3::ScreenShotSourceMeta3(const QVector<ScreenShotSource3 *> &sources)
 {
     const auto size = sources.size();
     m_results.reserve(size); // reserves memory but does not change size
-    for (ScreenShotSource2 *source : sources) {
+    for (ScreenShotSource3 *source : sources) {
         source->setParent(this);
-        connect(source, &ScreenShotSource2::finished, this, [this, size](const ScreenShotSource2::Result &result) {
+        connect(source, &ScreenShotSource3::finished, this, [this, size](const ScreenShotSource3::Result &result) {
             m_results.emplaceBack(result);
             if (m_results.size() == size) {
                 Q_EMIT finished(m_results);
@@ -378,17 +331,6 @@ ScreenShotSourceMeta2::ScreenShotSourceMeta2(const QVector<ScreenShotSource2 *> 
 ImagePlatformKWin::ImagePlatformKWin(QObject *parent)
     : ImagePlatform(parent)
 {
-    auto message = QDBusMessage::createMethodCall(u"org.kde.KWin.ScreenShot2"_s,
-                                                  u"/org/kde/KWin/ScreenShot2"_s,
-                                                  u"org.freedesktop.DBus.Properties"_s,
-                                                  u"Get"_s);
-    message.setArguments({u"org.kde.KWin.ScreenShot2"_s, u"Version"_s});
-
-    const QDBusMessage reply = QDBusConnection::sessionBus().call(message);
-    if (reply.type() == QDBusMessage::ReplyMessage) {
-        m_apiVersion = reply.arguments().constFirst().value<QDBusVariant>().variant().toUInt();
-    }
-
     updateSupportedGrabModes();
     connect(qGuiApp, &QGuiApplication::screenAdded, this, &ImagePlatformKWin::updateSupportedGrabModes);
     connect(qGuiApp, &QGuiApplication::screenRemoved, this, &ImagePlatformKWin::updateSupportedGrabModes);
@@ -401,11 +343,7 @@ ImagePlatform::GrabModes ImagePlatformKWin::supportedGrabModes() const
 
 void ImagePlatformKWin::updateSupportedGrabModes()
 {
-    ImagePlatform::GrabModes grabModes = GrabMode::AllScreens | GrabMode::WindowUnderCursor | GrabMode::PerScreenImageNative;
-
-    if (m_apiVersion >= 2) {
-        grabModes |= GrabMode::ActiveWindow;
-    }
+    ImagePlatform::GrabModes grabModes = GrabMode::AllScreens | GrabMode::WindowUnderCursor | GrabMode::PerScreenImageNative | GrabMode::ActiveWindow;
 
     if (QGuiApplication::screens().count() > 1) {
         grabModes |= GrabMode::CurrentScreen | GrabMode::AllScreensScaled;
@@ -420,6 +358,12 @@ void ImagePlatformKWin::updateSupportedGrabModes()
 ImagePlatform::ShutterModes ImagePlatformKWin::supportedShutterModes() const
 {
     return ShutterMode::Immediate;
+}
+
+bool ImagePlatformKWin::isAvailable()
+{
+    static const bool available = QDBusConnection::sessionBus().interface()->isServiceRegistered(s_screenShotService);
+    return available;
 }
 
 void ImagePlatformKWin::doGrab(ShutterMode, GrabMode grabMode, bool includePointer, bool includeDecorations, bool includeShadow)
@@ -440,11 +384,7 @@ void ImagePlatformKWin::doGrab(ShutterMode, GrabMode grabMode, bool includePoint
         takeScreenShotWorkspace(flags);
         break;
     case GrabMode::CurrentScreen:
-        if (m_apiVersion >= 2) {
-            takeScreenShotActiveScreen(flags);
-        } else {
-            takeScreenShotInteractive(InteractiveKind::Screen, flags);
-        }
+        takeScreenShotActiveScreen(flags);
         break;
     case GrabMode::ActiveWindow:
         takeScreenShotActiveWindow(flags);
@@ -465,9 +405,9 @@ void ImagePlatformKWin::doGrab(ShutterMode, GrabMode grabMode, bool includePoint
     }
 }
 
-void ImagePlatformKWin::trackSource(ScreenShotSource2 *source)
+void ImagePlatformKWin::trackSource(ScreenShotSource3 *source)
 {
-    connect(source, &ScreenShotSource2::finished, this, [this, source](const ScreenShotSource2::Result &result) {
+    connect(source, &ScreenShotSource3::finished, this, [this, source](const ScreenShotSource3::Result &result) {
         source->deleteLater();
         if (!result.has_value()) {
             Q_EMIT newScreenshotFailed(result.error());
@@ -482,9 +422,9 @@ void ImagePlatformKWin::trackSource(ScreenShotSource2 *source)
 }
 
 template<typename OutputSignal>
-void ImagePlatformKWin::trackSource(ScreenShotSourceMeta2 *source, OutputSignal outputSignal)
+void ImagePlatformKWin::trackSource(ScreenShotSourceMeta3 *source, OutputSignal outputSignal)
 {
-    connect(source, &ScreenShotSourceMeta2::finished, this, [this, source, outputSignal](const QList<ScreenShotSource2::Result> &results) {
+    connect(source, &ScreenShotSourceMeta3::finished, this, [this, source, outputSignal](const QList<ScreenShotSource3::Result> &results) {
         source->deleteLater();
         QList<QImage> images;
         QString errorString;
@@ -507,44 +447,44 @@ void ImagePlatformKWin::trackSource(ScreenShotSourceMeta2 *source, OutputSignal 
 
 void ImagePlatformKWin::takeScreenShotArea(const QRect &area, ScreenShotFlags flags)
 {
-    trackSource(new ScreenShotSourceArea2(area, flags));
+    trackSource(new ScreenShotSourceArea3(area, flags));
 }
 
 void ImagePlatformKWin::takeScreenShotInteractive(InteractiveKind kind, ScreenShotFlags flags)
 {
-    trackSource(new ScreenShotSourceInteractive2(kind, flags));
+    trackSource(new ScreenShotSourceInteractive3(kind, flags));
 }
 
 void ImagePlatformKWin::takeScreenShotActiveWindow(ScreenShotFlags flags)
 {
-    trackSource(new ScreenShotSourceActiveWindow2(flags));
+    trackSource(new ScreenShotSourceActiveWindow3(flags));
 }
 
 void ImagePlatformKWin::takeScreenShotActiveScreen(ScreenShotFlags flags)
 {
-    trackSource(new ScreenShotSourceActiveScreen2(flags));
+    trackSource(new ScreenShotSourceActiveScreen3(flags));
 }
 
 void ImagePlatformKWin::takeScreenShotWorkspace(ScreenShotFlags flags)
 {
     const auto &screens = qGuiApp->screens();
-    QList<ScreenShotSource2 *> sources;
+    QList<ScreenShotSource3 *> sources;
     sources.reserve(screens.count());
     for (auto screen : screens) {
-        sources.emplaceBack(new ScreenShotSourceScreen2(screen, flags));
+        sources.emplaceBack(new ScreenShotSourceScreen3(screen, flags));
     }
-    trackSource(new ScreenShotSourceMeta2(sources), &ImagePlatform::newScreenshotTaken);
+    trackSource(new ScreenShotSourceMeta3(sources), &ImagePlatform::newScreenshotTaken);
 }
 
 void ImagePlatformKWin::takeScreenShotCroppable(ScreenShotFlags flags)
 {
     const auto &screens = qGuiApp->screens();
-    QList<ScreenShotSource2 *> sources;
+    QList<ScreenShotSource3 *> sources;
     sources.reserve(screens.count());
     for (auto screen : screens) {
-        sources.emplaceBack(new ScreenShotSourceScreen2(screen, flags));
+        sources.emplaceBack(new ScreenShotSourceScreen3(screen, flags));
     }
-    trackSource(new ScreenShotSourceMeta2(sources), &ImagePlatform::newCroppableScreenshotTaken);
+    trackSource(new ScreenShotSourceMeta3(sources), &ImagePlatform::newCroppableScreenshotTaken);
 }
 
 #include "moc_ImagePlatformKWin.cpp"

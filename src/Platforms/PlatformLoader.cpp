@@ -6,8 +6,6 @@
 
 #include "PlatformLoader.h"
 #include "Config.h"
-#include "PlasmaVersion.h"
-#include "ScreenShotEffect.h"
 
 #include "ImagePlatformKWin.h"
 #include "PlatformNull.h"
@@ -56,10 +54,8 @@ ImagePlatformPtr loadImagePlatform()
 #else
     const bool isReallyX11 = false;
 #endif
-    // Before KWin 5.27.8, there was an infinite loop in KWin on X11 when doing rectangle captures.
-    // Spectacle uses CaptureScreen DBus calls to KWin for rectangle captures.
-    if (ScreenShotEffect::isLoaded() && ScreenShotEffect::version() != ScreenShotEffect::NullVersion
-        && (!isReallyX11 || PlasmaVersion::get() >= PlasmaVersion::check(5, 27, 8))) {
+
+    if (ImagePlatformKWin::isAvailable()) {
         return std::make_unique<ImagePlatformKWin>();
     }
 #if WITH_X11
