@@ -51,6 +51,8 @@ public:
      */
     static void setVisibilityForAll(QWindow::Visibility visibility);
 
+    static void setActivationToken(const QByteArray &token);
+
     /**
      * For all SpectacleWindows created in SpectacleCore, set the title based on the chosen preset.
      * The `fileName` parameter is used for the Saved and Modified presets.
@@ -119,6 +121,7 @@ protected:
     static QString s_previousTitle;
     static bool s_synchronizingAnnotating;
     static bool s_isAnnotating;
+    static QByteArray s_activationToken;
 
     const std::unique_ptr<QQmlContext> m_context;
     std::unique_ptr<QQmlComponent> m_component;

@@ -890,6 +890,7 @@ qreal SpectacleCore::captureProgress() const
 
 void SpectacleCore::activate(const QStringList &arguments, const QString &workingDirectory)
 {
+    SpectacleWindow::setActivationToken(qgetenv("XDG_ACTIVATION_TOKEN"));
     if (m_videoPlatform->isRecording()) {
         // BUG: https://bugs.kde.org/show_bug.cgi?id=481471
         // TODO: find a way to support screenshot shortcuts while recording?
@@ -1623,6 +1624,7 @@ QString SpectacleCore::timeFromMilliseconds(qint64 milliseconds) const
 
 void SpectacleCore::activateAction(const QString &actionName, const QVariant &parameter)
 {
+    SpectacleWindow::setActivationToken(qgetenv("XDG_ACTIVATION_TOKEN"));
     Q_UNUSED(parameter)
     m_startMode = StartMode::DBus;
     if (m_videoPlatform->isRecording()) {

@@ -31,6 +31,7 @@ SpectacleWindow::TitlePreset SpectacleWindow::s_lastTitlePreset = Default;
 QString SpectacleWindow::s_previousTitle = QGuiApplication::applicationDisplayName();
 bool SpectacleWindow::s_synchronizingAnnotating = false;
 bool SpectacleWindow::s_isAnnotating = false;
+QByteArray SpectacleWindow::s_activationToken;
 
 SpectacleWindow::SpectacleWindow(QQmlEngine *engine, QWindow *parent)
     : QQuickView(engine, parent)
@@ -98,14 +99,32 @@ QList<SpectacleWindow *> SpectacleWindow::instances()
     return s_spectacleWindowInstances;
 }
 
+void SpectacleWindow::setActivationToken(const QByteArray &token)
+{
+    if (token.isEmpty()) {
+        return;
+    }
+    s_activationToken = token;
+}
+
 void SpectacleWindow::setVisibilityForAll(QWindow::Visibility visibility)
 {
     if (s_synchronizingVisibility || s_spectacleWindowInstances.isEmpty()) {
         return;
     }
     s_synchronizingVisibility = true;
+    const bool visible = visibility != QWindow::Visibility::Hidden && visibility != QWindow::Visibility::Minimized;
     for (auto window : std::as_const(s_spectacleWindowInstances)) {
+        // NOTE the token has to be set for every window, since Qt
+        // un-sets it again when activating a window
+        if (visible && !s_activationToken.isEmpty()) {
+            qputenv("XDG_ACTIVATION_TOKEN", s_activationToken);
+        }
         window->setVisibility(visibility);
+    }
+    if (visible && !s_activationToken.isEmpty()) {
+        s_activationToken.clear();
+        qunsetenv("XDG_ACTIVATION_TOKEN");
     }
     s_synchronizingVisibility = false;
 }
