@@ -21,6 +21,7 @@
 #include <QGuiApplication>
 #include <QPainter>
 #include <QScreen>
+#include <QThreadPool>
 #include <QTimer>
 
 #include <errno.h>
@@ -157,11 +158,20 @@ static ScreenShotSource3::Result readImage(int fileDescriptor, const QVariantMap
         .size = size_t(height * stride),
     };
 
-    QImage resultImage(static_cast<uchar *>(data), width, height, QImage::Format(format), [](void *data) {
-        auto memoryMap = static_cast<MemoryMap *>(data);
-        munmap(memoryMap->data, memoryMap->size);
-        delete memoryMap;
-    }, memoryMap);
+    QImage resultImage(
+        static_cast<uchar *>(data),
+        width,
+        height,
+        QImage::Format(format),
+        [](void *data) {
+            auto memoryMap = static_cast<MemoryMap *>(data);
+            // munmap() can take several tens of milliseconds, hence in a separate thread.
+            QThreadPool::globalInstance()->start([addr = memoryMap->data, length = memoryMap->size]() {
+                munmap(addr, length);
+            });
+            delete memoryMap;
+        },
+        memoryMap);
     resultImage.setColorSpace(QColorSpace::SRgb);
 
     qreal scale = metadata.value(u"scale"_s).toReal(&ok);
