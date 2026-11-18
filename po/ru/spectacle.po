@@ -25,7 +25,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksnapshot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-16 01:09+0000\n"
+"POT-Creation-Date: 2026-11-18 01:12+0000\n"
 "PO-Revision-Date: 2026-09-06 19:40+0200\n"
 "Last-Translator: Alexander Yavorskiy <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -1224,7 +1224,7 @@ msgctxt "@action"
 msgid "Save As…"
 msgstr "Сохранить как…"
 
-#: src/Gui/ScreenshotModeMenu.cpp:16
+#: src/Gui/ScreenshotModeMenu.cpp:17
 #, kde-format
 msgctxt "@title:menu"
 msgid "Screenshot Modes"
@@ -1865,7 +1865,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " секунды"
 
-#: src/Gui/SpectacleWindow.cpp:172
+#: src/Gui/SpectacleWindow.cpp:199
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1875,7 +1875,7 @@ msgstr[1] "%1 секунды"
 msgstr[2] "%1 секунд"
 msgstr[3] "%1 секунда"
 
-#: src/Gui/SpectacleWindow.cpp:175
+#: src/Gui/SpectacleWindow.cpp:202
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1965,37 +1965,38 @@ msgstr "Определение формул"
 msgid "Orientation and Script Detection"
 msgstr "Определение ориентации и письменности"
 
-#: src/Platforms/ImagePlatformKWin.cpp:135
+#: src/Platforms/ImagePlatformKWin.cpp:124
 #, kde-format
 msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
 msgstr "Недопустимая ширина снимка экрана KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:140
+#: src/Platforms/ImagePlatformKWin.cpp:129
 #, kde-format
 msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
 msgstr "Недопустимая высота снимка экрана KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:151
+#: src/Platforms/ImagePlatformKWin.cpp:134
+#, fuzzy, kde-format
+#| msgctxt "@info, %1 is the width"
+#| msgid "Bad width for KWin screenshot: %1"
+msgctxt "@info, %1 is the stride"
+msgid "Bad stride for KWin screenshot: %1"
+msgstr "Недопустимая ширина снимка экрана KWin: %1"
+
+#: src/Platforms/ImagePlatformKWin.cpp:141
 #, kde-format
 msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "Недопустимый формат снимка экрана KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:175
+#: src/Platforms/ImagePlatformKWin.cpp:146
 #, kde-format
-msgctxt "@info"
-msgid "Could not open file descriptor for reading KWin screenshot."
-msgstr "Не удалось открыть файловый дескриптор при чтении снимка экрана KWin."
+msgid "mmap() failed: %1"
+msgstr ""
 
-#: src/Platforms/ImagePlatformKWin.cpp:246
-#, kde-format
-msgctxt "@info, %1 is an error code"
-msgid "pipe2() failed for KWin screenshot: %1"
-msgstr "Ошибка вызова pipe2() для создания снимка экрана KWin: %1"
-
-#: src/Platforms/ImagePlatformKWin.cpp:302
+#: src/Platforms/ImagePlatformKWin.cpp:259
 #, kde-format
 msgctxt "@info, %1 is an error message"
 msgid ""
@@ -2005,7 +2006,7 @@ msgstr ""
 "Ошибка запроса создания снимка экрана KWin:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:304
+#: src/Platforms/ImagePlatformKWin.cpp:261
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2015,13 +2016,13 @@ msgstr ""
 "Сведения, которые, возможно, будут полезны:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:312
+#: src/Platforms/ImagePlatformKWin.cpp:271
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
 msgstr "Неподдерживаемый тип метаданных снимка экрана KWin: %1"
 
-#: src/Platforms/PlatformLoader.cpp:103
+#: src/Platforms/PlatformLoader.cpp:99
 #, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
@@ -2457,7 +2458,7 @@ msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr "Извлечение текста из изображения…"
 
-#: src/SpectacleCore.cpp:1057
+#: src/SpectacleCore.cpp:1058
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -2466,13 +2467,13 @@ msgstr ""
 "Параметр --scaled допустим только совместно с -f/--fullscreen и будет "
 "игнорирован."
 
-#: src/SpectacleCore.cpp:1072
+#: src/SpectacleCore.cpp:1073
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 не является допустимым режимом при указании ключа --record"
 
-#: src/SpectacleCore.cpp:1308
+#: src/SpectacleCore.cpp:1309
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2482,24 +2483,24 @@ msgstr ""
 "Снимок экрана сохранён как «%1» в «%2», полный путь к нему скопирован в "
 "буфер обмена."
 
-#: src/SpectacleCore.cpp:1312
+#: src/SpectacleCore.cpp:1313
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Снимок экрана сохранён в файл «%1» в папке «Изображения» («Pictures»)."
 
-#: src/SpectacleCore.cpp:1315
+#: src/SpectacleCore.cpp:1316
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Снимок экрана сохранён в файл «%1» в папке «%2»."
 
-#: src/SpectacleCore.cpp:1319
+#: src/SpectacleCore.cpp:1320
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Снимок экрана скопирован в буфер обмена."
 
-#: src/SpectacleCore.cpp:1324
+#: src/SpectacleCore.cpp:1325
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2509,25 +2510,25 @@ msgstr ""
 "Запись экрана сохранена как «%1» в «%2», полный путь к ней скопирован в "
 "буфер обмена."
 
-#: src/SpectacleCore.cpp:1326
+#: src/SpectacleCore.cpp:1327
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Запись экрана сохранена в файл «%1» в папке «Видео» («Videos»)."
 
-#: src/SpectacleCore.cpp:1328
+#: src/SpectacleCore.cpp:1329
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Запись экрана сохранена в файл «%1» в папке «%2»."
 
-#: src/SpectacleCore.cpp:1340
+#: src/SpectacleCore.cpp:1341
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Открыть"
 
-#: src/SpectacleCore.cpp:1354
+#: src/SpectacleCore.cpp:1355
 #, kde-format
 msgid "Annotate"
 msgstr "Комментировать"
@@ -2555,6 +2556,15 @@ msgstr "Анимированный WebP (лучше, чем GIF)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (совместимый, но неэффективный)"
+
+#~ msgctxt "@info"
+#~ msgid "Could not open file descriptor for reading KWin screenshot."
+#~ msgstr ""
+#~ "Не удалось открыть файловый дескриптор при чтении снимка экрана KWin."
+
+#~ msgctxt "@info, %1 is an error code"
+#~ msgid "pipe2() failed for KWin screenshot: %1"
+#~ msgstr "Ошибка вызова pipe2() для создания снимка экрана KWin: %1"
 
 #~ msgid ""
 #~ "Capture the window currently under the cursor, excluding parents of pop-"

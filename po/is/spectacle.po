@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-16 01:09+0000\n"
+"POT-Creation-Date: 2026-11-18 01:12+0000\n"
 "PO-Revision-Date: 2026-06-24 10:55+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
@@ -1185,7 +1185,7 @@ msgctxt "@action"
 msgid "Save As…"
 msgstr "Vista sem…"
 
-#: src/Gui/ScreenshotModeMenu.cpp:16
+#: src/Gui/ScreenshotModeMenu.cpp:17
 #, kde-format
 msgctxt "@title:menu"
 msgid "Screenshot Modes"
@@ -1824,7 +1824,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " sekúndur"
 
-#: src/Gui/SpectacleWindow.cpp:172
+#: src/Gui/SpectacleWindow.cpp:199
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1832,7 +1832,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "sekúnda"
 msgstr[1] "%1 sekúndur"
 
-#: src/Gui/SpectacleWindow.cpp:175
+#: src/Gui/SpectacleWindow.cpp:202
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1918,37 +1918,38 @@ msgstr "Greining á stærðfræði/jöfnum"
 msgid "Orientation and Script Detection"
 msgstr "Greining á stefnu og stafrófi"
 
-#: src/Platforms/ImagePlatformKWin.cpp:135
+#: src/Platforms/ImagePlatformKWin.cpp:124
 #, kde-format
 msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
 msgstr "Slæm breidd fyrir KWin-skjámynd: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:140
+#: src/Platforms/ImagePlatformKWin.cpp:129
 #, kde-format
 msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
 msgstr "Slæm hæð fyrir KWin-skjámynd: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:151
+#: src/Platforms/ImagePlatformKWin.cpp:134
+#, fuzzy, kde-format
+#| msgctxt "@info, %1 is the width"
+#| msgid "Bad width for KWin screenshot: %1"
+msgctxt "@info, %1 is the stride"
+msgid "Bad stride for KWin screenshot: %1"
+msgstr "Slæm breidd fyrir KWin-skjámynd: %1"
+
+#: src/Platforms/ImagePlatformKWin.cpp:141
 #, kde-format
 msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "Slæmt snið fyrir KWin-skjámynd: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:175
+#: src/Platforms/ImagePlatformKWin.cpp:146
 #, kde-format
-msgctxt "@info"
-msgid "Could not open file descriptor for reading KWin screenshot."
-msgstr "Gat ekki opnað skráalýsi fyrir lestur á KWin-skjámynd."
+msgid "mmap() failed: %1"
+msgstr ""
 
-#: src/Platforms/ImagePlatformKWin.cpp:246
-#, kde-format
-msgctxt "@info, %1 is an error code"
-msgid "pipe2() failed for KWin screenshot: %1"
-msgstr "pipe2() mistókst fyrir KWin-skjámynd: %1"
-
-#: src/Platforms/ImagePlatformKWin.cpp:302
+#: src/Platforms/ImagePlatformKWin.cpp:259
 #, kde-format
 msgctxt "@info, %1 is an error message"
 msgid ""
@@ -1958,7 +1959,7 @@ msgstr ""
 "KWin-skjámyndabeiðni mistókst:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:304
+#: src/Platforms/ImagePlatformKWin.cpp:261
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1968,13 +1969,13 @@ msgstr ""
 "Hugsanlega viðeigandi upplýsingar:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:312
+#: src/Platforms/ImagePlatformKWin.cpp:271
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
 msgstr "Óstudd lýsigögn KWin-skjámyndategundar: %1"
 
-#: src/Platforms/PlatformLoader.cpp:103
+#: src/Platforms/PlatformLoader.cpp:99
 #, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
@@ -2407,7 +2408,7 @@ msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr "Sæki texta úr mynd..."
 
-#: src/SpectacleCore.cpp:1057
+#: src/SpectacleCore.cpp:1058
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -2416,13 +2417,13 @@ msgstr ""
 "--scaled er einungis heimil saman með -f/--fullscreen og mun annars ver "
 "hunsað"
 
-#: src/SpectacleCore.cpp:1072
+#: src/SpectacleCore.cpp:1073
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 er ekki gilt snið fyrir --record"
 
-#: src/SpectacleCore.cpp:1308
+#: src/SpectacleCore.cpp:1309
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2432,24 +2433,24 @@ msgstr ""
 "Skjámynd var vistuð sem '%1' í '%2' og slóð hennar var afrituð á "
 "klippispjaldið."
 
-#: src/SpectacleCore.cpp:1312
+#: src/SpectacleCore.cpp:1313
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "Skjámynd var vistuð sem '%1' í myndamöppuna þína."
 
-#: src/SpectacleCore.cpp:1315
+#: src/SpectacleCore.cpp:1316
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "Skjámynd var vistuð sem '%1' í '%2'."
 
-#: src/SpectacleCore.cpp:1319
+#: src/SpectacleCore.cpp:1320
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "Skjámynd var vistuð á klippispjaldið þitt."
 
-#: src/SpectacleCore.cpp:1324
+#: src/SpectacleCore.cpp:1325
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2459,25 +2460,25 @@ msgstr ""
 "Upptaka var vistuð sem '%1' í '%2' og slóð hennar var afrituð á "
 "klippispjaldið."
 
-#: src/SpectacleCore.cpp:1326
+#: src/SpectacleCore.cpp:1327
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "Upptaka var vistuð sem '%1' í myndskeiðamöppuna þína."
 
-#: src/SpectacleCore.cpp:1328
+#: src/SpectacleCore.cpp:1329
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "Upptaka var vistuð sem '%1'  í '%2'."
 
-#: src/SpectacleCore.cpp:1340
+#: src/SpectacleCore.cpp:1341
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "Opna"
 
-#: src/SpectacleCore.cpp:1354
+#: src/SpectacleCore.cpp:1355
 #, kde-format
 msgid "Annotate"
 msgstr "Glósa"
@@ -2505,6 +2506,14 @@ msgstr "WebP-hreyfimyndir (betra en GIF)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (samhæft en óhagkvæmt)"
+
+#~ msgctxt "@info"
+#~ msgid "Could not open file descriptor for reading KWin screenshot."
+#~ msgstr "Gat ekki opnað skráalýsi fyrir lestur á KWin-skjámynd."
+
+#~ msgctxt "@info, %1 is an error code"
+#~ msgid "pipe2() failed for KWin screenshot: %1"
+#~ msgstr "pipe2() mistókst fyrir KWin-skjámynd: %1"
 
 #~ msgid ""
 #~ "Capture the window currently under the cursor, excluding parents of pop-"

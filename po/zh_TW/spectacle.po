@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-16 01:09+0000\n"
+"POT-Creation-Date: 2026-11-18 01:12+0000\n"
 "PO-Revision-Date: 2026-08-04 06:51+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -1157,7 +1157,7 @@ msgctxt "@action"
 msgid "Save As…"
 msgstr "另存為…"
 
-#: src/Gui/ScreenshotModeMenu.cpp:16
+#: src/Gui/ScreenshotModeMenu.cpp:17
 #, kde-format
 msgctxt "@title:menu"
 msgid "Screenshot Modes"
@@ -1788,14 +1788,14 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " 秒"
 
-#: src/Gui/SpectacleWindow.cpp:172
+#: src/Gui/SpectacleWindow.cpp:199
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
 msgid_plural "%1 seconds"
 msgstr[0] "%1 秒"
 
-#: src/Gui/SpectacleWindow.cpp:175
+#: src/Gui/SpectacleWindow.cpp:202
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1880,37 +1880,38 @@ msgstr "數學式偵測"
 msgid "Orientation and Script Detection"
 msgstr "方向與書寫系統偵測"
 
-#: src/Platforms/ImagePlatformKWin.cpp:135
+#: src/Platforms/ImagePlatformKWin.cpp:124
 #, kde-format
 msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
 msgstr "KWin 螢幕截圖寬度不正確：%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:140
+#: src/Platforms/ImagePlatformKWin.cpp:129
 #, kde-format
 msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
 msgstr "KWin 螢幕截圖高度不正確：%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:151
+#: src/Platforms/ImagePlatformKWin.cpp:134
+#, fuzzy, kde-format
+#| msgctxt "@info, %1 is the width"
+#| msgid "Bad width for KWin screenshot: %1"
+msgctxt "@info, %1 is the stride"
+msgid "Bad stride for KWin screenshot: %1"
+msgstr "KWin 螢幕截圖寬度不正確：%1"
+
+#: src/Platforms/ImagePlatformKWin.cpp:141
 #, kde-format
 msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "KWin 螢幕截圖格式不正確：%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:175
+#: src/Platforms/ImagePlatformKWin.cpp:146
 #, kde-format
-msgctxt "@info"
-msgid "Could not open file descriptor for reading KWin screenshot."
-msgstr "無法開啟檔案描述子來讀取 KWin 螢幕截圖。"
+msgid "mmap() failed: %1"
+msgstr ""
 
-#: src/Platforms/ImagePlatformKWin.cpp:246
-#, kde-format
-msgctxt "@info, %1 is an error code"
-msgid "pipe2() failed for KWin screenshot: %1"
-msgstr "取得 KWin 螢幕截圖時失敗：%1"
-
-#: src/Platforms/ImagePlatformKWin.cpp:302
+#: src/Platforms/ImagePlatformKWin.cpp:259
 #, kde-format
 msgctxt "@info, %1 is an error message"
 msgid ""
@@ -1920,7 +1921,7 @@ msgstr ""
 "KWin 螢幕截圖請求失敗：\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:304
+#: src/Platforms/ImagePlatformKWin.cpp:261
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1930,13 +1931,13 @@ msgstr ""
 "可能有關的訊息：\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:312
+#: src/Platforms/ImagePlatformKWin.cpp:271
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
 msgstr "不支援的 KWin 螢幕截圖類型中繼資料：%1"
 
-#: src/Platforms/PlatformLoader.cpp:103
+#: src/Platforms/PlatformLoader.cpp:99
 #, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
@@ -2350,20 +2351,20 @@ msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr "正在從影像取出文字…"
 
-#: src/SpectacleCore.cpp:1057
+#: src/SpectacleCore.cpp:1058
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
 "--scaled is only allowed together with -f/--fullscreen and will be ignored"
 msgstr "--scaled 只能跟 -f/--fullscreen 一起使用，因此將被忽略"
 
-#: src/SpectacleCore.cpp:1072
+#: src/SpectacleCore.cpp:1073
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 不是 --record 的有效模式"
 
-#: src/SpectacleCore.cpp:1308
+#: src/SpectacleCore.cpp:1309
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2371,24 +2372,24 @@ msgid ""
 "has been saved to your clipboard."
 msgstr "螢幕截圖已儲存為「%2」中的「%1」，且此路徑已複製到剪貼簿。"
 
-#: src/SpectacleCore.cpp:1312
+#: src/SpectacleCore.cpp:1313
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "螢幕截圖已儲存為您的圖片資料夾中的「%1」。"
 
-#: src/SpectacleCore.cpp:1315
+#: src/SpectacleCore.cpp:1316
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "螢幕截圖已儲存為「%2」中的「%1」。"
 
-#: src/SpectacleCore.cpp:1319
+#: src/SpectacleCore.cpp:1320
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "螢幕截圖已儲存至您的剪貼簿。"
 
-#: src/SpectacleCore.cpp:1324
+#: src/SpectacleCore.cpp:1325
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2396,25 +2397,25 @@ msgid ""
 "been saved to your clipboard."
 msgstr "螢幕錄製已儲存為「%2」中的「%1」，且此路徑已複製到剪貼簿。"
 
-#: src/SpectacleCore.cpp:1326
+#: src/SpectacleCore.cpp:1327
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "螢幕錄製已儲存為您的影片資料夾中的「%1」。"
 
-#: src/SpectacleCore.cpp:1328
+#: src/SpectacleCore.cpp:1329
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "螢幕錄製已儲存為「%2」中的「%1」。"
 
-#: src/SpectacleCore.cpp:1340
+#: src/SpectacleCore.cpp:1341
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "開啟"
 
-#: src/SpectacleCore.cpp:1354
+#: src/SpectacleCore.cpp:1355
 #, kde-format
 msgid "Annotate"
 msgstr "註記"
@@ -2442,6 +2443,14 @@ msgstr "動態 WebP（比 GIF 好）"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF（相容性高但較浪費空間）"
+
+#~ msgctxt "@info"
+#~ msgid "Could not open file descriptor for reading KWin screenshot."
+#~ msgstr "無法開啟檔案描述子來讀取 KWin 螢幕截圖。"
+
+#~ msgctxt "@info, %1 is an error code"
+#~ msgid "pipe2() failed for KWin screenshot: %1"
+#~ msgstr "取得 KWin 螢幕截圖時失敗：%1"
 
 #~ msgid ""
 #~ "Capture the window currently under the cursor, excluding parents of pop-"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-16 01:09+0000\n"
+"POT-Creation-Date: 2026-11-18 01:12+0000\n"
 "PO-Revision-Date: 2026-08-01 03:57+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -1180,7 +1180,7 @@ msgctxt "@action"
 msgid "Save As…"
 msgstr "შენახვა, როგორც…"
 
-#: src/Gui/ScreenshotModeMenu.cpp:16
+#: src/Gui/ScreenshotModeMenu.cpp:17
 #, kde-format
 msgctxt "@title:menu"
 msgid "Screenshot Modes"
@@ -1816,7 +1816,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " წამი"
 
-#: src/Gui/SpectacleWindow.cpp:172
+#: src/Gui/SpectacleWindow.cpp:199
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1824,7 +1824,7 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 წამი"
 msgstr[1] "%1 წამი"
 
-#: src/Gui/SpectacleWindow.cpp:175
+#: src/Gui/SpectacleWindow.cpp:202
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
@@ -1910,37 +1910,38 @@ msgstr "მათემატიკის/ტოლობის ამოცნ�
 msgid "Orientation and Script Detection"
 msgstr "ორიენტაცია და სკრიპტის ამოცნობა"
 
-#: src/Platforms/ImagePlatformKWin.cpp:135
+#: src/Platforms/ImagePlatformKWin.cpp:124
 #, kde-format
 msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
 msgstr "არასწორი სიგანე KWin-ის ეკრანის ანაბეჭდისთვის: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:140
+#: src/Platforms/ImagePlatformKWin.cpp:129
 #, kde-format
 msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
 msgstr "არასწორი სიმაღლე KWin-ის ეკრანის ანაბეჭდისთვის: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:151
+#: src/Platforms/ImagePlatformKWin.cpp:134
+#, fuzzy, kde-format
+#| msgctxt "@info, %1 is the width"
+#| msgid "Bad width for KWin screenshot: %1"
+msgctxt "@info, %1 is the stride"
+msgid "Bad stride for KWin screenshot: %1"
+msgstr "არასწორი სიგანე KWin-ის ეკრანის ანაბეჭდისთვის: %1"
+
+#: src/Platforms/ImagePlatformKWin.cpp:141
 #, kde-format
 msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "არასწორი ფორმატი KWin-ის ეკრანის ანაბეჭდისთვის: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:175
+#: src/Platforms/ImagePlatformKWin.cpp:146
 #, kde-format
-msgctxt "@info"
-msgid "Could not open file descriptor for reading KWin screenshot."
-msgstr "ვერ გავხსენი ფაილის დესკრიპტორი KWin-ის ეკრანის ანაბეჭდის დასაკითხად."
+msgid "mmap() failed: %1"
+msgstr ""
 
-#: src/Platforms/ImagePlatformKWin.cpp:246
-#, kde-format
-msgctxt "@info, %1 is an error code"
-msgid "pipe2() failed for KWin screenshot: %1"
-msgstr "pipe2() ჩავარდა KWin-ის ეკრანის ანაბეჭდისთვის: %1"
-
-#: src/Platforms/ImagePlatformKWin.cpp:302
+#: src/Platforms/ImagePlatformKWin.cpp:259
 #, kde-format
 msgctxt "@info, %1 is an error message"
 msgid ""
@@ -1950,7 +1951,7 @@ msgstr ""
 "KWin-ის ეკრანის ანაბეჭდის გამოთხოვა ჩავარდა: \n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:304
+#: src/Platforms/ImagePlatformKWin.cpp:261
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1960,13 +1961,13 @@ msgstr ""
 "პოტენციურად შესაბამისი ინფორმაცია:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:312
+#: src/Platforms/ImagePlatformKWin.cpp:271
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
 msgstr "მხარდაუჭერელი KWin-ის ეკრანის ანაბეჭდის ტიპის მეტამონაცემები: %1"
 
-#: src/Platforms/PlatformLoader.cpp:103
+#: src/Platforms/PlatformLoader.cpp:99
 #, kde-format
 msgctxt "@info"
 msgid "Screen recording is not available on X11."
@@ -2394,7 +2395,7 @@ msgctxt "@info"
 msgid "Extracting text from image..."
 msgstr "მიმდინარეობს ტექსტის ამოღება გამოსახულებიდან..."
 
-#: src/SpectacleCore.cpp:1057
+#: src/SpectacleCore.cpp:1058
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -2403,13 +2404,13 @@ msgstr ""
 "პარამეტრი --scared, მხოლოდ, პარამეტრთან -f/--fullscreen ერთად გამოიყენება და "
 "გამოტოვებული იქნება"
 
-#: src/SpectacleCore.cpp:1072
+#: src/SpectacleCore.cpp:1073
 #, kde-format
 msgctxt "@info:shell"
 msgid "%1 is not a valid mode for --record"
 msgstr "%1 პარამეტრისთვის --record სწორი რეჟიმი არაა"
 
-#: src/SpectacleCore.cpp:1308
+#: src/SpectacleCore.cpp:1309
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2419,24 +2420,24 @@ msgstr ""
 "ეკრანის ანაბეჭდი შენახულია, როგორც '%1' '%2'-ზე და ეკრანის ანაბეჭდის ფაილის "
 "ბილიკი შენახულია ბუფერში."
 
-#: src/SpectacleCore.cpp:1312
+#: src/SpectacleCore.cpp:1313
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A screenshot was saved as '%1' to your Pictures folder."
 msgstr "ეკრანის ანაბეჭდი შენახულია, როგორც '%1' თქვენი სურათების საქაღალდეში."
 
-#: src/SpectacleCore.cpp:1315
+#: src/SpectacleCore.cpp:1316
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A screenshot was saved as '%1' to '%2'."
 msgstr "ეკრანის ანაბეჭდი შენახულია, როგორც '%1' '%2'-ზე."
 
-#: src/SpectacleCore.cpp:1319
+#: src/SpectacleCore.cpp:1320
 #, kde-format
 msgid "A screenshot was saved to your clipboard."
 msgstr "ეკრანის ანაბეჭდი თქვენს ბაფერშია შენახული."
 
-#: src/SpectacleCore.cpp:1324
+#: src/SpectacleCore.cpp:1325
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid ""
@@ -2446,25 +2447,25 @@ msgstr ""
 "ჩანაწერი შენახულია, როგორც '%1' '%2'-ზე და ჩანაწერის ფაილის ბილიკი შენახულია "
 "ბუფერში."
 
-#: src/SpectacleCore.cpp:1326
+#: src/SpectacleCore.cpp:1327
 #, kde-format
 msgctxt "%1 is the filename"
 msgid "A recording was saved as '%1' to your Videos folder."
 msgstr "ჩანაწერი შენახულია, როგორც '%1' თქვენი ვიდეოების საქაღალდეში."
 
-#: src/SpectacleCore.cpp:1328
+#: src/SpectacleCore.cpp:1329
 #, kde-format
 msgctxt "%1 is the filename, %2 the path to the save location"
 msgid "A recording was saved as '%1' to '%2'."
 msgstr "ჩანაწერი შენახულია, როგორც '%1' '%2'-ზე."
 
-#: src/SpectacleCore.cpp:1340
+#: src/SpectacleCore.cpp:1341
 #, kde-format
 msgctxt "Open the screenshot we just saved"
 msgid "Open"
 msgstr "გახსნა"
 
-#: src/SpectacleCore.cpp:1354
+#: src/SpectacleCore.cpp:1355
 #, kde-format
 msgid "Annotate"
 msgstr "ანოტაცია"
@@ -2492,6 +2493,15 @@ msgstr "ანიმაციის შემცველი WebP (უკეთ�
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (თავსებადი, მაგრამ არაეფექტური)"
+
+#~ msgctxt "@info"
+#~ msgid "Could not open file descriptor for reading KWin screenshot."
+#~ msgstr ""
+#~ "ვერ გავხსენი ფაილის დესკრიპტორი KWin-ის ეკრანის ანაბეჭდის დასაკითხად."
+
+#~ msgctxt "@info, %1 is an error code"
+#~ msgid "pipe2() failed for KWin screenshot: %1"
+#~ msgstr "pipe2() ჩავარდა KWin-ის ეკრანის ანაბეჭდისთვის: %1"
 
 #~ msgid ""
 #~ "Capture the window currently under the cursor, excluding parents of pop-"
