@@ -26,8 +26,8 @@ msgstr ""
 "Project-Id-Version: ksnapshot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-18 01:12+0000\n"
-"PO-Revision-Date: 2026-09-06 19:40+0200\n"
-"Last-Translator: Alexander Yavorskiy <kekcuha@gmail.com>\n"
+"PO-Revision-Date: 2026-11-18 08:53+0200\n"
+"Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -1978,12 +1978,10 @@ msgid "Bad height for KWin screenshot: %1"
 msgstr "Недопустимая высота снимка экрана KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:134
-#, fuzzy, kde-format
-#| msgctxt "@info, %1 is the width"
-#| msgid "Bad width for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is the stride"
 msgid "Bad stride for KWin screenshot: %1"
-msgstr "Недопустимая ширина снимка экрана KWin: %1"
+msgstr "Недопустимый шаг строки снимка экрана KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:141
 #, kde-format
@@ -1994,7 +1992,7 @@ msgstr "Недопустимый формат снимка экрана KWin: %1
 #: src/Platforms/ImagePlatformKWin.cpp:146
 #, kde-format
 msgid "mmap() failed: %1"
-msgstr ""
+msgstr "Ошибка mmap(): %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:259
 #, kde-format

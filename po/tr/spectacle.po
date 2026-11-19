@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-18 01:12+0000\n"
-"PO-Revision-Date: 2026-11-16 18:42+0300\n"
+"PO-Revision-Date: 2026-11-18 18:47+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1923,12 +1923,10 @@ msgid "Bad height for KWin screenshot: %1"
 msgstr "KWin ekran görüntüsü için hatalı yükseklik: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:134
-#, fuzzy, kde-format
-#| msgctxt "@info, %1 is the width"
-#| msgid "Bad width for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is the stride"
 msgid "Bad stride for KWin screenshot: %1"
-msgstr "KWin ekran görüntüsü için hatalı genişlik: %1"
+msgstr "KWin ekran görüntüsü için kötü adım: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:141
 #, kde-format
@@ -1939,7 +1937,7 @@ msgstr "KWin ekran görüntüsü için hatalı biçim: %1"
 #: src/Platforms/ImagePlatformKWin.cpp:146
 #, kde-format
 msgid "mmap() failed: %1"
-msgstr ""
+msgstr "mmap() başarısız oldu: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:259
 #, kde-format

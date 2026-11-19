@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-18 01:12+0000\n"
-"PO-Revision-Date: 2026-09-06 17:43+0200\n"
+"PO-Revision-Date: 2026-11-18 09:55+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -1959,12 +1959,10 @@ msgid "Bad height for KWin screenshot: %1"
 msgstr "Alçària incorrecta per a la captura de pantalla de KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:134
-#, fuzzy, kde-format
-#| msgctxt "@info, %1 is the width"
-#| msgid "Bad width for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is the stride"
 msgid "Bad stride for KWin screenshot: %1"
-msgstr "Amplària incorrecta per a la captura de pantalla de KWin: %1"
+msgstr "Pas incorrecte per a la captura de pantalla de KWin: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:141
 #, kde-format
@@ -1975,7 +1973,7 @@ msgstr "Format incorrecte per a la captura de pantalla de KWin: %1"
 #: src/Platforms/ImagePlatformKWin.cpp:146
 #, kde-format
 msgid "mmap() failed: %1"
-msgstr ""
+msgstr "No s'ha pogut executar «mmap()»: %1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:259
 #, kde-format
@@ -2536,57 +2534,3 @@ msgstr "WebP animat (millor que GIF)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (compatible, però ineficient)"
-
-#~ msgctxt "@info"
-#~ msgid "Could not open file descriptor for reading KWin screenshot."
-#~ msgstr ""
-#~ "No s'ha pogut obrir el descriptor de fitxer per a llegir la captura de "
-#~ "pantalla de KWin."
-
-#~ msgctxt "@info, %1 is an error code"
-#~ msgid "pipe2() failed for KWin screenshot: %1"
-#~ msgstr ""
-#~ "No s'ha pogut executar «pipe2()» a la captura de pantalla de KWin: %1"
-
-#~ msgid ""
-#~ "Capture the window currently under the cursor, excluding parents of pop-"
-#~ "up menus"
-#~ msgstr ""
-#~ "Captura la finestra actual baix el cursor, excloent els menús emergents "
-#~ "dels pares"
-
-#~ msgid "Capture the current pop-up only"
-#~ msgstr "Captura només l'emergent actual"
-
-#~ msgid ""
-#~ "Capture only the current pop-up window (like a menu, tooltip etc) when "
-#~ "taking a screenshot of a window. If disabled, the pop-up is captured "
-#~ "along with the parent window."
-#~ msgstr ""
-#~ "Només captura la finestra emergent actual (com un menú, consell d'eina, "
-#~ "etc.) en prendre una captura de pantalla d'una finestra. Si no està "
-#~ "marcada, es capturarà l'emergent amb la finestra pare."
-
-#~ msgctxt "@option:check"
-#~ msgid "Capture the current pop-up only"
-#~ msgstr "Captura només l'emergent actual"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid ""
-#~ "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-#~ "If disabled, the pop-up is captured along with the parent window"
-#~ msgstr ""
-#~ "Només captura la finestra emergent actual (com un menú, consell d'eina, "
-#~ "etc.).\n"
-#~ "Si no està marcada, es capturarà l'emergent amb la finestra pare"
-
-#~ msgid "Only capture the current pop up menu"
-#~ msgstr "Captura només el menú emergent actual"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#~ "clipboard."
-#~ msgstr ""
-#~ "L'enllaç cap a la imatge compartida (<a href=\"%1\">%1</a>) s'ha copiat a "
-#~ "dins del porta-retalls."
