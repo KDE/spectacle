@@ -18,11 +18,13 @@
 #include <QDBusPendingCallWatcher>
 #include <QDBusReply>
 #include <QDBusUnixFileDescriptor>
+#include <QFutureSynchronizer>
 #include <QGuiApplication>
 #include <QPainter>
 #include <QScreen>
 #include <QThreadPool>
 #include <QTimer>
+#include <QtConcurrentRun>
 
 #include <errno.h>
 #include <fcntl.h>
@@ -34,6 +36,8 @@ using namespace Qt::StringLiterals;
 static const QString s_screenShotService = u"org.kde.KWin.ScreenShot3"_s;
 static const QString s_screenShotObjectPath = u"/org/kde/KWin/ScreenShot3"_s;
 static const QString s_screenShotInterface = u"org.kde.KWin.ScreenShot3"_s;
+
+static QFutureSynchronizer<int> s_munmapFutures{};
 
 static QVariantMap screenShotFlagsToVardict(ImagePlatformKWin::ScreenShotFlags flags)
 {
@@ -166,9 +170,9 @@ static ScreenShotSource3::Result readImage(int fileDescriptor, const QVariantMap
         [](void *data) {
             auto memoryMap = static_cast<MemoryMap *>(data);
             // munmap() can take several tens of milliseconds, hence in a separate thread.
-            QThreadPool::globalInstance()->start([addr = memoryMap->data, length = memoryMap->size]() {
-                munmap(addr, length);
-            });
+            s_munmapFutures.addFuture(QtConcurrent::run([addr = memoryMap->data, length = memoryMap->size]() {
+                return munmap(addr, length);
+            }));
             delete memoryMap;
         },
         memoryMap);
@@ -344,6 +348,11 @@ ImagePlatformKWin::ImagePlatformKWin(QObject *parent)
     updateSupportedGrabModes();
     connect(qGuiApp, &QGuiApplication::screenAdded, this, &ImagePlatformKWin::updateSupportedGrabModes);
     connect(qGuiApp, &QGuiApplication::screenRemoved, this, &ImagePlatformKWin::updateSupportedGrabModes);
+}
+
+ImagePlatformKWin::~ImagePlatformKWin()
+{
+    s_munmapFutures.waitForFinished();
 }
 
 ImagePlatform::GrabModes ImagePlatformKWin::supportedGrabModes() const
