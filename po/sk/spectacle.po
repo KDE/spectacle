@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kscreengenie\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-18 01:12+0000\n"
+"POT-Creation-Date: 2026-11-20 01:14+0000\n"
 "PO-Revision-Date: 2024-03-24 11:39+0100\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -1921,38 +1921,36 @@ msgstr "Detekcia matematiky/rovníc"
 msgid "Orientation and Script Detection"
 msgstr "Detekcia orientácie a písma"
 
-#: src/Platforms/ImagePlatformKWin.cpp:124
+#: src/Platforms/ImagePlatformKWin.cpp:125
 #, kde-format
 msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
 msgstr "Nesprávna šírka snímky obrazovky KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:129
+#: src/Platforms/ImagePlatformKWin.cpp:130
 #, kde-format
 msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
 msgstr "Nesprávna výška snímky obrazovky KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:134
-#, fuzzy, kde-format
-#| msgctxt "@info, %1 is the width"
-#| msgid "Bad width for KWin screenshot: %1"
+#: src/Platforms/ImagePlatformKWin.cpp:135
+#, kde-format
 msgctxt "@info, %1 is the stride"
 msgid "Bad stride for KWin screenshot: %1"
-msgstr "Nesprávna šírka snímky obrazovky KWin: %1"
+msgstr "Nesprávny krok riadkov snímky obrazovky KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:141
+#: src/Platforms/ImagePlatformKWin.cpp:142
 #, kde-format
 msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "Nesprávny formát snímky obrazovky KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:146
+#: src/Platforms/ImagePlatformKWin.cpp:147
 #, kde-format
 msgid "mmap() failed: %1"
-msgstr ""
+msgstr "mmap() zlyhalo: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:259
+#: src/Platforms/ImagePlatformKWin.cpp:269
 #, kde-format
 msgctxt "@info, %1 is an error message"
 msgid ""
@@ -1962,7 +1960,7 @@ msgstr ""
 "Požiadavka na snímku obrazovky KWin zlyhala:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:261
+#: src/Platforms/ImagePlatformKWin.cpp:271
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1972,7 +1970,7 @@ msgstr ""
 "Potenciálne relevantné informácie:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:271
+#: src/Platforms/ImagePlatformKWin.cpp:281
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"

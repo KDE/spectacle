@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-18 01:12+0000\n"
-"PO-Revision-Date: 2026-08-03 00:03+0200\n"
+"POT-Creation-Date: 2026-11-20 01:14+0000\n"
+"PO-Revision-Date: 2026-11-19 15:48+0100\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 26.04.3\n"
+"X-Generator: Lokalize 26.08.2\n"
 
 #, kde-format
 msgctxt "translatable folder name"
@@ -1941,38 +1941,36 @@ msgstr "Riconoscimento matematica/equazioni"
 msgid "Orientation and Script Detection"
 msgstr "Rilevamento orientazione e script"
 
-#: src/Platforms/ImagePlatformKWin.cpp:124
+#: src/Platforms/ImagePlatformKWin.cpp:125
 #, kde-format
 msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
 msgstr "Larghezza incorretta per la schermata da KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:129
+#: src/Platforms/ImagePlatformKWin.cpp:130
 #, kde-format
 msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
 msgstr "Altezza incorretta per la schermata da KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:134
-#, fuzzy, kde-format
-#| msgctxt "@info, %1 is the width"
-#| msgid "Bad width for KWin screenshot: %1"
+#: src/Platforms/ImagePlatformKWin.cpp:135
+#, kde-format
 msgctxt "@info, %1 is the stride"
 msgid "Bad stride for KWin screenshot: %1"
-msgstr "Larghezza incorretta per la schermata da KWin: %1"
+msgstr "Byte per riga (stride) incorretti per la schermata da KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:141
+#: src/Platforms/ImagePlatformKWin.cpp:142
 #, kde-format
 msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "Formato incorretto per la schermata da KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:146
+#: src/Platforms/ImagePlatformKWin.cpp:147
 #, kde-format
 msgid "mmap() failed: %1"
-msgstr ""
+msgstr "Chiamata a mmap() non riuscita: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:259
+#: src/Platforms/ImagePlatformKWin.cpp:269
 #, kde-format
 msgctxt "@info, %1 is an error message"
 msgid ""
@@ -1982,7 +1980,7 @@ msgstr ""
 "Richiesta di schermata da KWin non riuscita:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:261
+#: src/Platforms/ImagePlatformKWin.cpp:271
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1992,7 +1990,7 @@ msgstr ""
 "Informazioni potenzialmente rilevanti:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:271
+#: src/Platforms/ImagePlatformKWin.cpp:281
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"

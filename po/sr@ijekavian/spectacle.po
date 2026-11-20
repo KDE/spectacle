@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-18 01:12+0000\n"
-"PO-Revision-Date: 2026-10-07 14:30+0200\n"
+"POT-Creation-Date: 2026-11-20 01:14+0000\n"
+"PO-Revision-Date: 2026-11-19 09:26+0100\n"
 "Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
 "Language: sr@ijekavian\n"
@@ -1953,38 +1953,36 @@ msgstr "откривање математике и једначина"
 msgid "Orientation and Script Detection"
 msgstr "откривање оријентације и писма"
 
-#: src/Platforms/ImagePlatformKWin.cpp:124
+#: src/Platforms/ImagePlatformKWin.cpp:125
 #, kde-format
 msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
 msgstr "Лоша ширина снимка екрана из К‑вина: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:129
+#: src/Platforms/ImagePlatformKWin.cpp:130
 #, kde-format
 msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
 msgstr "Лоша висина снимка екрана из К‑вина: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:134
-#, fuzzy, kde-format
-#| msgctxt "@info, %1 is the width"
-#| msgid "Bad width for KWin screenshot: %1"
+#: src/Platforms/ImagePlatformKWin.cpp:135
+#, kde-format
 msgctxt "@info, %1 is the stride"
 msgid "Bad stride for KWin screenshot: %1"
-msgstr "Лоша ширина снимка екрана из К‑вина: %1"
+msgstr "Лош корак снимка екрана из К‑вина: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:141
+#: src/Platforms/ImagePlatformKWin.cpp:142
 #, kde-format
 msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "Лош формат снимка екрана из К‑вина: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:146
+#: src/Platforms/ImagePlatformKWin.cpp:147
 #, kde-format
 msgid "mmap() failed: %1"
-msgstr ""
+msgstr "mmap() није успјело: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:259
+#: src/Platforms/ImagePlatformKWin.cpp:269
 #, kde-format
 msgctxt "@info, %1 is an error message"
 msgid ""
@@ -1994,7 +1992,7 @@ msgstr ""
 "Захтјев за снимак екрана из К‑вина није успио:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:261
+#: src/Platforms/ImagePlatformKWin.cpp:271
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2004,7 +2002,7 @@ msgstr ""
 "Можда битни подаци:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:271
+#: src/Platforms/ImagePlatformKWin.cpp:281
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
@@ -2541,45 +2539,3 @@ msgstr "анимирани вебП (бољи од ГИФ‑а)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "формат ГИФ (сагласан, али неефикасан)"
-
-#~ msgctxt "@info"
-#~ msgid "Could not open file descriptor for reading KWin screenshot."
-#~ msgstr "Не могу да отворим описник фајла за читање снимка екрана из К‑вина."
-
-#~ msgctxt "@info, %1 is an error code"
-#~ msgid "pipe2() failed for KWin screenshot: %1"
-#~ msgstr "pipe2() није успјело за снимак екрана из К‑вина: %1"
-
-# switch-rule: t-cursor > t-pointer
-#~ msgid ""
-#~ "Capture the window currently under the cursor, excluding parents of pop-"
-#~ "up menus"
-#~ msgstr ""
-#~ "Сними прозор тренутно под показивачем, без родитеља искачућих менија"
-
-#~ msgid "Capture the current pop-up only"
-#~ msgstr "Ухвати само тренутни искакач"
-
-#~ msgid ""
-#~ "Capture only the current pop-up window (like a menu, tooltip etc) when "
-#~ "taking a screenshot of a window. If disabled, the pop-up is captured "
-#~ "along with the parent window."
-#~ msgstr ""
-#~ "Хвата само тренутни искачући прозор (нпр. мени, облачић итд.) при хватању "
-#~ "снимка прозора. Ако је искључено, искакач се хвата заједно са родитељским "
-#~ "прозором."
-
-#~ msgctxt "@option:check"
-#~ msgid "Capture the current pop-up only"
-#~ msgstr "Ухвати само тренутни искакач"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid ""
-#~ "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-#~ "If disabled, the pop-up is captured along with the parent window"
-#~ msgstr ""
-#~ "Хвата само тренутни искачући прозор (нпр. мени, облачић итд.).\n"
-#~ "Ако је искључено, искакач се хвата заједно са родитељским прозором"
-
-#~ msgid "Only capture the current pop up menu"
-#~ msgstr "Ухвати само тренутни искачући мени"

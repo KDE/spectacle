@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-18 01:12+0000\n"
-"PO-Revision-Date: 2026-08-13 09:49+0200\n"
+"POT-Creation-Date: 2026-11-20 01:14+0000\n"
+"PO-Revision-Date: 2026-11-19 21:25+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 26.04.3\n"
+"X-Generator: Lokalize 26.08.3\n"
 
 #, kde-format
 msgctxt "translatable folder name"
@@ -1945,38 +1945,36 @@ msgstr "Разпознаване на математически уравнен�
 msgid "Orientation and Script Detection"
 msgstr "Ориентация и откриване на скрипт"
 
-#: src/Platforms/ImagePlatformKWin.cpp:124
+#: src/Platforms/ImagePlatformKWin.cpp:125
 #, kde-format
 msgctxt "@info, %1 is the width"
 msgid "Bad width for KWin screenshot: %1"
 msgstr "Неправилна широчина за екранна снимка на KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:129
+#: src/Platforms/ImagePlatformKWin.cpp:130
 #, kde-format
 msgctxt "@info, %1 is the height"
 msgid "Bad height for KWin screenshot: %1"
 msgstr "Неправилна височина за екранна снимка на KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:134
-#, fuzzy, kde-format
-#| msgctxt "@info, %1 is the width"
-#| msgid "Bad width for KWin screenshot: %1"
+#: src/Platforms/ImagePlatformKWin.cpp:135
+#, kde-format
 msgctxt "@info, %1 is the stride"
 msgid "Bad stride for KWin screenshot: %1"
-msgstr "Неправилна широчина за екранна снимка на KWin: %1"
+msgstr "Неправилна стъпка (stride) за снимка на екрана от KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:141
+#: src/Platforms/ImagePlatformKWin.cpp:142
 #, kde-format
 msgctxt "@info, %1 is a file format like 'png', 'jpg'"
 msgid "Bad format for KWin screenshot: %1"
 msgstr "Неправилен формат за екранна снимка на KWin: %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:146
+#: src/Platforms/ImagePlatformKWin.cpp:147
 #, kde-format
 msgid "mmap() failed: %1"
-msgstr ""
+msgstr "Срив на mmap(): %1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:259
+#: src/Platforms/ImagePlatformKWin.cpp:269
 #, kde-format
 msgctxt "@info, %1 is an error message"
 msgid ""
@@ -1986,7 +1984,7 @@ msgstr ""
 "Заявката за екранна снимка на KWin е неуспешна:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:261
+#: src/Platforms/ImagePlatformKWin.cpp:271
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1996,7 +1994,7 @@ msgstr ""
 "Потенциално съответстваща информация:\n"
 "%1"
 
-#: src/Platforms/ImagePlatformKWin.cpp:271
+#: src/Platforms/ImagePlatformKWin.cpp:281
 #, kde-format
 msgctxt "@info"
 msgid "Unsupported KWin screenshot type metadata: %1"
@@ -2533,13 +2531,3 @@ msgstr "Animated WebP (по-добро от GIF)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (съвместимо, но неефективно)"
-
-#~ msgctxt "@info"
-#~ msgid "Could not open file descriptor for reading KWin screenshot."
-#~ msgstr ""
-#~ "Не можа да се отвори файловият дескриптор за четене на екранна снимка на "
-#~ "KWin."
-
-#~ msgctxt "@info, %1 is an error code"
-#~ msgid "pipe2() failed for KWin screenshot: %1"
-#~ msgstr "Неуспешно pipe2() за екранна снимка на KWin: %1"
