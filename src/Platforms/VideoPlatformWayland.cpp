@@ -272,21 +272,8 @@ void VideoPlatformWayland::startRecording(const QUrl &fileUrl, RecordingMode rec
             Q_EMIT recordingFailed(error);
         });
         connect(stream, &ScreencastingStream::closed, this, [this, recordingMode]() {
+            qWarning() << "Screencast stream closed";
             finishRecording();
-            setRecordingState(VideoPlatform::RecordingState::Finished);
-            if (recordingMode == Screen) {
-                Q_EMIT recordingFailed(i18nc("@info",
-                                             "The stream closed because the target screen "
-                                             "changed in a way that disrupted the recording."));
-            } else if (recordingMode == Window) {
-                Q_EMIT recordingFailed(i18nc("@info",
-                                             "The stream closed because the target window "
-                                             "changed in a way that disrupted the recording."));
-            } else if (recordingMode == Region) {
-                Q_EMIT recordingFailed(i18nc("@info",
-                                             "The stream closed because a screen containing the target "
-                                             "region changed in a way that disrupted the recording."));
-            }
         });
 
         // set up output
