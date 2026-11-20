@@ -26,7 +26,7 @@ class ImagePlatformKWin final : public ImagePlatform
 
 public:
     explicit ImagePlatformKWin(QObject *parent = nullptr);
-    ~ImagePlatformKWin() override = default;
+    ~ImagePlatformKWin() override;
 
     enum class ScreenShotFlag : uint {
         IncludeCursor = 0x1,
