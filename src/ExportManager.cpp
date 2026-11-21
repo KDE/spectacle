@@ -14,6 +14,8 @@
 #include <QClipboard>
 #include <QDir>
 #include <QFileDialog>
+#include <QFuture>
+#include <QFutureSynchronizer>
 #include <QImageWriter>
 #include <QLocale>
 #include <QLockFile>
@@ -44,6 +46,8 @@
 
 using namespace Qt::StringLiterals;
 
+static QFutureSynchronizer<void> s_clipboardFutures{};
+
 ExportManager::ExportManager(QObject *parent)
     : QObject(parent)
     , m_imageSavedNotInTemp(false)
@@ -60,14 +64,17 @@ ExportManager::ExportManager(QObject *parent)
     });
 }
 
-ExportManager::~ExportManager() = default;
+ExportManager::~ExportManager()
+{
+    s_clipboardFutures.waitForFinished();
+}
 
 ExportManager *ExportManager::instance()
 {
-    static ExportManager instance;
+    static const auto instance = new ExportManager(QCoreApplication::instance());
     // Ensure the SystemClipboard is instantiated early enough
     KSystemClipboard::instance();
-    return &instance;
+    return instance;
 }
 
 // screenshot image setter and getter
@@ -628,7 +635,6 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
         return;
     }
 
-    bool success = false;
     if (actions & SaveAs) {
         QStringList supportedFilters;
 
@@ -683,112 +689,116 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
         return;
     }
 
-    const auto preferredFormat = Settings::preferredImageFormat().toLower();
-    QByteArray sharedImageData;
-    bool hasSharedImageData = false;
-    bool saved = actions & AnySave;
-    if (saved) {
-        if (!url.isValid()) {
-            url = getAutosaveFilename();
-        }
+    s_clipboardFutures.waitForFinished(); // Finish any existing exports
+    auto doExport = [=] mutable {
+        const auto exportManager = ExportManager::instance();
+        bool success = false;
+        const auto preferredFormat = Settings::preferredImageFormat().toLower();
+        QByteArray sharedImageData;
+        bool saved = actions & AnySave;
+        if (saved) {
+            if (!url.isValid()) {
+                url = exportManager->getAutosaveFilename();
+            }
 
-        const QString saveFormat = imageFileSuffix(url);
-        const QString canonicalPreferredFormat =
-            QMimeDatabase().mimeTypeForFile(u"image."_s + preferredFormat, QMimeDatabase::MatchExtension).preferredSuffix();
-        if (actions & CopyImage && (saveFormat == preferredFormat || saveFormat == canonicalPreferredFormat)) {
-            QBuffer buffer(&sharedImageData);
-            if (buffer.open(QIODevice::WriteOnly)) {
-                hasSharedImageData = writeImage(&buffer, saveFormat.toLatin1());
+            const QString saveFormat = exportManager->imageFileSuffix(url);
+            const QString canonicalPreferredFormat =
+                QMimeDatabase().mimeTypeForFile(u"image."_s + preferredFormat, QMimeDatabase::MatchExtension).preferredSuffix();
+            if (actions & CopyImage && (saveFormat == preferredFormat || saveFormat == canonicalPreferredFormat)) {
+                QBuffer buffer(&sharedImageData);
+                if (buffer.open(QIODevice::WriteOnly)) {
+                    exportManager->writeImage(&buffer, saveFormat.toLatin1());
+                }
+            }
+
+            saved = success = exportManager->save(url, sharedImageData);
+            if (!success) {
+                actions.setFlag(Save, false);
+                actions.setFlag(SaveAs, false);
             }
         }
 
-        const QByteArrayView encodedImage = hasSharedImageData ? QByteArrayView(sharedImageData) : QByteArrayView();
-        saved = success = save(url, encodedImage);
-        if (!success) {
-            actions.setFlag(Save, false);
-            actions.setFlag(SaveAs, false);
-        }
-    }
-
-    if (actions & CopyImage) {
-        if (!url.isValid() && m_imageSavedNotInTemp) {
-            url = Settings::self()->lastImageSaveLocation();
-        }
-        auto data = new QMimeData();
-        // TODO: Maybe copy a temp file URL instead? That way we could reliably
-        // paste as the preferred format without decompression. The issue with
-        // that is that some apps like Discord won't copy temp files when in a
-        // Flatpak even if you use KUrlMimeData::exportUrlsToPortal().
-        auto image = scaledImageFromSubGeometry(m_saveImage);
-        QByteArray encodedImage;
-        if (hasSharedImageData) {
-            encodedImage = sharedImageData;
-        } else {
-            QBuffer buffer(&encodedImage);
-            buffer.open(QIODevice::WriteOnly);
-            QImageWriter writer(&buffer, preferredFormat.toLatin1());
-            if (preferredFormat != u"png" && writer.supportsOption(QImageIOHandler::Quality)) {
-                writer.setQuality(Settings::imageCompressionQuality());
-            }
-            writer.write(image);
-        }
-        // Set first so that it gets chosen first.
-        data->setData(u"image/" + preferredFormat, encodedImage);
-        // Use the standard way to set images to expose all the other formats.
-        // We use the uncompressed image because lossy compressed formats will
-        // decompress when turned into QImages and become 2-8x larger than their
-        // compressed size.
-        data->setImageData(image);
-        // "x-kde-force-image-copy" is handled by Klipper.
-        // It ensures that the image is copied to Klipper even when
-        // "Include in history: Image data copied explicitly" setting
-        // is not checked in Klipper.
-        data->setData(u"x-kde-force-image-copy"_s, QByteArray());
-        QString fileName = url.fileName();
-        if (fileName.isEmpty()) {
-            fileName = getAutosaveFilename().fileName();
-        }
-        fileName.truncate(fileName.lastIndexOf(u'.'));
-        if (!fileName.isEmpty()) {
-            fileName += u'.' + preferredFormat;
-        }
-        // "application/x-kde-suggestedfilename" is handled by KIO/PasteJob.
-        // It should put a useful default filename in the paste dialog.
-        data->setData(u"application/x-kde-suggestedfilename"_s, QFile::encodeName(fileName));
-        KSystemClipboard::instance()->setMimeData(data, QClipboard::Clipboard);
-        success = true;
-    }
-
-    if (actions & CopyPath
-        // This behavior has no relation to the setting in the config UI,
-        // but it was added to solve this feature request:
-        // https://bugs.kde.org/show_bug.cgi?id=357423
-        || (saved && Settings::clipboardGroup() == Settings::PostScreenshotCopyLocation)) {
-        if (!url.isValid()) {
-            if (m_imageSavedNotInTemp) {
-                // The image has been saved (manually or automatically),
-                // we need to choose that file path
+        if (actions & CopyImage) {
+            if (!url.isValid() && exportManager->m_imageSavedNotInTemp) {
                 url = Settings::self()->lastImageSaveLocation();
-            } else {
-                // use a temporary save path, and copy that to clipboard instead
-                url = ExportManager::instance()->tempSave();
             }
+            auto data = new QMimeData();
+            // TODO: Maybe copy a temp file URL instead? That way we could reliably
+            // paste as the preferred format without decompression. The issue with
+            // that is that some apps like Discord won't copy temp files when in a
+            // Flatpak even if you use KUrlMimeData::exportUrlsToPortal().
+            auto image = scaledImageFromSubGeometry(exportManager->m_saveImage);
+            QByteArray encodedImage = sharedImageData;
+            if (encodedImage.isEmpty()) {
+                QBuffer buffer(&encodedImage);
+                buffer.open(QIODevice::WriteOnly);
+                QImageWriter writer(&buffer, preferredFormat.toLatin1());
+                if (preferredFormat != u"png" && writer.supportsOption(QImageIOHandler::Quality)) {
+                    writer.setQuality(Settings::imageCompressionQuality());
+                }
+                writer.write(image);
+            }
+            // Set first so that it gets chosen first.
+            data->setData(u"image/" + preferredFormat, encodedImage);
+            // Use the standard way to set images to expose all the other formats.
+            // We use the uncompressed image because lossy compressed formats will
+            // decompress when turned into QImages and become 2-8x larger than their
+            // compressed size.
+            data->setImageData(image);
+            // "x-kde-force-image-copy" is handled by Klipper.
+            // It ensures that the image is copied to Klipper even when
+            // "Include in history: Image data copied explicitly" setting
+            // is not checked in Klipper.
+            data->setData(u"x-kde-force-image-copy"_s, QByteArray());
+            QString fileName = url.fileName();
+            if (fileName.isEmpty()) {
+                fileName = exportManager->getAutosaveFilename().fileName();
+            }
+            fileName.truncate(fileName.lastIndexOf(u'.'));
+            if (!fileName.isEmpty()) {
+                fileName += u'.' + preferredFormat;
+            }
+            // "application/x-kde-suggestedfilename" is handled by KIO/PasteJob.
+            // It should put a useful default filename in the paste dialog.
+            data->setData(u"application/x-kde-suggestedfilename"_s, QFile::encodeName(fileName));
+            QMetaObject::invokeMethod(KSystemClipboard::instance(), [data] {
+                KSystemClipboard::instance()->setMimeData(data, QClipboard::Clipboard);
+            }, Qt::AutoConnection);
+            success = true;
         }
 
-        // will be deleted for us by the platform's clipboard manager.
-        auto data = new QMimeData();
-        data->setText(url.toLocalFile());
-        KSystemClipboard::instance()->setMimeData(data, QClipboard::Clipboard);
-        success = true;
-    }
+        if (actions & CopyPath
+            // This behavior has no relation to the setting in the config UI,
+            // but it was added to solve this feature request:
+            // https://bugs.kde.org/show_bug.cgi?id=357423
+            || (saved && Settings::clipboardGroup() == Settings::PostScreenshotCopyLocation)) {
+            if (!url.isValid()) {
+                if (m_imageSavedNotInTemp) {
+                    // The image has been saved (manually or automatically),
+                    // we need to choose that file path
+                    url = Settings::self()->lastImageSaveLocation();
+                } else {
+                    // use a temporary save path, and copy that to clipboard instead
+                    url = exportManager->tempSave();
+                }
+            }
 
-    if (success) {
-        // when copying to the clipboard, make sure the process stays long enough for transfer to be seen by klipper and start
-        QSharedPointer<QEventLoopLocker> lock(new QEventLoopLocker);
-        QTimer::singleShot(2000, [lock](){});
+            // will be deleted for us by the platform's clipboard manager.
+            auto data = new QMimeData();
+            data->setText(url.toLocalFile());
+            QMetaObject::invokeMethod(KSystemClipboard::instance(), [data] {
+                KSystemClipboard::instance()->setMimeData(data, QClipboard::Clipboard);
+            }, Qt::AutoConnection);
+            success = true;
+        }
 
-        Q_EMIT imageExported(actions, url);
-    }
+        if (success) {
+            QMetaObject::invokeMethod(exportManager, [actions, url] {
+                Q_EMIT ExportManager::instance()->imageExported(actions, url);
+            }, Qt::AutoConnection);
+        }
+    };
+    s_clipboardFutures.addFuture(QtConcurrent::run(doExport));
 }
 
 void ExportManager::scanQRCode()
