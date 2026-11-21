@@ -13,12 +13,14 @@
 #include "Geometry.h"
 #include "Gui/ExportMenu.h"
 #include "Gui/HelpMenu.h"
+#include "Gui/InlineMessageModel.h"
 #include "Gui/OptionsMenu.h"
 #include "Gui/WidgetWindowUtils.h"
 
 #include <QApplication>
 #include <QColorDialog>
 #include <QFontDialog>
+#include <QFuture>
 #include <utility>
 
 using namespace Qt::StringLiterals;
@@ -257,8 +259,19 @@ void SpectacleWindow::setSource(const QUrl &source, const QVariantMap &initialPr
 void SpectacleWindow::save()
 {
     SpectacleCore::instance()->syncExportImage();
-    ExportManager::instance()->exportImage(ExportManager::Save | ExportManager::UserAction,
-                                           SpectacleCore::instance()->outputUrl());
+    InlineMessageModel::instance()->push(InlineMessageModel::Busy, i18nc("@info", "Saving image…"));
+    auto modelIndex = InlineMessageModel::instance()->index(InlineMessageModel::instance()->rowCount() - 1);
+    auto onExported = [index = QPersistentModelIndex(modelIndex)](const ExportManager::Actions &actions, const QUrl &) {
+        if (index.isValid() && actions.testFlag(ExportManager::Save)) {
+            QObject::disconnect(index.data(InlineMessageModel::DataRole).value<QMetaObject::Connection>());
+            InlineMessageModel::instance()->pop(index.row());
+        }
+    };
+    InlineMessageModel::instance()->setData(
+        modelIndex,
+        QVariant::fromValue(connect(ExportManager::instance(), &ExportManager::imageExported, InlineMessageModel::instance(), onExported)),
+        InlineMessageModel::DataRole);
+    ExportManager::instance()->exportImage(ExportManager::Save | ExportManager::UserAction, SpectacleCore::instance()->outputUrl());
 }
 
 void SpectacleWindow::saveAs()
@@ -269,6 +282,18 @@ void SpectacleWindow::saveAs()
         return;
     }
     SpectacleCore::instance()->syncExportImage();
+    InlineMessageModel::instance()->push(InlineMessageModel::Busy, i18nc("@info", "Saving image…"));
+    auto modelIndex = InlineMessageModel::instance()->index(InlineMessageModel::instance()->rowCount() - 1);
+    auto onExported = [index = QPersistentModelIndex(modelIndex)](const ExportManager::Actions &actions, const QUrl &) {
+        if (index.isValid() && actions.testAnyFlags(ExportManager::AnySave)) {
+            QObject::disconnect(index.data(InlineMessageModel::DataRole).value<QMetaObject::Connection>());
+            InlineMessageModel::instance()->pop(index.row());
+        }
+    };
+    InlineMessageModel::instance()->setData(
+        modelIndex,
+        QVariant::fromValue(connect(ExportManager::instance(), &ExportManager::imageExported, InlineMessageModel::instance(), onExported)),
+        InlineMessageModel::DataRole);
     ExportManager::instance()->exportImage(ExportManager::SaveAs | ExportManager::UserAction,
                                            SpectacleCore::instance()->outputUrl());
 }
@@ -276,6 +301,18 @@ void SpectacleWindow::saveAs()
 void SpectacleWindow::copyImage()
 {
     SpectacleCore::instance()->syncExportImage();
+    InlineMessageModel::instance()->push(InlineMessageModel::Busy, i18nc("@info", "Copying image to the clipboard…"));
+    auto modelIndex = InlineMessageModel::instance()->index(InlineMessageModel::instance()->rowCount() - 1);
+    auto onExported = [index = QPersistentModelIndex(modelIndex)](const ExportManager::Actions &actions, const QUrl &) {
+        if (index.isValid() && actions.testFlag(ExportManager::CopyImage)) {
+            QObject::disconnect(index.data(InlineMessageModel::DataRole).value<QMetaObject::Connection>());
+            InlineMessageModel::instance()->pop(index.row());
+        }
+    };
+    InlineMessageModel::instance()->setData(
+        modelIndex,
+        QVariant::fromValue(connect(ExportManager::instance(), &ExportManager::imageExported, InlineMessageModel::instance(), onExported)),
+        InlineMessageModel::DataRole);
     ExportManager::instance()->exportImage(ExportManager::CopyImage | ExportManager::UserAction);
 }
 

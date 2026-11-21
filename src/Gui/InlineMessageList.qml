@@ -102,6 +102,9 @@ ListView {
                 } catch (error) { }
                 actions.push(copyActionComponent.createObject(this, {"data": data}))
             }
+            if (model.type === InlineMessageModel.Busy) {
+                actions.push(busyActionComponent.createObject(this, {}))
+            }
             // Not using showCloseButton because it toggles visible on this item.
             // This makes it not work as well with animations from the list view.
             actions.push(closeActionComponent.createObject(this, {"index": index}))
@@ -151,6 +154,14 @@ ListView {
             displayComponent: QQC.ToolButton {
                 display: QQC.AbstractButton.IconOnly
                 action: kirigamiAction
+            }
+        }
+    }
+    Component {
+        id: busyActionComponent
+        Kirigami.Action {
+            displayComponent: QQC.BusyIndicator {
+                running: true
             }
         }
     }
