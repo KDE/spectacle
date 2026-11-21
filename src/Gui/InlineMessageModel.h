@@ -45,6 +45,7 @@ public:
         Saved = InformationalType + 1,
         Shared = InformationalType + 2,
         Scanned = InformationalType + 3,
+        Busy = InformationalType + 4,
     };
     Q_ENUM(InlineMessageType)
 
