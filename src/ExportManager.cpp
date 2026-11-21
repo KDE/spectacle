@@ -718,7 +718,13 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
             }
         }
 
-        if (actions & CopyImage) {
+        bool copyImage = actions & CopyImage;
+        if (copyImage && KSystemClipboard::instance()->ownsClipboard()) {
+            const auto data = KSystemClipboard::instance()->mimeData(QClipboard::Clipboard);
+            copyImage = !data || !data->hasImage() || data->imageData().value<QImage>() != exportManager->m_saveImage;
+            success |= !copyImage;
+        }
+        if (copyImage) {
             if (!url.isValid() && exportManager->m_imageSavedNotInTemp) {
                 url = Settings::self()->lastImageSaveLocation();
             }
