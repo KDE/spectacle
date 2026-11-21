@@ -74,6 +74,39 @@ ListView {
         id: delegate
         required property int index
         required property var model
+        function makeActions() {
+            const data = model.data
+            const dataString = data !== null && data !== undefined && data.toString !== undefined ? data.toString() : ""
+            let actions = []
+            function pushAction(incubator, index) {
+                if (incubator.status !== Component.Ready) {
+                    actions.push(null)
+                    incubator.onStatusChanged = (status) => {
+                        if (status === Component.Ready) {
+                            delegate.actions[index] = incubator.object
+                        }
+                    }
+                } else {
+                    actions.push(incubator.object)
+                }
+            }
+            if (dataString !== "") {
+                try {
+                    let url = new URL(data)
+                    if (url.protocol === "file:") {
+                        pushAction(openFolderActionComponent.incubateObject(this, {"url": url}), actions.length)
+                    }
+                } catch (error) { }
+                pushAction(copyActionComponent.incubateObject(this, {"data": data}), actions.length)
+            }
+            if (model.type === InlineMessageModel.Busy) {
+                pushAction(busyActionComponent.incubateObject(this, {}), actions.length)
+            }
+            // Not using showCloseButton because it toggles visible on this item.
+            // This makes it not work as well with animations from the list view.
+            pushAction(closeActionComponent.incubateObject(this, {"index": index}), actions.length)
+            return actions
+        }
         implicitHeight: implicitContentHeight + topPadding + bottomPadding
         z: -index // stack newer items under older items so there's no ugly visual overlap
         type: {
@@ -86,41 +119,29 @@ ListView {
             return Kirigami.MessageType.Information
         }
         text: model.text
-        visible: true
+        visible: delegate.model.type !== InlineMessageModel.Busy
         position: Kirigami.InlineMessage.Position.Header
         width: root.width
-        actions: {
-            const data = model.data
-            const dataString = data !== null && data !== undefined && data.toString !== undefined ? data.toString() : ""
-            let actions = []
-            if (dataString !== "") {
-                try {
-                    let url = new URL(data)
-                    if (url.protocol === "file:") {
-                        actions.push(openFolderActionComponent.createObject(this, {"url": url}))
-                    }
-                } catch (error) { }
-                actions.push(copyActionComponent.createObject(this, {"data": data}))
-            }
-            if (model.type === InlineMessageModel.Busy) {
-                actions.push(busyActionComponent.createObject(this, {}))
-            }
-            // Not using showCloseButton because it toggles visible on this item.
-            // This makes it not work as well with animations from the list view.
-            actions.push(closeActionComponent.createObject(this, {"index": index}))
-            return actions
-        }
+        actions: visible ? makeActions() : []
         onLinkActivated: (link) => Qt.openUrlExternally(link)
         Timer {
+            id: timer
             running: switch (delegate.model.type) {
             case InlineMessageModel.Copied:
             case InlineMessageModel.Shared:
+            case InlineMessageModel.Busy:
                 return true
             default:
                 return false
             }
-            interval: 10000
-            onTriggered: InlineMessageModel.pop(delegate.index)
+            interval: delegate.model.type === InlineMessageModel.Busy ? 200 : 10000
+            onTriggered: {
+                if (delegate.model.type === InlineMessageModel.Busy) {
+                    delegate.visible = true
+                } else {
+                    InlineMessageModel.pop(delegate.index)
+                }
+            }
         }
     }
 
