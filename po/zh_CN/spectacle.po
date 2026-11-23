@@ -1897,12 +1897,10 @@ msgid "Bad height for KWin screenshot: %1"
 msgstr "KWin 屏幕截图高度错误：%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:135
-#, fuzzy, kde-format
-#| msgctxt "@info, %1 is the width"
-#| msgid "Bad width for KWin screenshot: %1"
+#, kde-format
 msgctxt "@info, %1 is the stride"
 msgid "Bad stride for KWin screenshot: %1"
-msgstr "KWin 屏幕截图宽度错误：%1"
+msgstr "KWin 屏幕截图步幅错误：%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:142
 #, kde-format
@@ -1913,7 +1911,7 @@ msgstr "KWin 屏幕截图格式错误：%1"
 #: src/Platforms/ImagePlatformKWin.cpp:147
 #, kde-format
 msgid "mmap() failed: %1"
-msgstr ""
+msgstr "mmap() 失败：%1"
 
 #: src/Platforms/ImagePlatformKWin.cpp:269
 #, kde-format
@@ -2447,48 +2445,3 @@ msgstr "动态 WebP (优于 GIF)"
 msgctxt "@item:inlistbox Container/encoder"
 msgid "GIF (compatible, but inefficient)"
 msgstr "GIF (兼容性好但低效)"
-
-#~ msgctxt "@info"
-#~ msgid "Could not open file descriptor for reading KWin screenshot."
-#~ msgstr "无法为读取 KWin 屏幕截图打开文件描述符。"
-
-#~ msgctxt "@info, %1 is an error code"
-#~ msgid "pipe2() failed for KWin screenshot: %1"
-#~ msgstr "KWin 屏幕截图的 pipe2() 执行失败：%1"
-
-#~ msgid ""
-#~ "Capture the window currently under the cursor, excluding parents of pop-"
-#~ "up menus"
-#~ msgstr "截取鼠标光标所在的窗口，不包括父窗口的弹出菜单"
-
-#~ msgid "Capture the current pop-up only"
-#~ msgstr "仅截取当前弹出窗口"
-
-#~ msgid ""
-#~ "Capture only the current pop-up window (like a menu, tooltip etc) when "
-#~ "taking a screenshot of a window. If disabled, the pop-up is captured "
-#~ "along with the parent window."
-#~ msgstr ""
-#~ "窗口模式截图只截取当前弹出窗口 (如菜单，工具提示等)。如果禁用，将同时截取"
-#~ "弹出窗口与它的父窗口。"
-
-#~ msgctxt "@option:check"
-#~ msgid "Capture the current pop-up only"
-#~ msgstr "仅截取当前弹出窗口"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid ""
-#~ "Capture only the current pop-up window (like a menu, tooltip etc).\n"
-#~ "If disabled, the pop-up is captured along with the parent window"
-#~ msgstr ""
-#~ "只截取当前弹出窗口 (如菜单，工具提示等)。\n"
-#~ "如果禁用，弹出窗口将与父窗口一起截取。"
-
-#~ msgid "Only capture the current pop up menu"
-#~ msgstr "仅截取当前弹出菜单"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "The shared image link (<a href=\"%1\">%1</a>) has been copied to the "
-#~ "clipboard."
-#~ msgstr "该图像的分享链接 (<a href=\"%1\">%1</a>) 已复制到剪贴板。"
