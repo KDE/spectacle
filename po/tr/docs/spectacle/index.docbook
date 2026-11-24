@@ -66,7 +66,7 @@
 
         <abstract>
             <para
->&spectacle;, masaüstü ekran görüntülerini yakalamak için kullanılan yalın bir uygulamadır. Tüm masaüstünün görüntüsünü, tek bir monitörü, geçerli etkin pencereyi, farenin altındaki pencereyi veya ekranın dörgen bir bölgesini yakalayabilir. Görseller daha sonra yazdırılabilir, başka uygulamalara gönderilebilir veya dosyaya kaydedilebilir.</para>
+>&spectacle;, masaüstü ekran görüntülerini yakalamak için kullanılan yalın bir uygulamadır. Tüm masaüstünün görüntüsünü, tek bir monitörü, geçerli etkin pencereyi, farenin altındaki pencereyi veya ekranın dörtgen bir bölgesini yakalayabilir. Görseller daha sonra yazdırılabilir, açıklama eklenebilir, başka uygulamalara gönderilebilir veya dosyaya kaydedilebilir.</para>
         </abstract>
 
         <keywordset>
@@ -90,7 +90,7 @@
 >Giriş</title>
 
         <para
->&spectacle;, masaüstü ekran görüntülerini yakalamak için kullanılan yalın bir uygulamadır. Tüm masaüstünün görüntüsünü, tek bir monitörü, geçerli etkin pencereyi, farenin altındaki pencereyi veya ekranın dörgen bir bölgesini yakalayabilir. Görseller daha sonra yazdırılabilir, başka uygulamalara gönderilebilir veya dosyaya kaydedilebilir.</para>
+>&spectacle;, masaüstü ekran görüntülerini yakalamak için kullanılan yalın bir uygulamadır. Tüm masaüstünün görüntüsünü, tek bir monitörü, geçerli etkin pencereyi, farenin altındaki pencereyi veya ekranın dörtgen bir bölgesini yakalayabilir. Görseller daha sonra yazdırılabilir, açıklama eklenebilir, başka uygulamalara gönderilebilir veya dosyaya kaydedilebilir.</para>
 
         <para
 >Herhangi bir sorunu veya özellik isteğini lütfen <ulink url="https://bugs.kde.org/"
@@ -126,7 +126,7 @@
 >PrtSc</keycap
 >, <keycap
 >PrtScn</keycap
-> veya benzeri biçimde etiketlidir), &spectacle;’ı anında başlatır. Ek olarak, grafik arayüzü göstermeden ekran görüntüsü almak ve onları öntanımlı kaydetme klasörünüze kaydetmek için üç tane daha klavye kısayolu vardır:</para>
+> veya benzeri biçimde etiketlidir), &spectacle;’ı anında başlatır. Ek olarak, grafik arayüzü göstermeden ekran görüntüsü almak ve onları varsayılan kaydetme klasörünüze kaydetmek için üç tane daha klavye kısayolu vardır:</para>
                 <itemizedlist>
                 <listitem
 ><para
@@ -158,7 +158,7 @@
 ></listitem>
                 </itemizedlist>
                 <para
->Öntanımlı kaydetme konumunu ve dosya adını &spectacle;’ı normal bir biçimde başlatıp <guibutton
+>Varsayılan kaydetme konumunu ve dosya adını &spectacle;’ı normal bir biçimde başlatıp <guibutton
 >Yapılandır…</guibutton
 > düğmesine bastıktan sonra Kaydetme bölümüne giderek yapılandırabilirsiniz.</para>
             </listitem>
@@ -217,7 +217,7 @@
 >&spectacle;, başlatıldıktan hemen sonra; ancak ekranda kendini göstermeden önce tüm masaüstünüzün görüntüsünü alır. Bu, tez tam masaüstü ekran görüntüsü görüntüleri oluşturmanıza olanak tanır.</para>
 
         <para
->&spectacle; tarafından alınan ekran görüntüsü, önizleme penceresine görüntülenir. Bu pencere, &spectacle; uygulama penceresinin sol tarafında yer alır.</para>
+>&spectacle; tarafından alınan ekran görüntüsü, ön izleme penceresine görüntülenir. Bu pencere, &spectacle; uygulama penceresinin sol tarafında yer alır.</para>
 
         <para
 >Görseli istediğiniz yere kaydetmek için <guibutton
@@ -229,7 +229,7 @@
 > düğme kombinasyonunu kullanın. Bu, standart kaydetme iletişim kutusunu açar; burada dosya adını, klasör konumunu ve ekran görüntüsünün kaydedileceği biçimi seçebilirsiniz. Dosya adını istediğiniz herhangi bir şeye değiştirebilirsiniz.</para>
 
         <para
->Öntanımlı konuma bir ekran görüntüsü kaydetmek için <guibutton
+>Varsayılan konuma bir ekran görüntüsü kaydetmek için <guibutton
 >Farklı Kaydet…</guibutton
 > düğmesinin ok kısmına tıklayın ve <guimenuitem
 >Kaydet</guimenuitem
@@ -237,7 +237,7 @@
 >&Ctrl;<keycap
 >S</keycap
 ></keycombo
->) düğmesine basın. Yeni kaydetme kipi bir sonraki başlangıçta anımsanacaktır. Daha sonra açıklandığı üzere, öntanımlı kaydetme konumu ve dosya adları özelleştirilebilirdir.</para>
+>) düğmesine basın. Yeni kaydetme kipi bir sonraki başlangıçta anımsanacaktır. Daha sonra açıklandığı üzere, varsayılan kaydetme konumu ve dosya adları özelleştirilebilirdir.</para>
 
         <para
 >Tez bir görsel kaydedip &spectacle;’dan çıkmak için <guilabel
@@ -250,7 +250,7 @@
 >&Ctrl;<keycap
 >S</keycap
 ></keycombo
->). Bu, görseli öntanımlı <filename class="directory"
+>). Bu, görseli varsayılan <filename class="directory"
 >Resimler</filename
 > klasörünüzde bir PNG görseli olarak kaydeder ve uygulamadan çıkar. Yukarıda da söz edildiği üzere, bu yeni kaydetme kipi daha sonrası için anımsanacaktır.</para>
 
@@ -259,7 +259,7 @@
 >Bir Ekran Görüntüsü Almak</title>
 
             <para
->&spectacle;’ı açtığınızda, genel seçeneklerde aksi belirtilmediği sürece kolaylık sağlamak amacıyla hemen tüm ekranın ekran görüntüsünü alır ve ana pencerede bunun bir önizlemesini gösterir. Bu ekran görüntüsünü pencerenin altındaki düğmeleri kullanarak kaydedebilir veya önizlemenin sağındaki denetimleri kullanarak yeni bir ekran görüntüsü alabilirsiniz.</para>
+>&spectacle;’ı açtığınızda, genel seçeneklerde aksi belirtilmediği sürece kolaylık sağlamak amacıyla hemen tüm ekranın ekran görüntüsünü alır ve ana pencerede bunun bir ön izlemesini gösterir. Bu ekran görüntüsünü pencerenin altındaki düğmeleri kullanarak kaydedebilir veya ön izlemenin sağındaki denetimleri kullanarak yeni bir ekran görüntüsü alabilirsiniz.</para>
 
             <para
 >Geçerli ekran görüntüsünü atıp başka bir tane almak için <guibutton
@@ -482,30 +482,30 @@
 ></term>
                     <listitem>
                         <para
->Yakalama ayarlarını ve öntanımlı kaydetme konumunu ve dosya adını değiştirebileceğiniz &spectacle;’ın Yapılandır penceresine erişmenizi sağlar.</para>
+>Yakalama ayarlarını ve varsayılan kaydetme konumunu ve dosya adını değiştirebileceğiniz &spectacle;’ın Yapılandır penceresine erişmenizi sağlar.</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
                     <term
 ><guibutton
->Bilgi Notu</guibutton
+>Ek Açıklama Ekle</guibutton
 ></term>
                     <listitem>
                         <para
->Çeşitli bilgi notu ekleme araçları sunan bir not düzenleyici penceresi açar:</para>
+>Çeşitli ek açıklama ekleme araçları sunan bir not düzenleyici penceresi açar:</para>
                         <mediaobject>
                             <imageobject>
                                 <imagedata fileref="Annotate.png" format="PNG"/>
                             </imageobject>
                             <textobject>
                                 <phrase
->Bilgi notu düzenleyicisi</phrase>
+>Ek açıklama düzenleyicisi</phrase>
                             </textobject>
                         </mediaobject>
                         <para
->Bilgi notu araçlarını deneyin. Ekran görüntülerinizi açıklamak için gereksiniminiz olan her şeyi burada bulabilirsiniz: Oklar, kalemler, işaretleyiciler, metin kutuları, sayılar ve hatta suratlar. Araç parametrelerini değiştirmek ve efektler (gölge, gri tonlama ve kenarlık) eklemek olanaklıdır. </para>
+>Ek açıklama araçlarını deneyin. Ekran görüntülerinizi açıklamak için gereksiniminiz olan her şeyi burada bulabilirsiniz: Oklar, kalemler, işaretleyiciler, metin kutuları, sayılar ve hatta suratlar. Araç parametrelerini değiştirmek ve efektler (gölge, gri tonlama ve kenarlık) eklemek olanaklıdır. </para>
                         <para
->İşinizi bitirdiğinizde <guibutton
+>Açıklama eklemeyi bitirdiğinizde <guibutton
 >Tamam</guibutton
 > düğmesine basın. </para>
                     </listitem>
@@ -522,8 +522,8 @@
                             <listitem>
                                 <para
 ><guimenuitem
->Öntanımlı Ekran Görüntüleri Klasörünü Aç</guimenuitem
->, öntanımlı dosya yöneticisinde son kaydedilen ekran görüntüsünü vurgular</para>
+>Varsayılan Ekran Görüntüleri Klasörünü Aç</guimenuitem
+>, varsayılan dosya yöneticisinde son kaydedilen ekran görüntüsünü vurgular</para>
                             </listitem>
                             <listitem>
                                 <para
@@ -570,7 +570,7 @@
 ></term>
                     <listitem>
                         <para
->Ekran görüntüsünü öntanımlı Resimler klasörünüze PNG görüntüsü olarak kaydeder ve uygulamadan hemen çıkar.</para>
+>Ekran görüntüsünü varsayılan Resimler klasörünüze PNG görüntüsü olarak kaydeder ve uygulamadan hemen çıkar.</para>
                     </listitem>
                 </varlistentry>
             </variablelist>
@@ -616,8 +616,8 @@
                     <listitem>
                         <para
 >Herhangi bir pano eylemini, görseli panoya kopyalamayı veya ekran görüntüsü yolunu panoya kopyalamayı <guilabel
->Dosyayı öntanımlı klasöre kaydet</guilabel
-> ile devre dışı bırakabilirsiniz. Öntanımlı konum, <link linkend="save-page"
+>Dosyayı varsayılan klasöre kaydet</guilabel
+> ile devre dışı bırakabilirsiniz. Varsayılan konum, <link linkend="save-page"
 >Kaydet</link
 > yapılandırma sayfasından yapılandırılabilir. <guilabel
 >Dosya konumunu panoya kopyala</guilabel
@@ -675,7 +675,7 @@
 ></term>
                     <listitem>
                         <para
->Öntanımlı olarak &spectacle;, kapatılıncaya kadar dikdörtgen bir bölgenin ekran görüntüsünü aldığınızda ilk seçimi anımsar. Ayrıca &spectacle;’ın seçili alanı her zaman veya ekran görüntüsü oturumları arasında anımsamamasını da sağlayabilirsiniz.</para>
+>Varsayılan olarak &spectacle;, kapatılıncaya kadar dikdörtgen bir bölgenin ekran görüntüsünü aldığınızda ilk seçimi anımsar. Ayrıca &spectacle;’ın seçili alanı her zaman veya ekran görüntüsü oturumları arasında anımsamamasını da sağlayabilirsiniz.</para>
                     </listitem>
                 </varlistentry>
             </variablelist>
@@ -686,12 +686,12 @@
             <para
 ><guilabel
 >Kaydet</guilabel
-> işlevini kullandığınızda &spectacle;, görüntüyü öntanımlı dosya adıyla Resimler klasörünüze (ana klasörünüzün içindedir) kaydeder. Öntanımlı dosya adı, görüntünün çekildiği tarih ve saati içerir.</para>
+> işlevini kullandığınızda &spectacle;, görüntüyü varsayılan dosya adıyla Resimler klasörünüze (ana klasörünüzün içindedir) kaydeder. Varsayılan dosya adı, görüntünün çekildiği tarih ve saati içerir.</para>
 
             <para
 ><guilabel
 >Kaydet</guilabel
-> sayfası, öntanımlı kaydetme konumunu ve dosya adını ayarlamanıza olanak tanır. Bu seçeneğe tıklamak aşağıdaki gibi bir iletişim kutusu açar: <mediaobject>
+> sayfası, varsayılan kaydetme konumunu ve dosya adını ayarlamanıza olanak tanır. Bu seçeneğe tıklamak aşağıdaki gibi bir iletişim kutusu açar: <mediaobject>
                     <imageobject>
                         <imagedata fileref="SaveOptions.png" format="PNG"/>
                     </imageobject>
@@ -733,7 +733,7 @@
 ></term>
                     <listitem>
                         <para
->Kaydedilen ekran görüntüleri için öntanımlı bir dosya adı ayarlayın.</para>
+>Kaydedilen ekran görüntüleri için varsayılan bir dosya adı ayarlayın.</para>
                         <para
 >Dosya adında, dosya kaydedildiğinde gerçek metinle değiştirilecek olan aşağıdaki yer tutucuları kullanabilirsiniz:</para>
                         <itemizedlist>
@@ -805,7 +805,7 @@
 >Ekran görüntüsü-1.png</filename
 > olarak kaydedilir.</para>
                         <para
->Ekran görüntüleri için öntanımlı görsel biçimini seçmek üzere metin alanının yanındaki açılır kutuyu kullanın. &spectacle;’da kullanılan dosya biçimleriyle ilgili daha fazla bilgi için ilgili <ulink url="https://en.wikipedia.org/wiki/Image_file_formats"
+>Ekran görüntüleri için varsayılan görsel biçimini seçmek üzere metin alanının yanındaki açılır kutuyu kullanın. &spectacle;’da kullanılan dosya biçimleriyle ilgili daha fazla bilgi için ilgili <ulink url="https://en.wikipedia.org/wiki/Image_file_formats"
 >Vikipedi</ulink
 > sayfasına bakın.</para>
                     </listitem>
@@ -816,7 +816,7 @@
             <title
 >Kısayollar</title>
             <para
->Bu yapılandırma sayfası, &spectacle;’ın öntanımlı kısayollarını değiştirmek için kullanılabilir. &spectacle;’ı başlatmak ve masaüstünüzün farklı bölümlerini yakalamak için kısayollar yapılandırmak olanaklıdır. </para>
+>Bu yapılandırma sayfası, &spectacle;’ın varsayılan kısayollarını değiştirmek için kullanılabilir. &spectacle;’ı başlatmak ve masaüstünüzün farklı bölümlerini yakalamak için kısayollar yapılandırmak olanaklıdır. </para>
             </sect2>
         </sect1>
 
