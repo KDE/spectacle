@@ -7,14 +7,11 @@
 
 #include "settings.h"
 #include <KLocalizedString>
-#include <QByteArrayView>
 #include <QDateTime>
-class QLockFile;
-class QIODevice;
-#include <QMap>
 #include <QObject>
-class QPrinter;
 #include <QUrl>
+
+class QPrinter;
 
 class QTemporaryDir;
 
@@ -52,7 +49,6 @@ public:
 
     static QString defaultSaveLocation();
     static QString defaultVideoSaveLocation();
-    bool isFileExists(const QUrl &url) const;
     bool isImageSavedNotInTemp() const;
     void setImage(const QImage &image);
     QImage image() const;
@@ -146,23 +142,8 @@ Q_SIGNALS:
     void qrCodeScanned(const QVariant &content);
 
 private:
-    static QString truncatedFilename(const QString &filename);
-    using FileNameAlreadyUsedCheck = bool (ExportManager::*)(const QUrl &) const;
-    QString autoIncrementFilename(const QString &baseName, const QString &extension, FileNameAlreadyUsedCheck isFileNameUsed) const;
-    QString imageFileSuffix(const QUrl &url) const;
-    bool writeImage(QIODevice *device, const QByteArray &suffix, QByteArrayView encodedImage = {});
-    bool save(const QUrl &url, QByteArrayView encodedImage = {});
-    bool localSave(const QUrl &url, const QString &suffix, QByteArrayView encodedImage);
-    bool remoteSave(const QUrl &url, const QString &suffix, QByteArrayView encodedImage);
-    bool isTempFileAlreadyUsed(const QUrl &url) const;
-
-    bool m_imageSavedNotInTemp;
-    QImage m_saveImage;
-    QDateTime m_timestamp;
-    QUrl m_tempFile;
-    std::unique_ptr<QLockFile> m_tempDirLock;
-    std::unique_ptr<QTemporaryDir> m_tempDir;
-    QList<QUrl> m_usedTempFileNames;
+    class Private;
+    std::unique_ptr<Private> d;
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(ExportManager::Actions)

@@ -46,13 +46,51 @@
 
 using namespace Qt::StringLiterals;
 
-static QFutureSynchronizer<void> s_clipboardFutures{};
+static inline bool fileExists(const QUrl &url)
+{
+    if (!(url.isValid())) {
+        return false;
+    }
+    // Using StatJob instead of QFileInfo::exists() is necessary for checking non-local URLs.
+    KIO::StatJob *existsJob = KIO::stat(url, KIO::StatJob::DestinationSide, KIO::StatNoDetails, KIO::HideProgressInfo);
+
+    existsJob->exec();
+
+    return (existsJob->error() == KJob::NoError);
+}
+
+class ExportManager::Private
+{
+public:
+    ExportManager *const q = nullptr;
+    bool imageSavedNotInTemp = false;
+    QImage saveImage;
+    QDateTime timestamp;
+    QUrl tempFile;
+    std::unique_ptr<QLockFile> tempDirLock;
+    std::unique_ptr<QTemporaryDir> tempDir;
+    QList<QUrl> usedTempFileNames;
+    QFutureSynchronizer<void> exportFutures;
+
+    Private(ExportManager *q)
+        : q(q)
+    {
+    }
+
+    static QString truncatedFilename(const QString &filename);
+
+    template<typename Predicate>
+    QString autoIncrementFilename(const QString &baseName, const QString &extension, Predicate isFileNameUsed) const;
+    QString imageFileSuffix(const QUrl &url) const;
+    bool writeImage(QIODevice *device, const QByteArray &suffix, QByteArrayView encodedImage = {});
+    bool save(const QUrl &url, QByteArrayView encodedImage = {});
+    bool localSave(const QUrl &url, const QString &suffix, QByteArrayView encodedImage);
+    bool remoteSave(const QUrl &url, const QString &suffix, QByteArrayView encodedImage);
+};
 
 ExportManager::ExportManager(QObject *parent)
     : QObject(parent)
-    , m_imageSavedNotInTemp(false)
-    , m_saveImage(QImage())
-    , m_tempFile(QUrl())
+    , d(std::make_unique<ExportManager::Private>(this))
 {
     connect(this, &ExportManager::imageExported, this, [](Actions actions, const QUrl &url) {
         if (actions & AnySave) {
@@ -66,7 +104,7 @@ ExportManager::ExportManager(QObject *parent)
 
 ExportManager::~ExportManager()
 {
-    s_clipboardFutures.waitForFinished();
+    d->exportFutures.waitForFinished();
 }
 
 ExportManager *ExportManager::instance()
@@ -81,40 +119,40 @@ ExportManager *ExportManager::instance()
 
 QImage ExportManager::image() const
 {
-    return m_saveImage;
+    return d->saveImage;
 }
 
 void ExportManager::setImage(const QImage &image)
 {
-    m_saveImage = image;
+    d->saveImage = image;
 
     // reset our saved tempfile
-    if (m_tempFile.isValid()) {
-        m_usedTempFileNames.append(m_tempFile);
-        QFile file(m_tempFile.toLocalFile());
+    if (d->tempFile.isValid()) {
+        d->usedTempFileNames.append(d->tempFile);
+        QFile file(d->tempFile.toLocalFile());
         file.remove();
-        m_tempFile = QUrl();
+        d->tempFile = QUrl();
     }
 
     // since the image was modified, we now consider the image unsaved
-    m_imageSavedNotInTemp = false;
+    d->imageSavedNotInTemp = false;
 
     Q_EMIT imageChanged();
 }
 
 void ExportManager::updateTimestamp()
 {
-    m_timestamp = QDateTime::currentDateTime();
+    d->timestamp = QDateTime::currentDateTime();
 }
 
 void ExportManager::setTimestamp(const QDateTime &timestamp)
 {
-    m_timestamp = timestamp;
+    d->timestamp = timestamp;
 }
 
 QDateTime ExportManager::timestamp() const
 {
-    return m_timestamp;
+    return d->timestamp;
 }
 
 // native file save helpers
@@ -145,10 +183,8 @@ QUrl ExportManager::getAutosaveFilename() const
 {
     const QString baseDir = defaultSaveLocation();
     const QDir baseDirPath(baseDir);
-    const QString filename = formattedFilename(Settings::imageFilenameTemplate(), m_timestamp, ImageMetaData::windowTitle(m_saveImage), Settings::imageSaveLocation());
-    const QString fullpath = autoIncrementFilename(baseDirPath.filePath(filename),
-                                                   Settings::preferredImageFormat().toLower(),
-                                                   &ExportManager::isFileExists);
+    const QString filename = formattedFilename(Settings::imageFilenameTemplate(), d->timestamp, ImageMetaData::windowTitle(d->saveImage), Settings::imageSaveLocation());
+    const QString fullpath = d->autoIncrementFilename(baseDirPath.filePath(filename), Settings::preferredImageFormat().toLower(), fileExists);
 
     const QUrl fileNameUrl = QUrl::fromUserInput(fullpath);
     if (fileNameUrl.isValid()) {
@@ -164,7 +200,7 @@ QUrl ExportManager::tempVideoUrl(const QString &filename)
     auto extension = VideoPlatform::extensionForFormat(format);
     QString baseDir = defaultVideoSaveLocation();
     const QDir baseDirPath(baseDir);
-    QString filepath = autoIncrementFilename(baseDirPath.filePath(filename), extension, &ExportManager::isFileExists);
+    QString filepath = d->autoIncrementFilename(baseDirPath.filePath(filename), extension, fileExists);
 
     auto tempDir = temporaryDir();
     if (!tempDir) {
@@ -192,24 +228,24 @@ void removeUnlockedDirs(const QStringList &oldDirs)
 
 const QTemporaryDir *ExportManager::temporaryDir()
 {
-    if (!m_tempDir) {
+    if (!d->tempDir) {
         // Cleanup Spectacle's temp dirs after startup instead of while quitting.
         const auto filters = QDir::Filter::Dirs | QDir::NoDotAndDotDot | QDir::CaseSensitive | QDir::NoSymLinks;
         // Get old dirs before the async stuff to avoid race conditions when making the new dir.
         const auto oldDirs = QDir::temp().entryList({u"Spectacle.??????"_s}, filters);
-        m_tempDir = std::make_unique<QTemporaryDir>(QDir::tempPath() + u"/Spectacle.XXXXXX"_s);
-        m_tempDir->setAutoRemove(false);
-        if (m_tempDir->isValid()) {
-            m_tempDirLock = std::make_unique<QLockFile>(m_tempDir->filePath(u"lockfile"_s));
-            m_tempDirLock->setStaleLockTime(0);
-            m_tempDirLock->tryLock();
+        d->tempDir = std::make_unique<QTemporaryDir>(QDir::tempPath() + u"/Spectacle.XXXXXX"_s);
+        d->tempDir->setAutoRemove(false);
+        if (d->tempDir->isValid()) {
+            d->tempDirLock = std::make_unique<QLockFile>(d->tempDir->filePath(u"lockfile"_s));
+            d->tempDirLock->setStaleLockTime(0);
+            d->tempDirLock->tryLock();
         }
         auto future = QtConcurrent::run(removeUnlockedDirs, oldDirs);
     }
-    return m_tempDir->isValid() ? m_tempDir.get() : nullptr;
+    return d->tempDir->isValid() ? d->tempDir.get() : nullptr;
 }
 
-QString ExportManager::truncatedFilename(QString const &filename)
+QString ExportManager::Private::truncatedFilename(QString const &filename)
 {
     QString result = filename;
     constexpr auto maxFilenameLength = 255;
@@ -376,20 +412,21 @@ QString ExportManager::formattedFilename(const QString &nameTemplate, const QDat
     if (result.isEmpty()) {
         result = u"Screenshot"_s;
     }
-    return truncatedFilename(result);
+    return Private::truncatedFilename(result);
 }
 
-QString ExportManager::autoIncrementFilename(const QString &baseName, const QString &extension, FileNameAlreadyUsedCheck isFileNameUsed) const
+template<typename Predicate>
+QString ExportManager::Private::autoIncrementFilename(const QString &baseName, const QString &extension, Predicate isFileNameUsed) const
 {
     QString result = truncatedFilename(baseName) + u'.' + extension;
-    if (!((this->*isFileNameUsed)(QUrl::fromUserInput(result)))) {
+    if (!isFileNameUsed(QUrl::fromUserInput(result))) {
         return result;
     }
 
     QString fileNameFmt = truncatedFilename(baseName) + u"-%1.";
     for (quint64 i = 1; i < std::numeric_limits<quint64>::max(); i++) {
         result = fileNameFmt.arg(i) + extension;
-        if (!((this->*isFileNameUsed)(QUrl::fromUserInput(result)))) {
+        if (!isFileNameUsed(QUrl::fromUserInput(result))) {
             return result;
         }
     }
@@ -401,7 +438,7 @@ QString ExportManager::autoIncrementFilename(const QString &baseName, const QStr
     return truncatedFilename(result) + extension;
 }
 
-QString ExportManager::imageFileSuffix(const QUrl &url) const
+QString ExportManager::Private::imageFileSuffix(const QUrl &url) const
 {
     QMimeDatabase mimedb;
     const QString type = mimedb.mimeTypeForUrl(url).preferredSuffix();
@@ -447,7 +484,7 @@ QImage scaledImageFromSubGeometry(const QImage &image)
                              fastScale ? Qt::FastTransformation : Qt::SmoothTransformation);
 }
 
-bool ExportManager::writeImage(QIODevice *device, const QByteArray &suffix, QByteArrayView encodedImage)
+bool ExportManager::Private::writeImage(QIODevice *device, const QByteArray &suffix, QByteArrayView encodedImage)
 {
     if (!encodedImage.isNull()) {
         return device->write(encodedImage.data(), encodedImage.size()) == encodedImage.size();
@@ -470,22 +507,22 @@ bool ExportManager::writeImage(QIODevice *device, const QByteArray &suffix, QByt
         imageWriter.setCompression(50);
     }
     if (!(imageWriter.canWrite())) {
-        Q_EMIT errorMessage(i18nc("%1 is an error message", "QImageWriter cannot write image: %1", imageWriter.errorString()));
+        Q_EMIT q->errorMessage(i18nc("%1 is an error message", "QImageWriter cannot write image: %1", imageWriter.errorString()));
         return false;
     }
     // Scale image to original scale if possible.
     // This is done here because we need the highest resolution version in the rest of the app.
-    return imageWriter.write(scaledImageFromSubGeometry(m_saveImage));
+    return imageWriter.write(scaledImageFromSubGeometry(saveImage));
 }
 
-bool ExportManager::localSave(const QUrl &url, const QString &suffix, QByteArrayView encodedImage)
+bool ExportManager::Private::localSave(const QUrl &url, const QString &suffix, QByteArrayView encodedImage)
 {
     // Create save directory if it doesn't exist
     const QUrl dirPath(url.adjusted(QUrl::RemoveFilename));
     const QDir dir(dirPath.path());
 
     if (!dir.mkpath(u"."_s)) {
-        Q_EMIT errorMessage(xi18nc("@info",
+        Q_EMIT q->errorMessage(xi18nc("@info",
                                    "Cannot save screenshot because creating "
                                    "the directory failed:<nl/><filename>%1</filename>",
                                    dirPath.path()));
@@ -495,17 +532,17 @@ bool ExportManager::localSave(const QUrl &url, const QString &suffix, QByteArray
     QSaveFile outputFile(url.toLocalFile());
 
     if (!outputFile.open(QFile::WriteOnly)) {
-        Q_EMIT errorMessage(i18n("Cannot save screenshot. Error while opening file."));
+        Q_EMIT q->errorMessage(i18n("Cannot save screenshot. Error while opening file."));
         return false;
     }
     if (!writeImage(&outputFile, suffix.toLatin1(), encodedImage) || !outputFile.commit()) {
-        Q_EMIT errorMessage(i18n("Cannot save screenshot. Error while writing file."));
+        Q_EMIT q->errorMessage(i18n("Cannot save screenshot. Error while writing file."));
         return false;
     }
     return true;
 }
 
-bool ExportManager::remoteSave(const QUrl &url, const QString &suffix, QByteArrayView encodedImage)
+bool ExportManager::Private::remoteSave(const QUrl &url, const QString &suffix, QByteArrayView encodedImage)
 {
     // Check if remote save directory exists
     const QUrl dirPath(url.adjusted(QUrl::RemoveFilename));
@@ -518,7 +555,7 @@ bool ExportManager::remoteSave(const QUrl &url, const QString &suffix, QByteArra
         mkpathJob->exec();
 
         if (mkpathJob->error() != KJob::NoError) {
-            Q_EMIT errorMessage(xi18nc("@info",
+            Q_EMIT q->errorMessage(xi18nc("@info",
                                        "Cannot save screenshot because creating the "
                                        "remote directory failed:<nl/><filename>%1</filename>",
                                        dirPath.path()));
@@ -530,7 +567,7 @@ bool ExportManager::remoteSave(const QUrl &url, const QString &suffix, QByteArra
 
     if (tmpFile.open()) {
         if (!writeImage(&tmpFile, suffix.toLatin1(), encodedImage) || !tmpFile.flush()) {
-            Q_EMIT errorMessage(i18n("Cannot save screenshot. Error while writing temporary local file."));
+            Q_EMIT q->errorMessage(i18n("Cannot save screenshot. Error while writing temporary local file."));
             return false;
         }
         tmpFile.close();
@@ -539,7 +576,7 @@ bool ExportManager::remoteSave(const QUrl &url, const QString &suffix, QByteArra
         uploadJob->exec();
 
         if (uploadJob->error() != KJob::NoError) {
-            Q_EMIT errorMessage(i18n("Unable to save image. Could not upload file to remote location."));
+            Q_EMIT q->errorMessage(i18n("Unable to save image. Could not upload file to remote location."));
             return false;
         }
         return true;
@@ -551,9 +588,9 @@ bool ExportManager::remoteSave(const QUrl &url, const QString &suffix, QByteArra
 QUrl ExportManager::tempSave()
 {
     // if we already have a temp file saved, use that
-    if (m_tempFile.isValid()) {
-        if (QFile(m_tempFile.toLocalFile()).exists()) {
-            return m_tempFile;
+    if (d->tempFile.isValid()) {
+        if (QFile(d->tempFile.toLocalFile()).exists()) {
+            return d->tempFile;
         }
     }
 
@@ -563,19 +600,22 @@ QUrl ExportManager::tempSave()
         // supports the use-case of creating multiple screenshots in a row
         // and exporting them to the same destination e.g. via clipboard,
         // where the temp file name is used as filename suggestion
-        const auto formattedFilename = this->formattedFilename(Settings::imageFilenameTemplate(), m_timestamp, ImageMetaData::windowTitle(m_saveImage), Settings::imageSaveLocation());
-        const QString baseFileName = m_tempDir->path() + u'/' + QUrl::fromLocalFile(formattedFilename).fileName();
+        const auto formattedFilename = this->formattedFilename(Settings::imageFilenameTemplate(), d->timestamp, ImageMetaData::windowTitle(d->saveImage), Settings::imageSaveLocation());
+        const QString baseFileName = d->tempDir->path() + u'/' + QUrl::fromLocalFile(formattedFilename).fileName();
 
-        QString suffix = imageFileSuffix(QUrl(baseFileName));
-        const QString fileName = autoIncrementFilename(baseFileName, suffix, &ExportManager::isTempFileAlreadyUsed);
+        QString suffix = d->imageFileSuffix(QUrl(baseFileName));
+        auto isTempFileAlreadyUsed = [this](const QUrl &url) {
+            return d->usedTempFileNames.contains(url);
+        };
+        const QString fileName = d->autoIncrementFilename(baseFileName, suffix, isTempFileAlreadyUsed);
         QSaveFile tmpFile(fileName);
         if (tmpFile.open(QFile::WriteOnly)) {
-            if (writeImage(&tmpFile, suffix.toLatin1()) && tmpFile.commit()) {
-                m_tempFile = QUrl::fromLocalFile(tmpFile.fileName());
+            if (d->writeImage(&tmpFile, suffix.toLatin1()) && tmpFile.commit()) {
+                d->tempFile = QUrl::fromLocalFile(tmpFile.fileName());
                 // try to make sure 3rd-party which gets the url of the temporary file e.g. on export
                 // properly treats this as readonly, also hide from other users
                 tmpFile.setPermissions(QFile::ReadUser);
-                return m_tempFile;
+                return d->tempFile;
             }
         }
     }
@@ -584,10 +624,10 @@ QUrl ExportManager::tempSave()
     return QUrl();
 }
 
-bool ExportManager::save(const QUrl &url, QByteArrayView encodedImage)
+bool ExportManager::Private::save(const QUrl &url, QByteArrayView encodedImage)
 {
     if (!(url.isValid())) {
-        Q_EMIT errorMessage(i18n("Cannot save screenshot. The save filename is invalid."));
+        Q_EMIT q->errorMessage(i18n("Cannot save screenshot. The save filename is invalid."));
         return false;
     }
 
@@ -599,38 +639,20 @@ bool ExportManager::save(const QUrl &url, QByteArrayView encodedImage)
         saveSucceded = remoteSave(url, suffix, encodedImage);
     }
     if (saveSucceded) {
-        m_imageSavedNotInTemp = true;
+        imageSavedNotInTemp = true;
         KRecentDocument::add(url, QGuiApplication::desktopFileName());
     }
     return saveSucceded;
 }
 
-bool ExportManager::isFileExists(const QUrl &url) const
-{
-    if (!(url.isValid())) {
-        return false;
-    }
-    // Using StatJob instead of QFileInfo::exists() is necessary for checking non-local URLs.
-    KIO::StatJob *existsJob = KIO::stat(url, KIO::StatJob::DestinationSide, KIO::StatNoDetails, KIO::HideProgressInfo);
-
-    existsJob->exec();
-
-    return (existsJob->error() == KJob::NoError);
-}
-
 bool ExportManager::isImageSavedNotInTemp() const
 {
-    return m_imageSavedNotInTemp;
-}
-
-bool ExportManager::isTempFileAlreadyUsed(const QUrl &url) const
-{
-    return m_usedTempFileNames.contains(url);
+    return d->imageSavedNotInTemp;
 }
 
 void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
 {
-    if (m_saveImage.isNull() && actions & (Save | SaveAs | CopyImage)) {
+    if (d->saveImage.isNull() && actions & (Save | SaveAs | CopyImage)) {
         Q_EMIT errorMessage(i18n("Cannot save an empty screenshot image."));
         return;
     }
@@ -655,12 +677,12 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
         if (!dirUrl.isValid()) {
             dirUrl = Settings::self()->lastImageSaveAsLocation().adjusted(QUrl::RemoveFilename);
             if ((dirUrl.isLocalFile() && !QDir(dirUrl.toLocalFile()).exists())
-                || (!dirUrl.isLocalFile() && !isFileExists(dirUrl))) {
+                || (!dirUrl.isLocalFile() && !fileExists(dirUrl))) {
                 dirUrl = QUrl::fromLocalFile(defaultSaveLocation());
             }
         }
         dialog->setDirectoryUrl(dirUrl);
-        const auto formattedFilename = this->formattedFilename(Settings::imageFilenameTemplate(), m_timestamp, ImageMetaData::windowTitle(m_saveImage), dirUrl);
+        const auto formattedFilename = this->formattedFilename(Settings::imageFilenameTemplate(), d->timestamp, ImageMetaData::windowTitle(d->saveImage), dirUrl);
         const auto fileName = !url.fileName().isEmpty()
             ? url.fileName()
             : (formattedFilename + u"."_s + filenameExtension);
@@ -689,8 +711,8 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
         return;
     }
 
-    s_clipboardFutures.waitForFinished(); // Finish any existing exports
-    auto doExport = [=] mutable {
+    d->exportFutures.waitForFinished(); // Finish any existing exports
+    auto doExport = [=, this] mutable {
         const auto exportManager = ExportManager::instance();
         bool success = false;
         const auto preferredFormat = Settings::preferredImageFormat().toLower();
@@ -698,20 +720,20 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
         bool saved = actions & AnySave;
         if (saved) {
             if (!url.isValid()) {
-                url = exportManager->getAutosaveFilename();
+                url = getAutosaveFilename();
             }
 
-            const QString saveFormat = exportManager->imageFileSuffix(url);
+            const QString saveFormat = d->imageFileSuffix(url);
             const QString canonicalPreferredFormat =
                 QMimeDatabase().mimeTypeForFile(u"image."_s + preferredFormat, QMimeDatabase::MatchExtension).preferredSuffix();
             if (actions & CopyImage && (saveFormat == preferredFormat || saveFormat == canonicalPreferredFormat)) {
                 QBuffer buffer(&sharedImageData);
                 if (buffer.open(QIODevice::WriteOnly)) {
-                    exportManager->writeImage(&buffer, saveFormat.toLatin1());
+                    d->writeImage(&buffer, saveFormat.toLatin1());
                 }
             }
 
-            saved = success = exportManager->save(url, sharedImageData);
+            saved = success = d->save(url, sharedImageData);
             if (!success) {
                 actions.setFlag(Save, false);
                 actions.setFlag(SaveAs, false);
@@ -721,11 +743,11 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
         bool copyImage = actions & CopyImage;
         if (copyImage && KSystemClipboard::instance()->ownsClipboard()) {
             const auto data = KSystemClipboard::instance()->mimeData(QClipboard::Clipboard);
-            copyImage = !data || !data->hasImage() || data->imageData().value<QImage>() != exportManager->m_saveImage;
+            copyImage = !data || !data->hasImage() || data->imageData().value<QImage>() != exportManager->d->saveImage;
             success |= !copyImage;
         }
         if (copyImage) {
-            if (!url.isValid() && exportManager->m_imageSavedNotInTemp) {
+            if (!url.isValid() && exportManager->d->imageSavedNotInTemp) {
                 url = Settings::self()->lastImageSaveLocation();
             }
             auto data = new QMimeData();
@@ -733,7 +755,7 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
             // paste as the preferred format without decompression. The issue with
             // that is that some apps like Discord won't copy temp files when in a
             // Flatpak even if you use KUrlMimeData::exportUrlsToPortal().
-            auto image = scaledImageFromSubGeometry(exportManager->m_saveImage);
+            auto image = scaledImageFromSubGeometry(exportManager->d->saveImage);
             QByteArray encodedImage = sharedImageData;
             if (encodedImage.isEmpty()) {
                 QBuffer buffer(&encodedImage);
@@ -779,7 +801,7 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
             // https://bugs.kde.org/show_bug.cgi?id=357423
             || (saved && Settings::clipboardGroup() == Settings::PostScreenshotCopyLocation)) {
             if (!url.isValid()) {
-                if (m_imageSavedNotInTemp) {
+                if (d->imageSavedNotInTemp) {
                     // The image has been saved (manually or automatically),
                     // we need to choose that file path
                     url = Settings::self()->lastImageSaveLocation();
@@ -804,7 +826,7 @@ void ExportManager::exportImage(ExportManager::Actions actions, QUrl url)
             }, Qt::AutoConnection);
         }
     };
-    s_clipboardFutures.addFuture(QtConcurrent::run(doExport));
+    d->exportFutures.addFuture(QtConcurrent::run(doExport));
 }
 
 void ExportManager::scanQRCode()
@@ -850,7 +872,7 @@ void ExportManager::exportVideo(ExportManager::Actions actions, const QUrl &inpu
         if (!dirUrl.isValid()) {
             dirUrl = Settings::self()->lastVideoSaveAsLocation().adjusted(QUrl::RemoveFilename);
             if ((dirUrl.isLocalFile() && !QDir(dirUrl.toLocalFile()).exists())
-                || (!dirUrl.isLocalFile() && !isFileExists(dirUrl))) {
+                || (!dirUrl.isLocalFile() && !fileExists(dirUrl))) {
                 dirUrl = QUrl::fromLocalFile(defaultVideoSaveLocation());
             }
         }
@@ -880,11 +902,11 @@ void ExportManager::exportVideo(ExportManager::Actions actions, const QUrl &inpu
         return;
     }
 
-    bool inputFromTemp = temporaryDir() && inputFile.startsWith(m_tempDir->path());
+    bool inputFromTemp = temporaryDir() && inputFile.startsWith(d->tempDir->path());
     if (!outputUrl.isValid()) {
         if (actions & AnySave && inputFromTemp) {
             // Use the temp url without the temp dir as the new url, if necessary
-            const auto &tempDirPath = m_tempDir->path() + u'/';
+            const auto &tempDirPath = d->tempDir->path() + u'/';
             const auto &reducedPath = inputFile.right(inputFile.size() - tempDirPath.size());
             outputUrl = Settings::videoSaveLocation().adjusted(QUrl::StripTrailingSlash);
             outputUrl.setPath(outputUrl.path() + u'/' + reducedPath);
@@ -958,7 +980,7 @@ void ExportManager::doPrint(QPrinter *printer)
     painter.setRenderHint(QPainter::LosslessImageRendering);
 
     QRect devRect(0, 0, printer->width(), printer->height());
-    QImage image = m_saveImage.scaled(devRect.size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    QImage image = d->saveImage.scaled(devRect.size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
     QRect srcRect = image.rect();
     srcRect.moveCenter(devRect.center());
 
