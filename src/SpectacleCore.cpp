@@ -1208,6 +1208,9 @@ void SpectacleCore::takeNewScreenshot(ImagePlatform::GrabMode grabMode, int time
         SpectacleWindow::setVisibilityForAll(QWindow::Hidden);
         QTimer::singleShot(timeout, this, [this]() {
             m_imagePlatform->doGrab(ImagePlatform::ShutterMode::Immediate, m_lastGrabMode, m_lastIncludePointer, m_lastIncludeDecorations, m_lastIncludeShadow);
+            // We know we're gonna need this component soon, load the QQmlComponent
+            // already while we're waiting for KWin to send us the screenshot.
+            CaptureWindow::prepareQmlComponent(getQmlEngine());
         });
         return;
     }

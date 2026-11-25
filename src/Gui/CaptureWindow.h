@@ -28,6 +28,8 @@ public:
 
     using UniquePointer = std::unique_ptr<CaptureWindow, void (*)(CaptureWindow *)>;
 
+    static void prepareQmlComponent(QQmlEngine *engine);
+
     static UniquePointer makeUnique(Mode mode, QScreen *screen, QQmlEngine *engine, QWindow *parent = nullptr);
 
     static QList<CaptureWindow *> instances();

@@ -98,6 +98,16 @@ CaptureWindow::~CaptureWindow()
     }
 }
 
+static QUrl componentUrl()
+{
+    return QUrl("%1/Gui/CaptureOverlay.qml"_L1.arg(SPECTACLE_QML_PATH));
+}
+
+void CaptureWindow::prepareQmlComponent(QQmlEngine *engine)
+{
+    QQmlComponent component{engine, componentUrl()};
+}
+
 CaptureWindow::UniquePointer CaptureWindow::makeUnique(Mode mode, QScreen *screen, QQmlEngine *engine, QWindow *parent)
 {
     return UniquePointer(new CaptureWindow(mode, screen, engine, parent), [](CaptureWindow *window) {
@@ -127,7 +137,7 @@ void CaptureWindow::setMode(CaptureWindow::Mode mode)
     QVariantMap initialProperties = {// Set the parent in initialProperties to avoid having
                                      // the parent and window be null in Component.onCompleted
                                      {u"parent"_s, QVariant::fromValue(contentItem())}};
-    setSource(QUrl("%1/Gui/CaptureOverlay.qml"_L1.arg(SPECTACLE_QML_PATH)), initialProperties);
+    setSource(componentUrl(), initialProperties);
 }
 
 bool CaptureWindow::accept()
