@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: trunk-kf 5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-24 01:08+0000\n"
+"POT-Creation-Date: 2026-11-25 01:28+0000\n"
 "PO-Revision-Date: 2026-08-01 14:13+0300\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -227,13 +227,13 @@ msgstr "Atverti ir taisyti esamą ekrano kopijos failą"
 msgid "Accept region selection on click-and-release"
 msgstr "Priimti srities žymėjimą spustelėjus ir atleidus"
 
-#: src/ExportManager.cpp:466
+#: src/ExportManager.cpp:510
 #, kde-format
 msgctxt "%1 is an error message"
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter negali rašyti paveikslo: %1"
 
-#: src/ExportManager.cpp:482
+#: src/ExportManager.cpp:526
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -243,17 +243,17 @@ msgstr ""
 "Nepavyksta įrašyti ekrano kopiją, nes nepavyko sukurti katalogą:<nl/"
 "><filename>%1</filename>"
 
-#: src/ExportManager.cpp:491
+#: src/ExportManager.cpp:535
 #, kde-format
 msgid "Cannot save screenshot. Error while opening file."
 msgstr "Nepavyksta įrašyti ekrano kopijos. Klaida atveriant failą."
 
-#: src/ExportManager.cpp:495
+#: src/ExportManager.cpp:539
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr "Nepavyksta įrašyti ekrano kopijos. Klaida rašant į failą."
 
-#: src/ExportManager.cpp:515
+#: src/ExportManager.cpp:559
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -263,29 +263,29 @@ msgstr ""
 "Nepavyksta įrašyti ekrano kopiją, nes nepavyko sukurti nuotolinio katalogo:"
 "<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:526 src/ExportManager.cpp:576
+#: src/ExportManager.cpp:570 src/ExportManager.cpp:623
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Nepavyksta įrašyti ekrano kopijos. Klaida rašant į laikinąjį vietinį failą."
 
-#: src/ExportManager.cpp:535
+#: src/ExportManager.cpp:579
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr "Nepavyko įrašyti paveikslo. Nepavyko įkelti failo į nuotolinę vietą."
 
-#: src/ExportManager.cpp:583
+#: src/ExportManager.cpp:630
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "Nepavyksta įrašyti ekrano kopijos. Įrašymui netinkamas failo pavadinimas."
 
-#: src/ExportManager.cpp:627
+#: src/ExportManager.cpp:656
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Nepavyksta įrašyti tuščio ekrano kopijos paveikslo."
 
-#: src/ExportManager.cpp:814
+#: src/ExportManager.cpp:852
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -294,7 +294,7 @@ msgstr ""
 "Nepavyko eksportuoti vaizdo įrašo: Laikinuoju failo URL privalo būti esamas "
 "vietinis failas"
 
-#: src/ExportManager.cpp:821
+#: src/ExportManager.cpp:859
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -303,36 +303,36 @@ msgstr ""
 "Nepavyko eksportuoti vaizdo įrašo: Išvesties failo URL privalo būti tinkamas "
 "URL adresas su failo pavadinimu"
 
-#: src/ExportManager.cpp:910
+#: src/ExportManager.cpp:948
 #, kde-format
 msgctxt "@info, %1 is a file path"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr "Nepavyko įrašyti ekrano įrašo. Nepavyko perkelti failo į vietą: %1"
 
-#: src/ExportManager.cpp:938
+#: src/ExportManager.cpp:976
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Nepavyko atspausdinti. Nepavyko inicijuoti spausdintuvo."
 
-#: src/ExportManager.cpp:955
+#: src/ExportManager.cpp:993
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (1–31)"
 msgstr "Diena (1–31)"
 
-#: src/ExportManager.cpp:956
+#: src/ExportManager.cpp:994
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (01–31)"
 msgstr "Diena (01–31)"
 
-#: src/ExportManager.cpp:957
+#: src/ExportManager.cpp:995
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (short name)"
 msgstr "Diena (trumpas pavadinimas)"
 
-#: src/ExportManager.cpp:958
+#: src/ExportManager.cpp:996
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (long name)"
@@ -340,157 +340,157 @@ msgstr ""
 "Diena (\n"
 "inimas)"
 
-#: src/ExportManager.cpp:959
+#: src/ExportManager.cpp:997
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (1–12)"
 msgstr "Mėnesis (1–12)"
 
-#: src/ExportManager.cpp:960
+#: src/ExportManager.cpp:998
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (01–12)"
 msgstr "Mėnesis (01–12)"
 
-#: src/ExportManager.cpp:961
+#: src/ExportManager.cpp:999
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (short name)"
 msgstr "Mėnesis (trumpas pavadinimas)"
 
-#: src/ExportManager.cpp:962
+#: src/ExportManager.cpp:1000
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (long name)"
 msgstr "Mėnesis (ilgas pavadinimas)"
 
-#: src/ExportManager.cpp:963
+#: src/ExportManager.cpp:1001
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Year (2 digit)"
 msgstr "Metai (2 skaitmenys)"
 
-#: src/ExportManager.cpp:964
+#: src/ExportManager.cpp:1002
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Year (4 digit)"
 msgstr "Metai (4 skaitmenys)"
 
-#: src/ExportManager.cpp:965
+#: src/ExportManager.cpp:1003
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (0–23)"
 msgstr "Valanda (0–23)"
 
-#: src/ExportManager.cpp:966
+#: src/ExportManager.cpp:1004
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (00–23)"
 msgstr "Valanda (00–23)"
 
-#: src/ExportManager.cpp:967
+#: src/ExportManager.cpp:1005
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (1–12)"
 msgstr "Valanda (1–12)"
 
-#: src/ExportManager.cpp:968
+#: src/ExportManager.cpp:1006
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (01–12)"
 msgstr "Valanda (01–12)"
 
-#: src/ExportManager.cpp:969
+#: src/ExportManager.cpp:1007
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Minute (0–59)"
 msgstr "Minutė (0–59)"
 
-#: src/ExportManager.cpp:970
+#: src/ExportManager.cpp:1008
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Minute (00–59)"
 msgstr "Minutė (00–59)"
 
-#: src/ExportManager.cpp:971
+#: src/ExportManager.cpp:1009
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Second (0–59)"
 msgstr "Sekundė (0–59)"
 
-#: src/ExportManager.cpp:972
+#: src/ExportManager.cpp:1010
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Second (00–59)"
 msgstr "Sekundė (00–59)"
 
-#: src/ExportManager.cpp:973
+#: src/ExportManager.cpp:1011
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Millisecond (0–999)"
 msgstr "Milisekundė (0–999)"
 
-#: src/ExportManager.cpp:975
+#: src/ExportManager.cpp:1013
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Millisecond (000–999)"
 msgstr "Milisekundė (000–999)"
 
-#: src/ExportManager.cpp:976
+#: src/ExportManager.cpp:1014
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "AM/PM"
 msgstr "AM/PM"
 
-#: src/ExportManager.cpp:978
+#: src/ExportManager.cpp:1016
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "am/pm"
 msgstr "am/pm"
 
-#: src/ExportManager.cpp:980
+#: src/ExportManager.cpp:1018
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "AM/PM or am/pm (localized)"
 msgstr "AM/PM arba am/pm (lokalizuota)"
 
-#: src/ExportManager.cpp:982
+#: src/ExportManager.cpp:1020
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone (short name)"
 msgstr "Laiko juosta (trumpas pavadinimas)"
 
-#: src/ExportManager.cpp:983
+#: src/ExportManager.cpp:1021
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone offset (±0000)"
 msgstr "Laiko juostos poslinkis (±0000)"
 
-#: src/ExportManager.cpp:984
+#: src/ExportManager.cpp:1022
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone offset (±00:00)"
 msgstr "Laiko juostos poslinkis (±00:00)"
 
-#: src/ExportManager.cpp:985
+#: src/ExportManager.cpp:1023
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone (long name)"
 msgstr "Laiko juosta (ilgas pavadinimas)"
 
-#: src/ExportManager.cpp:986
+#: src/ExportManager.cpp:1024
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Seconds since the Unix epoch"
 msgstr "Sekundės nuo Unix epochos pradžios"
 
-#: src/ExportManager.cpp:987
+#: src/ExportManager.cpp:1025
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Window Title"
 msgstr "Lango antraštė"
 
-#: src/ExportManager.cpp:988
+#: src/ExportManager.cpp:1026
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Sequential numbering, padded by inserting additional '#' characters"
@@ -942,19 +942,19 @@ msgctxt "@action"
 msgid "Help"
 msgstr "Pagalba"
 
-#: src/Gui/InlineMessageList.qml:129
+#: src/Gui/InlineMessageList.qml:153
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Containing Folder"
 msgstr "Atverti vidinį aplanką"
 
-#: src/Gui/InlineMessageList.qml:139
+#: src/Gui/InlineMessageList.qml:163
 #, kde-format
 msgctxt "@action:button"
 msgid "Copy to Clipboard"
 msgstr "Kopijuoti į iškarpinę"
 
-#: src/Gui/InlineMessageList.qml:149
+#: src/Gui/InlineMessageList.qml:173
 #, kde-format
 msgctxt "@action:button close inline notification"
 msgid "Close"
@@ -1842,7 +1842,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " sek."
 
-#: src/Gui/SpectacleWindow.cpp:199
+#: src/Gui/SpectacleWindow.cpp:201
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1852,11 +1852,24 @@ msgstr[1] "%1 sekundės"
 msgstr[2] "%1 sekundžių"
 msgstr[3] "%1 sekundė"
 
-#: src/Gui/SpectacleWindow.cpp:202
+#: src/Gui/SpectacleWindow.cpp:204
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
 msgstr "Neįrašyta"
+
+#: src/Gui/SpectacleWindow.cpp:262 src/Gui/SpectacleWindow.cpp:285
+#, kde-format
+msgctxt "@info"
+msgid "Saving image…"
+msgstr ""
+
+#: src/Gui/SpectacleWindow.cpp:304
+#, fuzzy, kde-format
+#| msgid "Copy image to clipboard"
+msgctxt "@info"
+msgid "Copying image to the clipboard…"
+msgstr "Kopijuoti paveikslą į iškarpinę"
 
 #: src/Gui/UndoRedoGroup.qml:31
 #, kde-format

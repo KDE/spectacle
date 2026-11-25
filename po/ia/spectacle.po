@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spectacle\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-24 01:08+0000\n"
+"POT-Creation-Date: 2026-11-25 01:28+0000\n"
 "PO-Revision-Date: 2026-09-02 15:54+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -232,13 +232,13 @@ msgstr "Aperi e modifica file de captura de schermo existente"
 msgid "Accept region selection on click-and-release"
 msgstr "Accepta selection de region sur pulsa-e-libera"
 
-#: src/ExportManager.cpp:466
+#: src/ExportManager.cpp:510
 #, kde-format
 msgctxt "%1 is an error message"
 msgid "QImageWriter cannot write image: %1"
 msgstr "QImageWriter non pote scriber image: %1"
 
-#: src/ExportManager.cpp:482
+#: src/ExportManager.cpp:526
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -248,18 +248,18 @@ msgstr ""
 "Non pote salveguardar captura de schermo proque falleva a crear directorio."
 "<nl/><filename>%1></filename>"
 
-#: src/ExportManager.cpp:491
+#: src/ExportManager.cpp:535
 #, kde-format
 msgid "Cannot save screenshot. Error while opening file."
 msgstr "Non poteva salveguardar captura de schermo. Error quando aperiva file."
 
-#: src/ExportManager.cpp:495
+#: src/ExportManager.cpp:539
 #, kde-format
 msgid "Cannot save screenshot. Error while writing file."
 msgstr ""
 "Non poteva salveguardar captura de schermo. Error quando scribeva file."
 
-#: src/ExportManager.cpp:515
+#: src/ExportManager.cpp:559
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -269,32 +269,32 @@ msgstr ""
 "Non pote salveguardar captura de schermo proque falleva a crear directorio "
 "remote:<nl/><filename>%1</filename>"
 
-#: src/ExportManager.cpp:526 src/ExportManager.cpp:576
+#: src/ExportManager.cpp:570 src/ExportManager.cpp:623
 #, kde-format
 msgid "Cannot save screenshot. Error while writing temporary local file."
 msgstr ""
 "Non poteva salveguardar captura de schermo. Error quando scribeva file local "
 "temporanee."
 
-#: src/ExportManager.cpp:535
+#: src/ExportManager.cpp:579
 #, kde-format
 msgid "Unable to save image. Could not upload file to remote location."
 msgstr ""
 "Incapace a salveguardar imagine. Non poteva incargar file a location remote."
 
-#: src/ExportManager.cpp:583
+#: src/ExportManager.cpp:630
 #, kde-format
 msgid "Cannot save screenshot. The save filename is invalid."
 msgstr ""
 "Non poteva salveguardar captura de schermo. Le nomine de file de "
 "salvaguardar es invalide."
 
-#: src/ExportManager.cpp:627
+#: src/ExportManager.cpp:656
 #, kde-format
 msgid "Cannot save an empty screenshot image."
 msgstr "Non poteva salveguardar captura de schermo vacue."
 
-#: src/ExportManager.cpp:814
+#: src/ExportManager.cpp:852
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -303,7 +303,7 @@ msgstr ""
 "Falleva a exportar video: Le URL de file temporanee debe esser un file local "
 "existente"
 
-#: src/ExportManager.cpp:821
+#: src/ExportManager.cpp:859
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -312,193 +312,193 @@ msgstr ""
 "Falleva a exportar video: le URL de file de Exito debe esser un valide URL "
 "con un nomine de file"
 
-#: src/ExportManager.cpp:910
+#: src/ExportManager.cpp:948
 #, kde-format
 msgctxt "@info, %1 is a file path"
 msgid "Unable to save recording. Could not move file to location: %1"
 msgstr ""
 "Incapace a salveguardar registration. Non poteva mover file a location %1"
 
-#: src/ExportManager.cpp:938
+#: src/ExportManager.cpp:976
 #, kde-format
 msgid "Printing failed. The printer failed to initialize."
 msgstr "Imprimer falleva. Le imprimitor falleva a initialisar."
 
-#: src/ExportManager.cpp:955
+#: src/ExportManager.cpp:993
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (1–31)"
 msgstr "Die (1–31)"
 
-#: src/ExportManager.cpp:956
+#: src/ExportManager.cpp:994
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (01–31)"
 msgstr "Die (01–31)"
 
-#: src/ExportManager.cpp:957
+#: src/ExportManager.cpp:995
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (short name)"
 msgstr "Die (Nomine breve)"
 
-#: src/ExportManager.cpp:958
+#: src/ExportManager.cpp:996
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Day (long name)"
 msgstr "Die (Nomine longe)"
 
-#: src/ExportManager.cpp:959
+#: src/ExportManager.cpp:997
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (1–12)"
 msgstr "Mense (1–12)"
 
-#: src/ExportManager.cpp:960
+#: src/ExportManager.cpp:998
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (01–12)"
 msgstr "Mense (01–12)"
 
-#: src/ExportManager.cpp:961
+#: src/ExportManager.cpp:999
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (short name)"
 msgstr "Mense (nomine breve)"
 
-#: src/ExportManager.cpp:962
+#: src/ExportManager.cpp:1000
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Month (long name)"
 msgstr "Mense (nomine longe)"
 
-#: src/ExportManager.cpp:963
+#: src/ExportManager.cpp:1001
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Year (2 digit)"
 msgstr "Anno(2 cifras)"
 
-#: src/ExportManager.cpp:964
+#: src/ExportManager.cpp:1002
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Year (4 digit)"
 msgstr "Anno (4 cifras)"
 
-#: src/ExportManager.cpp:965
+#: src/ExportManager.cpp:1003
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (0–23)"
 msgstr "Hora (0–23)"
 
-#: src/ExportManager.cpp:966
+#: src/ExportManager.cpp:1004
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (00–23)"
 msgstr "Hora (00–23)"
 
-#: src/ExportManager.cpp:967
+#: src/ExportManager.cpp:1005
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (1–12)"
 msgstr "Hora (1–12)"
 
-#: src/ExportManager.cpp:968
+#: src/ExportManager.cpp:1006
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Hour (01–12)"
 msgstr "Hora (01–12)"
 
-#: src/ExportManager.cpp:969
+#: src/ExportManager.cpp:1007
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Minute (0–59)"
 msgstr "Minuta (0–59)"
 
-#: src/ExportManager.cpp:970
+#: src/ExportManager.cpp:1008
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Minute (00–59)"
 msgstr "Minuta (00–59)"
 
-#: src/ExportManager.cpp:971
+#: src/ExportManager.cpp:1009
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Second (0–59)"
 msgstr "Secunda (0–59)"
 
-#: src/ExportManager.cpp:972
+#: src/ExportManager.cpp:1010
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Second (00–59)"
 msgstr "Secunda (00–59)"
 
-#: src/ExportManager.cpp:973
+#: src/ExportManager.cpp:1011
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Millisecond (0–999)"
 msgstr "Millisecunda (0–999)"
 
-#: src/ExportManager.cpp:975
+#: src/ExportManager.cpp:1013
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Millisecond (000–999)"
 msgstr "Millisecunda (000–999)"
 
-#: src/ExportManager.cpp:976
+#: src/ExportManager.cpp:1014
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "AM/PM"
 msgstr "AM/PM"
 
-#: src/ExportManager.cpp:978
+#: src/ExportManager.cpp:1016
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "am/pm"
 msgstr "am/pm"
 
-#: src/ExportManager.cpp:980
+#: src/ExportManager.cpp:1018
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "AM/PM or am/pm (localized)"
 msgstr "AM/PM o am/pm (localisate)"
 
-#: src/ExportManager.cpp:982
+#: src/ExportManager.cpp:1020
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone (short name)"
 msgstr "Fuso horari (nomine breve)"
 
-#: src/ExportManager.cpp:983
+#: src/ExportManager.cpp:1021
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone offset (±0000)"
 msgstr "Displaciamento de Fuso Horari (±0000)"
 
-#: src/ExportManager.cpp:984
+#: src/ExportManager.cpp:1022
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone offset (±00:00)"
 msgstr "Displaciamento de Fuso Horari (±00:00)"
 
-#: src/ExportManager.cpp:985
+#: src/ExportManager.cpp:1023
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Timezone (long name)"
 msgstr "Fuso horari (Nomine longe)"
 
-#: src/ExportManager.cpp:986
+#: src/ExportManager.cpp:1024
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Seconds since the Unix epoch"
 msgstr "Secundas usque le epocha de Unix"
 
-#: src/ExportManager.cpp:987
+#: src/ExportManager.cpp:1025
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Window Title"
 msgstr "Titulo de fenestra"
 
-#: src/ExportManager.cpp:988
+#: src/ExportManager.cpp:1026
 #, kde-format
 msgctxt "filename placeholder description"
 msgid "Sequential numbering, padded by inserting additional '#' characters"
@@ -941,19 +941,19 @@ msgctxt "@action"
 msgid "Help"
 msgstr "Adjuta"
 
-#: src/Gui/InlineMessageList.qml:129
+#: src/Gui/InlineMessageList.qml:153
 #, kde-format
 msgctxt "@action:button"
 msgid "Open Containing Folder"
 msgstr "Aperi dossier continente"
 
-#: src/Gui/InlineMessageList.qml:139
+#: src/Gui/InlineMessageList.qml:163
 #, kde-format
 msgctxt "@action:button"
 msgid "Copy to Clipboard"
 msgstr "Copia in area de transferentia"
 
-#: src/Gui/InlineMessageList.qml:149
+#: src/Gui/InlineMessageList.qml:173
 #, kde-format
 msgctxt "@action:button close inline notification"
 msgid "Close"
@@ -1845,7 +1845,7 @@ msgctxt "Decimal number of seconds"
 msgid " seconds"
 msgstr " secundas"
 
-#: src/Gui/SpectacleWindow.cpp:199
+#: src/Gui/SpectacleWindow.cpp:201
 #, kde-format
 msgctxt "@title:window"
 msgid "%1 second"
@@ -1853,11 +1853,24 @@ msgid_plural "%1 seconds"
 msgstr[0] "%1 secunda"
 msgstr[1] "%1 secundas"
 
-#: src/Gui/SpectacleWindow.cpp:202
+#: src/Gui/SpectacleWindow.cpp:204
 #, kde-format
 msgctxt "@title:window Unsaved Screenshot"
 msgid "Unsaved"
 msgstr "Non  salveguardate"
+
+#: src/Gui/SpectacleWindow.cpp:262 src/Gui/SpectacleWindow.cpp:285
+#, kde-format
+msgctxt "@info"
+msgid "Saving image…"
+msgstr ""
+
+#: src/Gui/SpectacleWindow.cpp:304
+#, fuzzy, kde-format
+#| msgid "Copy image to clipboard"
+msgctxt "@info"
+msgid "Copying image to the clipboard…"
+msgstr "Copia image in area de transferentia"
 
 #: src/Gui/UndoRedoGroup.qml:31
 #, kde-format
