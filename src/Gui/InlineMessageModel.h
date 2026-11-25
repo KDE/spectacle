@@ -16,6 +16,7 @@ class InlineMessageModel : public QAbstractListModel
     QML_ELEMENT
     QML_SINGLETON
     Q_PROPERTY(int count READ rowCount NOTIFY countChanged FINAL)
+    Q_CLASSINFO("RegisterEnumClassesUnscoped", "false")
 
 public:
     static InlineMessageModel *instance();
@@ -29,25 +30,63 @@ public:
         return inst;
     }
 
-    enum CustomRoles {
-        TypeRole = Qt::UserRole + 1,
-        DataRole = Qt::UserRole + 2,
+    enum Roles {
+        DisplayRole = Qt::DisplayRole,
+        DataRole = Qt::UserRole + 1,
+        TypeRole,
+        SubTypeRole,
+        ControlsRole,
+        BehaviorsRole,
     };
-    Q_ENUM(CustomRoles)
+    Q_ENUM(Roles)
 
-    enum InlineMessageType {
-        // Warnings and errors don't replace others of the same enum value.
+    // Kirigami InlineMessage types
+    enum class Type {
+        Information = 0,
+        Positive,
         Error,
         Warning,
-        // Informational types replace others of the same enum value.
-        InformationalType,
-        Copied = InformationalType,
-        Saved = InformationalType + 1,
-        Shared = InformationalType + 2,
-        Scanned = InformationalType + 3,
-        Busy = InformationalType + 4,
     };
-    Q_ENUM(InlineMessageType)
+    Q_ENUM(Type)
+
+    enum class SubType {
+        Generic = 0,
+        Copy,
+        Save,
+        Share,
+        Scan,
+        OCR,
+    };
+    Q_ENUM(SubType)
+
+    enum class Control {
+        Close = 0, // always show close button
+        OpenContainingFolder = 1,
+        Copy = 1 << 1,
+        Busy = 1 << 2,
+        ControlMask = OpenContainingFolder | Copy | Busy,
+    };
+    Q_DECLARE_FLAGS(Controls, Control)
+    Q_FLAG(Control)
+
+    enum class Behavior {
+        None = 0,
+        Timeout = 1,
+        Delay = 1 << 1,
+        BehaviorMask = Timeout | Delay,
+    };
+    Q_DECLARE_FLAGS(Behaviors, Behavior)
+    Q_FLAG(Behavior)
+
+    struct Item {
+        QString text;
+        QVariant data{};
+        Type type{Type::Information};
+        SubType subtype{SubType::Generic};
+        Controls controls{Control::Close};
+        Behaviors behaviors{Behavior::None};
+        bool operator==(const Item &other) const = default;
+    };
 
     QHash<int, QByteArray> roleNames() const override;
 
@@ -55,9 +94,12 @@ public:
 
     int rowCount(const QModelIndex &parent = {}) const override;
 
-    Q_INVOKABLE void push(InlineMessageType type, const QString &text, const QVariant &data = {});
+    Q_INVOKABLE void push(Item item);
     Q_INVOKABLE void pop(int row = -1);
     Q_INVOKABLE void clear();
+
+    template<typename Predicate>
+    QModelIndexList matchIf(Predicate pred) const;
 
     Q_INVOKABLE void copyToClipboard(const QVariant &content);
     Q_INVOKABLE void openContainingFolder(const QUrl &url);
@@ -68,12 +110,8 @@ Q_SIGNALS:
 private:
     InlineMessageModel(QObject *parent = nullptr);
 
-    struct Item {
-        InlineMessageType type;
-        QString text;
-        QVariant data;
-    };
-
     QList<Item> m_data;
     QHash<int, QByteArray> m_roleNames;
 };
+
+Q_DECLARE_OPERATORS_FOR_FLAGS(InlineMessageModel::Controls)

@@ -75,70 +75,64 @@ ListView {
         required property int index
         required property var model
         function makeActions() {
-            const data = model.data
-            const dataString = data !== null && data !== undefined && data.toString !== undefined ? data.toString() : ""
             let actions = []
-            function pushAction(incubator, index) {
+            // Incubate actions to prevent error messages when the delegate is
+            // quickly created and destroyed.
+            function pushAction(incubator) {
+                const actionIndex = actions.length
                 if (incubator.status !== Component.Ready) {
                     actions.push(null)
                     incubator.onStatusChanged = (status) => {
                         if (status === Component.Ready) {
-                            delegate.actions[index] = incubator.object
+                            delegate.actions[actionIndex] = incubator.object
                         }
                     }
                 } else {
                     actions.push(incubator.object)
                 }
             }
-            if (dataString !== "") {
+            if (model.controls & InlineMessageModel.Control.OpenContainingFolder) {
                 try {
-                    let url = new URL(data)
+                    let url = new URL(model.data)
                     if (url.protocol === "file:") {
-                        pushAction(openFolderActionComponent.incubateObject(this, {"url": url}), actions.length)
+                        pushAction(openFolderActionComponent.incubateObject(this, {"url": url}))
                     }
                 } catch (error) { }
-                pushAction(copyActionComponent.incubateObject(this, {"data": data}), actions.length)
             }
-            if (model.type === InlineMessageModel.Busy) {
-                pushAction(busyActionComponent.incubateObject(this, {}), actions.length)
+            if (model.controls & InlineMessageModel.Control.Copy) {
+                pushAction(copyActionComponent.incubateObject(this, {"data": model.data}))
+            }
+            if (model.controls & InlineMessageModel.Control.Busy) {
+                pushAction(busyActionComponent.incubateObject(this, {}))
             }
             // Not using showCloseButton because it toggles visible on this item.
             // This makes it not work as well with animations from the list view.
-            pushAction(closeActionComponent.incubateObject(this, {"index": index}), actions.length)
+            pushAction(closeActionComponent.incubateObject(this, {"index": index}))
             return actions
         }
         implicitHeight: implicitContentHeight + topPadding + bottomPadding
         z: -index // stack newer items under older items so there's no ugly visual overlap
-        type: {
-            const type = model.type
-            if (type === InlineMessageModel.Error) {
-                return Kirigami.MessageType.Error
-            } else if (type === InlineMessageModel.Warning) {
-                return Kirigami.MessageType.Warning
-            }
-            return Kirigami.MessageType.Information
-        }
+        type: model.type
         text: model.text
-        visible: delegate.model.type !== InlineMessageModel.Busy
+        visible: !timer.delay
         position: Kirigami.InlineMessage.Position.Header
         width: root.width
         actions: visible ? makeActions() : []
         onLinkActivated: (link) => Qt.openUrlExternally(link)
         Timer {
             id: timer
-            running: switch (delegate.model.type) {
-            case InlineMessageModel.Copied:
-            case InlineMessageModel.Shared:
-            case InlineMessageModel.Busy:
-                return true
-            default:
-                return false
-            }
-            interval: delegate.model.type === InlineMessageModel.Busy ? 200 : 10000
+            property bool delay: delegate.model.behaviors & InlineMessageModel.Behavior.Delay
+            property bool timeout: delegate.model.behaviors & InlineMessageModel.Behavior.Timeout
+            running: delay || timeout
+            interval: delay ? 200 : 10000
             onTriggered: {
-                if (delegate.model.type === InlineMessageModel.Busy) {
+                if (delay) {
                     delegate.visible = true
-                } else {
+                    if (timeout) {
+                        delay = false
+                        timer.restart()
+                    }
+                } else if (timeout) {
                     InlineMessageModel.pop(delegate.index)
                 }
             }

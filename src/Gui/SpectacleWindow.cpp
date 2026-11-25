@@ -25,6 +25,10 @@
 
 using namespace Qt::StringLiterals;
 using G = Geometry;
+using IMType = InlineMessageModel::Type;
+using IMSubType = InlineMessageModel::SubType;
+using IMControl = InlineMessageModel::Control;
+using IMBehavior = InlineMessageModel::Behavior;
 
 QList<SpectacleWindow *> SpectacleWindow::s_spectacleWindowInstances = {};
 bool SpectacleWindow::s_synchronizingVisibility = false;
@@ -259,18 +263,7 @@ void SpectacleWindow::setSource(const QUrl &source, const QVariantMap &initialPr
 void SpectacleWindow::save()
 {
     SpectacleCore::instance()->syncExportImage();
-    InlineMessageModel::instance()->push(InlineMessageModel::Busy, i18nc("@info", "Saving image…"));
-    auto modelIndex = InlineMessageModel::instance()->index(InlineMessageModel::instance()->rowCount() - 1);
-    auto onExported = [index = QPersistentModelIndex(modelIndex)](const ExportManager::Actions &actions, const QUrl &) {
-        if (index.isValid() && actions.testFlag(ExportManager::Save)) {
-            QObject::disconnect(index.data(InlineMessageModel::DataRole).value<QMetaObject::Connection>());
-            InlineMessageModel::instance()->pop(index.row());
-        }
-    };
-    InlineMessageModel::instance()->setData(
-        modelIndex,
-        QVariant::fromValue(connect(ExportManager::instance(), &ExportManager::imageExported, InlineMessageModel::instance(), onExported)),
-        InlineMessageModel::DataRole);
+    InlineMessageModel::instance()->push({.text = i18nc("@info", "Saving image…"), .type = IMType::Information, .subtype = IMSubType::Save, .controls = IMControl::Busy, .behaviors = IMBehavior::Delay});
     ExportManager::instance()->exportImage(ExportManager::Save | ExportManager::UserAction, SpectacleCore::instance()->outputUrl());
 }
 
@@ -282,18 +275,7 @@ void SpectacleWindow::saveAs()
         return;
     }
     SpectacleCore::instance()->syncExportImage();
-    InlineMessageModel::instance()->push(InlineMessageModel::Busy, i18nc("@info", "Saving image…"));
-    auto modelIndex = InlineMessageModel::instance()->index(InlineMessageModel::instance()->rowCount() - 1);
-    auto onExported = [index = QPersistentModelIndex(modelIndex)](const ExportManager::Actions &actions, const QUrl &) {
-        if (index.isValid() && actions.testAnyFlags(ExportManager::AnySave)) {
-            QObject::disconnect(index.data(InlineMessageModel::DataRole).value<QMetaObject::Connection>());
-            InlineMessageModel::instance()->pop(index.row());
-        }
-    };
-    InlineMessageModel::instance()->setData(
-        modelIndex,
-        QVariant::fromValue(connect(ExportManager::instance(), &ExportManager::imageExported, InlineMessageModel::instance(), onExported)),
-        InlineMessageModel::DataRole);
+    InlineMessageModel::instance()->push({.text = i18nc("@info", "Saving image…"), .type = IMType::Information, .subtype = IMSubType::Save, .controls = IMControl::Busy, .behaviors = IMBehavior::Delay});
     ExportManager::instance()->exportImage(ExportManager::SaveAs | ExportManager::UserAction,
                                            SpectacleCore::instance()->outputUrl());
 }
@@ -301,18 +283,7 @@ void SpectacleWindow::saveAs()
 void SpectacleWindow::copyImage()
 {
     SpectacleCore::instance()->syncExportImage();
-    InlineMessageModel::instance()->push(InlineMessageModel::Busy, i18nc("@info", "Copying image to the clipboard…"));
-    auto modelIndex = InlineMessageModel::instance()->index(InlineMessageModel::instance()->rowCount() - 1);
-    auto onExported = [index = QPersistentModelIndex(modelIndex)](const ExportManager::Actions &actions, const QUrl &) {
-        if (index.isValid() && actions.testFlag(ExportManager::CopyImage)) {
-            QObject::disconnect(index.data(InlineMessageModel::DataRole).value<QMetaObject::Connection>());
-            InlineMessageModel::instance()->pop(index.row());
-        }
-    };
-    InlineMessageModel::instance()->setData(
-        modelIndex,
-        QVariant::fromValue(connect(ExportManager::instance(), &ExportManager::imageExported, InlineMessageModel::instance(), onExported)),
-        InlineMessageModel::DataRole);
+    InlineMessageModel::instance()->push({.text = i18nc("@info", "Copying image to the clipboard…"), .type = IMType::Information, .subtype = IMSubType::Copy, .controls = IMControl::Busy, .behaviors = IMBehavior::Delay});
     ExportManager::instance()->exportImage(ExportManager::CopyImage | ExportManager::UserAction);
 }
 

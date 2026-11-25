@@ -25,6 +25,10 @@
 #include <QShortcut>
 
 using namespace Qt::StringLiterals;
+using IMType = InlineMessageModel::Type;
+using IMSubType = InlineMessageModel::SubType;
+using IMControl = InlineMessageModel::Control;
+using IMBehavior = InlineMessageModel::Behavior;
 
 ViewerWindow *ViewerWindow::s_viewerWindowInstance = nullptr;
 
@@ -51,7 +55,7 @@ ViewerWindow::ViewerWindow(Mode mode, QQmlEngine *engine, QWindow *parent)
 
         if (error) {
             auto text = i18nc("@info, %1 is the error message", "There was a problem sharing the image: %1", message);
-            InlineMessageModel::instance()->push(InlineMessageModel::Error, text);
+            InlineMessageModel::instance()->push({.text = text, .type = IMType::Error, .subtype = IMSubType::Share});
         }
     });
 

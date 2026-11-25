@@ -70,6 +70,10 @@
 #include <qobjectdefs.h>
 
 using namespace Qt::StringLiterals;
+using IMType = InlineMessageModel::Type;
+using IMSubType = InlineMessageModel::SubType;
+using IMControl = InlineMessageModel::Control;
+using IMBehavior = InlineMessageModel::Behavior;
 
 SpectacleCore *SpectacleCore::s_self = nullptr;
 static std::unique_ptr<KStatusNotifierItem> s_systemTrayIcon;
@@ -269,7 +273,7 @@ SpectacleCore::SpectacleCore(QObject *parent)
             qWarning().noquote() << message;
             auto viewer = ViewerWindow::instance();
             viewer->setVisible(true);
-            InlineMessageModel::instance()->push(InlineMessageModel::Error, uiMessage);
+            InlineMessageModel::instance()->push({.text = uiMessage, .type = IMType::Error});
             return;
         }
         }
@@ -499,20 +503,20 @@ SpectacleCore::SpectacleCore(QObject *parent)
             if (actions & ExportManager::CopyImage) {
                 auto text =
                     xi18nc("@info", "The screenshot was copied to the clipboard and saved as <link url=\"%1\">%2</link>", url.toString(), url.fileName());
-                InlineMessageModel::instance()->push(InlineMessageModel::Saved, text, url);
+                InlineMessageModel::instance()->push({.text = text, .data = url, .type = IMType::Positive, .subtype = IMSubType::Save, .controls = IMControl::OpenContainingFolder});
             } else if (actions & ExportManager::CopyPath) {
                 auto text = xi18nc("@info",
                                    "The screenshot has been saved as <link url=\"%1\">%2</link> and its location has been copied to clipboard",
                                    url.toString(),
                                    url.fileName());
-                InlineMessageModel::instance()->push(InlineMessageModel::Saved, text, url);
+                InlineMessageModel::instance()->push({.text = text, .data = url, .type = IMType::Positive, .subtype = IMSubType::Save, .controls = IMControl::OpenContainingFolder});
             } else {
                 auto text = xi18nc("@info", "The screenshot was saved as <link url=\"%1\">%2</link>", url.toString(), url.fileName());
-                InlineMessageModel::instance()->push(InlineMessageModel::Saved, text, url);
+                InlineMessageModel::instance()->push({.text = text, .data = url, .type = IMType::Positive, .subtype = IMSubType::Save, .controls = IMControl::OpenContainingFolder});
             }
         } else if (actions & ExportManager::CopyImage) {
             auto text = i18nc("@info", "The screenshot has been copied to the clipboard.");
-            InlineMessageModel::instance()->push(InlineMessageModel::Copied, text);
+            InlineMessageModel::instance()->push({.text = text, .type = IMType::Positive, .subtype = IMSubType::Copy, .behaviors = IMBehavior::Timeout});
         }
     };
     connect(exportManager, &ExportManager::imageExported, this, onImageExported);
@@ -546,14 +550,14 @@ SpectacleCore::SpectacleCore(QObject *parent)
                                    "The video has been saved as <link url=\"%1\">%2</link> and its location has been copied to clipboard",
                                    url.toString(),
                                    url.fileName());
-                InlineMessageModel::instance()->push(InlineMessageModel::Saved, text, url);
+                InlineMessageModel::instance()->push({.text = text, .data = url, .type = IMType::Positive, .subtype = IMSubType::Save, .controls = IMControl::OpenContainingFolder});
             } else {
                 auto text = xi18nc("@info", "The video was saved as <link url=\"%1\">%2</link>", url.toString(), url.fileName());
-                InlineMessageModel::instance()->push(InlineMessageModel::Saved, text, url);
+                InlineMessageModel::instance()->push({.text = text, .data = url, .type = IMType::Positive, .subtype = IMSubType::Save, .controls = IMControl::OpenContainingFolder});
             }
         } else if (actions & ExportManager::CopyPath) {
             auto text = i18nc("@info", "The video location has been copied to the clipboard.");
-            InlineMessageModel::instance()->push(InlineMessageModel::Copied, text);
+            InlineMessageModel::instance()->push({.text = text, .type = IMType::Positive, .subtype = IMSubType::Copy, .behaviors = IMBehavior::Timeout});
         }
     };
     connect(exportManager, &ExportManager::videoExported, this, onVideoExported);
@@ -578,22 +582,22 @@ SpectacleCore::SpectacleCore(QObject *parent)
             }
             return i18nc("@info", "Found QR code with binary content.");
         }(result);
-        InlineMessageModel::instance()->push(InlineMessageModel::Scanned, text, result);
+        InlineMessageModel::instance()->push({.text = text, .data = result, .type = IMType::Positive, .subtype = IMSubType::Scan});
     };
     connect(exportManager, &ExportManager::qrCodeScanned, this, onQRCodeScanned);
 
     auto onOcrTextRecognized = [this](const QString &text, const QStringList &languageCodes, bool success) {
         if (!success) {
-            InlineMessageModel::instance()->push(InlineMessageModel::Error, i18nc("@info", "Text extraction failed"));
+            InlineMessageModel::instance()->push({.text = i18nc("@info", "Text extraction failed"), .type = IMType::Error, .subtype = IMSubType::OCR});
             return;
         }
 
         if (text.isEmpty()) {
-            InlineMessageModel::instance()->push(InlineMessageModel::Copied, i18nc("@info", "No text found in the image"));
+            InlineMessageModel::instance()->push({.text = i18nc("@info", "No text found in the image"), .type = IMType::Information, .subtype = IMSubType::OCR});
             return;
         }
 
-        InlineMessageModel::instance()->push(InlineMessageModel::Copied, i18nc("@info", "Text extraction completed"));
+        InlineMessageModel::instance()->push({.text = i18nc("@info", "Text extraction completed"), .type = IMType::Positive, .subtype = IMSubType::OCR, .behaviors = IMBehavior::Timeout});
 
         // ensure program stays alive until the notification finishes.
         if (!m_eventLoopLocker) {
@@ -767,15 +771,12 @@ bool SpectacleCore::startOcrExtraction(const QString &languageCode)
     const bool hasCaptureWindows = !CaptureWindow::instances().isEmpty();
 
     if (hasCaptureWindows) {
-        auto selectionEditor = SelectionEditor::instance();
-        auto inlineMessages = InlineMessageModel::instance();
-
         m_ocrExportInProgress = true;
-        if (!selectionEditor->acceptSelection(ExportManager::UserAction)) {
-            m_ocrExportInProgress = false;
-            inlineMessages->push(InlineMessageModel::Error, i18nc("@info", "Please select a region before extracting text"));
-            return false;
-        }
+        // This shouldn't fail unless spectacle is run in an environment where
+        // there are no screens and the Qt platform plugin doesn't even have
+        // placeholders screens. Without real screens, Qt Wayland will still
+        // have a placeholder screen.
+        SelectionEditor::instance()->acceptSelection();
 
         QMetaObject::invokeMethod(
             this,
@@ -795,17 +796,18 @@ bool SpectacleCore::performOcrExtraction(const QString &languageCode)
     auto inlineMessages = InlineMessageModel::instance();
 
     if (!ocrManager->isAvailable()) {
-        inlineMessages->push(InlineMessageModel::Error, i18nc("@info", "OCR is not available."));
+        inlineMessages->push({.text = i18nc("@info", "OCR is not available."), .type = IMType::Error, .subtype = IMSubType::OCR});
         return false;
     }
 
-    const QImage image = m_annotationDocument->renderToImage();
+    syncExportImage();
+    const auto image = ExportManager::instance()->image();
     if (image.isNull()) {
-        inlineMessages->push(InlineMessageModel::Error, i18nc("@info", "No screenshot available."));
+        inlineMessages->push({.text = i18nc("@info", "No screenshot available."), .type = IMType::Error, .subtype = IMSubType::OCR});
         return false;
     }
 
-    inlineMessages->push(InlineMessageModel::Copied, i18nc("@info", "Extracting text from image..."));
+    inlineMessages->push({.text = i18nc("@info", "Extracting text from image..."), .type = IMType::Information, .subtype = IMSubType::OCR, .controls = IMControl::Busy, .behaviors = IMBehavior::Delay});
 
     if (languageCode.isEmpty()) {
         ocrManager->recognizeText(image);
