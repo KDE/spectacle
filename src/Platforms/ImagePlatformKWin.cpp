@@ -16,7 +16,6 @@
 #include <QDBusConnectionInterface>
 #include <QDBusPendingCall>
 #include <QDBusPendingCallWatcher>
-#include <QDBusReply>
 #include <QDBusUnixFileDescriptor>
 #include <QFutureSynchronizer>
 #include <QGuiApplication>
@@ -183,35 +182,20 @@ static ScreenShotSource3::Result readImage(int fileDescriptor, const QVariantMap
         resultImage.setDevicePixelRatio(scale);
     }
 
-    const auto windowId = metadata.value(u"windowId"_s).toString();
-    // No point in storing the windowId in the image since it means nothing to users
-    // and can't be used if the window is closed.
-    if (!windowId.isEmpty()) {
-        QDBusMessage message = QDBusMessage::createMethodCall(u"org.kde.KWin"_s,
-                                                              u"/KWin"_s,
-                                                              u"org.kde.KWin"_s,
-                                                              u"getWindowInfo"_s);
-        message.setArguments({windowId});
-        const QDBusReply<QVariantMap> reply = QDBusConnection::sessionBus().call(message);
-        if (reply.isValid()) {
-            ImageMetaData::setWindowTitle(resultImage, reply.value().value(u"caption"_s).toString());
-            auto logicalX = Geometry::mapFromPlatformValue(reply.value().value(u"x"_s).toReal(), scale);
-            auto logicalY = Geometry::mapFromPlatformValue(reply.value().value(u"y"_s).toReal(), scale);
-            ImageMetaData::setLogicalXY(resultImage, logicalX, logicalY);
-        }
+    const auto caption = metadata.value(u"caption"_s).toString();
+    if (!caption.isEmpty()) {
+        ImageMetaData::setWindowTitle(resultImage, caption);
     }
 
     const auto screenId = metadata.value(u"screen"_s).toString();
     if (!screenId.isEmpty()) {
         ImageMetaData::setScreen(resultImage, screenId);
-        if (windowId.isEmpty()) {
-            const auto screens = qGuiApp->screens();
-            for (auto screen : screens) {
-                if (screen->name() == screenId) {
-                    auto logicalPos = Geometry::mapFromPlatformPoint(screen->geometry().topLeft(), scale);
-                    ImageMetaData::setLogicalXY(resultImage, logicalPos.x(), logicalPos.y());
-                    break;
-                }
+        const auto screens = qGuiApp->screens();
+        for (auto screen : screens) {
+            if (screen->name() == screenId) {
+                auto logicalPos = Geometry::mapFromPlatformPoint(screen->geometry().topLeft(), scale);
+                ImageMetaData::setLogicalXY(resultImage, logicalPos.x(), logicalPos.y());
+                break;
             }
         }
     }
